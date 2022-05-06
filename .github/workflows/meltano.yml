@@ -13,14 +13,16 @@ on:
         default: 'warning'
 
 jobs:
-  extract-load:
-    name: Extract & Load Pipeline for ${{ matrix.source }}
+  meltano-run:
+    name: Meltano Run Pipeline for ${{ matrix.source }}
     runs-on: ubuntu-latest
     container:
       image: meltano/meltano:v1.103.1-python3.9
       env:
         MELTANO_ENVIRONMENT: ${{ github.event.inputs.environment || 'prod' }}
         MELTANO_CLI_LOG_LEVEL: ${{ github.event.inputs.logLevel || 'warning' }}
+        TAP_POCKET_CONSUMER_KEY: ${{ secrets.TAP_POCKET_CONSUMER_KEY }}
+        TAP_POCKET_ACCESS_TOKEN: ${{ secrets.TAP_POCKET_ACCESS_TOKEN }}
     strategy:
       matrix:
         include:
@@ -31,6 +33,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3.0.2
 
-      - name: Run Meltano
+      - name: Check Meltano
         run: |
           meltano --version
+
+      - name: Install Plugins
+        run: |
+          meltano install
+
+      - name: Run
+        run: |
+          meltano run ${{ matrix.tap }} ${{ matrix.target}}

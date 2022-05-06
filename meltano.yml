@@ -18,7 +18,25 @@ plugins:
       kind: password
     - name: start_date
       kind: integer
+  loaders:
+  - name: target-sqlite
+    variant: meltanolabs
+    pip_url: git+https://github.com/MeltanoLabs/target-sqlite.git@json-dump-objects-and-arrays
+    config:
+      database: output/${MELTANO_EXTRACT__LOAD_SCHEMA}.db
 environments:
 - name: dev
+  config:
+    plugins:
+      loaders:
+      - name: target-sqlite
+        config:
+          batch_size: 15
 - name: staging
 - name: prod
+  config:
+    plugins:
+      loaders:
+      - name: target-sqlite
+        config:
+          batch_size: 500
