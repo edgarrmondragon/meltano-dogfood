@@ -49,7 +49,7 @@ jobs:
         uses: actions/upload-artifact@v3.0.0
         with:
           name: raw-data
-          path: output/*.db
+          path: output/*/*.db
 
   transform:
     name: Data Transformation with dbt-sqlite
