@@ -1,0 +1,36 @@
+name: New Meltano Plugin
+description: Add a new Meltano plugin to the project
+title: "[Feature]: Add <plugin>"
+labels: ["enhancement"]
+assignees:
+  - edgarrmondragon
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        See https://docs.meltano.com/concepts/plugins
+  - type: input
+    id: plugin
+    attributes:
+      label: Plugin Name
+      description: A Meltano plugin name
+      placeholder: tap-github
+    validations:
+      required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: Plugin Type
+      options:
+        - "extractor"
+        - "loader"
+        - "utility"
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: Hub Link
+      description: Link to Meltano Hub page for the plugin
+      placeholder: https://hub.meltano.com/extractors/github
