@@ -1,0 +1,24 @@
+version: 1
+default_environment: dev
+project_id: b77cad0a-ffd8-494e-9e6b-18d6eacb71d4
+plugins:
+  extractors:
+  - name: tap-pocket
+    namespace: tap_pocket
+    pip_url: git+https://github.com/edgarrmondragon/tap-pocket.git
+    executable: tap-pocket
+    capabilities:
+    - catalog
+    - discover
+    - state
+    settings:
+    - name: consumer_key
+      kind: password
+    - name: access_token
+      kind: password
+    - name: start_date
+      kind: integer
+environments:
+- name: dev
+- name: staging
+- name: prod
