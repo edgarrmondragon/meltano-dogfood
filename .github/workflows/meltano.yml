@@ -44,3 +44,9 @@ jobs:
       - name: Run
         run: |
           meltano run ${{ matrix.tap }} target-sqlite
+
+      - name: Upload ${{ matrix.source }} Data
+        uses: actions/upload-artifact@v3.0.0
+        with:
+          name: raw-data
+          path: output/*.db
