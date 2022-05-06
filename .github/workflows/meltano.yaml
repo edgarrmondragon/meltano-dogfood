@@ -71,7 +71,7 @@ jobs:
 
       - name: Install dbt-sqlite
         run: |
-          meltano install
+          meltano install transformer dbt-sqlite
 
       - name: Download raw data
         uses: actions/download-artifact@v3.0.0
