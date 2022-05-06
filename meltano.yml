@@ -24,7 +24,7 @@ plugins:
     dialect: sqlite
     pip_url: git+https://github.com/MeltanoLabs/target-sqlite.git@json-dump-objects-and-arrays
     config:
-      database: output/${MELTANO_EXTRACT__LOAD_SCHEMA}.db
+      database: output/${MELTANO_ENVIRONMENT}/${MELTANO_EXTRACT__LOAD_SCHEMA}.db
   transformers:
   - name: dbt-sqlite
     namespace: sqlite

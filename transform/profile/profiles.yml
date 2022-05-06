@@ -3,13 +3,13 @@ config:
   use_colors: true
 
 self:
-  target: "{{ env_var('MELTANO_ENVIRONMENT', 'dev') }}"
+  target: sqlite
   outputs:
-    dev:
+    sqlite:
       type: sqlite
       threads: 1
       database: database
       schema: main
       schemas_and_paths:
-        main: "{{ env_var('MELTANO_PROJECT_ROOT') }}/output/warehouse.db"
-      schema_directory: "{{ env_var('PWD') }}/output"
+        main: "{{ env_var('MELTANO_PROJECT_ROOT') }}/output/{{ env_var('MELTANO_ENVIRONMENT', 'dev') }}/warehouse.db"
+      schema_directory: "{{ env_var('MELTANO_PROJECT_ROOT') }}/output/{{ env_var('MELTANO_ENVIRONMENT', 'dev') }}"
