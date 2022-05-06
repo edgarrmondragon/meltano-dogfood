@@ -1,0 +1,15 @@
+config:
+  send_anonymous_usage_stats: false
+  use_colors: true
+
+self:
+  target: "{{ env_var('MELTANO_ENVIRONMENT', 'dev') }}"
+  outputs:
+    dev:
+      type: sqlite
+      threads: 1
+      database: database
+      schema: main
+      schemas_and_paths:
+        main: "{{ env_var('MELTANO_PROJECT_ROOT') }}/output/etl.db"
+      schema_directory: "{{ env_var('PWD') }}/output"

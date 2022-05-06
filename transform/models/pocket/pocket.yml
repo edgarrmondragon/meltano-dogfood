@@ -1,0 +1,24 @@
+version: 2
+
+sources:
+  - name: pocket
+    schema: tap_pocket
+    loader: tap-pocket
+    description: Content that's personalized to your interests
+    tags:
+      - Meltano SDK
+    tables:
+      - name: items
+        description: All Pocket list items
+        loaded_at_field: time_updated
+        columns:
+          - name: item_id
+            tests: [not_null, unique]
+          - name: given_title
+          - name: given_url
+          - name: time_added
+            tests: [not_null]
+          - name: time_read
+          - name: time_updated
+          - name: tags
+          - name: word_count

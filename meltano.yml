@@ -21,9 +21,35 @@ plugins:
   loaders:
   - name: target-sqlite
     variant: meltanolabs
+    dialect: sqlite
     pip_url: git+https://github.com/MeltanoLabs/target-sqlite.git@json-dump-objects-and-arrays
     config:
       database: output/${MELTANO_EXTRACT__LOAD_SCHEMA}.db
+  transformers:
+  - name: dbt-sqlite
+    namespace: sqlite
+    pip_url: dbt-core~=1.1.0rc1 dbt-sqlite~=1.0.0
+    executable: dbt
+    settings:
+    - name: project_dir
+      value: $MELTANO_PROJECT_ROOT/transform
+    - name: profiles_dir
+      value: $MELTANO_PROJECT_ROOT/transform/profile
+      env_aliases:
+      - DBT_PROFILES_DIR
+    config:
+      target: sqlite
+    commands:
+      run:
+        args: run
+        description: Compile SQL and execute against the current target database.
+      docs-serve:
+        args: docs serve
+      docs-generate:
+        args: docs generate
+      clean:
+        args: clean
+        description: Delete all folders in the clean-targets list (usually the dbt_modules and target directories.)
 environments:
 - name: dev
   config:
