@@ -26,7 +26,7 @@ jobs:
     strategy:
       matrix:
         include:
-          - { source: "Pocket", tap: "tap-pocket", job-id: "pocket-jsonl" }
+          - { source: "Pocket", tap: "tap-pocket" }
       fail-fast: false
 
     steps:
@@ -43,4 +43,4 @@ jobs:
 
       - name: Run
         run: |
-          meltano run ${{ matrix.tap }} ${{ matrix.target}}
+          meltano run ${{ matrix.tap }} target-sqlite
