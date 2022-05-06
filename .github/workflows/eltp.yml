@@ -1,0 +1,36 @@
+name: Meltano Pipeline
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Meltano Environment
+        required: true
+        default: prod
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+
+jobs:
+  extract-load:
+    name: Extract & Load Pipeline for ${{ matrix.source }}
+    runs-on: ubuntu-latest
+    container:
+      image: meltano/meltano:v1.103.1-python3.9
+      env:
+        MELTANO_ENVIRONMENT: ${{ github.event.inputs.environment || 'prod' }}
+        MELTANO_CLI_LOG_LEVEL: ${{ github.event.inputs.logLevel || 'warning' }}
+    strategy:
+      matrix:
+        include:
+          - { source: "Pocket", tap: "tap-pocket", job-id: "pocket-jsonl" }
+      fail-fast: false
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3.0.2
+
+      - name: Run Meltano
+        run: |
+          meltano --version
