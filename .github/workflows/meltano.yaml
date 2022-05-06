@@ -50,3 +50,45 @@ jobs:
         with:
           name: raw-data
           path: output/*.db
+
+  transform:
+    name: Data Transformation with dbt-sqlite
+    runs-on: ubuntu-latest
+    needs: meltano-run
+    container:
+      image: meltano/meltano:v1.103.1-python3.9
+      env:
+        MELTANO_ENVIRONMENT: ${{ github.event.inputs.environment || 'prod' }}
+        MELTANO_CLI_LOG_LEVEL: ${{ github.event.inputs.logLevel || 'warning' }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3.0.2
+
+      - name: Check Meltano
+        run: |
+          meltano --version
+
+      - name: Install dbt-sqlite
+        run: |
+          meltano install
+
+      - name: Download raw data
+        uses: actions/download-artifact@v3.0.0
+        with:
+          name: raw-data
+          path: output/
+
+      - name: Transform
+        run: |
+          meltano run dbt-sqlite:run
+
+      - name: Test Data
+        run: |
+          meltano test dbt-sqlite
+
+      - name: Upload Data Warehouse
+        uses: actions/upload-artifact@v3.0.0
+        with:
+          name: data-warehouse
+          path: output/warehouse.db

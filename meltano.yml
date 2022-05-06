@@ -50,6 +50,8 @@ plugins:
       clean:
         args: clean
         description: Delete all folders in the clean-targets list (usually the dbt_modules and target directories.)
+      test:
+        args: test
 environments:
 - name: dev
   config:

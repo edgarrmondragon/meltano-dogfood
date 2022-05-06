@@ -11,5 +11,5 @@ self:
       database: database
       schema: main
       schemas_and_paths:
-        main: "{{ env_var('MELTANO_PROJECT_ROOT') }}/output/etl.db"
+        main: "{{ env_var('MELTANO_PROJECT_ROOT') }}/output/warehouse.db"
       schema_directory: "{{ env_var('PWD') }}/output"
