@@ -21,37 +21,45 @@ plugins:
   loaders:
   - name: target-sqlite
     variant: meltanolabs
-    dialect: sqlite
     pip_url: git+https://github.com/MeltanoLabs/target-sqlite.git@json-dump-objects-and-arrays
     config:
       database: output/${MELTANO_ENVIRONMENT}/${MELTANO_EXTRACT__LOAD_SCHEMA}.db
+    dialect: sqlite
   transformers:
   - name: dbt-sqlite
     namespace: sqlite
-    pip_url: dbt-core~=1.1.0rc1 dbt-sqlite~=1.0.0
+    pip_url: dbt-core~=1.1.0 dbt-sqlite~=1.0.0
     executable: dbt
     settings:
     - name: project_dir
       value: $MELTANO_PROJECT_ROOT/transform
     - name: profiles_dir
-      value: $MELTANO_PROJECT_ROOT/transform/profile
       env_aliases:
       - DBT_PROFILES_DIR
-    config:
-      target: sqlite
+      value: $MELTANO_PROJECT_ROOT/transform/profile
     commands:
       run:
         args: run
         description: Compile SQL and execute against the current target database.
-      docs-serve:
-        args: docs serve
-      docs-generate:
-        args: docs generate
+      docs-serve: docs serve
+      docs-generate: docs generate
       clean:
         args: clean
-        description: Delete all folders in the clean-targets list (usually the dbt_modules and target directories.)
-      test:
-        args: test
+        description: Delete all folders in the clean-targets list (usually the dbt_modules
+          and target directories.)
+      test: test
+    config:
+      target: sqlite
+  utilities:
+  - name: sqlfluff
+    pip_url: sqlfluff>=0.13 sqlfluff-templater-dbt>=0.13 dbt-core~=1.1.0 dbt-sqlite~=1.0.0
+    commands:
+      lint:
+        args: lint transform/models
+        description: Lint SQL in transform models
+      fix:
+        args: fix transform/models
+        description: Fix SQL
 environments:
 - name: dev
   config:

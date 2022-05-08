@@ -16,9 +16,15 @@ sources:
             tests: [not_null, unique]
           - name: given_title
           - name: given_url
+            tests: [not_null]
           - name: time_added
             tests: [not_null]
           - name: time_read
           - name: time_updated
           - name: tags
           - name: word_count
+          - name: time_to_read
+
+models:
+  - name: items
+    description: Pocket items
