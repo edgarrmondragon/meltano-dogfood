@@ -28,7 +28,7 @@ plugins:
   transformers:
   - name: dbt-sqlite
     namespace: sqlite
-    pip_url: dbt-core~=1.1.0 dbt-sqlite~=1.0.0
+    pip_url: dbt-core~=1.1.0 dbt-sqlite~=1.0.0 sqlfluff>=0.13 sqlfluff-templater-dbt>=0.13
     executable: dbt
     settings:
     - name: project_dir
@@ -47,19 +47,19 @@ plugins:
         args: clean
         description: Delete all folders in the clean-targets list (usually the dbt_modules
           and target directories.)
-      test: test
-    config:
-      target: sqlite
-  utilities:
-  - name: sqlfluff
-    pip_url: sqlfluff>=0.13 sqlfluff-templater-dbt>=0.13 dbt-core~=1.1.0 dbt-sqlite~=1.0.0
-    commands:
+      test:
+        args: test
+        description: Test dbt models
       lint:
-        args: lint transform/models
+        args: lint models
+        executable: sqlfluff
         description: Lint SQL in transform models
       fix:
-        args: fix transform/models
+        args: fix models
+        executable: sqlfluff
         description: Fix SQL
+    config:
+      target: sqlite
 environments:
 - name: dev
   config:

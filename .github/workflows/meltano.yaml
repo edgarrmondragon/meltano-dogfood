@@ -61,40 +61,12 @@ jobs:
           name: raw-data
           path: output/*/*.db
 
-  lint-sql:
-    name: Run SQLFluff with Meltano
-    runs-on: ubuntu-latest
-    container:
-      image: meltano/meltano:v1.103.1-python3.9
-    strategy:
-      fail-fast: true
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3.0.2
-
-      - name: Check Meltano
-        run: |
-          meltano --version
-
-      - name: Install Plugin
-        run: |
-          meltano install utility sqlfluff
-
-      - name: Lint
-        run: |
-          meltano run sqlfluff:lint
-
   transform:
-    if: "github.event_name == 'workflow_dispatch'"
     name: Data Transformation with dbt-sqlite
     runs-on: ubuntu-latest
-    needs: [meltano-run, lint-sql]
+    needs: meltano-run
     container:
       image: meltano/meltano:v1.103.1-python3.9
-      env:
-        MELTANO_ENVIRONMENT: ${{ github.event.inputs.environment || 'prod' }}
-        MELTANO_CLI_LOG_LEVEL: ${{ github.event.inputs.logLevel || 'warning' }}
 
     steps:
       - name: Checkout code
@@ -112,11 +84,16 @@ jobs:
         uses: actions/download-artifact@v3.0.0
         with:
           name: raw-data
-          path: output/
+          path: "output/${{ github.event.inputs.environment || 'prod' }}"
 
       - name: Transform
         run: |
           meltano run dbt-sqlite:run
+
+      - name: Lint
+        continue-on-error: true
+        run: |
+          meltano run sqlfluff:lint
 
       - name: Test Data
         run: |
