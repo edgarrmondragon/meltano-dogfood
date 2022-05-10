@@ -1,5 +1,5 @@
 [tool.sqlfluff.core]
-dialect = "sqlite"
+dialect = "bigquery"
 templater = "dbt"
 sql_file_exts = ".sql"
 
@@ -10,5 +10,5 @@ max_line_length = 100
 
 [tool.sqlfluff.templater.dbt]
 project_dir = "./"
-profiles_dir = "./profile/"
+profiles_dir = "./profiles/bigquery/"
 profile = "self"

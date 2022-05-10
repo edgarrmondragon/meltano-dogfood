@@ -19,28 +19,83 @@ plugins:
     - name: start_date
       kind: integer
   loaders:
-  - name: target-sqlite
-    variant: meltanolabs
-    pip_url: git+https://github.com/MeltanoLabs/target-sqlite.git@json-dump-objects-and-arrays
+  - name: target-bigquery
+    namespace: bigquery
+    pip_url: git+https://github.com/jmriego/pipelinewise-target-bigquery.git
+    settings:
+    - name: project_id
+      description: BigQuery project
+    - name: location
+      description: Region where BigQuery stores your dataset
+      value: US
+    - name: default_target_schema
+      description: >
+        Name of the schema where the tables will be created.
+        If `schema_mapping` is not defined then every stream
+        sent by the tap is loaded into this schema.
+      value: $MELTANO_EXTRACT__LOAD_SCHEMA
+    - name: default_target_schema_select_permission
+      description: >
+        Grant USAGE privilege on newly created schemas and grant
+        SELECT privilege on newly created
+    - name: schema_mapping
+      description: >
+        Useful if you want to load multiple streams from one tap to
+        multiple BigQuery schemas.
+      kind: object
+    - name: batch_size_rows
+      description: >
+        Maximum number of rows in each batch. At the end of each batch,
+        the rows in the batch are loaded into BigQuery.
+      kind: integer
+      value: 100000
+    - name: batch_wait_limit_seconds
+      description: Maximum time to wait for batch to reach batch_size_rows.
+      kind: integer
+    - name: flush_all_streams
+      kind: boolean
+      value: false
+    - name: parallelism
+      kind: integer
+      value: 0
+    - name: max_parallelism
+      kind: integer
+      value: 16
+    - name: add_metadata_columns
+      description: >
+        Metadata columns add extra row level information about data ingestions
+      kind: boolean
+      value: true
+    - name: credentials
+      description: Path to Google API credentials file
+      env: GOOGLE_APPLICATION_CREDENTIALS
+    dialect: bigquery
+    target_schema: $MELTANO_EXTRACT__LOAD_SCHEMA
     config:
-      database: output/${MELTANO_ENVIRONMENT}/${MELTANO_EXTRACT__LOAD_SCHEMA}.db
-    dialect: sqlite
+      project_id: $BQ_PROJECT_ID
+      location: $BQ_LOCATION
+      credentials: ${MELTANO_PROJECT_ROOT}/.secrets/credentials.json
   transformers:
-  - name: dbt-sqlite
-    namespace: sqlite
-    pip_url: dbt-core~=1.1.0 dbt-sqlite~=1.1.0 sqlfluff>=0.13 sqlfluff-templater-dbt>=0.13
+  - name: dbt-bigquery
+    namespace: dbt
+    pip_url: dbt-core~=1.1.0 dbt-bigquery~=1.1.0 sqlfluff>=0.13 sqlfluff-templater-dbt>=0.13
     executable: dbt
     settings:
     - name: project_dir
       value: $MELTANO_PROJECT_ROOT/transform
     - name: profiles_dir
       env_aliases:
-      - DBT_PROFILES_DIR
-      value: $MELTANO_PROJECT_ROOT/transform/profile
+        - DBT_PROFILES_DIR
+      value: $MELTANO_PROJECT_ROOT/transform/profiles/bigquery
+    - name: project_id
+    - name: dataset_id
+    - name: keyfile
+    - name: location
     commands:
       run:
         args: run
         description: Compile SQL and execute against the current target database.
+      compile: compile
       docs-serve: docs serve
       docs-generate: docs generate
       clean:
@@ -59,20 +114,24 @@ plugins:
         executable: sqlfluff
         description: Fix SQL
     config:
-      target: sqlite
+      target: bigquery
+      project_id: $BQ_PROJECT_ID
+      dataset_id: ${MELTANO_ENVIRONMENT}
+      keyfile: ${MELTANO_PROJECT_ROOT}/.secrets/credentials.json
+      location: $BQ_LOCATION
 environments:
 - name: dev
   config:
     plugins:
       loaders:
-      - name: target-sqlite
+      - name: target-bigquery
         config:
-          batch_size: 15
+          batch_size_rows: 100
 - name: staging
 - name: prod
   config:
     plugins:
       loaders:
-      - name: target-sqlite
+      - name: target-bigquery
         config:
-          batch_size: 500
+          batch_size_rows: 10000
