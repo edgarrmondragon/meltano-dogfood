@@ -93,7 +93,7 @@ jobs:
       - name: Lint
         continue-on-error: true
         run: |
-          meltano run sqlfluff:lint
+          meltano run dbt-sqlite:lint
 
       - name: Transform
         run: |
