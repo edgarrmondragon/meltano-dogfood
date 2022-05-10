@@ -116,6 +116,49 @@ plugins:
         description: Fix SQL
     config:
       target: sqlite
+  - name: dbt-bigquery
+    namespace: dbt
+    pip_url: dbt-core~=1.1.0 dbt-bigquery~=1.1.0 sqlfluff>=0.13 sqlfluff-templater-dbt>=0.13
+    executable: dbt
+    settings:
+      - name: project_dir
+        value: $MELTANO_PROJECT_ROOT/transform
+      - name: profiles_dir
+        env_aliases:
+          - DBT_PROFILES_DIR
+        value: $MELTANO_PROJECT_ROOT/transform/profiles/bigquery
+      - name: project_id
+      - name: dataset_id
+      - name: keyfile
+      - name: location
+    commands:
+      run:
+        args: run
+        description: Compile SQL and execute against the current target database.
+      compile: compile
+      docs-serve: docs serve
+      docs-generate: docs generate
+      clean:
+        args: clean
+        description: Delete all folders in the clean-targets list (usually the dbt_modules
+          and target directories.)
+      test:
+        args: test
+        description: Test dbt models
+      lint:
+        args: lint models
+        executable: sqlfluff
+        description: Lint SQL in transform models
+      fix:
+        args: fix models
+        executable: sqlfluff
+        description: Fix SQL
+    config:
+      target: bigquery
+      project_id: $BQ_PROJECT_ID
+      dataset_id: ${MELTANO_ENVIRONMENT}
+      keyfile: ${MELTANO_PROJECT_ROOT}/.secrets/credentials.json
+      location: $BQ_LOCATION
 environments:
 - name: dev
   config:
@@ -124,6 +167,9 @@ environments:
       - name: target-sqlite
         config:
           batch_size: 15
+      - name: target-bigquery
+        config:
+          batch_size_rows: 100
 - name: staging
 - name: prod
   config:
@@ -132,3 +178,6 @@ environments:
       - name: target-sqlite
         config:
           batch_size: 500
+      - name: target-bigquery
+        config:
+          batch_size_rows: 10000
