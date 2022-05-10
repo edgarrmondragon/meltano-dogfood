@@ -28,7 +28,7 @@ plugins:
   transformers:
   - name: dbt-sqlite
     namespace: sqlite
-    pip_url: dbt-core~=1.1.0 dbt-sqlite~=1.0.0 sqlfluff>=0.13 sqlfluff-templater-dbt>=0.13
+    pip_url: dbt-core~=1.1.0 dbt-sqlite~=1.1.0 sqlfluff>=0.13 sqlfluff-templater-dbt>=0.13
     executable: dbt
     settings:
     - name: project_dir
