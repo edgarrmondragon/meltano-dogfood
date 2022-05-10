@@ -84,16 +84,20 @@ jobs:
         uses: actions/download-artifact@v3.0.0
         with:
           name: raw-data
-          path: "output/${{ github.event.inputs.environment || 'prod' }}"
+          path: "output/"
 
-      - name: Transform
+      - name: List data files
         run: |
-          meltano run dbt-sqlite:run
+          ls "output/${{ github.event.inputs.environment || 'prod' }}"
 
       - name: Lint
         continue-on-error: true
         run: |
           meltano run sqlfluff:lint
+
+      - name: Transform
+        run: |
+          meltano run dbt-sqlite:run
 
       - name: Test Data
         run: |
