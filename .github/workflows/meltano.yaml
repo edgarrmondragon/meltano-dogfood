@@ -62,12 +62,6 @@ jobs:
         run: |
           meltano run ${{ matrix.tap }} target-bigquery
 
-      - name: Upload ${{ matrix.source }} Data
-        uses: actions/upload-artifact@v3.0.0
-        with:
-          name: raw-data
-          path: output/*/*.db
-
   transform:
     name: Data Transformation with dbt-bigquery
     runs-on: ubuntu-latest
@@ -92,16 +86,6 @@ jobs:
         run: |
           meltano install transformer dbt-bigquery
 
-      - name: Download raw data
-        uses: actions/download-artifact@v3.0.0
-        with:
-          name: raw-data
-          path: "output/"
-
-      - name: List data files
-        run: |
-          ls "output/${{ github.event.inputs.environment || 'prod' }}"
-
       - name: Lint
         continue-on-error: true
         run: |
@@ -114,9 +98,3 @@ jobs:
       - name: Test Data
         run: |
           meltano test dbt-bigquery
-
-      - name: Upload Data Warehouse
-        uses: actions/upload-artifact@v3.0.0
-        with:
-          name: data-warehouse
-          path: output/*/warehouse.db
