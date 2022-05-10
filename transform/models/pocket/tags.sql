@@ -5,6 +5,6 @@ set items = source('pocket', 'items')
 -%}
 
 select
-  {{ items }}.item_id
-  , json_extract(t.value, '$.tag') as tag
-from {{ items }}, json_each({{ items }}.tags) as t
+  t.item_id
+  , t.tag
+from {{ items }} cross join unnest(tags) as t
