@@ -50,7 +50,7 @@ select
   , given_url
 from prod.items
 where read_at is not null
-order by added_at desc
+order by read_at desc
 limit 5
 ```
 
