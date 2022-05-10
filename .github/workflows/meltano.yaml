@@ -48,7 +48,7 @@ jobs:
       - name: Setup Google Credentials
         env:
           CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-        run: echo "${CREDENTIALS}" > .secrets/credentials.json
+        run: echo "${CREDENTIALS}" | base64 --decode > .secrets/credentials.json
 
       - name: Check Meltano
         run: |
@@ -82,7 +82,7 @@ jobs:
       - name: Setup Google Credentials
         env:
           CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-        run: echo "${CREDENTIALS}" > .secrets/credentials.json
+        run: echo "${CREDENTIALS}" | base64 --decode > .secrets/credentials.json
 
       - name: Check Meltano
         run: |
