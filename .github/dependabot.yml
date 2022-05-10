@@ -18,3 +18,13 @@ updates:
       - "edgarrmondragon"
     labels:
       - "dependencies"
+  - package-ecosystem: "npm"
+    directory: "/evidence"
+    schedule:
+      interval: daily
+      time: "11:35"
+      timezone: "America/Mexico_City"
+    reviewers:
+      - "edgarrmondragon"
+    labels:
+      - "dependencies"
