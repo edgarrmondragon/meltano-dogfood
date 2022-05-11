@@ -5,7 +5,7 @@ on:
     paths:
       - tranform/models/**.sql
   push:
-    branches: [master]
+    branches: [main]
     paths:
       - tranform/models/**.sql
   workflow_dispatch:
