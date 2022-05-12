@@ -59,7 +59,7 @@ jobs:
           meltano run ${{ matrix.tap }} target-bigquery
 
   lint:
-    name: Data Transformation with dbt-bigquery
+    name: Lint models
     runs-on: ubuntu-latest
     container:
       image: meltano/meltano:v1.103.1-python3.9
