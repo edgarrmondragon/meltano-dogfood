@@ -1,13 +1,9 @@
 name: Meltano Pipeline
 
 on:
-  pull_request:
-    paths:
-      - tranform/models/**.sql
+  pull_request: {}
   push:
     branches: [main]
-    paths:
-      - tranform/models/**.sql
   workflow_dispatch:
     inputs:
       environment:
