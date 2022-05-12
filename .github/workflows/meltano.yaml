@@ -89,7 +89,7 @@ jobs:
       - name: Lint
         continue-on-error: true
         run: |
-          meltano run dbt-bigquery:lint
+          meltano invoke dbt-bigquery:lint --format github-annotation-native
 
       - name: Transform
         run: |
