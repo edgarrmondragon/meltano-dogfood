@@ -62,10 +62,37 @@ jobs:
         run: |
           meltano run ${{ matrix.tap }} target-bigquery
 
+  lint:
+    name: Data Transformation with dbt-bigquery
+    runs-on: ubuntu-latest
+    container:
+      image: meltano/meltano:v1.103.1-python3.9
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3.0.2
+
+      - name: Setup Google Credentials
+        env:
+          CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+        run: echo "${CREDENTIALS}" | base64 --decode > .secrets/credentials.json
+
+      - name: Check Meltano
+        run: |
+          meltano --version
+
+      - name: Install SQLFluff
+        run: |
+          meltano install utility sqlfluff
+
+      - name: Lint
+        run: |
+          meltano invoke sqlfluff:lint --format github-annotation-native
+
   transform:
     name: Data Transformation with dbt-bigquery
     runs-on: ubuntu-latest
-    needs: meltano-run
+    needs: [meltano-run, lint]
     container:
       image: meltano/meltano:v1.103.1-python3.9
 
@@ -85,11 +112,6 @@ jobs:
       - name: Install dbt-bigquery
         run: |
           meltano install transformer dbt-bigquery
-
-      - name: Lint
-        continue-on-error: true
-        run: |
-          meltano invoke dbt-bigquery:lint --format github-annotation-native
 
       - name: Transform
         run: |

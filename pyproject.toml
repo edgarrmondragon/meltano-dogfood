@@ -9,6 +9,6 @@ comma_style = "leading"
 max_line_length = 100
 
 [tool.sqlfluff.templater.dbt]
-project_dir = "./"
-profiles_dir = "./profiles/bigquery/"
+project_dir = "./transform"
+profiles_dir = "./transform/profiles/bigquery/"
 profile = "self"

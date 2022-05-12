@@ -28,7 +28,7 @@ sources:
 models:
   - name: items
     description: Pocket items
-  - name: item_tags
+  - name: tags
     identifier: tags
     description: Pocket item tags
   - name: authors
