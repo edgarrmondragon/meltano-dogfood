@@ -67,6 +67,24 @@ limit 5
 {/each}
 </ul>
 
+### Daily reads
+
+```daily_reads
+select
+  extract(date from read_at) as `date`
+  , count(*) as total
+from prod.items
+where read_at is not null and timestamp_diff(current_timestamp(), read_at, day) <= 7
+group by `date`
+order by `date` desc
+```
+
+<BarChart 
+    data={data.daily_reads} 
+    x=date
+    y=total
+/>
+
 ## Tags
 
 ```tags_tally
