@@ -85,7 +85,7 @@ plugins:
       value: $MELTANO_PROJECT_ROOT/transform
     - name: profiles_dir
       env_aliases:
-        - DBT_PROFILES_DIR
+      - DBT_PROFILES_DIR
       value: $MELTANO_PROJECT_ROOT/transform/profiles/bigquery
     - name: project_id
     - name: dataset_id
