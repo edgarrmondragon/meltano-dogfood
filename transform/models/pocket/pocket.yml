@@ -33,3 +33,17 @@ models:
     description: Pocket item tags
   - name: authors
     description: Authors
+
+exposures:
+  - name: pocket_reads
+    type: dashboard
+    owner:
+      name: me
+      email: edgarrm358@gmail.com
+    depends_on:
+      - ref('items')
+      - ref('tags')
+      - ref('authors')
+    url: https://meltano-dataops.vercel.app/reads
+    maturity: medium
+    description: Pending and recent reads, as well as some stats
