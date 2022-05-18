@@ -79,8 +79,8 @@ group by `date`
 order by `date` desc
 ```
 
-<BarChart 
-    data={data.daily_reads} 
+<BarChart
+    data={data.daily_reads}
     x=date
     y=total
 />
@@ -100,7 +100,7 @@ limit 10
 Most used tags:
 
 <DataTable
-    data={data.tags_tally} 
+    data={data.tags_tally}
     rows=10
 />
 
@@ -119,6 +119,6 @@ limit 5
 Top authors:
 
 <DataTable
-    data={data.author_tally} 
+    data={data.author_tally}
     rows=5
 />

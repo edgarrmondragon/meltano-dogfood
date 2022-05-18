@@ -1,0 +1,19 @@
+ci:
+    autofix_prs: false
+    autoupdate_schedule: weekly
+    autoupdate_commit_msg: 'chore(deps): pre-commit autoupdate'
+
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.2.0
+    hooks:
+    -   id: check-json
+    -   id: check-toml
+    -   id: check-yaml
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
+
+-   repo: https://github.com/pre-commit/pre-commit
+    rev: v2.19.0
+    hooks:
+    -   id: validate_manifest

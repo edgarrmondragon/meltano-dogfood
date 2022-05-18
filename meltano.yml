@@ -26,8 +26,8 @@ plugins:
     - name: project_id
       description: BigQuery project
     - name: location
-      description: Region where BigQuery stores your dataset
       value: US
+      description: Region where BigQuery stores your dataset
     - name: default_target_schema
       description: >
         Name of the schema where the tables will be created.
@@ -50,8 +50,8 @@ plugins:
       kind: integer
       value: 100000
     - name: batch_wait_limit_seconds
-      description: Maximum time to wait for batch to reach batch_size_rows.
       kind: integer
+      description: Maximum time to wait for batch to reach batch_size_rows.
     - name: flush_all_streams
       kind: boolean
       value: false
@@ -67,14 +67,14 @@ plugins:
       kind: boolean
       value: true
     - name: credentials
-      description: Path to Google API credentials file
       env: GOOGLE_APPLICATION_CREDENTIALS
-    dialect: bigquery
-    target_schema: $MELTANO_EXTRACT__LOAD_SCHEMA
+      description: Path to Google API credentials file
     config:
       project_id: $BQ_PROJECT_ID
       location: $BQ_LOCATION
       credentials: ${MELTANO_PROJECT_ROOT}/.secrets/credentials.json
+    dialect: bigquery
+    target_schema: $MELTANO_EXTRACT__LOAD_SCHEMA
   transformers:
   - name: dbt-bigquery
     namespace: dbt
@@ -113,7 +113,7 @@ plugins:
       location: $BQ_LOCATION
   utilities:
   - name: sqlfluff
-    namespace: sqlfluff  
+    namespace: sqlfluff
     pip_url: dbt-core~=1.1.0 dbt-bigquery~=1.1.0 sqlfluff>=0.13 sqlfluff-templater-dbt>=0.13
     settings:
     - name: keyfile
@@ -128,7 +128,7 @@ plugins:
     - name: location
       env_aliases:
       - DBT_BIGQUERY_LOCATION
-    commands:    
+    commands:
       lint:
         args: lint $MELTANO_PROJECT_ROOT/transform/models
         description: Lint SQL in transform models
