@@ -91,7 +91,7 @@ plugins:
   transformers:
   - name: dbt-bigquery
     namespace: dbt
-    pip_url: dbt-core~=1.1.1rc1 dbt-bigquery~=1.1.1rc1
+    pip_url: dbt-core~=1.1.1rc1 dbt-bigquery~=1.1.0
     executable: dbt
     settings:
     - name: project_dir
@@ -127,7 +127,7 @@ plugins:
   utilities:
   - name: sqlfluff
     namespace: sqlfluff
-    pip_url: dbt-core~=1.1.1rc1 dbt-bigquery~=1.1.1rc1 sqlfluff>=0.13 sqlfluff-templater-dbt>=0.13
+    pip_url: dbt-core~=1.1.1rc1 dbt-bigquery~=1.1.0 sqlfluff>=0.13 sqlfluff-templater-dbt>=0.13
     settings:
     - name: keyfile
       env_aliases:
