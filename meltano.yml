@@ -15,6 +15,9 @@ plugins:
       - meltano
     select:
     - questions.*
+  - name: tap-readthedocs
+    variant: edgarrmondragon
+    pip_url: git+https://github.com/edgarrmondragon/tap-readthedocs.git
   loaders:
   - name: target-bigquery
     namespace: bigquery
