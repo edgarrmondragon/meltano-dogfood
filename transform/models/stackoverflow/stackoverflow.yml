@@ -28,7 +28,6 @@ sources:
           - name: last_activity_date
             tests: [not_null]
           - name: last_edit_date
-            tests: [not_null]
           - name: link
             tests: [not_null]
           - name: migrated_from
