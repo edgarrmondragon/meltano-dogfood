@@ -24,6 +24,8 @@ plugins:
     config:
       tags:
       - meltano
+    select:
+    - "questions.*"
   loaders:
   - name: target-bigquery
     namespace: bigquery
@@ -166,3 +168,10 @@ environments:
       - name: target-bigquery
         config:
           batch_size_rows: 10000
+jobs:
+- name: pocket-to-bq
+  tasks:
+  - tap-pocket target-bigquery
+- name: stackoverflow-to-bq
+  tasks:
+  - tap-stackexchange target-bigquery
