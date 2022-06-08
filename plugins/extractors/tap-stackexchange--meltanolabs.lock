@@ -1,0 +1,45 @@
+{
+  "plugin_type": "extractors",
+  "name": "tap-stackexchange",
+  "namespace": "tap_stackexchange",
+  "variant": "meltanolabs",
+  "label": "StackExchange",
+  "docs": "https://hub.meltano.com/extractors/tap-stackexchange--meltanolabs",
+  "repo": "https://github.com/MeltanoLabs/tap-stackexchange",
+  "pip_url": "git+https://github.com/MeltanoLabs/tap-stackexchange.git",
+  "capabilities": [
+    "catalog",
+    "discover",
+    "state"
+  ],
+  "settings_group_validation": [
+    [
+      "tags",
+      "site"
+    ]
+  ],
+  "settings": [
+    {
+      "name": "tags",
+      "label": "Question tags",
+      "description": "Question tags to retrieve."
+    },
+    {
+      "name": "site",
+      "label": "Site",
+      "description": "StackExchange site to look for questions."
+    },
+    {
+      "name": "key",
+      "kind": "password",
+      "label": "Stack App key",
+      "description": "Key to receive a higher request quota."
+    },
+    {
+      "name": "start_date",
+      "kind": "integer",
+      "label": "Start date",
+      "description": "The earliest record date to sync"
+    }
+  ]
+}

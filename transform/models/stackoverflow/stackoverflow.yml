@@ -1,0 +1,61 @@
+version: 2
+
+sources:
+  - name: stackoverflow
+    schema: tap_stackexchange
+    loader: tap-stackexchange
+    description: The world's largest programming community
+    tags:
+      - Meltano SDK
+    tables:
+      - name: questions
+        description: Questions
+        loaded_at_field: _sdc_batched_at
+        columns:
+          - name: _sdc_batched_at
+          - name: _sdc_deleted_at
+          - name: _sdc_extracted_at
+          - name: accepted_answer_id
+          - name: answer_count
+            tests: [not_null]
+          - name: closed_date
+          - name: closed_reason
+          - name: content_license
+          - name: creation_date
+            tests: [not_null]
+          - name: is_answered
+            tests: [not_null]
+          - name: last_activity_date
+            tests: [not_null]
+          - name: last_edit_date
+          - name: link
+            tests: [not_null]
+          - name: migrated_from
+          - name: owner
+          - name: protected_date
+          - name: question_id
+            tests: [unique, not_null]
+          - name: score
+            tests: [not_null]
+          - name: tags
+            tests: [not_null]
+          - name: title
+            tests: [not_null]
+          - name: view_count
+            tests: [not_null]
+
+models:
+  - name: question_stats
+    description: Question statistics, grouped by answered status
+
+exposures:
+  - name: evidence_stackoverflow
+    type: dashboard
+    owner:
+      name: me
+      email: edgarrm358@gmail.com
+    depends_on:
+      - ref('question_stats')
+    url: https://meltano-dataops.vercel.app/stackoverflow
+    maturity: medium
+    description: Question stats, etc.

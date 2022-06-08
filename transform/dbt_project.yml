@@ -24,3 +24,6 @@ models:
     pocket:
       +enabled: true
       +tags: [pocket, reading]
+    stackoverflow:
+      +enabled: true
+      +tags: [stackoverflow, forum]
