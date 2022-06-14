@@ -25,7 +25,7 @@ plugins:
       tags:
       - meltano
     select:
-    - "questions.*"
+    - questions.*
   loaders:
   - name: target-bigquery
     namespace: bigquery
