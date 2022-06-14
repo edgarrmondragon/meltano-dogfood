@@ -1,6 +1,7 @@
 version: 1
 default_environment: dev
 project_id: b77cad0a-ffd8-494e-9e6b-18d6eacb71d4
+send_anonymous_usage_stats: false
 plugins:
   extractors:
   - name: tap-pocket
