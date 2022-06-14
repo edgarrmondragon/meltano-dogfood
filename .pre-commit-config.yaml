@@ -11,6 +11,7 @@ repos:
     -   id: check-toml
     -   id: check-yaml
     -   id: end-of-file-fixer
+        exclude: .lock
     -   id: trailing-whitespace
 
 -   repo: https://github.com/pre-commit/pre-commit
