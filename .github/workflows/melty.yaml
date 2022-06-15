@@ -27,7 +27,7 @@ jobs:
     name: "Meltano Job: ${{ matrix.job }}"
     runs-on: ubuntu-latest
     container:
-      image: registry.gitlab.com/meltano/legacy-ci/meltano:3d88b3abfd0efae2a2269fd4941533cf111b406b-python3.9
+      image: meltano/meltano:v2.0.2-python3.9
       env:
         TAP_POCKET_CONSUMER_KEY: ${{ secrets.TAP_POCKET_CONSUMER_KEY }}
         TAP_POCKET_ACCESS_TOKEN: ${{ secrets.TAP_POCKET_ACCESS_TOKEN }}
@@ -64,7 +64,7 @@ jobs:
     name: Lint models
     runs-on: ubuntu-latest
     container:
-      image: registry.gitlab.com/meltano/legacy-ci/meltano:3d88b3abfd0efae2a2269fd4941533cf111b406b-python3.9
+      image: meltano/meltano:v2.0.2-python3.9
 
     steps:
       - name: Checkout code
@@ -92,7 +92,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [meltano-run, lint]
     container:
-      image: registry.gitlab.com/meltano/legacy-ci/meltano:3d88b3abfd0efae2a2269fd4941533cf111b406b-python3.9
+      image: meltano/meltano:v2.0.2-python3.9
 
     steps:
       - name: Checkout code
