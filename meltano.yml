@@ -127,7 +127,7 @@ plugins:
   utilities:
   - name: sqlfluff
     namespace: sqlfluff
-    pip_url: dbt-core~=1.1.0 dbt-bigquery~=1.1.0 sqlfluff>=0.13 sqlfluff-templater-dbt>=0.13
+    pip_url: dbt-core~=1.1.0 dbt-bigquery~=1.1.0 sqlfluff>=1.0.0 sqlfluff-templater-dbt>=1.0.0
     settings:
     - name: keyfile
       env_aliases:
