@@ -34,6 +34,12 @@
       "kind": "password",
       "label": "Stack App key",
       "description": "Key to receive a higher request quota."
+    },
+    {
+      "name": "start_date",
+      "kind": "integer",
+      "label": "Start date",
+      "description": "The earliest record date to sync"
     }
   ]
 }
