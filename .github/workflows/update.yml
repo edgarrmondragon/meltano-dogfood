@@ -17,7 +17,7 @@ jobs:
     name: Meltano Lock Update
     runs-on: ubuntu-latest
     container:
-      image: registry.gitlab.com/meltano/legacy-ci/meltano:3d25cf64271025d2eaffa0b44b8b58537fbe935e-python3.9
+      image: meltano/meltano:latest-python3.9
 
     steps:
     - name: Checkout Code
