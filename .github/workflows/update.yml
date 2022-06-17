@@ -8,6 +8,10 @@ on:
 env:
   MELTANO_CLI_LOG_LEVEL: ${{ github.event.inputs.logLevel || 'warning' }}
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   meltano-lock:
     name: Meltano Lock Update
