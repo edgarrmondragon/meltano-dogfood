@@ -1,0 +1,44 @@
+name: Meltano Lock Update
+
+on:
+  schedule:
+  - cron: '37 */24 * * *'
+  workflow_dispatch: {}
+
+env:
+  MELTANO_CLI_LOG_LEVEL: ${{ github.event.inputs.logLevel || 'warning' }}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  meltano-lock:
+    name: Meltano Lock Update
+    runs-on: ubuntu-latest
+    container:
+      image: meltano/meltano:latest-python3.9
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3.0.2
+
+    - name: Check Meltano
+      run: |
+        meltano --version
+
+    - name: Meltano Lock Update
+      run: |
+        meltano lock --update --all
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v4.0.4
+      with:
+        title: 'chore: Update Meltano Plugins'
+        branch: meltano-lock-update
+        commit-message: 'chore: Update Meltano Plugins'
+        delete-branch: true
+        reviewers: edgarrmondragon
+        assignees: edgarrmondragon
+        body: |
+          Created with `meltano lock --update --all`
