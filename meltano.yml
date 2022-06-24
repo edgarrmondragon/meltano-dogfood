@@ -88,6 +88,9 @@ plugins:
       credentials: ${MELTANO_PROJECT_ROOT}/.secrets/credentials.json
     dialect: bigquery
     target_schema: $MELTANO_EXTRACT__LOAD_SCHEMA
+  - name: target-jsonl
+    variant: andyh1203
+    pip_url: target-jsonl
   transformers:
   - name: dbt-bigquery
     namespace: dbt
