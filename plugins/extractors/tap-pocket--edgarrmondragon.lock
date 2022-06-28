@@ -1,0 +1,44 @@
+{
+  "plugin_type": "extractors",
+  "name": "tap-pocket",
+  "namespace": "tap_pocket",
+  "variant": "edgarrmondragon",
+  "label": "Pocket",
+  "docs": "http://localhost:4000/extractors/tap-pocket--edgarrmondragon",
+  "repo": "https://github.com/edgarrmondragon/tap-pocket",
+  "pip_url": "git+https://github.com/edgarrmondragon/tap-pocket.git",
+  "capabilities": [
+    "catalog",
+    "discover",
+    "state",
+    "about",
+    "stream-maps",
+    "schema-flattening"
+  ],
+  "settings_group_validation": [
+    [
+      "consumer_key",
+      "access_token"
+    ]
+  ],
+  "settings": [
+    {
+      "name": "consumer_key",
+      "kind": "password",
+      "label": "Consumer Key",
+      "description": "Pocket App Consumer Key"
+    },
+    {
+      "name": "access_token",
+      "kind": "password",
+      "label": "Access Token",
+      "description": "Pocket App Access Token"
+    },
+    {
+      "name": "start_date",
+      "kind": "string",
+      "label": "Start date",
+      "description": "The earliest record datetime to sync as a UNIX timestamp"
+    }
+  ]
+}
