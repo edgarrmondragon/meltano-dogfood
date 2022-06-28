@@ -85,7 +85,7 @@ jobs:
 
       - name: Lint
         run: |
-          meltano invoke sqlfluff:lint --format github-annotation-native
+          meltano invoke sqlfluff:lint --format github-annotation-native -v transform/models
 
   transform:
     name: Data Transformation with dbt-bigquery
