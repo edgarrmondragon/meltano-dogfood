@@ -84,6 +84,8 @@ jobs:
           meltano install utility sqlfluff
 
       - name: Lint
+        env:
+          MELTANO_CLI_LOG_LEVEL: info
         run: |
           meltano invoke sqlfluff:lint --format github-annotation-native -v transform/models
 
