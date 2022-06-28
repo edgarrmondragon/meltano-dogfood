@@ -93,7 +93,7 @@ plugins:
     pip_url: target-jsonl
   transformers:
   - name: dbt-bigquery
-    namespace: dbt
+    namespace: dbt_bigquery
     pip_url: dbt-core~=1.2.0b1 dbt-bigquery~=1.2.0b1
     executable: dbt
     settings:
@@ -129,21 +129,8 @@ plugins:
       location: $BQ_LOCATION
   utilities:
   - name: sqlfluff
-    namespace: sqlfluff
+    namespace: dbt_bigquery
     pip_url: dbt-core~=1.2.0b1 dbt-bigquery~=1.2.0b1 sqlfluff>=1.0.0 sqlfluff-templater-dbt>=1.0.0
-    settings:
-    - name: keyfile
-      env_aliases:
-      - DBT_BIGQUERY_KEYFILE
-    - name: project_id
-      env_aliases:
-      - DBT_BIGQUERY_PROJECT_ID
-    - name: dataset_id
-      env_aliases:
-      - DBT_BIGQUERY_DATASET_ID
-    - name: location
-      env_aliases:
-      - DBT_BIGQUERY_LOCATION
     commands:
       lint:
         args: lint $MELTANO_PROJECT_ROOT/transform/models
