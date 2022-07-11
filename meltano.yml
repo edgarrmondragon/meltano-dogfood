@@ -39,28 +39,24 @@ plugins:
       description: Region where BigQuery stores your dataset
     - name: default_target_schema
       value: $MELTANO_EXTRACT__LOAD_SCHEMA
-      description: 'Name of the schema where the tables will be created. If `schema_mapping`
+      description: >
+        Name of the schema where the tables will be created. If `schema_mapping`
         is not defined then every stream sent by the tap is loaded into this schema.
-
-        '
     - name: default_target_schema_select_permission
-      description: 'Grant USAGE privilege on newly created schemas and grant SELECT
+      description: >
+        Grant USAGE privilege on newly created schemas and grant SELECT
         privilege on newly created
-
-        '
     - name: schema_mapping
       kind: object
-      description: 'Useful if you want to load multiple streams from one tap to multiple
+      description: >
+        Useful if you want to load multiple streams from one tap to multiple
         BigQuery schemas.
-
-        '
     - name: batch_size_rows
       kind: integer
       value: 100000
-      description: 'Maximum number of rows in each batch. At the end of each batch,
-        the rows in the batch are loaded into BigQuery.
-
-        '
+      description: >
+        Maximum number of rows in each batch. At the end of each batch,
+        the rows in the batch are loaded into BigQuery.\n"
     - name: batch_wait_limit_seconds
       kind: integer
       description: Maximum time to wait for batch to reach batch_size_rows.
@@ -76,9 +72,7 @@ plugins:
     - name: add_metadata_columns
       kind: boolean
       value: true
-      description: 'Metadata columns add extra row level information about data ingestions
-
-        '
+      description: Metadata columns add extra row level information about data ingestions
     - name: credentials
       env: GOOGLE_APPLICATION_CREDENTIALS
       description: Path to Google API credentials file
@@ -94,7 +88,7 @@ plugins:
   transformers:
   - name: dbt-bigquery
     namespace: dbt_bigquery
-    pip_url: dbt-core~=1.2.0b1 dbt-bigquery~=1.2.0b1
+    pip_url: dbt-core~=1.2.0rc1 dbt-bigquery~=1.2.0b1
     executable: dbt
     settings:
     - name: project_dir
@@ -130,7 +124,7 @@ plugins:
   utilities:
   - name: sqlfluff
     variant: sqlfluff
-    pip_url: dbt-core~=1.2.0b1 dbt-bigquery~=1.2.0b1 sqlfluff>=1.0.0 sqlfluff-templater-dbt>=1.0.0
+    pip_url: dbt-core~=1.2.0rc1 dbt-bigquery~=1.2.0b1 sqlfluff>=1.0.0 sqlfluff-templater-dbt>=1.0.0
     settings:
     - name: keyfile
       env_aliases:
