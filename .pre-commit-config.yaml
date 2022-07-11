@@ -15,6 +15,6 @@ repos:
     -   id: trailing-whitespace
 
 -   repo: https://github.com/pre-commit/pre-commit
-    rev: v2.19.0
+    rev: v2.20.0
     hooks:
     -   id: validate_manifest
