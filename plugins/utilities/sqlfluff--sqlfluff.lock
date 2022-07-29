@@ -4,7 +4,7 @@
   "namespace": "sqlfluff",
   "variant": "sqlfluff",
   "label": "SQLFluff",
-  "docs": "https://hub.meltano.com/utilities/sqlfluff--sqlfluff",
+  "docs": "https://hub.meltano.com/utilities/sqlfluff",
   "repo": "https://github.com/sqlfluff/sqlfluff",
   "pip_url": "sqlfluff[dbt]",
   "commands": {

@@ -4,7 +4,7 @@
   "namespace": "tap_stackexchange",
   "variant": "meltanolabs",
   "label": "StackExchange",
-  "docs": "https://hub.meltano.com/extractors/tap-stackexchange--meltanolabs",
+  "docs": "https://hub.meltano.com/extractors/tap-stackexchange",
   "repo": "https://github.com/MeltanoLabs/tap-stackexchange",
   "pip_url": "git+https://github.com/MeltanoLabs/tap-stackexchange.git",
   "capabilities": [
