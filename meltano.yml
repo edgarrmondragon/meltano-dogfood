@@ -5,20 +5,8 @@ send_anonymous_usage_stats: false
 plugins:
   extractors:
   - name: tap-pocket
-    namespace: tap_pocket
+    variant: edgarrmondragon
     pip_url: git+https://github.com/edgarrmondragon/tap-pocket.git
-    executable: tap-pocket
-    capabilities:
-    - catalog
-    - discover
-    - state
-    settings:
-    - name: consumer_key
-      kind: password
-    - name: access_token
-      kind: password
-    - name: start_date
-      kind: integer
   - name: tap-stackexchange
     variant: meltanolabs
     pip_url: git+https://github.com/MeltanoLabs/tap-stackexchange.git
