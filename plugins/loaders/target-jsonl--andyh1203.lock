@@ -4,7 +4,7 @@
   "namespace": "target_jsonl",
   "variant": "andyh1203",
   "label": "JSON Lines (JSONL)",
-  "docs": "https://hub.meltano.com/loaders/target-jsonl--andyh1203",
+  "docs": "https://hub.meltano.com/loaders/target-jsonl",
   "repo": "https://github.com/andyh1203/target-jsonl",
   "pip_url": "target-jsonl",
   "settings": [
