@@ -17,6 +17,7 @@ on:
         default: 'warning'
 
 env:
+  MELTANO_DATABASE_URI: ${{ secrets.MELTANO_DATABASE_URI }}
   MELTANO_ENVIRONMENT: ${{ github.event.inputs.environment || 'prod' }}
   MELTANO_CLI_LOG_LEVEL: ${{ github.event.inputs.logLevel || 'warning' }}
   BQ_PROJECT_ID: ${{ secrets.BQ_PROJECT_ID }}
