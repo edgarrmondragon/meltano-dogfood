@@ -1,0 +1,36 @@
+version: '3.3'
+
+services:
+  # starts up a postgres db container for local development and testing
+  db:
+    image: postgres
+    # see https://hub.docker.com/_/postgres
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - .gitpod/postgres:/docker-entrypoint-initdb.d/:ro
+    environment:
+      POSTGRES_PASSWORD: admin
+
+  # a handy postgres web UI
+  pgweb:
+    container_name: pgweb
+    restart: always
+    image: sosedoff/pgweb
+    ports:
+      - "8081:8081"
+    links:
+      - db:postgres  # my database container is called postgres, not db
+    environment:
+      - DATABASE_URL=postgres://postgres:admin@postgres:5432/postgres?sslmode=disable
+    depends_on:
+      - db
+
+  # serve dbt docs via nginx
+  dbt-docs:
+    image: nginx
+    ports:
+        - 8000:80
+    volumes:
+        - .meltano/transformers/dbt/target:/usr/share/nginx/html
