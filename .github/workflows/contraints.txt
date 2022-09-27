@@ -1,2 +1,2 @@
 pip==22.2.2
-meltano==2.6.0
+meltano==2.7.1
