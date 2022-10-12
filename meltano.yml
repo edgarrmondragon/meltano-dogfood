@@ -76,7 +76,7 @@ plugins:
   transformers:
   - name: dbt-bigquery
     namespace: dbt_bigquery
-    pip_url: dbt-core~=1.3.0b2 dbt-bigquery~=1.3.0b2
+    pip_url: dbt-core~=1.3.0 dbt-bigquery~=1.3.0
     executable: dbt
     settings:
     - name: project_dir
