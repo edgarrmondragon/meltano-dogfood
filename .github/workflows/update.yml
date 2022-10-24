@@ -32,7 +32,7 @@ jobs:
         meltano lock --update --all
 
     - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v4.1.4
+      uses: peter-evans/create-pull-request@v4.2.0
       with:
         title: 'chore: Update Meltano Plugins'
         branch: meltano-lock-update
