@@ -4,9 +4,9 @@ project_id: b77cad0a-ffd8-494e-9e6b-18d6eacb71d4
 send_anonymous_usage_stats: false
 plugins:
   extractors:
-  - name: tap-pocket
+  - name: tap-getpocket
     variant: edgarrmondragon
-    pip_url: git+https://github.com/edgarrmondragon/tap-pocket.git
+    pip_url: git+https://github.com/edgarrmondragon/tap-getpocket.git
   - name: tap-stackexchange
     variant: meltanolabs
     pip_url: git+https://github.com/MeltanoLabs/tap-stackexchange.git
@@ -150,7 +150,7 @@ environments:
 jobs:
 - name: pocket-to-bq
   tasks:
-  - tap-pocket target-bigquery
+  - tap-getpocket target-bigquery
 - name: stackoverflow-to-bq
   tasks:
   - tap-stackexchange target-bigquery
