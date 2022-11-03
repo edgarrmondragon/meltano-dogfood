@@ -4,9 +4,9 @@
   "namespace": "sqlfluff",
   "variant": "sqlfluff",
   "label": "SQLFluff",
-  "docs": "https://hub.meltano.com/utilities/sqlfluff",
+  "docs": "https://hub.meltano.com/utilities/sqlfluff--sqlfluff",
   "repo": "https://github.com/sqlfluff/sqlfluff",
-  "pip_url": "sqlfluff[dbt]",
+  "pip_url": "sqlfluff sqlfluff-templater-dbt dbt-core",
   "commands": {
     "lint": {
       "args": "lint",
