@@ -4,7 +4,7 @@
   "namespace": "tap_getpocket",
   "variant": "edgarrmondragon",
   "label": "Pocket",
-  "docs": "http://localhost:4000/extractors/tap-getpocket--edgarrmondragon",
+  "docs": "https://hub.meltano.com/extractors/tap-getpocket--edgarrmondragon",
   "repo": "https://github.com/edgarrmondragon/tap-getpocket",
   "pip_url": "git+https://github.com/edgarrmondragon/tap-getpocket.git",
   "capabilities": [
@@ -26,19 +26,73 @@
       "name": "consumer_key",
       "kind": "password",
       "label": "Consumer Key",
-      "description": "Pocket App Consumer Key"
+      "documentation": "https://getpocket.com/developer/docs/authentication",
+      "description": "Pocket application consumer key"
     },
     {
       "name": "access_token",
       "kind": "password",
       "label": "Access Token",
-      "description": "Pocket App Access Token"
+      "documentation": "https://getpocket.com/developer/docs/authentication",
+      "description": "Pocket application access token"
     },
     {
       "name": "start_date",
       "kind": "string",
-      "label": "Start date",
-      "description": "The earliest record datetime to sync as a UNIX timestamp"
+      "label": "Start Date",
+      "description": "Start date for data extraction"
+    },
+    {
+      "name": "favorite",
+      "kind": "boolean",
+      "label": "Favorite",
+      "description": "Extract favorite items"
+    },
+    {
+      "name": "content_type",
+      "kind": "options",
+      "label": "Content Type",
+      "description": "Extract items of a specific content type. Leave out to sync all content types.\n",
+      "options": [
+        {
+          "label": "Article",
+          "value": "article"
+        },
+        {
+          "label": "Video",
+          "value": "video"
+        },
+        {
+          "label": "Image",
+          "value": "image"
+        }
+      ]
+    },
+    {
+      "name": "state",
+      "kind": "options",
+      "label": "State",
+      "description": "Extract items of a specific state",
+      "options": [
+        {
+          "label": "Unread",
+          "value": "unread"
+        },
+        {
+          "label": "Archive",
+          "value": "archive"
+        },
+        {
+          "label": "All",
+          "value": "all"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "kind": "string",
+      "label": "Tag",
+      "description": "Extract items of a specific tag. Use `_untagged_` to extract items without tags\n"
     }
   ]
 }
