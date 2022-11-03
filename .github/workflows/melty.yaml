@@ -2,7 +2,7 @@ name: Meltano Pipeline
 
 on:
   pull_request:
-    types: [opened, reopened, labeled]
+    types: [opened, reopened, labeled, synchronize]
   push:
     branches: [main]
   workflow_dispatch:
