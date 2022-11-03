@@ -73,6 +73,12 @@ plugins:
   - name: target-jsonl
     variant: andyh1203
     pip_url: target-jsonl
+  - name: target-duckdb
+    variant: jwills
+    pip_url: target-duckdb~=0.4
+    config:
+      filepath: output/wh.duckdb
+      default_target_schema: $MELTANO_ENVIRONMENT
   transformers:
   - name: dbt-bigquery
     namespace: dbt_bigquery
@@ -151,6 +157,9 @@ jobs:
 - name: pocket-to-bq
   tasks:
   - tap-getpocket target-bigquery
+- name: pocket-to-duckdb
+  tasks:
+  - tap-getpocket target-duckdb
 - name: stackoverflow-to-bq
   tasks:
   - tap-stackexchange target-bigquery
