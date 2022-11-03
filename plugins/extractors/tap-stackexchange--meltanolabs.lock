@@ -4,7 +4,7 @@
   "namespace": "tap_stackexchange",
   "variant": "meltanolabs",
   "label": "StackExchange",
-  "docs": "https://hub.meltano.com/extractors/tap-stackexchange",
+  "docs": "https://hub.meltano.com/extractors/tap-stackexchange--meltanolabs",
   "repo": "https://github.com/MeltanoLabs/tap-stackexchange",
   "pip_url": "git+https://github.com/MeltanoLabs/tap-stackexchange.git",
   "capabilities": [
@@ -21,25 +21,36 @@
   "settings": [
     {
       "name": "tags",
+      "kind": "array",
       "label": "Question tags",
       "description": "Question tags to retrieve."
     },
     {
       "name": "site",
       "label": "Site",
+      "documentation": "https://stackexchange.com/sites",
       "description": "StackExchange site to look for questions."
     },
     {
       "name": "key",
       "kind": "password",
       "label": "Stack App key",
+      "documentation": "https://api.stackexchange.com/docs/authentication",
       "description": "Key to receive a higher request quota."
     },
     {
       "name": "start_date",
       "kind": "integer",
       "label": "Start date",
+      "documentation": "https://api.stackexchange.com/docs/dates",
       "description": "The earliest record date to sync"
+    },
+    {
+      "name": "filter",
+      "kind": "string",
+      "label": "Filter",
+      "documentation": "https://api.stackexchange.com/docs/filters",
+      "description": "Custom API filter to apply to all requests"
     }
   ]
 }

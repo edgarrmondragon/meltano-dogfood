@@ -2,7 +2,7 @@ name: Meltano Pipeline
 
 on:
   pull_request:
-    types: [opened, reopened, labeled]
+    types: [opened, reopened, labeled, synchronize]
   push:
     branches: [main]
   workflow_dispatch:
@@ -31,8 +31,8 @@ jobs:
     container:
       image: meltano/meltano:latest-python3.9
       env:
-        TAP_POCKET_CONSUMER_KEY: ${{ secrets.TAP_POCKET_CONSUMER_KEY }}
-        TAP_POCKET_ACCESS_TOKEN: ${{ secrets.TAP_POCKET_ACCESS_TOKEN }}
+        TAP_GETPOCKET_CONSUMER_KEY: ${{ secrets.TAP_GETPOCKET_CONSUMER_KEY }}
+        TAP_GETPOCKET_ACCESS_TOKEN: ${{ secrets.TAP_GETPOCKET_ACCESS_TOKEN }}
         TAP_STACKEXCHANGE_KEY: ${{ secrets.TAP_STACKEXCHANGE_KEY }}
     strategy:
       matrix:
