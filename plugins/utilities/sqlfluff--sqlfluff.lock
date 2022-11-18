@@ -7,6 +7,7 @@
   "docs": "https://hub.meltano.com/utilities/sqlfluff--sqlfluff",
   "repo": "https://github.com/sqlfluff/sqlfluff",
   "pip_url": "sqlfluff sqlfluff-templater-dbt dbt-core",
+  "logo_url": "https://hub.meltano.com/assets/logos/utilities/sqlfluff.png",
   "commands": {
     "lint": {
       "args": "lint",

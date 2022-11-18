@@ -7,6 +7,8 @@
   "docs": "https://hub.meltano.com/extractors/tap-stackexchange--meltanolabs",
   "repo": "https://github.com/MeltanoLabs/tap-stackexchange",
   "pip_url": "git+https://github.com/MeltanoLabs/tap-stackexchange.git",
+  "description": "The world\u2019s largest programming community",
+  "logo_url": "https://hub.meltano.com/assets/logos/extractors/stackexchange.png",
   "capabilities": [
     "catalog",
     "discover",

@@ -7,6 +7,8 @@
   "docs": "https://hub.meltano.com/extractors/tap-getpocket--edgarrmondragon",
   "repo": "https://github.com/edgarrmondragon/tap-getpocket",
   "pip_url": "git+https://github.com/edgarrmondragon/tap-getpocket.git",
+  "description": "Your own private corner of the web to spend quality time with great articles.",
+  "logo_url": "https://hub.meltano.com/assets/logos/extractors/getpocket.svg",
   "capabilities": [
     "catalog",
     "discover",
