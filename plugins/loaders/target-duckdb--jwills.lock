@@ -7,6 +7,8 @@
   "docs": "https://hub.meltano.com/loaders/target-duckdb--jwills",
   "repo": "https://github.com/jwills/target-duckdb",
   "pip_url": "target-duckdb~=0.4",
+  "description": "DuckDB loader",
+  "logo_url": "https://hub.meltano.com/assets/logos/loaders/duckdb.png",
   "settings_group_validation": [
     [
       "filepath",

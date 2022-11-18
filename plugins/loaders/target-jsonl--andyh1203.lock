@@ -7,6 +7,8 @@
   "docs": "https://hub.meltano.com/loaders/target-jsonl--andyh1203",
   "repo": "https://github.com/andyh1203/target-jsonl",
   "pip_url": "target-jsonl",
+  "description": "JSONL loader",
+  "logo_url": "https://hub.meltano.com/assets/logos/loaders/jsonl.png",
   "settings": [
     {
       "name": "destination_path",
