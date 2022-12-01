@@ -5,10 +5,12 @@ sql_file_exts = ".sql"
 
 [tool.sqlfluff.rules]
 tab_space_size = 2
-comma_style = "leading"
 max_line_length = 100
 
 [tool.sqlfluff.templater.dbt]
 project_dir = "./transform"
 profiles_dir = "./transform/profiles/bigquery/"
 profile = "self"
+
+[tool.sqlfluff.layout.type.comma]
+line_position = "leading"
