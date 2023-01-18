@@ -2,6 +2,7 @@
 /.meltano
 .env
 .vercel
+.state
 
 # General
 .DS_Store
