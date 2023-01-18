@@ -48,7 +48,7 @@ jobs:
       - uses: actions/cache@v3
         with:
           key: "cache-${{ env.MELTANO_ENVIRONMENT }}-${{ matrix.state-id }}"
-          path: .state/${{ env.MELTANO_ENVIRONMENT}}:${{ matrix.state-id }}/state.json"
+          path: .state/${{ env.MELTANO_ENVIRONMENT}}:${{ matrix.state-id }}/state.json
 
       - name: Setup Google Credentials
         env:
