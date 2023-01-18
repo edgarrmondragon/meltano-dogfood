@@ -37,13 +37,18 @@ jobs:
     strategy:
       matrix:
         include:
-          - { job: "pocket-to-bq" }
-          - { job: "stackoverflow-to-bq" }
+          - { job: "pocket-to-bq", state-id: tap-getpocket-to-target-duckdb }
+          - { job: "stackoverflow-to-bq", state-id: tap-stackexchange-to-target-duckdb }
       fail-fast: false
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3.3.0
+
+      - uses: actions/cache@v3
+        with:
+          key: "cache-${{ env.MELTANO_ENVIRONMENT }}-${{ matrix.state-id }}"
+          path: .state/${{ env.MELTANO_ENVIRONMENT}}:${{ matrix.state-id }}/state.json"
 
       - name: Setup Google Credentials
         env:

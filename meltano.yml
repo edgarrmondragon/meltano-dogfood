@@ -163,3 +163,5 @@ jobs:
 - name: stackoverflow-to-bq
   tasks:
   - tap-stackexchange target-bigquery
+state_backend:
+  uri: file:///${MELTANO_PROJECT_ROOT}/.state
