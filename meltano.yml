@@ -1,5 +1,5 @@
 version: 1
-default_environment: dev
+default_environment: prod
 project_id: b77cad0a-ffd8-494e-9e6b-18d6eacb71d4
 send_anonymous_usage_stats: false
 plugins:
@@ -18,7 +18,7 @@ plugins:
   loaders:
   - name: target-bigquery
     namespace: bigquery
-    pip_url: git+https://github.com/jmriego/pipelinewise-target-bigquery.git
+    pip_url: pipelinewise-target-bigquery
     settings:
     - name: project_id
       description: BigQuery project
@@ -69,7 +69,6 @@ plugins:
       location: $BQ_LOCATION
       credentials: ${MELTANO_PROJECT_ROOT}/.secrets/credentials.json
     dialect: bigquery
-    target_schema: $MELTANO_EXTRACT__LOAD_SCHEMA
   - name: target-jsonl
     variant: andyh1203
     pip_url: target-jsonl

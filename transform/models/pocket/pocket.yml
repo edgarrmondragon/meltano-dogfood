@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: pocket
-    schema: tap_pocket
+    schema: tap_getpocket
     loader: tap-pocket
     description: Content that's personalized to your interests
     tags:
