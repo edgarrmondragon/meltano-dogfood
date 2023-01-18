@@ -16,7 +16,7 @@ Recent additions:
 ```pending_pocket_reads
 select
   item_id
-  , given_title
+  , resolved_title
   , time_to_read
   , given_url
 from prod.items
@@ -29,7 +29,7 @@ limit 5
 {#each data.pending_pocket_reads as read}
   <li>
     <a href="https://getpocket.com/read/{read.item_id}" target="_blank" rel="noopener noreferrer">
-      {read.given_title} ({read.time_to_read || "?"} min)
+      {read.resolved_title} ({read.time_to_read || "?"} min)
     </a>
     <small>
       (<a href="{read.given_url}" target="_blank" rel="noopener noreferrer">source</a>)
@@ -45,7 +45,7 @@ Recently read:
 ```recent_pocket_reads
 select
   item_id
-  , given_title
+  , resolved_title
   , time_to_read
   , given_url
 from prod.items
@@ -58,7 +58,7 @@ limit 5
 {#each data.recent_pocket_reads as read}
   <li>
     <a href="https://getpocket.com/read/{read.item_id}" target="_blank" rel="noopener noreferrer">
-      {read.given_title} ({read.time_to_read || "?"} min)
+      {read.resolved_title} ({read.time_to_read || "?"} min)
     </a>
     <small>
       (<a href="{read.given_url}" target="_blank" rel="noopener noreferrer">source</a>)
