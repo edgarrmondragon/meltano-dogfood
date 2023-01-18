@@ -37,8 +37,8 @@ jobs:
     strategy:
       matrix:
         include:
-          - { job: "pocket-to-bq", state-id: tap-getpocket-to-target-duckdb }
-          - { job: "stackoverflow-to-bq", state-id: tap-stackexchange-to-target-duckdb }
+          - { job: "pocket-to-bq", state-id: tap-getpocket-to-target-bigquery }
+          - { job: "stackoverflow-to-bq", state-id: tap-stackexchange-to-target-bigquery }
       fail-fast: false
 
     steps:
