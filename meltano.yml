@@ -18,6 +18,8 @@ plugins:
   - name: tap-readthedocs
     variant: edgarrmondragon
     pip_url: git+https://github.com/edgarrmondragon/tap-readthedocs.git
+    select:
+    - projects.*
   loaders:
   - name: target-bigquery
     namespace: bigquery
@@ -165,5 +167,8 @@ jobs:
 - name: stackoverflow-to-bq
   tasks:
   - tap-stackexchange target-bigquery
+- name: rtd-to-bq
+  tasks:
+  - tap-readthedocs target-bigquery
 state_backend:
   uri: file:///${MELTANO_PROJECT_ROOT}/.state
