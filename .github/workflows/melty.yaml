@@ -15,6 +15,8 @@ on:
         description: 'Log level'
         required: true
         default: 'warning'
+  schedule:
+    - cron: '0 12 * * *' # Once a day around 6am CST (12am UTC)
 
 env:
   MELTANO_DATABASE_URI: ${{ secrets.MELTANO_DATABASE_URI }}
@@ -25,7 +27,7 @@ env:
 
 jobs:
   meltano-run:
-    if: ${{ github.event_name == 'workflow_dispatch' || contains(github.event.pull_request.labels.*.name, 'Test/ELTP') }}
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'  || contains(github.event.pull_request.labels.*.name, 'Test/ELTP') }}
     name: "Meltano Job: ${{ matrix.job }}"
     runs-on: ubuntu-latest
     container:
@@ -127,3 +129,14 @@ jobs:
       - name: Test Data
         run: |
           meltano test dbt-bigquery
+
+  evidence:
+    name: Request Vercel Webhook
+    needs: [transform]
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'schedule' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: POST to Vercel Deploy Hook
+        env:
+          BUILD_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        run: curl -X POST -d {} $BUILD_HOOK
