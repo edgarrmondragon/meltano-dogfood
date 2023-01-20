@@ -3,6 +3,7 @@
 .env
 .vercel
 .state
+meltano.log
 
 # General
 .DS_Store
