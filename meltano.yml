@@ -164,8 +164,6 @@ jobs:
 - name: pocket-to-duckdb
   tasks:
   - tap-getpocket target-duckdb
-  env:
-    TAP_GETPOCKET_CONSUMER_KEY: 'lalala'
 - name: stackoverflow-to-bq
   tasks:
   - tap-stackexchange target-bigquery
