@@ -164,11 +164,11 @@ jobs:
 - name: pocket-to-duckdb
   tasks:
   - tap-getpocket target-duckdb
+  env:
+    TAP_GETPOCKET_CONSUMER_KEY: 'lalala'
 - name: stackoverflow-to-bq
   tasks:
   - tap-stackexchange target-bigquery
 - name: rtd-to-bq
   tasks:
   - tap-readthedocs target-bigquery
-state_backend:
-  uri: file:///${MELTANO_PROJECT_ROOT}/.state

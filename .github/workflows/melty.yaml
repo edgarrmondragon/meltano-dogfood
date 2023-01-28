@@ -21,7 +21,7 @@ on:
 env:
   MELTANO_DATABASE_URI: ${{ secrets.MELTANO_DATABASE_URI }}
   MELTANO_ENVIRONMENT: ${{ github.event.inputs.environment || 'prod' }}
-  MELTANO_CLI_LOG_LEVEL: ${{ github.event.inputs.logLevel || 'warning' }}
+  MELTANO_CLI_LOG_LEVEL: ${{ github.event.inputs.logLevel || 'info' }}
   BQ_PROJECT_ID: ${{ secrets.BQ_PROJECT_ID }}
   BQ_LOCATION: ${{ secrets.BQ_LOCATION }}
 
@@ -40,18 +40,14 @@ jobs:
     strategy:
       matrix:
         include:
-          - { job: "pocket-to-bq", state-id: tap-getpocket-to-target-bigquery }
-          - { job: "stackoverflow-to-bq", state-id: tap-stackexchange-to-target-bigquery }
+          - { job: "pocket-to-bq" }
+          - { job: "stackoverflow-to-bq" }
+          - { job: "rtd-to-bq" }
       fail-fast: false
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3.3.0
-
-      - uses: actions/cache@v3
-        with:
-          key: "cache-${{ env.MELTANO_ENVIRONMENT }}-${{ matrix.state-id }}"
-          path: .state/${{ env.MELTANO_ENVIRONMENT}}:${{ matrix.state-id }}/state.json
 
       - name: Setup Google Credentials
         env:
