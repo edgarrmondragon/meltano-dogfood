@@ -1,11 +1,13 @@
+[tool.sqlfluff]
+max_line_length = 100
+
 [tool.sqlfluff.core]
 dialect = "bigquery"
 templater = "dbt"
 sql_file_exts = ".sql"
 
-[tool.sqlfluff.rules]
+[tool.sqlfluff.indentation]
 tab_space_size = 2
-max_line_length = 100
 
 [tool.sqlfluff.templater.dbt]
 project_dir = "./transform"
