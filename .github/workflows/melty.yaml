@@ -31,7 +31,7 @@ jobs:
     name: "Meltano Job: ${{ matrix.job }}"
     runs-on: ubuntu-latest
     container:
-      image: meltano/meltano:latest-python3.10
+      image: meltano/meltano:latest-python3.11
       env:
         TAP_GETPOCKET_CONSUMER_KEY: ${{ secrets.TAP_GETPOCKET_CONSUMER_KEY }}
         TAP_GETPOCKET_ACCESS_TOKEN: ${{ secrets.TAP_GETPOCKET_ACCESS_TOKEN }}
