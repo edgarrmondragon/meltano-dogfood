@@ -17,7 +17,7 @@ jobs:
     name: Meltano Lock Update
     runs-on: ubuntu-latest
     container:
-      image: meltano/meltano:latest-python3.9
+      image: meltano/meltano:latest-python3.10
 
     steps:
     - name: Checkout Code
