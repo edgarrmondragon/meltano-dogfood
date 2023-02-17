@@ -147,7 +147,7 @@ jobs:
     env:
       EVIDENCE_SETTINGS_BIGQUERY_PROJECT_ID: ${{ secrets.BQ_PROJECT_ID }}
       EVIDENCE_SETTINGS_BIGQUERY_CLIENT_EMAIL: ${{ secrets.BQ_CLIENT_EMAIL }}
-      EVIDENCE_SETTINGS_BIGQUERY_PRIVATE_KEY: ${{ secrets.BQ_PROJECT_ID }}
+      EVIDENCE_SETTINGS_BIGQUERY_PRIVATE_KEY: ${{ secrets.BQ_PRIVATE_KEY }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3.3.0
