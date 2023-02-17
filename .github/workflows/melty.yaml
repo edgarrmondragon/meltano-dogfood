@@ -142,6 +142,8 @@ jobs:
     name: Build Evidence site locally
     needs: [transform]
     runs-on: ubuntu-latest
+    container:
+      image: meltano/meltano:latest-python3.9
     env:
       EVIDENCE_SETTINGS_BIGQUERY_PROJECT_ID: ${{ secrets.BQ_PROJECT_ID }}
       EVIDENCE_SETTINGS_BIGQUERY_CLIENT_EMAIL: ${{ secrets.BQ_CLIENT_EMAIL }}
