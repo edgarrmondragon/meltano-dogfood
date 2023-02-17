@@ -137,3 +137,27 @@ jobs:
         env:
           BUILD_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
         run: curl -X POST -d {} $BUILD_HOOK
+
+  build-evidence:
+    name: Build Evidence site locally
+    needs: [transform]
+    runs-on: ubuntu-latest
+    env:
+      EVIDENCE_SETTINGS_BIGQUERY_PROJECT_ID: ${{ secrets.BQ_PROJECT_ID }}
+      EVIDENCE_SETTINGS_BIGQUERY_CLIENT_EMAIL: ${{ secrets.BQ_CLIENT_EMAIL }}
+      EVIDENCE_SETTINGS_BIGQUERY_PRIVATE_KEY: ${{ secrets.BQ_PROJECT_ID }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3.3.0
+
+      - name: Check Meltano
+        run: |
+          meltano --version
+
+      - name: Install evidence
+        run: |
+          meltano install utility evidence
+
+      - name: Build
+        run: |
+          meltano invoke evidence build
