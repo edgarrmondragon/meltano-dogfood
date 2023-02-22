@@ -182,7 +182,7 @@ jobs:
       - name: Deploy
         uses: amondnet/vercel-action@v25.1.1
         with:
-          github-comment: true
+          github-comment: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
