@@ -141,10 +141,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3.3.0
 
-      - name: Set Git config
-        run: |
-          git config --global --add safe.directory /__w/meltano-dataops/meltano-dataops
-
       - name: Check Meltano
         run: |
           meltano --version
@@ -156,6 +152,23 @@ jobs:
       - name: Build
         run: |
           meltano invoke evidence build
+
+      - name: Upload coverage data
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: evidence-build
+          path: evidence/build
+
+  deploy-evidence:
+    name: Deploy Evidence site
+    needs: [build-evidence]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download coverage data
+        uses: actions/download-artifact@v3.0.2
+        with:
+          name: evidence-build
+          path: evidence/build
 
       - name: Deploy
         uses: amondnet/vercel-action@v25.1.1
