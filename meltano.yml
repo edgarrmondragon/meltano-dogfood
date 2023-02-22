@@ -141,6 +141,13 @@ plugins:
       dataset_id: ${MELTANO_ENVIRONMENT}
       keyfile: ${MELTANO_PROJECT_ROOT}/.secrets/credentials.json
       location: $BQ_LOCATION
+  - name: evidence
+    variant: meltanolabs
+    pip_url: evidence-ext>=0.5
+    config:
+      home_dir: $MELTANO_PROJECT_ROOT/evidence
+      settings:
+        database: bigquery
 environments:
 - name: dev
   config:

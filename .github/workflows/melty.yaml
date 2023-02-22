@@ -27,7 +27,7 @@ env:
 
 jobs:
   meltano-run:
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'  || contains(github.event.pull_request.labels.*.name, 'Test/ELTP') }}
+    if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'  || contains(github.event.pull_request.labels.*.name, 'Test/ELTP') }}
     name: "Meltano Job: ${{ matrix.job }}"
     runs-on: ubuntu-latest
     container:
@@ -127,13 +127,64 @@ jobs:
         run: |
           meltano test dbt-bigquery
 
-  evidence:
-    name: Request Vercel Webhook
+  build-evidence:
+    name: Build Evidence site locally
     needs: [transform]
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'schedule' }}
     runs-on: ubuntu-latest
+    container:
+      image: meltano/meltano:latest-python3.9
+    env:
+      EVIDENCE_SETTINGS_BIGQUERY_PROJECT_ID: ${{ secrets.BQ_PROJECT_ID }}
+      EVIDENCE_SETTINGS_BIGQUERY_CLIENT_EMAIL: ${{ secrets.BQ_CLIENT_EMAIL }}
+      EVIDENCE_SETTINGS_BIGQUERY_PRIVATE_KEY: ${{ secrets.BQ_PRIVATE_KEY }}
     steps:
-      - name: POST to Vercel Deploy Hook
-        env:
-          BUILD_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
-        run: curl -X POST -d {} $BUILD_HOOK
+      - name: Checkout code
+        uses: actions/checkout@v3.3.0
+
+      - name: Check Meltano
+        run: |
+          meltano --version
+
+      - name: Install evidence
+        run: |
+          meltano install utility evidence
+
+      - name: Build
+        run: |
+          meltano invoke evidence build
+
+      - name: Upload coverage data
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: evidence-build
+          path: evidence/build
+
+  deploy-evidence:
+    name: Deploy Evidence site
+    needs: [build-evidence]
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3.3.0
+
+      - name: Set Git config
+        run: |
+          git config --global --add safe.directory /__w/meltano-dataops/meltano-dataops
+
+      - name: Download coverage data
+        uses: actions/download-artifact@v3.0.2
+        with:
+          name: evidence-build
+          path: evidence/build
+
+      - name: Deploy
+        uses: amondnet/vercel-action@v25.1.1
+        with:
+          github-comment: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: ${{ github.event_name == 'pull_request' && '' || '--prod' }}
