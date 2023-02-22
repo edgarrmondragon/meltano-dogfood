@@ -141,6 +141,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3.3.0
 
+      - name: Set Git config
+        run: |
+          git config --global --add safe.directory /__w/meltano-dataops/meltano-dataops
+
       - name: Check Meltano
         run: |
           meltano --version
