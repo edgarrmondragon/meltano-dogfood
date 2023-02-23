@@ -151,7 +151,7 @@ jobs:
 
       - name: Build
         run: |
-          meltano invoke evidence build
+          meltano invoke evidence build --strict
 
       - name: Upload coverage data
         uses: actions/upload-artifact@v3.1.2
