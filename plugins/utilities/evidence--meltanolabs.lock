@@ -3,7 +3,7 @@
   "name": "evidence",
   "namespace": "evidence",
   "variant": "meltanolabs",
-  "label": "Evidence (EDK)",
+  "label": "Evidence",
   "docs": "https://hub.meltano.com/utilities/evidence--meltanolabs",
   "repo": "https://github.com/evidence-dev/evidence",
   "pip_url": "evidence-ext>=0.5",
