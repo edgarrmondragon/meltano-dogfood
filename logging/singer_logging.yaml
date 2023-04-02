@@ -1,0 +1,20 @@
+version: 1
+disable_existing_loggers: false
+formatters:
+  metrics:
+    # (): pythonjsonlogger.jsonlogger.JsonFormatter
+    # format: "{asctime} {metric} {value} {tags}"
+    # (): singer_sdk.metrics.LineProtocolFormatter
+    format: "{asctime} {message}"
+    # format: "{metric}, value={value} {asctime}"
+    style: "{"
+handlers:
+  metrics:
+    class: logging.FileHandler
+    formatter: metrics
+    filename: logs/singer_metrics.log
+loggers:
+  singer_sdk.metrics:
+    level: INFO
+    handlers: [ metrics ]
+    propagate: false

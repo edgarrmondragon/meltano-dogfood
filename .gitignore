@@ -3,7 +3,9 @@
 .env
 .vercel
 .state
-meltano.log
+*.log
+*.jsonl
+*.sqlite
 
 # General
 .DS_Store
