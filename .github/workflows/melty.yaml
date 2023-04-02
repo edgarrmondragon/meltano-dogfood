@@ -183,7 +183,7 @@ jobs:
         run: |
           git config --global --add safe.directory /__w/meltano-dataops/meltano-dataops
 
-      - name: Download coverage data
+      - name: Download Evidence build
         uses: actions/download-artifact@v3.0.2
         with:
           name: evidence-build
