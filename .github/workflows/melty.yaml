@@ -20,8 +20,8 @@ on:
 
 env:
   MELTANO_DATABASE_URI: ${{ secrets.MELTANO_DATABASE_URI }}
+  MELTANO_CLI_LOG_CONFIG: logging/ci.yaml
   MELTANO_ENVIRONMENT: ${{ github.event.inputs.environment || 'prod' }}
-  MELTANO_CLI_LOG_LEVEL: ${{ github.event.inputs.logLevel || 'info' }}
   BQ_PROJECT_ID: ${{ secrets.BQ_PROJECT_ID }}
   BQ_LOCATION: ${{ secrets.BQ_LOCATION }}
 
@@ -65,6 +65,16 @@ jobs:
       - name: Run
         run: |
           meltano run ${{ matrix.job }}
+
+      - name: Rename metrics log
+        run: |
+          mv logs/singer_metrics.log logs/singer_metrics_${{ matrix.job }}.log
+
+      - name: Upload metrics log
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: singer-metrics
+          path: logs/singer_metrics_${{ matrix.job }}.log
 
   lint:
     name: Lint models
