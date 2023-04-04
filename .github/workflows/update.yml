@@ -42,3 +42,6 @@ jobs:
         assignees: edgarrmondragon
         body: |
           Created with `meltano lock --update --all`
+        labels: |
+          dependencies
+          Test/ELTP
