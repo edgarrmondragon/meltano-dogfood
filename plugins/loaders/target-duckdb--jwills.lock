@@ -19,6 +19,7 @@
     {
       "name": "filepath",
       "kind": "string",
+      "value": "${MELTANO_PROJECT_ROOT}/output/warehouse.duckdb",
       "label": "File Path",
       "description": "Path to the local DuckDB file.",
       "placeholder": "/path/to/local/duckdb.file"
