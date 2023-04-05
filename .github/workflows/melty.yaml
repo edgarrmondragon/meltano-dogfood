@@ -18,6 +18,10 @@ on:
   schedule:
     - cron: "0 12 * * *" # Once a day around 6am CST (12am UTC)
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
 env:
   MELTANO_DATABASE_URI: ${{ secrets.MELTANO_DATABASE_URI }}
   MELTANO_CLI_LOG_CONFIG: logging/ci.yaml
@@ -43,11 +47,15 @@ jobs:
         run: |
           meltano install
 
+      - name: Zip Meltano System Directory
+        run: |
+          zip -r meltano.zip .meltano
+
       - name: Upload Meltano System Directory
         uses: actions/upload-artifact@v3.1.2
         with:
           name: meltano-system
-          path: .meltano
+          path: meltano.zip
 
   meltano-run:
     if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'  || contains(github.event.pull_request.labels.*.name, 'Test/ELTP') }}
@@ -77,7 +85,11 @@ jobs:
         uses: actions/download-artifact@v3.0.2
         with:
           name: meltano-system
-          path: .meltano
+          path: meltano.zip
+
+      - name: Unzip Meltano System Directory
+        run: |
+          unzip meltano.zip
 
       - name: Setup Google Credentials
         env:
@@ -113,7 +125,11 @@ jobs:
         uses: actions/download-artifact@v3.0.2
         with:
           name: meltano-system
-          path: .meltano
+          path: meltano.zip
+
+      - name: Unzip Meltano System Directory
+        run: |
+          unzip meltano.zip
 
       - name: Setup Google Credentials
         env:
@@ -141,7 +157,11 @@ jobs:
         uses: actions/download-artifact@v3.0.2
         with:
           name: meltano-system
-          path: .meltano
+          path: meltano.zip
+
+      - name: Unzip Meltano System Directory
+        run: |
+          unzip meltano.zip
 
       - name: Setup Google Credentials
         env:
@@ -174,7 +194,11 @@ jobs:
         uses: actions/download-artifact@v3.0.2
         with:
           name: meltano-system
-          path: .meltano
+          path: meltano.zip
+
+      - name: Unzip Meltano System Directory
+        run: |
+          unzip meltano.zip
 
       - name: Build
         run: |
