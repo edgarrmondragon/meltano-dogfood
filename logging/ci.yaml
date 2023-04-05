@@ -18,8 +18,7 @@ handlers:
     level: DEBUG
     filename: logs/meltano.log
     formatter: json
-loggers:
-  root:
-    level: DEBUG
-    propagate: no
-    handlers: [file, console]
+root:
+  level: DEBUG
+  propagate: no
+  handlers: [file, console]
