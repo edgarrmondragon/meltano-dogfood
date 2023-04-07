@@ -10,10 +10,10 @@ plugins:
   extractors:
   - name: tap-getpocket
     variant: edgarrmondragon
-    pip_url: git+https://github.com/edgarrmondragon/tap-getpocket.git
+    pip_url: git+https://github.com/edgarrmondragon/tap-getpocket.git python-json-logger
   - name: tap-stackexchange
     variant: meltanolabs
-    pip_url: git+https://github.com/MeltanoLabs/tap-stackexchange.git
+    pip_url: git+https://github.com/MeltanoLabs/tap-stackexchange.git python-json-logger
     config:
       tags:
       - meltano
@@ -21,7 +21,7 @@ plugins:
     - questions.*
   - name: tap-readthedocs
     variant: edgarrmondragon
-    pip_url: git+https://github.com/edgarrmondragon/tap-readthedocs.git
+    pip_url: git+https://github.com/edgarrmondragon/tap-readthedocs.git python-json-logger
     select:
     - projects.*
   loaders:
