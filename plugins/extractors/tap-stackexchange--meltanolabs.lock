@@ -16,22 +16,17 @@
   ],
   "settings_group_validation": [
     [
-      "tags",
-      "site"
+      "site",
+      "tags"
     ]
   ],
   "settings": [
     {
-      "name": "tags",
-      "kind": "array",
-      "label": "Question tags",
-      "description": "Question tags to retrieve."
-    },
-    {
-      "name": "site",
-      "label": "Site",
-      "documentation": "https://stackexchange.com/sites",
-      "description": "StackExchange site to look for questions."
+      "name": "filter",
+      "kind": "string",
+      "label": "Filter",
+      "documentation": "https://api.stackexchange.com/docs/filters",
+      "description": "Custom API filter to apply to all requests"
     },
     {
       "name": "key",
@@ -41,6 +36,12 @@
       "description": "Key to receive a higher request quota."
     },
     {
+      "name": "site",
+      "label": "Site",
+      "documentation": "https://stackexchange.com/sites",
+      "description": "StackExchange site to look for questions."
+    },
+    {
       "name": "start_date",
       "kind": "integer",
       "label": "Start date",
@@ -48,11 +49,10 @@
       "description": "The earliest record date to sync"
     },
     {
-      "name": "filter",
-      "kind": "string",
-      "label": "Filter",
-      "documentation": "https://api.stackexchange.com/docs/filters",
-      "description": "Custom API filter to apply to all requests"
+      "name": "tags",
+      "kind": "array",
+      "label": "Question tags",
+      "description": "Question tags to retrieve."
     }
   ]
 }
