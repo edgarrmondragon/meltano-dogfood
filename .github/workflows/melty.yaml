@@ -47,9 +47,11 @@ jobs:
         run: |
           meltano install
 
-      - name: Zip Meltano System Directory
-        run: |
-          zip -r meltano.zip .meltano
+      - uses: thedoctor0/zip-release@0.7.1
+        with:
+          type: zip
+          filename: meltano.zip
+          path: .meltano
 
       - name: Upload Meltano System Directory
         uses: actions/upload-artifact@v3.1.2
