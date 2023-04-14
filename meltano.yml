@@ -78,15 +78,18 @@ plugins:
       location: $BQ_LOCATION
       credentials: ${MELTANO_PROJECT_ROOT}/.secrets/credentials.json
     dialect: bigquery
+    target_schema: $MELTANO_LOAD_DEFAULT_TARGET_SCHEMA
   - name: target-jsonl
     variant: andyh1203
     pip_url: target-jsonl
+    target_schema: ""
   - name: target-duckdb
     variant: jwills
     pip_url: target-duckdb~=0.4
     config:
-      filepath: output/wh.duckdb
-      default_target_schema: $MELTANO_ENVIRONMENT
+      filepath: output/$MELTANO_ENVIRONMENT.duckdb
+      default_target_schema: $MELTANO_EXTRACT__LOAD_SCHEMA
+    target_schema: $MELTANO_LOAD_DEFAULT_TARGET_SCHEMA
   transformers:
   - name: dbt-bigquery
     namespace: dbt_bigquery
@@ -162,6 +165,9 @@ environments:
           batch_size_rows: 100
 - name: staging
 - name: prod
+  env:
+    MELTANO_FF_PLUGIN_LOCKS_REQUIRED: "true"
+    MELTANO_FF_STRICT_ENV_VAR_MODE: "true"
   config:
     plugins:
       loaders:
