@@ -2,9 +2,6 @@ version: 1
 default_environment: prod
 project_id: b77cad0a-ffd8-494e-9e6b-18d6eacb71d4
 send_anonymous_usage_stats: false
-ff:
-  plugin_locks_required: true
-  strict_env_var_mode: true
 cli:
   log_config: logging/ci.yaml
 env:
@@ -168,6 +165,9 @@ environments:
           batch_size_rows: 100
 - name: staging
 - name: prod
+  env:
+    MELTANO_FF_PLUGIN_LOCKS_REQUIRED: "true"
+    MELTANO_FF_STRICT_ENV_VAR_MODE: "true"
   config:
     plugins:
       loaders:
