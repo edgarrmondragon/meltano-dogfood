@@ -4,7 +4,7 @@
   "scripts": {
     "build": "evidence build",
     "build:strict": "evidence build:strict",
-    "dev": "evidence dev -o",
+    "dev": "evidence dev",
     "test": "evidence build"
   },
   "engines": {
@@ -13,6 +13,6 @@
   },
   "type": "module",
   "dependencies": {
-    "@evidence-dev/evidence": "^15.0.1"
+    "@evidence-dev/evidence": "^16.0.0"
   }
 }
