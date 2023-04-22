@@ -1,4 +1,7 @@
-# Reads
+---
+title: Reads
+description: Pocket reads
+---
 
 ## Pending
 

@@ -1,4 +1,7 @@
-# Open Source
+---
+title: Open Source
+description: Open source I maintain
+---
 
 ```rtd_projects
 select
