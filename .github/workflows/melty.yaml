@@ -38,17 +38,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3.5.2
 
+      - name: Setup Python
+        uses: actions/setup-python@v4.6.0
+
       - name: Setup Google Credentials
         env:
           CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
         run: echo "${CREDENTIALS}" | base64 --decode > .secrets/credentials.json
-
-      - name: Upgrade pip
-        env:
-          PIP_CONSTRAINT: .github/workflows/constraints.txt
-        run: |
-          pip install pip
-          pip --version
 
       - name: Install Meltano
         env:
@@ -138,6 +134,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3.5.2
 
+      - name: Setup Python
+        uses: actions/setup-python@v4.6.0
+
       - name: Download Meltano System Directory
         uses: actions/download-artifact@v3.0.2
         with:
@@ -174,6 +173,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3.5.2
+
+      - name: Setup Python
+        uses: actions/setup-python@v4.6.0
 
       - name: Download Meltano System Directory
         uses: actions/download-artifact@v3.0.2
@@ -216,6 +218,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3.5.2
+
+      - name: Setup Python
+        uses: actions/setup-python@v4.6.0
 
       - name: Download Meltano System Directory
         uses: actions/download-artifact@v3.0.2
