@@ -163,7 +163,7 @@ jobs:
         run: |
           meltano invoke evidence build --strict
 
-      - name: Upload coverage data
+      - name: Upload Evidence build
         uses: actions/upload-artifact@v3.1.2
         with:
           name: evidence-build
