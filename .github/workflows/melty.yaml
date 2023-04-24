@@ -47,8 +47,8 @@ jobs:
         run: echo "${CREDENTIALS}" | base64 --decode > .secrets/credentials.json
 
       - name: Install Meltano
-        env:
-          PIP_CONSTRAINT: .github/workflows/constraints.txt
+        # env:
+        #   PIP_CONSTRAINT: .github/workflows/constraints.txt
         run: |
           pipx install meltano
           meltano --version
