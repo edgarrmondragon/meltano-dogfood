@@ -50,7 +50,7 @@ jobs:
         # env:
         #   PIP_CONSTRAINT: .github/workflows/constraints.txt
         run: |
-          pipx install meltano
+          pipx install meltano==2.17.1
           meltano --version
 
       - name: Install Plugins
@@ -65,7 +65,7 @@ jobs:
         uses: actions/upload-artifact@v3.1.2
         with:
           name: meltano-system
-          path: meltano.zip
+          path: .
 
   meltano-run:
     if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'  || contains(github.event.pull_request.labels.*.name, 'Test/ELTP') }}
@@ -93,7 +93,7 @@ jobs:
         uses: actions/download-artifact@v3.0.2
         with:
           name: meltano-system
-          path: meltano.zip
+          path: .
 
       - name: Unzip Meltano System Directory
         run: |
@@ -105,10 +105,10 @@ jobs:
         run: echo "${CREDENTIALS}" | base64 --decode > .secrets/credentials.json
 
       - name: Install Meltano
-        env:
-          PIP_CONSTRAINT: .github/workflows/constraints.txt
+        # env:
+        #   PIP_CONSTRAINT: .github/workflows/constraints.txt
         run: |
-          pipx install meltano
+          pipx install meltano==2.17.1
           meltano --version
 
       - name: Run
@@ -141,7 +141,7 @@ jobs:
         uses: actions/download-artifact@v3.0.2
         with:
           name: meltano-system
-          path: meltano.zip
+          path: .
 
       - name: Unzip Meltano System Directory
         run: |
@@ -153,10 +153,10 @@ jobs:
         run: echo "${CREDENTIALS}" | base64 --decode > .secrets/credentials.json
 
       - name: Install Meltano
-        env:
-          PIP_CONSTRAINT: .github/workflows/constraints.txt
+        # env:
+        #   PIP_CONSTRAINT: .github/workflows/constraints.txt
         run: |
-          pipx install meltano
+          pipx install meltano==2.17.1
           meltano --version
 
       - name: Lint
@@ -181,7 +181,7 @@ jobs:
         uses: actions/download-artifact@v3.0.2
         with:
           name: meltano-system
-          path: meltano.zip
+          path: .
 
       - name: Unzip Meltano System Directory
         run: |
@@ -193,10 +193,10 @@ jobs:
         run: echo "${CREDENTIALS}" | base64 --decode > .secrets/credentials.json
 
       - name: Install Meltano
-        env:
-          PIP_CONSTRAINT: .github/workflows/constraints.txt
+        # env:
+        #   PIP_CONSTRAINT: .github/workflows/constraints.txt
         run: |
-          pipx install meltano
+          pipx install meltano==2.17.1
           meltano --version
 
       - name: Transform
@@ -226,15 +226,17 @@ jobs:
         uses: actions/download-artifact@v3.0.2
         with:
           name: meltano-system
-          path: meltano.zip
+          path: .
 
       - name: Unzip Meltano System Directory
         run: |
           unzip meltano.zip
 
       - name: Install Meltano
+        # env:
+        #   PIP_CONSTRAINT: .github/workflows/constraints.txt
         run: |
-          pipx install meltano
+          pipx install meltano==2.17.1
           meltano --version
 
       - name: Build
