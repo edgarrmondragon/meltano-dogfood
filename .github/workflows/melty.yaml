@@ -65,7 +65,7 @@ jobs:
         uses: actions/upload-artifact@v3.1.2
         with:
           name: meltano-system
-          path: .
+          path: meltano.zip
 
   meltano-run:
     if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'  || contains(github.event.pull_request.labels.*.name, 'Test/ELTP') }}
