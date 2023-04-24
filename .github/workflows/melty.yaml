@@ -31,7 +31,7 @@ env:
 
 jobs:
   meltano-install:
-    name: Install Meltano
+    name: Install Meltano Plugins
     runs-on: ubuntu-latest
 
     steps:
@@ -42,6 +42,13 @@ jobs:
         env:
           CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
         run: echo "${CREDENTIALS}" | base64 --decode > .secrets/credentials.json
+
+      - name: Upgrade pip
+        env:
+          PIP_CONSTRAINT: .github/workflows/constraints.txt
+        run: |
+          pip install pip
+          pip --version
 
       - name: Install Meltano
         env:
