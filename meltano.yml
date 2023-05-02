@@ -82,7 +82,7 @@ plugins:
   - name: target-jsonl
     variant: andyh1203
     pip_url: target-jsonl
-    target_schema: ""
+    target_schema: ''
   - name: target-duckdb
     variant: jwills
     pip_url: target-duckdb~=0.4
@@ -187,3 +187,13 @@ jobs:
 - name: rtd-to-bq
   tasks:
   - tap-readthedocs target-bigquery
+schedules:
+- name: daily_pocket
+  interval: 0 12 * * *
+  job: pocket-to-bq
+- name: daily_stackoverflow
+  interval: 0 12 * * *
+  job: stackoverflow-to-bq
+- name: daily_readthedocs
+  interval: 0 12 * * *
+  job: rtd-to-bq
