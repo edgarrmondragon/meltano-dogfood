@@ -40,9 +40,12 @@ jobs:
     strategy:
       matrix:
         include:
-          - { job: "pocket-to-bq" }
-          - { job: "stackoverflow-to-bq" }
-          - { job: "rtd-to-bq" }
+          - job: "pocket-to-bq"
+            schedule: "daily_pocket"
+          - job: "stackoverflow-to-bq"
+            schedule: "daily_stackoverflow"
+          - job: "rtd-to-bq"
+            schedule: "daily_rtd"
       fail-fast: false
 
     steps:
@@ -60,7 +63,7 @@ jobs:
 
       - name: Install Plugins
         run: |
-          meltano install
+          meltano install --schedule ${{ matrix.schedule }}
 
       - name: Run
         run: |
