@@ -45,7 +45,7 @@ jobs:
           - job: "stackoverflow-to-bq"
             schedule: "daily_stackoverflow"
           - job: "rtd-to-bq"
-            schedule: "daily_rtd"
+            schedule: "daily_readthedocs"
       fail-fast: false
 
     steps:
