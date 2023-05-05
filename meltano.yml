@@ -24,6 +24,16 @@ plugins:
     pip_url: git+https://github.com/edgarrmondragon/tap-readthedocs.git
     select:
     - projects.*
+  - name: tap-github
+    variant: meltanolabs
+    pip_url: https://api.github.com/repos/meltanolabs/tap-github/zipball/pull/193/head
+    config:
+      repositories:
+      - edgarrmondragon/citric
+      - edgarrmondragon/tap-readthedocs
+    select:
+    - repositories.*
+    - stargazers.*
   loaders:
   - name: target-bigquery
     namespace: bigquery
@@ -165,15 +175,15 @@ environments:
           batch_size_rows: 100
 - name: staging
 - name: prod
-  env:
-    MELTANO_FF_PLUGIN_LOCKS_REQUIRED: "true"
-    MELTANO_FF_STRICT_ENV_VAR_MODE: "true"
   config:
     plugins:
       loaders:
       - name: target-bigquery
         config:
           batch_size_rows: 10000
+  env:
+    MELTANO_FF_PLUGIN_LOCKS_REQUIRED: 'true'
+    MELTANO_FF_STRICT_ENV_VAR_MODE: 'true'
 jobs:
 - name: pocket-to-bq
   tasks:
@@ -187,6 +197,12 @@ jobs:
 - name: rtd-to-bq
   tasks:
   - tap-readthedocs target-bigquery
+- name: gh-to-bq
+  tasks:
+  - tap-github target-bigquery
+- name: gh-to-duckdb
+  tasks:
+  - tap-github target-duckdb
 schedules:
 - name: daily_pocket
   interval: 0 12 * * *
@@ -197,3 +213,6 @@ schedules:
 - name: daily_readthedocs
   interval: 0 12 * * *
   job: rtd-to-bq
+- name: daily_github
+  interval: 0 12 * * *
+  job: gh-to-bq

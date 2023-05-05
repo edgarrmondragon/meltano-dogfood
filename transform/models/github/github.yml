@@ -1,0 +1,60 @@
+version: 2
+
+sources:
+  - name: github
+    schema: tap_github
+    loader: tap-github
+    description: Collaborative Coding
+    tags:
+      - Meltano SDK
+    tables:
+      - name: repositories
+        description: Git repositories
+        loaded_at_field: _sdc_batched_at
+        columns:
+          - name: allow_auto_merge
+          - name: allow_merge_commit
+          - name: allow_rebase_merge
+          - name: allow_squash_merge
+          - name: archived
+          - name: clone_url
+          - name: created_at
+          - name: default_branch
+          - name: delete_branch_on_merge
+          - name: description
+          - name: disabled
+          - name: fork
+          - name: forks
+          - name: forks_count
+          - name: full_name
+          - name: git_url
+          - name: homepage
+          - name: html_url
+          - name: id
+            tests: [not_null, unique]
+          - name: language
+          - name: license
+          - name: master_branch
+          - name: name
+          - name: network_count
+          - name: node_id
+          - name: open_issues
+          - name: open_issues_count
+          - name: org
+          - name: organization
+          - name: owner
+          - name: private
+          - name: pushed_at
+          - name: repo
+          - name: search_name
+          - name: search_query
+          - name: size
+          - name: ssh_url
+          - name: stargazers_count
+          - name: subscribers_count
+          - name: topics
+          - name: updated_at
+            tests: [not_null]
+          - name: visibility
+          - name: watchers
+          - name: watchers_count

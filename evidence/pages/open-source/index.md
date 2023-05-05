@@ -7,9 +7,9 @@ description: Open source I maintain
 select
   name
   , extract(DATE from created) as created
-  , repository.url as repository
-  , homepage as documentation
-from tap_readthedocs.projects
+  , html_url as repository
+  , homepage
+from tap_github.repositories
 where repository.url like '%github.com/edgarrmondragon%'
 ```
 
@@ -17,8 +17,15 @@ where repository.url like '%github.com/edgarrmondragon%'
 
 ## {project.name}
 
-- Created: {project.created}
+- Created: {project.created_at}
+- Description: {project.description}
 - Repository: <a href="{project.repository}" target="_blank" rel="noopener noreferrer">{project.repository}</a>
+
+{#if project.homepage}
+
+- Homepage: <a href="{project.homepage}" target="_blank" rel="noopener noreferrer">{project.homepage}</a>
+
+{/if}
 
 ### Documentation
 
