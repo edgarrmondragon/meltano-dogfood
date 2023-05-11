@@ -35,6 +35,7 @@ jobs:
       env:
         TAP_GETPOCKET_CONSUMER_KEY: ${{ secrets.TAP_GETPOCKET_CONSUMER_KEY }}
         TAP_GETPOCKET_ACCESS_TOKEN: ${{ secrets.TAP_GETPOCKET_ACCESS_TOKEN }}
+        TAP_GITHUB_AUTH_TOKEN: ${{ secrets.TAP_GITHUB_AUTH_TOKEN }}
         TAP_READTHEDOCS_TOKEN: ${{ secrets.TAP_READTHEDOCS_TOKEN }}
         TAP_STACKEXCHANGE_KEY: ${{ secrets.TAP_STACKEXCHANGE_KEY }}
     strategy:
@@ -46,6 +47,8 @@ jobs:
             schedule: "daily_stackoverflow"
           - job: "rtd-to-bq"
             schedule: "daily_readthedocs"
+          - job: "gh-to-bq"
+            schedule: "daily_github"
       fail-fast: false
 
     steps:
