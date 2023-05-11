@@ -7,7 +7,10 @@ description: Open source I maintain
 select
   gh.name
   , extract(DATE from gh.created_at) as created
+  , extract(DATE from gh.updated_at) as updated
+  , gh.description
   , gh.html_url as repository
+  , gh.stargazers_count
   , rtd.homepage
 from tap_github.repositories as gh
 left join tap_readthedocs.projects as rtd
@@ -21,9 +24,11 @@ where gh.html_url like '%github.com/edgarrmondragon%'
 
 <ul>
 
-<li>Created: {project.created_at}</li>
+<li>Created: {project.created}</li>
+<li>Last updated: {project.updated}</li>
 <li>Description: {project.description}</li>
 <li>Repository: <a href="{project.repository}" target="_blank" rel="noopener noreferrer">{project.repository}</a></li>
+<li>Stars: {project.stargazers_count}</li>
 
 {#if project.homepage}
 
