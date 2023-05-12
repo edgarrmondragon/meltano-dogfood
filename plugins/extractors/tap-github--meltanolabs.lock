@@ -127,5 +127,9 @@
       "label": "User Usernames",
       "description": "A list of GithHub usernames."
     }
+  ],
+  "select": [
+    "*.*",
+    "!traffic_*.*"
   ]
 }
