@@ -35,14 +35,20 @@ jobs:
       env:
         TAP_GETPOCKET_CONSUMER_KEY: ${{ secrets.TAP_GETPOCKET_CONSUMER_KEY }}
         TAP_GETPOCKET_ACCESS_TOKEN: ${{ secrets.TAP_GETPOCKET_ACCESS_TOKEN }}
+        TAP_GITHUB_AUTH_TOKEN: ${{ secrets.TAP_GITHUB_AUTH_TOKEN }}
         TAP_READTHEDOCS_TOKEN: ${{ secrets.TAP_READTHEDOCS_TOKEN }}
         TAP_STACKEXCHANGE_KEY: ${{ secrets.TAP_STACKEXCHANGE_KEY }}
     strategy:
       matrix:
         include:
-          - { job: "pocket-to-bq" }
-          - { job: "stackoverflow-to-bq" }
-          - { job: "rtd-to-bq" }
+          - job: "pocket-to-bq"
+            schedule: "daily_pocket"
+          - job: "stackoverflow-to-bq"
+            schedule: "daily_stackoverflow"
+          - job: "rtd-to-bq"
+            schedule: "daily_readthedocs"
+          - job: "gh-to-bq"
+            schedule: "daily_github"
       fail-fast: false
 
     steps:
@@ -60,7 +66,7 @@ jobs:
 
       - name: Install Plugins
         run: |
-          meltano install
+          meltano install --schedule ${{ matrix.schedule }}
 
       - name: Run
         run: |
@@ -163,7 +169,7 @@ jobs:
         run: |
           meltano invoke evidence build --strict
 
-      - name: Upload coverage data
+      - name: Upload Evidence build
         uses: actions/upload-artifact@v3.1.2
         with:
           name: evidence-build

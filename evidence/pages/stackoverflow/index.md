@@ -1,4 +1,7 @@
-# StackOverflow Stats
+---
+title: StackOverflow Stats
+description: Some activity stats from StackOverflow of selected tags
+---
 
 ```question_stats
 select
