@@ -74,7 +74,7 @@ jobs:
         uses: actions/upload-artifact@v3.1.2
         with:
           name: warehouse
-          path: evidence/$MELTANO_ENVIRONMENT.prod
+          path: transform/warehouse
 
       - name: Rename metrics log
         run: |
@@ -134,7 +134,7 @@ jobs:
         uses: actions/download-artifact@v3.0.2
         with:
           name: warehouse
-          path: evidence/$MELTANO_ENVIRONMENT.prod
+          path: transform/warehouse
 
       - name: Import warehouse
         run: |
@@ -152,7 +152,7 @@ jobs:
         uses: actions/upload-artifact@v3.1.2
         with:
           name: warehouse
-          path: evidence/$MELTANO_ENVIRONMENT.prod
+          path: transform/warehouse
 
   build-evidence:
     name: Build Evidence site locally
