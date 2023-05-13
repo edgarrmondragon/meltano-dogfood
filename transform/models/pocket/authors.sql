@@ -1,5 +1,11 @@
+with authors as (
+  select
+    unnest(from_json(authors, '["json"]')) as author
+  from {{ source('pocket', 'items') }}
+)
+
 select
-  a.author_id
-  , a.name
-  , a.url
-from {{ source('pocket', 'items') }} cross join unnest(authors) as a
+  author ->> 'author_id' as author_id
+  , author ->> 'name' as name
+  , author ->> 'url' as url
+from authors

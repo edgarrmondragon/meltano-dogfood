@@ -74,12 +74,12 @@ limit 5
 
 ```daily_reads
 select
-  extract(date from read_at) as `date`
+  date_trunc('day', read_at) as date
   , count(*) as total
 from prod.items
-where read_at is not null and timestamp_diff(current_timestamp(), read_at, day) <= 7
-group by `date`
-order by `date` desc
+where read_at is not null and datediff('day', read_at, now()::timestamp) <= 7
+group by date
+order by date desc
 ```
 
 {#if daily_reads.length !== 0}
@@ -119,11 +119,11 @@ Most used tags:
 
 ```author_tally
 select
-  `name`
-  , count(*) as `total`
+  name
+  , count(*) as total
 from prod.authors
-group by `name`
-order by `total` desc
+group by name
+order by total desc
 limit 5
 ```
 

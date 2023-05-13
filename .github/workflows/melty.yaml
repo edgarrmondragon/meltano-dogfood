@@ -19,11 +19,9 @@ on:
     - cron: '0 12 * * *' # Once a day around 6am CST (12am UTC)
 
 env:
-  MELTANO_DATABASE_URI: ${{ secrets.MELTANO_DATABASE_URI }}
+  # MELTANO_DATABASE_URI: ${{ secrets.MELTANO_DATABASE_URI }}
   MELTANO_CLI_LOG_CONFIG: logging/ci.yaml
   MELTANO_ENVIRONMENT: ${{ github.event.inputs.environment || 'prod' }}
-  BQ_PROJECT_ID: ${{ secrets.BQ_PROJECT_ID }}
-  BQ_LOCATION: ${{ secrets.BQ_LOCATION }}
 
 jobs:
   meltano-run:
@@ -41,13 +39,13 @@ jobs:
     strategy:
       matrix:
         include:
-          - job: "pocket-to-bq"
+          - job: "pocket-to-duckdb"
             schedule: "daily_pocket"
-          - job: "stackoverflow-to-bq"
+          - job: "stackoverflow-to-duckdb"
             schedule: "daily_stackoverflow"
-          - job: "rtd-to-bq"
+          - job: "rtd-to-duckdb"
             schedule: "daily_readthedocs"
-          - job: "gh-to-bq"
+          - job: "gh-to-duckdb"
             schedule: "daily_github"
       fail-fast: false
 
@@ -55,22 +53,28 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3.5.2
 
-      - name: Setup Google Credentials
-        env:
-          CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-        run: echo "${CREDENTIALS}" | base64 --decode > .secrets/credentials.json
-
       - name: Check Meltano
         run: |
           meltano --version
 
       - name: Install Plugins
         run: |
+          meltano install transformer dbt-duckdb
           meltano install --schedule ${{ matrix.schedule }}
 
       - name: Run
         run: |
           meltano run ${{ matrix.job }}
+
+      - name: Export database
+        run: |
+          meltano invoke dbt-duckdb run-operation export
+
+      - name: Upload database
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: warehouse
+          path: evidence/$MELTANO_ENVIRONMENT.prod
 
       - name: Rename metrics log
         run: |
@@ -82,39 +86,35 @@ jobs:
           name: singer-metrics
           path: logs/singer_metrics_${{ matrix.job }}.log
 
-  lint:
-    name: Lint models
-    runs-on: ubuntu-latest
-    container:
-      image: meltano/meltano:latest-python3.9
+  # lint:
+  #   name: Lint models
+  #   runs-on: ubuntu-latest
+  #   container:
+  #     image: meltano/meltano:latest-python3.9
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3.5.2
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3.5.2
 
-      - name: Setup Google Credentials
-        env:
-          CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-        run: echo "${CREDENTIALS}" | base64 --decode > .secrets/credentials.json
+  #     - name: Check Meltano
+  #       run: |
+  #         meltano --version
 
-      - name: Check Meltano
-        run: |
-          meltano --version
+  #     - name: Install SQLFluff
+  #       run: |
+  #         meltano install utility sqlfluff
 
-      - name: Install SQLFluff
-        run: |
-          meltano install utility sqlfluff
-
-      - name: Lint
-        env:
-          MELTANO_CLI_LOG_LEVEL: info
-        run: |
-          meltano invoke sqlfluff:lint --format github-annotation-native -v transform/models
+  #     - name: Lint
+  #       env:
+  #         MELTANO_CLI_LOG_LEVEL: info
+  #       run: |
+  #         meltano invoke sqlfluff:lint --format github-annotation-native -v transform/models
 
   transform:
-    name: Data Transformation with dbt-bigquery
+    name: Data Transformation with dbt-duckdb
     runs-on: ubuntu-latest
-    needs: [meltano-run, lint]
+    # needs: [meltano-run, lint]
+    needs: [meltano-run]
     container:
       image: meltano/meltano:latest-python3.9
 
@@ -122,26 +122,37 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3.5.2
 
-      - name: Setup Google Credentials
-        env:
-          CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-        run: echo "${CREDENTIALS}" | base64 --decode > .secrets/credentials.json
-
       - name: Check Meltano
         run: |
           meltano --version
 
-      - name: Install dbt-bigquery
+      - name: Install dbt-duckdb
         run: |
-          meltano install transformer dbt-bigquery
+          meltano install transformer dbt-duckdb
 
-      - name: Transform
-        run: |
-          meltano run dbt-bigquery:run
+      - name: Download warehouse
+        uses: actions/download-artifact@v3.0.2
+        with:
+          name: warehouse
+          path: evidence/$MELTANO_ENVIRONMENT.prod
 
-      - name: Test Data
+      - name: Import warehouse
         run: |
-          meltano test dbt-bigquery
+          meltano invoke dbt-duckdb run-operation import
+
+      - name: Transform and Test
+        run: |
+          meltano run dbt-duckdb:build
+
+      - name: Export database
+        run: |
+          meltano invoke dbt-duckdb run-operation export
+
+      - name: Upload database
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: warehouse
+          path: evidence/$MELTANO_ENVIRONMENT.prod
 
   build-evidence:
     name: Build Evidence site locally
@@ -149,10 +160,6 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: meltano/meltano:latest-python3.9
-    env:
-      EVIDENCE_SETTINGS_BIGQUERY_PROJECT_ID: ${{ secrets.BQ_PROJECT_ID }}
-      EVIDENCE_SETTINGS_BIGQUERY_CLIENT_EMAIL: ${{ secrets.BQ_CLIENT_EMAIL }}
-      EVIDENCE_SETTINGS_BIGQUERY_PRIVATE_KEY: ${{ secrets.BQ_PRIVATE_KEY }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3.5.2
@@ -163,7 +170,18 @@ jobs:
 
       - name: Install evidence
         run: |
+          meltano install transform dbt-duckdb
           meltano install utility evidence
+
+      - name: Download warehouse
+        uses: actions/download-artifact@v3.0.2
+        with:
+          name: warehouse
+          path: evidence/$MELTANO_ENVIRONMENT.prod
+
+      - name: Import warehouse
+        run: |
+          meltano invoke dbt-duckdb run-operation import
 
       - name: Build
         run: |

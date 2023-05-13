@@ -6,8 +6,8 @@ description: Open source I maintain
 ```rtd_projects
 select
   gh.name
-  , extract(DATE from gh.created_at) as created
-  , extract(DATE from gh.updated_at) as updated
+  , date_trunc('day', gh.created_at)::varchar as created
+  , date_trunc('day', gh.updated_at)::varchar as updated
   , gh.description
   , gh.html_url as repository
   , gh.stargazers_count
