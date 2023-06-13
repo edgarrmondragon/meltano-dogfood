@@ -9,10 +9,16 @@
   },
   "engines": {
     "npm": ">=7.0.0",
-    "node": ">=14.0.0"
+    "node": ">=16.14.0"
   },
   "type": "module",
   "dependencies": {
-    "@evidence-dev/evidence": "^17.0.3"
+    "@evidence-dev/core-components": "1.0.2",
+    "@evidence-dev/evidence": "^18.0.2"
+  },
+  "overrides": {
+    "jsonwebtoken": "9.0.0",
+    "trim@<0.0.3": ">0.0.3",
+    "sqlite3": "5.1.5"
   }
 }
