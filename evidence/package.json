@@ -13,7 +13,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@evidence-dev/core-components": "1.0.2",
+    "@evidence-dev/core-components": "1.0.3",
     "@evidence-dev/evidence": "^18.0.2"
   },
   "overrides": {
