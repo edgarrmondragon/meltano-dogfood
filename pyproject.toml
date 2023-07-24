@@ -2,7 +2,7 @@
 max_line_length = 100
 
 [tool.sqlfluff.core]
-dialect = "bigquery"
+dialect = "duckdb"
 templater = "dbt"
 sql_file_exts = ".sql"
 
@@ -11,7 +11,7 @@ tab_space_size = 2
 
 [tool.sqlfluff.templater.dbt]
 project_dir = "./transform"
-profiles_dir = "./transform/profiles/bigquery/"
+profiles_dir = "./transform/profiles/duckdb/"
 profile = "self"
 
 [tool.sqlfluff.layout.type.comma]

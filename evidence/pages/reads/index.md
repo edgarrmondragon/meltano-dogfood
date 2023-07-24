@@ -119,7 +119,7 @@ Most used tags:
 
 ```author_tally
 select
-  name
+  author_name
   , count(*) as total
 from prod.authors
 group by name

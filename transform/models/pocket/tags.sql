@@ -5,8 +5,7 @@ set items = source('pocket', 'items')
 -%}
 
 with tags as (
-  select
-    unnest(from_json(tags, '["json"]')) as tag
+  select unnest(from_json(tags, '["json"]')) as tag
   from {{ source('pocket', 'items') }}
 )
 

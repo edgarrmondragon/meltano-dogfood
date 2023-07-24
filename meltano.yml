@@ -56,23 +56,11 @@ plugins:
     variant: sqlfluff
     pip_url: dbt-core~=1.5.0 dbt-duckdb~=1.5.2 sqlfluff>=2.1.0 sqlfluff-templater-dbt>=2.1.0
     settings:
-    - name: keyfile
+    - name: path
       env_aliases:
-      - DBT_BIGQUERY_KEYFILE
-    - name: project_id
-      env_aliases:
-      - DBT_BIGQUERY_PROJECT_ID
-    - name: dataset_id
-      env_aliases:
-      - DBT_BIGQUERY_DATASET_ID
-    - name: location
-      env_aliases:
-      - DBT_BIGQUERY_LOCATION
+      - DBT_DUCKDB_PATH
     config:
-      project_id: $BQ_PROJECT_ID
-      dataset_id: ${MELTANO_ENVIRONMENT}
-      keyfile: ${MELTANO_PROJECT_ROOT}/.secrets/credentials.json
-      location: $BQ_LOCATION
+      path: $DUCKDB_PATH
   - name: evidence
     variant: meltanolabs
     pip_url: evidence-ext>=0.5

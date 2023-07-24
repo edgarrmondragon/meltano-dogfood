@@ -78,29 +78,29 @@ jobs:
           name: singer-metrics
           path: logs/singer_metrics_${{ matrix.job }}.log
 
-  # lint:
-  #   name: Lint models
-  #   runs-on: ubuntu-latest
-  #   container:
-  #     image: meltano/meltano:latest-python3.9
+  lint:
+    name: Lint models
+    runs-on: ubuntu-latest
+    container:
+      image: meltano/meltano:latest-python3.9
 
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v3.5.3
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3.5.3
 
-  #     - name: Check Meltano
-  #       run: |
-  #         meltano --version
+      - name: Check Meltano
+        run: |
+          meltano --version
 
-  #     - name: Install SQLFluff
-  #       run: |
-  #         meltano install utility sqlfluff
+      - name: Install SQLFluff
+        run: |
+          meltano install utility sqlfluff
 
-  #     - name: Lint
-  #       env:
-  #         MELTANO_CLI_LOG_LEVEL: info
-  #       run: |
-  #         meltano invoke sqlfluff:lint --format github-annotation-native -v transform/models
+      - name: Lint
+        env:
+          MELTANO_CLI_LOG_LEVEL: info
+        run: |
+          meltano invoke sqlfluff:lint --format github-annotation-native -v transform/models
 
   transform:
     name: Data Transformation with dbt-duckdb
