@@ -20,6 +20,7 @@ on:
 
 env:
   # MELTANO_DATABASE_URI: ${{ secrets.MELTANO_DATABASE_URI }}
+  DUCKDB_PATH: ${{ secrets.DUCKDB_PATH }}
   MELTANO_CLI_LOG_CONFIG: logging/ci.yaml
   MELTANO_ENVIRONMENT: ${{ github.event.inputs.environment || 'prod' }}
   MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
