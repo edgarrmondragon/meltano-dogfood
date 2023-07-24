@@ -22,6 +22,7 @@ env:
   # MELTANO_DATABASE_URI: ${{ secrets.MELTANO_DATABASE_URI }}
   MELTANO_CLI_LOG_CONFIG: logging/ci.yaml
   MELTANO_ENVIRONMENT: ${{ github.event.inputs.environment || 'prod' }}
+  MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
 
 jobs:
   meltano-run:
@@ -65,16 +66,6 @@ jobs:
       - name: Run
         run: |
           meltano run ${{ matrix.job }}
-
-      - name: Export database
-        run: |
-          meltano invoke dbt-duckdb run-operation export
-
-      - name: Upload database
-        uses: actions/upload-artifact@v3.1.2
-        with:
-          name: warehouse
-          path: transform/warehouse
 
       - name: Rename metrics log
         run: |
@@ -130,29 +121,9 @@ jobs:
         run: |
           meltano install transformer dbt-duckdb
 
-      - name: Download warehouse
-        uses: actions/download-artifact@v3.0.2
-        with:
-          name: warehouse
-          path: transform/warehouse
-
-      - name: Import warehouse
-        run: |
-          meltano invoke dbt-duckdb run-operation import
-
       - name: Transform and Test
         run: |
           meltano run dbt-duckdb:build
-
-      - name: Export database
-        run: |
-          meltano invoke dbt-duckdb run-operation export
-
-      - name: Upload database
-        uses: actions/upload-artifact@v3.1.2
-        with:
-          name: warehouse
-          path: transform/warehouse
 
   build-evidence:
     name: Build Evidence site locally
@@ -172,16 +143,6 @@ jobs:
         run: |
           meltano install transform dbt-duckdb
           meltano install utility evidence
-
-      - name: Download warehouse
-        uses: actions/download-artifact@v3.0.2
-        with:
-          name: warehouse
-          path: evidence/$MELTANO_ENVIRONMENT.prod
-
-      - name: Import warehouse
-        run: |
-          meltano invoke dbt-duckdb run-operation import
 
       - name: Build
         run: |
