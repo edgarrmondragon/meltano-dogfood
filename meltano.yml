@@ -81,7 +81,7 @@ plugins:
       settings:
         database: duckdb
         duckdb:
-          filename: $MELTANO_ENVIRONMENT.duckdb
+          filename: $DUCKDB_PATH
 environments:
 - name: dev
   config:
