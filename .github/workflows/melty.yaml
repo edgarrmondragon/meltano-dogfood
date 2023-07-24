@@ -62,7 +62,6 @@ jobs:
 
       - name: Install Plugins
         run: |
-          meltano install transformer dbt-duckdb
           meltano install --schedule ${{ matrix.schedule }}
 
       - name: Run
