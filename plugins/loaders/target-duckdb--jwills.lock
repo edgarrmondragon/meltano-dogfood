@@ -19,7 +19,6 @@
     {
       "name": "path",
       "kind": "string",
-      "value": "${MELTANO_PROJECT_ROOT}/output/warehouse.duckdb",
       "label": "Connection Path",
       "description": "The path to use for the `duckdb.connect` call; either a local file or a MotherDuck connection uri.",
       "placeholder": "/path/to/local/file.duckdb"
@@ -27,6 +26,7 @@
     {
       "name": "filepath",
       "kind": "string",
+      "value": "${MELTANO_PROJECT_ROOT}/output/warehouse.duckdb",
       "label": "File Path",
       "description": "Alias of `path`.",
       "placeholder": "/path/to/local/file.duckdb"
