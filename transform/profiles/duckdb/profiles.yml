@@ -1,0 +1,13 @@
+config:
+  send_anonymous_usage_stats: false
+  use_colors: true
+
+self:
+  target: duckdb
+  outputs:
+    duckdb:
+      type: duckdb
+      path: "{{ env_var('DBT_DUCKDB_PATH') }}"
+      extensions:
+      - httpfs
+      - parquet

@@ -20,10 +20,10 @@ on:
 
 env:
   MELTANO_DATABASE_URI: ${{ secrets.MELTANO_DATABASE_URI }}
+  DUCKDB_PATH: ${{ secrets.DUCKDB_PATH }}
   MELTANO_CLI_LOG_CONFIG: logging/ci.yaml
   MELTANO_ENVIRONMENT: ${{ github.event.inputs.environment || 'prod' }}
-  BQ_PROJECT_ID: ${{ secrets.BQ_PROJECT_ID }}
-  BQ_LOCATION: ${{ secrets.BQ_LOCATION }}
+  MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
 
 jobs:
   meltano-run:
@@ -38,27 +38,23 @@ jobs:
         TAP_GITHUB_AUTH_TOKEN: ${{ secrets.TAP_GITHUB_AUTH_TOKEN }}
         TAP_READTHEDOCS_TOKEN: ${{ secrets.TAP_READTHEDOCS_TOKEN }}
         TAP_STACKEXCHANGE_KEY: ${{ secrets.TAP_STACKEXCHANGE_KEY }}
+        TARGET_DUCKDB_PATH: ${{ secrets.TARGET_DUCKDB_PATH }}
     strategy:
       matrix:
         include:
-          - job: "pocket-to-bq"
+          - job: "pocket-to-duckdb"
             schedule: "daily_pocket"
-          - job: "stackoverflow-to-bq"
+          - job: "stackoverflow-to-duckdb"
             schedule: "daily_stackoverflow"
-          - job: "rtd-to-bq"
+          - job: "rtd-to-duckdb"
             schedule: "daily_readthedocs"
-          - job: "gh-to-bq"
+          - job: "gh-to-duckdb"
             schedule: "daily_github"
       fail-fast: false
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3.5.3
-
-      - name: Setup Google Credentials
-        env:
-          CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-        run: echo "${CREDENTIALS}" | base64 --decode > .secrets/credentials.json
 
       - name: Check Meltano
         run: |
@@ -92,11 +88,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3.5.3
 
-      - name: Setup Google Credentials
-        env:
-          CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-        run: echo "${CREDENTIALS}" | base64 --decode > .secrets/credentials.json
-
       - name: Check Meltano
         run: |
           meltano --version
@@ -112,7 +103,7 @@ jobs:
           meltano invoke sqlfluff:lint --format github-annotation-native -v transform/models
 
   transform:
-    name: Data Transformation with dbt-bigquery
+    name: Data Transformation with dbt-duckdb
     runs-on: ubuntu-latest
     needs: [meltano-run, lint]
     container:
@@ -122,26 +113,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3.5.3
 
-      - name: Setup Google Credentials
-        env:
-          CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-        run: echo "${CREDENTIALS}" | base64 --decode > .secrets/credentials.json
-
       - name: Check Meltano
         run: |
           meltano --version
 
-      - name: Install dbt-bigquery
+      - name: Install dbt-duckdb
         run: |
-          meltano install transformer dbt-bigquery
+          meltano install transformer dbt-duckdb
 
-      - name: Transform
+      - name: Transform and Test
         run: |
-          meltano run dbt-bigquery:run
-
-      - name: Test Data
-        run: |
-          meltano test dbt-bigquery
+          meltano run dbt-duckdb:build
 
   build-evidence:
     name: Build Evidence site locally
@@ -149,10 +131,6 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: meltano/meltano:latest-python3.9
-    env:
-      EVIDENCE_SETTINGS_BIGQUERY_PROJECT_ID: ${{ secrets.BQ_PROJECT_ID }}
-      EVIDENCE_SETTINGS_BIGQUERY_CLIENT_EMAIL: ${{ secrets.BQ_CLIENT_EMAIL }}
-      EVIDENCE_SETTINGS_BIGQUERY_PRIVATE_KEY: ${{ secrets.BQ_PRIVATE_KEY }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3.5.3
@@ -163,6 +141,7 @@ jobs:
 
       - name: Install evidence
         run: |
+          meltano install transform dbt-duckdb
           meltano install utility evidence
 
       - name: Build

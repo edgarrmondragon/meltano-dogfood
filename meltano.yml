@@ -34,136 +34,42 @@ plugins:
     - repositories.*
     - stargazers.*
   loaders:
-  - name: target-bigquery
-    namespace: bigquery
-    pip_url: pipelinewise-target-bigquery
-    settings:
-    - name: project_id
-      description: BigQuery project
-    - name: location
-      value: US
-      description: Region where BigQuery stores your dataset
-    - name: default_target_schema
-      value: $MELTANO_EXTRACT__LOAD_SCHEMA
-      description: >
-        Name of the schema where the tables will be created. If `schema_mapping`
-        is not defined then every stream sent by the tap is loaded into this schema.
-    - name: default_target_schema_select_permission
-      description: >
-        Grant USAGE privilege on newly created schemas and grant SELECT
-        privilege on newly created
-    - name: schema_mapping
-      kind: object
-      description: >
-        Useful if you want to load multiple streams from one tap to multiple
-        BigQuery schemas.
-    - name: batch_size_rows
-      kind: integer
-      value: 100000
-      description: >
-        Maximum number of rows in each batch. At the end of each batch,
-        the rows in the batch are loaded into BigQuery.\n"
-    - name: batch_wait_limit_seconds
-      kind: integer
-      description: Maximum time to wait for batch to reach batch_size_rows.
-    - name: flush_all_streams
-      kind: boolean
-      value: false
-    - name: parallelism
-      kind: integer
-      value: 0
-    - name: max_parallelism
-      kind: integer
-      value: 16
-    - name: add_metadata_columns
-      kind: boolean
-      value: true
-      description: Metadata columns add extra row level information about data ingestions
-    - name: credentials
-      env: GOOGLE_APPLICATION_CREDENTIALS
-      description: Path to Google API credentials file
-    config:
-      project_id: $BQ_PROJECT_ID
-      location: $BQ_LOCATION
-      credentials: ${MELTANO_PROJECT_ROOT}/.secrets/credentials.json
-    dialect: bigquery
-    target_schema: $MELTANO_LOAD_DEFAULT_TARGET_SCHEMA
   - name: target-jsonl
     variant: andyh1203
     pip_url: target-jsonl
     target_schema: ''
   - name: target-duckdb
     variant: jwills
-    pip_url: target-duckdb~=0.4
+    pip_url: git+https://github.com/jwills/target-duckdb.git@refs/pull/26/head
     config:
-      filepath: output/$MELTANO_ENVIRONMENT.duckdb
+      path: $DUCKDB_PATH
       default_target_schema: $MELTANO_EXTRACT__LOAD_SCHEMA
     target_schema: $MELTANO_LOAD_DEFAULT_TARGET_SCHEMA
   transformers:
-  - name: dbt-bigquery
-    namespace: dbt_bigquery
-    pip_url: dbt-core~=1.5.0 dbt-bigquery~=1.5.0
-    executable: dbt
-    settings:
-    - name: project_dir
-      value: $MELTANO_PROJECT_ROOT/transform
-    - name: profiles_dir
-      env_aliases:
-      - DBT_PROFILES_DIR
-      value: $MELTANO_PROJECT_ROOT/transform/profiles/bigquery
-    - name: project_id
-    - name: dataset_id
-    - name: keyfile
-    - name: location
-    commands:
-      run:
-        args: run
-        description: Compile SQL and execute against the current target database.
-      compile: compile
-      docs-serve: docs serve
-      docs-generate: docs generate
-      clean:
-        args: clean
-        description: Delete all folders in the clean-targets list (usually the dbt_modules
-          and target directories.)
-      test:
-        args: test
-        description: Test dbt models
+  - name: dbt-duckdb
+    variant: jwills
+    pip_url: dbt-core~=1.5.0 dbt-duckdb~=1.5.2
     config:
-      target: bigquery
-      project_id: $BQ_PROJECT_ID
-      dataset_id: ${MELTANO_ENVIRONMENT}
-      keyfile: ${MELTANO_PROJECT_ROOT}/.secrets/credentials.json
-      location: $BQ_LOCATION
+      path: $DUCKDB_PATH
   utilities:
   - name: sqlfluff
     variant: sqlfluff
-    pip_url: dbt-core~=1.5.0 dbt-bigquery~=1.5.0 sqlfluff>=2.1.0 sqlfluff-templater-dbt>=2.1.0
+    pip_url: dbt-core~=1.5.0 dbt-duckdb~=1.5.2 sqlfluff>=2.1.0 sqlfluff-templater-dbt>=2.1.0
     settings:
-    - name: keyfile
+    - name: path
       env_aliases:
-      - DBT_BIGQUERY_KEYFILE
-    - name: project_id
-      env_aliases:
-      - DBT_BIGQUERY_PROJECT_ID
-    - name: dataset_id
-      env_aliases:
-      - DBT_BIGQUERY_DATASET_ID
-    - name: location
-      env_aliases:
-      - DBT_BIGQUERY_LOCATION
+      - DBT_DUCKDB_PATH
     config:
-      project_id: $BQ_PROJECT_ID
-      dataset_id: ${MELTANO_ENVIRONMENT}
-      keyfile: ${MELTANO_PROJECT_ROOT}/.secrets/credentials.json
-      location: $BQ_LOCATION
+      path: $DUCKDB_PATH
   - name: evidence
     variant: meltanolabs
     pip_url: evidence-ext>=0.5
     config:
       home_dir: $MELTANO_PROJECT_ROOT/evidence
       settings:
-        database: bigquery
+        database: duckdb
+        duckdb:
+          filename: $DUCKDB_PATH
 environments:
 - name: dev
   config:
@@ -193,9 +99,15 @@ jobs:
 - name: stackoverflow-to-bq
   tasks:
   - tap-stackexchange target-bigquery
+- name: stackoverflow-to-duckdb
+  tasks:
+  - tap-stackexchange target-duckdb
 - name: rtd-to-bq
   tasks:
   - tap-readthedocs target-bigquery
+- name: rtd-to-duckdb
+  tasks:
+  - tap-readthedocs target-duckdb
 - name: gh-to-bq
   tasks:
   - tap-github target-bigquery
@@ -205,13 +117,13 @@ jobs:
 schedules:
 - name: daily_pocket
   interval: 0 12 * * *
-  job: pocket-to-bq
+  job: pocket-to-duckdb
 - name: daily_stackoverflow
   interval: 0 12 * * *
-  job: stackoverflow-to-bq
+  job: stackoverflow-to-duckdb
 - name: daily_readthedocs
   interval: 0 12 * * *
-  job: rtd-to-bq
+  job: rtd-to-duckdb
 - name: daily_github
   interval: 0 12 * * *
-  job: gh-to-bq
+  job: gh-to-duckdb
