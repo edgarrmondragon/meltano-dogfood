@@ -1,0 +1,29 @@
+version: 1
+disable_existing_loggers: yes
+
+formatters:
+  structured_colored:
+    (): meltano.core.logging.console_log_formatter
+    colors: True
+  json:
+    (): meltano.core.logging.json_formatter
+handlers:
+  file:
+    class: logging.FileHandler
+    level: DEBUG
+    filename: logs/meltano.log
+    formatter: json
+  http:
+    class: logging.FileHandler
+    level: DEBUG
+    filename: logs/http.log
+    formatter: json
+root:
+  level: DEBUG
+  propagate: yes
+  handlers: [file]
+loggers:
+  urllib3:
+    level: DEBUG
+    propagate: yes
+    handlers: [http]

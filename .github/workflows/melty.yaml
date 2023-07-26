@@ -20,14 +20,14 @@ on:
 
 env:
   MELTANO_DATABASE_URI: ${{ secrets.MELTANO_DATABASE_URI }}
+  DUCKDB_PATH: ${{ secrets.DUCKDB_PATH }}
+  MELTANO_CLI_LOG_CONFIG: logging/ci.yaml
   MELTANO_ENVIRONMENT: ${{ github.event.inputs.environment || 'prod' }}
-  MELTANO_CLI_LOG_LEVEL: ${{ github.event.inputs.logLevel || 'info' }}
-  BQ_PROJECT_ID: ${{ secrets.BQ_PROJECT_ID }}
-  BQ_LOCATION: ${{ secrets.BQ_LOCATION }}
+  MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
 
 jobs:
   meltano-run:
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'  || contains(github.event.pull_request.labels.*.name, 'Test/ELTP') }}
+    if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'  || contains(github.event.pull_request.labels.*.name, 'Test/ELTP') }}
     name: "Meltano Job: ${{ matrix.job }}"
     runs-on: ubuntu-latest
     container:
@@ -35,24 +35,26 @@ jobs:
       env:
         TAP_GETPOCKET_CONSUMER_KEY: ${{ secrets.TAP_GETPOCKET_CONSUMER_KEY }}
         TAP_GETPOCKET_ACCESS_TOKEN: ${{ secrets.TAP_GETPOCKET_ACCESS_TOKEN }}
+        TAP_GITHUB_AUTH_TOKEN: ${{ secrets.TAP_GITHUB_AUTH_TOKEN }}
         TAP_READTHEDOCS_TOKEN: ${{ secrets.TAP_READTHEDOCS_TOKEN }}
         TAP_STACKEXCHANGE_KEY: ${{ secrets.TAP_STACKEXCHANGE_KEY }}
+        TARGET_DUCKDB_PATH: ${{ secrets.TARGET_DUCKDB_PATH }}
     strategy:
       matrix:
         include:
-          - { job: "pocket-to-bq" }
-          - { job: "stackoverflow-to-bq" }
-          - { job: "rtd-to-bq" }
+          - job: "pocket-to-duckdb"
+            schedule: "daily_pocket"
+          - job: "stackoverflow-to-duckdb"
+            schedule: "daily_stackoverflow"
+          - job: "rtd-to-duckdb"
+            schedule: "daily_readthedocs"
+          - job: "gh-to-duckdb"
+            schedule: "daily_github"
       fail-fast: false
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3.3.0
-
-      - name: Setup Google Credentials
-        env:
-          CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-        run: echo "${CREDENTIALS}" | base64 --decode > .secrets/credentials.json
+        uses: actions/checkout@v3.5.3
 
       - name: Check Meltano
         run: |
@@ -60,11 +62,21 @@ jobs:
 
       - name: Install Plugins
         run: |
-          meltano install
+          meltano install --schedule ${{ matrix.schedule }}
 
       - name: Run
         run: |
           meltano run ${{ matrix.job }}
+
+      - name: Rename metrics log
+        run: |
+          mv logs/singer_metrics.log logs/singer_metrics_${{ matrix.job }}.log
+
+      - name: Upload metrics log
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: singer-metrics
+          path: logs/singer_metrics_${{ matrix.job }}.log
 
   lint:
     name: Lint models
@@ -74,12 +86,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3.3.0
-
-      - name: Setup Google Credentials
-        env:
-          CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-        run: echo "${CREDENTIALS}" | base64 --decode > .secrets/credentials.json
+        uses: actions/checkout@v3.5.3
 
       - name: Check Meltano
         run: |
@@ -96,7 +103,7 @@ jobs:
           meltano invoke sqlfluff:lint --format github-annotation-native -v transform/models
 
   transform:
-    name: Data Transformation with dbt-bigquery
+    name: Data Transformation with dbt-duckdb
     runs-on: ubuntu-latest
     needs: [meltano-run, lint]
     container:
@@ -104,36 +111,75 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3.3.0
-
-      - name: Setup Google Credentials
-        env:
-          CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-        run: echo "${CREDENTIALS}" | base64 --decode > .secrets/credentials.json
+        uses: actions/checkout@v3.5.3
 
       - name: Check Meltano
         run: |
           meltano --version
 
-      - name: Install dbt-bigquery
+      - name: Install dbt-duckdb
         run: |
-          meltano install transformer dbt-bigquery
+          meltano install transformer dbt-duckdb
 
-      - name: Transform
+      - name: Transform and Test
         run: |
-          meltano run dbt-bigquery:run
+          meltano run dbt-duckdb:build
 
-      - name: Test Data
-        run: |
-          meltano test dbt-bigquery
-
-  evidence:
-    name: Request Vercel Webhook
+  build-evidence:
+    name: Build Evidence site locally
     needs: [transform]
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'schedule' }}
     runs-on: ubuntu-latest
+    container:
+      image: meltano/meltano:latest-python3.9
     steps:
-      - name: POST to Vercel Deploy Hook
-        env:
-          BUILD_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
-        run: curl -X POST -d {} $BUILD_HOOK
+      - name: Checkout code
+        uses: actions/checkout@v3.5.3
+
+      - name: Check Meltano
+        run: |
+          meltano --version
+
+      - name: Install evidence
+        run: |
+          meltano install transform dbt-duckdb
+          meltano install utility evidence
+
+      - name: Build
+        run: |
+          meltano invoke evidence build --strict
+
+      - name: Upload Evidence build
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: evidence-build
+          path: evidence/build
+
+  deploy-evidence:
+    name: Deploy Evidence site
+    needs: [build-evidence]
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3.5.3
+
+      - name: Set Git config
+        run: |
+          git config --global --add safe.directory /__w/meltano-dataops/meltano-dataops
+
+      - name: Download Evidence build
+        uses: actions/download-artifact@v3.0.2
+        with:
+          name: evidence-build
+          path: evidence/build
+
+      - name: Deploy
+        uses: amondnet/vercel-action@v25.1.1
+        with:
+          github-comment: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: ${{ github.event_name == 'pull_request' && '' || '--prod' }}

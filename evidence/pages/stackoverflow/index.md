@@ -1,11 +1,14 @@
-# StackOverflow Stats
+---
+title: StackOverflow Stats
+description: Some activity stats from StackOverflow of selected tags
+---
 
 ```question_stats
 select
   status
   , total_questions
   , round(avg_score, 3) as avg_score
-from prod.question_stats
+from question_stats
 ```
 
 <script>

@@ -28,3 +28,4 @@ updates:
       - "edgarrmondragon"
     labels:
       - "dependencies"
+      - "Test/ELTP"
