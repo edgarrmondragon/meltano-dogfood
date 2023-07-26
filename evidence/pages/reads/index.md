@@ -8,7 +8,7 @@ description: Pocket reads
 ```total_pending_pocket_reads
 select
   count(*) as total
-from prod.items
+from items
 where read_at is null
 ```
 
@@ -22,7 +22,7 @@ select
   , resolved_title
   , time_to_read
   , given_url
-from prod.items
+from items
 where read_at is null
 order by added_at desc
 limit 5
@@ -51,7 +51,7 @@ select
   , resolved_title
   , time_to_read
   , given_url
-from prod.items
+from items
 where read_at is not null
 order by read_at desc
 limit 5
@@ -76,7 +76,7 @@ limit 5
 select
   date_trunc('day', read_at) as date
   , count(*) as total
-from prod.items
+from items
 where read_at is not null and datediff('day', read_at, now()::timestamp) <= 7
 group by date
 order by date desc
@@ -102,7 +102,7 @@ No reads in the last 7 days.
 select
   tag
   , count(*) as total
-from prod.tags
+from tags
 group by tag
 order by total desc
 limit 10
@@ -115,14 +115,14 @@ Most used tags:
     rows=10
 />
 
-## Auhors
+## Authors
 
 ```author_tally
 select
   author_name
   , count(*) as total
-from prod.authors
-group by name
+from authors
+group by author_name
 order by total desc
 limit 5
 ```
