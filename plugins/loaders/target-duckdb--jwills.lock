@@ -6,7 +6,7 @@
   "label": "DuckDB",
   "docs": "https://hub.meltano.com/loaders/target-duckdb--jwills",
   "repo": "https://github.com/jwills/target-duckdb",
-  "pip_url": "target-duckdb~=0.4",
+  "pip_url": "target-duckdb~=0.6",
   "description": "DuckDB loader",
   "logo_url": "https://hub.meltano.com/assets/logos/loaders/duckdb.png",
   "settings_group_validation": [
@@ -17,12 +17,51 @@
   ],
   "settings": [
     {
+      "name": "path",
+      "kind": "string",
+      "label": "Connection Path",
+      "description": "The path to use for the `duckdb.connect` call; either a local file or a MotherDuck connection uri.",
+      "placeholder": "/path/to/local/file.duckdb"
+    },
+    {
       "name": "filepath",
       "kind": "string",
       "value": "${MELTANO_PROJECT_ROOT}/output/warehouse.duckdb",
       "label": "File Path",
-      "description": "Path to the local DuckDB file.",
-      "placeholder": "/path/to/local/duckdb.file"
+      "description": "Alias of `path`.",
+      "placeholder": "/path/to/local/file.duckdb"
+    },
+    {
+      "name": "dbname",
+      "kind": "string",
+      "label": "Database",
+      "description": "The database name to write to; this will be inferred from the path property if it is not specified."
+    },
+    {
+      "name": "database",
+      "kind": "string",
+      "label": "Database name",
+      "description": "Alias of `dbname`."
+    },
+    {
+      "name": "token",
+      "kind": "password",
+      "label": "Token",
+      "description": "For MotherDuck connections, the auth token to use."
+    },
+    {
+      "name": "delimiter",
+      "kind": "string",
+      "value": ",",
+      "label": "Delimiter",
+      "description": "The delimiter to use for the CSV files that are used for record imports."
+    },
+    {
+      "name": "quotechar",
+      "kind": "string",
+      "value": "\"",
+      "label": "Quote Character",
+      "description": "The quote character to use for the CSV files that are used for record imports."
     },
     {
       "name": "batch_size_rows",
