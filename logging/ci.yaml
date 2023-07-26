@@ -10,7 +10,7 @@ formatters:
 handlers:
   console:
     class: logging.StreamHandler
-    level: DEBUG
+    level: ERROR
     formatter: structured
     stream: "ext://sys.stderr"
   file:
