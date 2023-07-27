@@ -82,7 +82,7 @@ group by date
 order by date desc
 ```
 
-{#if daily_reads.length !== 0}
+{#if daily_reads != null && daily_reads.length !== 0}
 
 <BarChart
     data={data.daily_reads}
