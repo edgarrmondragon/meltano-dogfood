@@ -77,12 +77,12 @@ select
   date_trunc('day', read_at) as date
   , count(*) as total
 from items
-where read_at is not null and datediff('day', read_at, now()::timestamp) <= 7
+where read_at is not null and datediff('day', read_at, now()::timestamp) <= 21
 group by date
 order by date desc
 ```
 
-{#if daily_reads.length !== 0}
+{#if daily_reads != null && daily_reads.length !== 0}
 
 <BarChart
     data={data.daily_reads}
