@@ -25,7 +25,7 @@ plugins:
     - projects.*
   - name: tap-github
     variant: meltanolabs
-    pip_url: https://api.github.com/repos/meltanolabs/tap-github/zipball/pull/193/head
+    pip_url: git+https://github.com/MeltanoLabs/tap-github.git
     config:
       repositories:
       - edgarrmondragon/citric
