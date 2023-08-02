@@ -5,6 +5,8 @@ cli:
   log_config: logging/ci.yaml
 env:
   SINGER_SDK_LOG_CONFIG: logging/singer_logging.yaml
+ff:
+  plugin_locks_required: true
 plugins:
   extractors:
   - name: tap-getpocket
