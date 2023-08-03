@@ -92,27 +92,15 @@ environments:
     MELTANO_FF_PLUGIN_LOCKS_REQUIRED: 'true'
     MELTANO_FF_STRICT_ENV_VAR_MODE: 'true'
 jobs:
-- name: pocket-to-bq
-  tasks:
-  - tap-getpocket target-bigquery
 - name: pocket-to-duckdb
   tasks:
   - tap-getpocket target-duckdb
-- name: stackoverflow-to-bq
-  tasks:
-  - tap-stackexchange target-bigquery
 - name: stackoverflow-to-duckdb
   tasks:
   - tap-stackexchange target-duckdb
-- name: rtd-to-bq
-  tasks:
-  - tap-readthedocs target-bigquery
 - name: rtd-to-duckdb
   tasks:
   - tap-readthedocs target-duckdb
-- name: gh-to-bq
-  tasks:
-  - tap-github target-bigquery
 - name: gh-to-duckdb
   tasks:
   - tap-github target-duckdb
