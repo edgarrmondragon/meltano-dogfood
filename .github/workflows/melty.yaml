@@ -65,6 +65,8 @@ jobs:
           meltano install --schedule ${{ matrix.schedule }}
 
       - name: Run
+        env:
+          MELTANO_FF_STRICT_ENV_VAR_MODE: true
         run: |
           meltano run ${{ matrix.job }}
 
