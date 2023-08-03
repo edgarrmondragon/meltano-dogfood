@@ -66,7 +66,7 @@ jobs:
 
       - name: Run
         env:
-          MELTANO_FF_PLUGIN_LOCKS_REQUIRED: true
+          MELTANO_FF_STRICT_ENV_VAR_MODE: true
         run: |
           meltano run ${{ matrix.job }}
 
