@@ -65,6 +65,8 @@ jobs:
           meltano install --schedule ${{ matrix.schedule }}
 
       - name: Run
+        env:
+          MELTANO_FF_PLUGIN_LOCKS_REQUIRED: true
         run: |
           meltano run ${{ matrix.job }}
 

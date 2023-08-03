@@ -7,7 +7,6 @@ env:
   SINGER_SDK_LOG_CONFIG: logging/singer_logging.yaml
 ff:
   plugin_locks_required: true
-  strict_env_var_mode: true
 plugins:
   extractors:
   - name: tap-getpocket
