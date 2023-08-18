@@ -102,7 +102,7 @@ jobs:
         env:
           MELTANO_CLI_LOG_LEVEL: info
         run: |
-          meltano invoke sqlfluff:lint --format github-annotation-native -v transform/models
+          meltano invoke sqlfluff:lint --format github-annotation-native -v transform/models evidence/sources
 
   transform:
     name: Data Transformation with dbt-duckdb
