@@ -21,7 +21,12 @@ repos:
     -   id: validate_manifest
 
 -   repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.24.1
+    rev: 0.25.0
     hooks:
     -   id: check-dependabot
     -   id: check-github-workflows
+    -   id: check-jsonschema
+        args:
+        -   --schemafile
+        -   https://raw.githubusercontent.com/meltano/meltano/main/src/meltano/schemas/meltano.schema.json
+        files: ^meltano\.yml$
