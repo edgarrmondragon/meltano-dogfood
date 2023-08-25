@@ -59,8 +59,7 @@ plugins:
     pip_url: dbt-core~=1.5.0 dbt-duckdb~=1.5.2 sqlfluff>=2.1.0 sqlfluff-templater-dbt>=2.1.0
     settings:
     - name: path
-      # env_aliases:
-      # - DBT_DUCKDB_PATH
+      env: DBT_DUCKDB_PATH
     config:
       path: $DUCKDB_PATH
   - name: evidence
