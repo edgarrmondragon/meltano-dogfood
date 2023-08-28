@@ -85,6 +85,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: meltano/meltano:latest-python3.9
+      env:
+        DUCKDB_PATH: ${{ secrets.DUCKDB_PATH }}
 
     steps:
       - name: Checkout code
