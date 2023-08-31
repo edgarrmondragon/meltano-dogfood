@@ -2,6 +2,7 @@ ci:
     autofix_prs: false
     autoupdate_schedule: weekly
     autoupdate_commit_msg: 'chore(deps): pre-commit autoupdate'
+    skip: [check-jsonschema]
 
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
@@ -21,7 +22,12 @@ repos:
     -   id: validate_manifest
 
 -   repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.23.3
+    rev: 0.26.3
     hooks:
     -   id: check-dependabot
     -   id: check-github-workflows
+    -   id: check-jsonschema
+        args:
+        -   --schemafile
+        -   https://raw.githubusercontent.com/meltano/meltano/main/src/meltano/schemas/meltano.schema.json
+        files: ^meltano\.yml$

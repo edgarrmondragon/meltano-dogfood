@@ -122,6 +122,7 @@
     {
       "name": "tags",
       "kind": "array",
+      "value": [],
       "label": "Tags",
       "description": "Question tags"
     }

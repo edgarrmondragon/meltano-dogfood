@@ -1,15 +1,9 @@
 ---
 title: StackOverflow Stats
 description: Some activity stats from StackOverflow of selected tags
+sources:
+  - question_stats: stackoverflow/question_stats.sql
 ---
-
-```question_stats
-select
-  status
-  , total_questions
-  , round(avg_score, 3) as avg_score
-from question_stats
-```
 
 <script>
 const colors = ['#5470C6', '#91CC75'];

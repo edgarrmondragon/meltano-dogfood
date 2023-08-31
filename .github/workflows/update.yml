@@ -17,11 +17,14 @@ jobs:
     name: Meltano Lock Update
     runs-on: ubuntu-latest
     container:
-      image: meltano/meltano:latest-python3.11
+      image: ghcr.io/meltano/meltano:latest-python3.11
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GHCR_IO_TOKEN }}
 
     steps:
     - name: Checkout Code
-      uses: actions/checkout@v3.5.3
+      uses: actions/checkout@v3.6.0
 
     - name: Check Meltano
       run: |
@@ -31,9 +34,16 @@ jobs:
       run: |
         meltano lock --update --all
 
+    - uses: tibdex/github-app-token@v1.8.0
+      id: generate-token
+      with:
+        app_id: ${{ secrets.APP_ID }}
+        private_key: ${{ secrets.APP_PRIVATE_KEY }}
+
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v5.0.2
       with:
+        token: ${{ steps.generate-token.outputs.token }}
         title: 'chore: Update Meltano Plugins'
         branch: meltano-lock-update
         commit-message: 'chore: Update Meltano Plugins'
