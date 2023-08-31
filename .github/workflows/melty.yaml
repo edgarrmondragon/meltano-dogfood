@@ -84,7 +84,7 @@ jobs:
     name: Lint models
     runs-on: ubuntu-latest
     container:
-      image: meltano/meltano:latest-python3.9
+      image: ghcr.io/meltano/meltano:latest-python3.9
       env:
         DUCKDB_PATH: ${{ secrets.DUCKDB_PATH }}
 
@@ -111,7 +111,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [meltano-run, lint]
     container:
-      image: meltano/meltano:latest-python3.9
+      image: ghcr.io/meltano/meltano:latest-python3.9
 
     steps:
       - name: Checkout code
@@ -134,7 +134,7 @@ jobs:
     needs: [transform]
     runs-on: ubuntu-latest
     container:
-      image: meltano/meltano:latest-python3.9
+      image: ghcr.io/meltano/meltano:latest-python3.9
     steps:
       - name: Checkout code
         uses: actions/checkout@v3.6.0
