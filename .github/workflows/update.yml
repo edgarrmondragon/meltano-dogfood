@@ -17,7 +17,10 @@ jobs:
     name: Meltano Lock Update
     runs-on: ubuntu-latest
     container:
-      image: meltano/meltano:latest-python3.11
+      image: ghcr.io/meltano/meltano:latest-python3.11
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GHCR_IO_TOKEN }}
 
     steps:
     - name: Checkout Code

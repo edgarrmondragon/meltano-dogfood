@@ -31,7 +31,10 @@ jobs:
     name: "Meltano Job: ${{ matrix.job }}"
     runs-on: ubuntu-latest
     container:
-      image: meltano/meltano:latest-python3.11
+      image: ghcr.io/meltano/meltano:latest-python3.11
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GHCR_IO_TOKEN }}
       env:
         TAP_GETPOCKET_CONSUMER_KEY: ${{ secrets.TAP_GETPOCKET_CONSUMER_KEY }}
         TAP_GETPOCKET_ACCESS_TOKEN: ${{ secrets.TAP_GETPOCKET_ACCESS_TOKEN }}
@@ -84,7 +87,10 @@ jobs:
     name: Lint models
     runs-on: ubuntu-latest
     container:
-      image: meltano/meltano:latest-python3.9
+      image: ghcr.io/meltano/meltano:latest-python3.9
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GHCR_IO_TOKEN }}
       env:
         DUCKDB_PATH: ${{ secrets.DUCKDB_PATH }}
 
@@ -111,7 +117,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: [meltano-run, lint]
     container:
-      image: meltano/meltano:latest-python3.9
+      image: ghcr.io/meltano/meltano:latest-python3.9
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GHCR_IO_TOKEN }}
 
     steps:
       - name: Checkout code
@@ -134,7 +143,10 @@ jobs:
     needs: [transform]
     runs-on: ubuntu-latest
     container:
-      image: meltano/meltano:latest-python3.9
+      image: ghcr.io/meltano/meltano:latest-python3.9
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GHCR_IO_TOKEN }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3.6.0
