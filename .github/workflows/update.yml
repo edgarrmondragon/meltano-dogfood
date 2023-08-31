@@ -18,6 +18,9 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/meltano/meltano:latest-python3.11
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GHCR_IO_TOKEN }}
 
     steps:
     - name: Checkout Code

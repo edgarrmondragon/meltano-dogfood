@@ -32,6 +32,9 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/meltano/meltano:latest-python3.11
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GHCR_IO_TOKEN }}
       env:
         TAP_GETPOCKET_CONSUMER_KEY: ${{ secrets.TAP_GETPOCKET_CONSUMER_KEY }}
         TAP_GETPOCKET_ACCESS_TOKEN: ${{ secrets.TAP_GETPOCKET_ACCESS_TOKEN }}
@@ -85,6 +88,9 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/meltano/meltano:latest-python3.9
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GHCR_IO_TOKEN }}
       env:
         DUCKDB_PATH: ${{ secrets.DUCKDB_PATH }}
 
@@ -112,6 +118,9 @@ jobs:
     needs: [meltano-run, lint]
     container:
       image: ghcr.io/meltano/meltano:latest-python3.9
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GHCR_IO_TOKEN }}
 
     steps:
       - name: Checkout code
@@ -135,6 +144,9 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/meltano/meltano:latest-python3.9
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GHCR_IO_TOKEN }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3.6.0
