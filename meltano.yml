@@ -42,7 +42,7 @@ plugins:
     target_schema: ''
   - name: target-duckdb
     variant: jwills
-    pip_url: git+https://github.com/jwills/target-duckdb.git@refs/pull/26/head
+    pip_url: git+https://github.com/jwills/target-duckdb.git@main
     config:
       path: $DUCKDB_PATH
       default_target_schema: $MELTANO_EXTRACT__LOAD_SCHEMA
