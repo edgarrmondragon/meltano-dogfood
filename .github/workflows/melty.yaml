@@ -11,10 +11,6 @@ on:
         description: Meltano Environment
         required: true
         default: prod
-      logLevel:
-        description: 'Log level'
-        required: true
-        default: 'warning'
       logConfig:
         description: 'Logging configuration file'
         required: true
