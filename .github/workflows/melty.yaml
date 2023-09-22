@@ -11,17 +11,21 @@ on:
         description: Meltano Environment
         required: true
         default: prod
-      logLevel:
-        description: 'Log level'
+      logConfig:
+        description: 'Logging configuration file'
         required: true
-        default: 'warning'
+        default: 'logging/ci.yaml'
+        type: choice
+        options:
+          - logging/ci.yaml
+          - logging/dev.yaml
   schedule:
     - cron: '0 12 * * *' # Once a day around 6am CST (12am UTC)
 
 env:
   MELTANO_DATABASE_URI: ${{ secrets.MELTANO_DATABASE_URI }}
   DUCKDB_PATH: ${{ secrets.DUCKDB_PATH }}
-  MELTANO_CLI_LOG_CONFIG: logging/ci.yaml
+  MELTANO_CLI_LOG_CONFIG: ${{ github.event.inputs.environment || 'logging/ci.yaml' }}
   MELTANO_ENVIRONMENT: ${{ github.event.inputs.environment || 'prod' }}
   MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
 
