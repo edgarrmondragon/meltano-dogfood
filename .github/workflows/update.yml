@@ -34,7 +34,7 @@ jobs:
       run: |
         meltano lock --update --all
 
-    - uses: tibdex/github-app-token@v2.0.0
+    - uses: tibdex/github-app-token@v2.1.0
       id: generate-token
       with:
         app_id: ${{ secrets.APP_ID }}
