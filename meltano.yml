@@ -41,14 +41,14 @@ plugins:
     pip_url: target-jsonl
   - name: target-duckdb
     variant: jwills
-    pip_url: git+https://github.com/jwills/target-duckdb.git@main
+    pip_url: git+https://github.com/jwills/target-duckdb.git@main duckdb<0.9.0
     config:
       path: $DUCKDB_PATH
       default_target_schema: $MELTANO_EXTRACT__LOAD_SCHEMA
   transformers:
   - name: dbt-duckdb
     variant: jwills
-    pip_url: dbt-core~=1.5.0 dbt-duckdb~=1.5.2
+    pip_url: dbt-core~=1.5.0 dbt-duckdb~=1.5.2 duckdb<0.9.0
     config:
       path: $DUCKDB_PATH
   utilities:
