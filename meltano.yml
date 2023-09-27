@@ -39,14 +39,12 @@ plugins:
   - name: target-jsonl
     variant: andyh1203
     pip_url: target-jsonl
-    target_schema: ''
   - name: target-duckdb
     variant: jwills
     pip_url: git+https://github.com/jwills/target-duckdb.git@main
     config:
       path: $DUCKDB_PATH
       default_target_schema: $MELTANO_EXTRACT__LOAD_SCHEMA
-    target_schema: $MELTANO_LOAD_DEFAULT_TARGET_SCHEMA
   transformers:
   - name: dbt-duckdb
     variant: jwills
