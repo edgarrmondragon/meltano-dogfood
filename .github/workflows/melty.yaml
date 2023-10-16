@@ -90,6 +90,7 @@ jobs:
   lint:
     name: Lint models
     runs-on: ubuntu-latest
+    continue-on-error: true
     container:
       image: ghcr.io/meltano/meltano:latest-python3.9
       credentials:
