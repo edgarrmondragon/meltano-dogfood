@@ -1,8 +1,6 @@
 version: 1
 default_environment: prod
 project_id: b77cad0a-ffd8-494e-9e6b-18d6eacb71d4
-cli:
-  log_config: logging/ci.yaml
 env:
   SINGER_SDK_LOG_CONFIG: logging/singer_logging.yaml
 ff:

@@ -20,5 +20,4 @@ handlers:
     formatter: json
 root:
   level: DEBUG
-  propagate: no
   handlers: [file, console]
