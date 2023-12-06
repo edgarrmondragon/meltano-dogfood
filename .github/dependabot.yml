@@ -1,15 +1,16 @@
 version: 2
 updates:
-  # - package-ecosystem: pip
-  #   directory: "/.github/workflows"
-  #   schedule:
-  #     interval: daily
-  #     time: "11:35"
-  #     timezone: "America/Mexico_City"
-  #   reviewers:
-  #     - "edgarrmondragon"
-  #   labels:
-  #     - "dependencies"
+  - package-ecosystem: pip
+    directory: "/.github/workflows"
+    schedule:
+      interval: weekly
+      time: "11:35"
+      timezone: "America/Mexico_City"
+    reviewers:
+      - "edgarrmondragon"
+    labels:
+      - "dependencies"
+      - "Test/ELTP"
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
@@ -21,7 +22,7 @@ updates:
   - package-ecosystem: "npm"
     directory: "/evidence"
     schedule:
-      interval: daily
+      interval: weekly
       time: "11:35"
       timezone: "America/Mexico_City"
     reviewers:
