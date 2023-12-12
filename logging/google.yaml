@@ -1,0 +1,11 @@
+version: 1
+disable_existing_loggers: false
+
+handlers:
+  google:
+    (): gcp_logging.get_handler
+    project: personal-warehouse-349804
+    logger_name: meltano
+root:
+  level: INFO
+  handlers: [google]
