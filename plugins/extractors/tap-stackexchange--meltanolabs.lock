@@ -50,6 +50,10 @@
         {
           "label": "Jsonl",
           "value": "jsonl"
+        },
+        {
+          "label": "Parquet",
+          "value": "parquet"
         }
       ]
     },
