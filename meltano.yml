@@ -20,7 +20,7 @@ plugins:
     - questions.*
   - name: tap-readthedocs
     variant: edgarrmondragon
-    pip_url: tap-readthedocs==0.1.3
+    pip_url: tap-readthedocs==0.2.0
     select:
     - projects.*
   - name: tap-github
