@@ -82,7 +82,7 @@ jobs:
           mv logs/singer_metrics.log logs/singer_metrics_${{ matrix.job }}.log
 
       - name: Upload metrics log
-        uses: actions/upload-artifact@v3.1.3
+        uses: actions/upload-artifact@v4.0.0
         with:
           name: singer-metrics
           path: logs/singer_metrics_${{ matrix.job }}.log
@@ -170,7 +170,7 @@ jobs:
           meltano invoke evidence build --strict
 
       - name: Upload Evidence build
-        uses: actions/upload-artifact@v3.1.3
+        uses: actions/upload-artifact@v4.0.0
         with:
           name: evidence-build
           path: evidence/build
