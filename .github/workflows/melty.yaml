@@ -35,7 +35,7 @@ jobs:
     name: "Meltano Job: ${{ matrix.job }}"
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/meltano/meltano:latest-python3.11
+      image: ghcr.io/meltano/meltano:latest-python3.12
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GHCR_IO_TOKEN }}
@@ -90,7 +90,7 @@ jobs:
     runs-on: ubuntu-latest
     continue-on-error: true
     container:
-      image: ghcr.io/meltano/meltano:latest-python3.11
+      image: ghcr.io/meltano/meltano:latest-python3.12
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GHCR_IO_TOKEN }}
@@ -118,7 +118,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [meltano-run, lint]
     container:
-      image: ghcr.io/meltano/meltano:latest-python3.11
+      image: ghcr.io/meltano/meltano:latest-python3.12
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GHCR_IO_TOKEN }}
@@ -142,7 +142,7 @@ jobs:
     needs: [transform]
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/meltano/meltano:latest-python3.11
+      image: ghcr.io/meltano/meltano:latest-python3.12
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GHCR_IO_TOKEN }}

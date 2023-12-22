@@ -20,13 +20,7 @@ plugins:
     - questions.*
   - name: tap-readthedocs
     variant: edgarrmondragon
-<<<<<<< HEAD
     pip_url: tap-readthedocs==0.3.0 python-json-logger
-||||||| parent of 30d1e7f (Update meltano.yml)
-    pip_url: tap-readthedocs==0.2.0b1
-=======
-    pip_url: tap-readthedocs==0.3.0
->>>>>>> 30d1e7f (Update meltano.yml)
     select:
     - projects.*
   - name: tap-github
