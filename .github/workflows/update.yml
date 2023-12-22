@@ -24,7 +24,7 @@ jobs:
 
     steps:
     - name: Checkout Code
-      uses: actions/checkout@v3.6.0
+      uses: actions/checkout@v4.1.1
 
     - name: Check Meltano
       run: |
@@ -34,7 +34,7 @@ jobs:
       run: |
         meltano lock --update --all
 
-    - uses: tibdex/github-app-token@v1.8.0
+    - uses: tibdex/github-app-token@v2.1.0
       id: generate-token
       with:
         app_id: ${{ secrets.APP_ID }}

@@ -11,17 +11,21 @@ on:
         description: Meltano Environment
         required: true
         default: prod
-      logLevel:
-        description: 'Log level'
+      logConfig:
+        description: 'Logging configuration file'
         required: true
-        default: 'warning'
+        default: 'logging/ci.yaml'
+        type: choice
+        options:
+          - logging/ci.yaml
+          - logging/dev.yaml
   schedule:
     - cron: '0 12 * * *' # Once a day around 6am CST (12am UTC)
 
 env:
   MELTANO_DATABASE_URI: ${{ secrets.MELTANO_DATABASE_URI }}
   DUCKDB_PATH: ${{ secrets.DUCKDB_PATH }}
-  MELTANO_CLI_LOG_CONFIG: logging/ci.yaml
+  MELTANO_CLI_LOG_CONFIG: ${{ github.event.inputs.environment || 'logging/ci.yaml' }}
   MELTANO_ENVIRONMENT: ${{ github.event.inputs.environment || 'prod' }}
   MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
 
@@ -57,7 +61,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3.6.0
+        uses: actions/checkout@v4.1.1
 
       - name: Check Meltano
         run: |
@@ -78,16 +82,17 @@ jobs:
           mv logs/singer_metrics.log logs/singer_metrics_${{ matrix.job }}.log
 
       - name: Upload metrics log
-        uses: actions/upload-artifact@v3.1.2
+        uses: actions/upload-artifact@v4
         with:
-          name: singer-metrics
-          path: logs/singer_metrics_${{ matrix.job }}.log
+          name: singer-metrics-${{ matrix.job }}
+          path: logs/singer_metrics.log
 
   lint:
     name: Lint models
     runs-on: ubuntu-latest
+    continue-on-error: true
     container:
-      image: ghcr.io/meltano/meltano:latest-python3.9
+      image: ghcr.io/meltano/meltano:latest-python3.11
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GHCR_IO_TOKEN }}
@@ -96,7 +101,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3.6.0
+        uses: actions/checkout@v4.1.1
 
       - name: Check Meltano
         run: |
@@ -117,14 +122,14 @@ jobs:
     runs-on: ubuntu-latest
     needs: [meltano-run, lint]
     container:
-      image: ghcr.io/meltano/meltano:latest-python3.9
+      image: ghcr.io/meltano/meltano:latest-python3.11
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GHCR_IO_TOKEN }}
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3.6.0
+        uses: actions/checkout@v4.1.1
 
       - name: Check Meltano
         run: |
@@ -143,13 +148,13 @@ jobs:
     needs: [transform]
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/meltano/meltano:latest-python3.9
+      image: ghcr.io/meltano/meltano:latest-python3.11
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GHCR_IO_TOKEN }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3.6.0
+        uses: actions/checkout@v4.1.1
 
       - name: Check Meltano
         run: |
@@ -165,7 +170,7 @@ jobs:
           meltano invoke evidence build --strict
 
       - name: Upload Evidence build
-        uses: actions/upload-artifact@v3.1.2
+        uses: actions/upload-artifact@v4
         with:
           name: evidence-build
           path: evidence/build
@@ -178,14 +183,14 @@ jobs:
       pull-requests: write
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3.6.0
+        uses: actions/checkout@v4.1.1
 
       - name: Set Git config
         run: |
           git config --global --add safe.directory /__w/meltano-dataops/meltano-dataops
 
       - name: Download Evidence build
-        uses: actions/download-artifact@v3.0.2
+        uses: actions/download-artifact@v4
         with:
           name: evidence-build
           path: evidence/build

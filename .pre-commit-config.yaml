@@ -1,12 +1,6 @@
-ci:
-    autofix_prs: false
-    autoupdate_schedule: weekly
-    autoupdate_commit_msg: 'chore(deps): pre-commit autoupdate'
-    skip: [check-jsonschema]
-
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v4.5.0
     hooks:
     -   id: check-added-large-files
     -   id: check-json
@@ -17,12 +11,12 @@ repos:
     -   id: trailing-whitespace
 
 -   repo: https://github.com/pre-commit/pre-commit
-    rev: v3.3.3
+    rev: v3.5.0
     hooks:
     -   id: validate_manifest
 
 -   repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.26.3
+    rev: 0.27.1
     hooks:
     -   id: check-dependabot
     -   id: check-github-workflows
