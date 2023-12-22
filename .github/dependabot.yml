@@ -18,6 +18,10 @@ updates:
       - "edgarrmondragon"
     labels:
       - "dependencies"
+    groups:
+      all:
+        patterns:
+          - "*"
   - package-ecosystem: "npm"
     directory: "/evidence"
     schedule:
