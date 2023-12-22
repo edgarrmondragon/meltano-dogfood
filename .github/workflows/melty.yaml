@@ -85,7 +85,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: singer-metrics-${{ matrix.job }}
-          path: logs/singer_metrics.log
+          path: logs/singer_metrics*.log
 
   lint:
     name: Lint models
