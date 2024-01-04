@@ -52,7 +52,8 @@ plugins:
   utilities:
   - name: sqlfluff
     variant: sqlfluff
-    pip_url: dbt-core~=1.7.0 dbt-duckdb~=1.7.0 sqlfluff>=3.0.0a3 sqlfluff-templater-dbt>=3.0.0a3 duckdb==0.9.1
+    pip_url: dbt-core~=1.7.0 dbt-duckdb~=1.7.0 sqlfluff>=3.0.0a3 sqlfluff-templater-dbt>=3.0.0a3
+      duckdb==0.9.1
     settings:
     - name: path
       env: DBT_DUCKDB_PATH
