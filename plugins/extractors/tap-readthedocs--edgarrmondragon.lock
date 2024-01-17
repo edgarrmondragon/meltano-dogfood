@@ -96,7 +96,8 @@
       "name": "token",
       "kind": "password",
       "label": "Token",
-      "description": "Personal Access Token that allows you to use the Read the Docs APIv3 being authenticated as yourself"
+      "description": "Personal Access Token that allows you to use the Read the Docs APIv3 being authenticated as yourself",
+      "sensitive": true
     }
   ]
 }
