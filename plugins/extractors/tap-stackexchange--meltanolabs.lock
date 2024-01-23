@@ -94,7 +94,8 @@
       "kind": "password",
       "label": "Key",
       "documentation": "https://api.stackexchange.com/docs/authentication",
-      "description": "Pass this to receive a higher request quota"
+      "description": "Pass this to receive a higher request quota",
+      "sensitive": true
     },
     {
       "name": "site",
@@ -126,7 +127,9 @@
     {
       "name": "tags",
       "kind": "array",
-      "value": [],
+      "value": [
+        "LimeSurvey"
+      ],
       "label": "Tags",
       "description": "Question tags"
     }

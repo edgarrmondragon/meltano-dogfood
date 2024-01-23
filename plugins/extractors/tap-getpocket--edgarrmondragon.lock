@@ -31,7 +31,8 @@
       "kind": "password",
       "label": "Access Token",
       "documentation": "https://getpocket.com/developer/docs/authentication",
-      "description": "Pocket user access token"
+      "description": "Pocket user access token",
+      "sensitive": true
     },
     {
       "name": "batch_config.encoding.compression",
@@ -82,7 +83,8 @@
       "kind": "password",
       "label": "Consumer Key",
       "documentation": "https://getpocket.com/developer/docs/authentication",
-      "description": "Pocket application key"
+      "description": "Pocket application key",
+      "sensitive": true
     },
     {
       "name": "content_type",

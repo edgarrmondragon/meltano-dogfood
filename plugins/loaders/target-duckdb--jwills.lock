@@ -47,7 +47,8 @@
       "name": "token",
       "kind": "password",
       "label": "Token",
-      "description": "For MotherDuck connections, the auth token to use."
+      "description": "For MotherDuck connections, the auth token to use.",
+      "sensitive": true
     },
     {
       "name": "delimiter",
