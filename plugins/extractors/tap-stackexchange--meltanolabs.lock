@@ -127,9 +127,7 @@
     {
       "name": "tags",
       "kind": "array",
-      "value": [
-        "LimeSurvey"
-      ],
+      "value": [],
       "label": "Tags",
       "description": "Question tags"
     }
