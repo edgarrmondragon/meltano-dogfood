@@ -2,9 +2,21 @@ name: Meltano Pipeline
 
 on:
   pull_request:
-    types: [opened, reopened, labeled, synchronize]
+    branches: [main]
+    paths:
+      - meltano.yml
+      - pyproject.toml
+      - plugins/**/*.lock
+      - transform/models/**/*.sql
+      - .github/workflows/melty.yaml
   push:
     branches: [main]
+    paths:
+      - meltano.yml
+      - pyproject.toml
+      - plugins/**/*.lock
+      - transform/models/**/*.sql
+      - .github/workflows/melty.yaml
   workflow_dispatch:
     inputs:
       environment:
@@ -31,7 +43,6 @@ env:
 
 jobs:
   meltano-run:
-    if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'  || contains(github.event.pull_request.labels.*.name, 'Test/ELTP') }}
     name: "Meltano Job: ${{ matrix.job }}"
     runs-on: ubuntu-latest
     container:
@@ -66,6 +77,8 @@ jobs:
           meltano --version
 
       - name: Install Plugins
+        env:
+          PIP_PREFER_BINARY: "1"
         run: |
           meltano install --schedule ${{ matrix.schedule }}
 
