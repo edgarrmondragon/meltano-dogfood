@@ -68,6 +68,8 @@ jobs:
             schedule: "daily_readthedocs"
           - job: "gh-to-duckdb"
             schedule: "daily_github"
+          - job: "pypistats-to-duckdb"
+            schedule: "daily_pypistats"
       fail-fast: false
 
     steps:
@@ -88,15 +90,11 @@ jobs:
         run: |
           meltano run ${{ matrix.job }}
 
-      - name: Rename metrics log
-        run: |
-          mv logs/singer_metrics.log logs/singer_metrics_${{ matrix.job }}.log
-
       - name: Upload metrics log
         uses: actions/upload-artifact@v4
         with:
           name: singer-metrics-${{ matrix.job }}
-          path: logs/singer_metrics*.log
+          path: logs/singer_metrics.log
 
   lint:
     name: Lint models
