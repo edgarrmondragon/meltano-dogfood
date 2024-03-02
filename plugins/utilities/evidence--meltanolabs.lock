@@ -26,27 +26,27 @@
     ],
     [
       "home_dir",
-      "settings.database",
-      "settings.bigquery.project_id",
       "settings.bigquery.client_email",
-      "settings.bigquery.private_key"
+      "settings.bigquery.private_key",
+      "settings.bigquery.project_id",
+      "settings.database"
     ],
     [
       "home_dir",
       "settings.database",
-      "settings.mysql.host",
       "settings.mysql.database",
-      "settings.mysql.user",
-      "settings.mysql.password"
+      "settings.mysql.host",
+      "settings.mysql.password",
+      "settings.mysql.user"
     ],
     [
       "home_dir",
       "settings.database",
-      "settings.postgres.host",
-      "settings.postgres.port",
       "settings.postgres.database",
-      "settings.postgres.user",
-      "settings.postgres.password"
+      "settings.postgres.host",
+      "settings.postgres.password",
+      "settings.postgres.port",
+      "settings.postgres.user"
     ],
     [
       "home_dir",
@@ -57,9 +57,9 @@
       "home_dir",
       "settings.database",
       "settings.snowflake.account",
-      "settings.snowflake.username",
-      "settings.snowflake.password",
       "settings.snowflake.database",
+      "settings.snowflake.password",
+      "settings.snowflake.username",
       "settings.snowflake.warehouse"
     ]
   ],
@@ -71,6 +71,41 @@
       "value": "$MELTANO_PROJECT_ROOT/analyze/evidence",
       "label": "Evidence Home Dir",
       "description": "The directory where Evidence will store its project, configuration, logs, and other files.\n"
+    },
+    {
+      "name": "send_anonymous_usage_stats",
+      "env": "SEND_ANONYMOUS_USAGE_STATS",
+      "kind": "options",
+      "value": "yes",
+      "label": "Send Anonymous Usage Stats",
+      "description": "Send Evidence anonymous usage stats.\n",
+      "options": [
+        {
+          "value": "yes"
+        },
+        {
+          "value": "no"
+        }
+      ]
+    },
+    {
+      "name": "settings.bigquery.client_email",
+      "env": "BIGQUERY_CLIENT_EMAIL",
+      "kind": "string",
+      "label": "BigQuery Client Email"
+    },
+    {
+      "name": "settings.bigquery.private_key",
+      "env": "BIGQUERY_PRIVATE_KEY",
+      "kind": "password",
+      "label": "BigQuery Private Key",
+      "sensitive": true
+    },
+    {
+      "name": "settings.bigquery.project_id",
+      "env": "BIGQUERY_PROJECT_ID",
+      "kind": "string",
+      "label": "BigQuery Project ID"
     },
     {
       "name": "settings.database",
@@ -128,55 +163,16 @@
       "description": "Gitignore .db and .duckdb files\n"
     },
     {
-      "name": "settings.sqlite.filename",
-      "env": "SQLITE_FILENAME",
+      "name": "settings.mysql.database",
+      "env": "MYSQL_DATABASE",
       "kind": "string",
-      "label": "SQLite Database File Name",
-      "description": "Name of the SQLite database file stored in the same directory as your Evidence project.\n"
-    },
-    {
-      "name": "settings.sqlite.gitignore_sqlite",
-      "env": "MYSQL_GITIGNORESQLITE",
-      "kind": "boolean",
-      "label": "Gitignore SQLite Database Files",
-      "description": "Gitignore all SQLite files.\n"
-    },
-    {
-      "name": "settings.bigquery.project_id",
-      "env": "BIGQUERY_PROJECT_ID",
-      "kind": "string",
-      "label": "BigQuery Project ID"
-    },
-    {
-      "name": "settings.bigquery.client_email",
-      "env": "BIGQUERY_CLIENT_EMAIL",
-      "kind": "string",
-      "label": "BigQuery Client Email"
-    },
-    {
-      "name": "settings.bigquery.private_key",
-      "env": "BIGQUERY_PRIVATE_KEY",
-      "kind": "password",
-      "label": "BigQuery Private Key",
-      "sensitive": true
-    },
-    {
-      "name": "settings.mysql.user",
-      "env": "MYSQL_USER",
-      "kind": "string",
-      "label": "MySQL User"
+      "label": "MySQL Database"
     },
     {
       "name": "settings.mysql.host",
       "env": "MYSQL_HOST",
       "kind": "string",
       "label": "MySQL Host"
-    },
-    {
-      "name": "settings.mysql.database",
-      "env": "MYSQL_DATABASE",
-      "kind": "string",
-      "label": "MySQL Database"
     },
     {
       "name": "settings.mysql.password",
@@ -189,6 +185,13 @@
       "name": "settings.mysql.port",
       "env": "MYSQL_PORT",
       "label": "MySQL Port"
+    },
+    {
+      "name": "settings.mysql.socket_path",
+      "env": "MYSQL_SOCKETPATH",
+      "kind": "string",
+      "label": "MySQL User",
+      "description": "This is an optional field. When using Google Cloud MySQL this is commonly required.\n"
     },
     {
       "name": "settings.mysql.ssl",
@@ -208,17 +211,18 @@
       ]
     },
     {
-      "name": "settings.mysql.socket_path",
-      "env": "MYSQL_SOCKETPATH",
+      "name": "settings.mysql.user",
+      "env": "MYSQL_USER",
       "kind": "string",
-      "label": "MySQL User",
-      "description": "This is an optional field. When using Google Cloud MySQL this is commonly required.\n"
+      "label": "MySQL User"
     },
     {
-      "name": "settings.postgres.host",
-      "env": "POSTGRES_HOST",
-      "kind": "string",
-      "label": "Postgres Host"
+      "name": "settings.postgres.connection_string",
+      "env": "POSTGRES_CONNECTIONSTRING",
+      "kind": "password",
+      "label": "Postgres Connection String",
+      "description": "If your database host provides a connection string, you can use that in place of the fields above.\n",
+      "sensitive": true
     },
     {
       "name": "settings.postgres.database",
@@ -227,16 +231,10 @@
       "label": "Postgres Database"
     },
     {
-      "name": "settings.postgres.port",
-      "env": "POSTGRES_PORT",
+      "name": "settings.postgres.host",
+      "env": "POSTGRES_HOST",
       "kind": "string",
-      "label": "Postgres Port"
-    },
-    {
-      "name": "settings.postgres.user",
-      "env": "POSTGRES_USER",
-      "kind": "string",
-      "label": "Postgres User"
+      "label": "Postgres Host"
     },
     {
       "name": "settings.postgres.password",
@@ -244,6 +242,12 @@
       "kind": "password",
       "label": "Postgres Password",
       "sensitive": true
+    },
+    {
+      "name": "settings.postgres.port",
+      "env": "POSTGRES_PORT",
+      "kind": "string",
+      "label": "Postgres Port"
     },
     {
       "name": "settings.postgres.ssl",
@@ -263,12 +267,10 @@
       ]
     },
     {
-      "name": "settings.postgres.connection_string",
-      "env": "POSTGRES_CONNECTIONSTRING",
-      "kind": "password",
-      "label": "Postgres Connection String",
-      "description": "If your database host provides a connection string, you can use that in place of the fields above.\n",
-      "sensitive": true
+      "name": "settings.postgres.user",
+      "env": "POSTGRES_USER",
+      "kind": "string",
+      "label": "Postgres User"
     },
     {
       "name": "settings.snowflake.account",
@@ -277,10 +279,10 @@
       "label": "Snowflake Account"
     },
     {
-      "name": "settings.snowflake.username",
-      "env": "SNOWFLAKE_USERNAME",
+      "name": "settings.snowflake.database",
+      "env": "SNOWFLAKE_DATABASE",
       "kind": "string",
-      "label": "Snowflake Username"
+      "label": "Snowflake Database"
     },
     {
       "name": "settings.snowflake.password",
@@ -290,10 +292,10 @@
       "sensitive": true
     },
     {
-      "name": "settings.snowflake.database",
-      "env": "SNOWFLAKE_DATABASE",
+      "name": "settings.snowflake.username",
+      "env": "SNOWFLAKE_USERNAME",
       "kind": "string",
-      "label": "Snowflake Database"
+      "label": "Snowflake Username"
     },
     {
       "name": "settings.snowflake.warehouse",
@@ -302,20 +304,18 @@
       "label": "Snowflake Warehouse"
     },
     {
-      "name": "send_anonymous_usage_stats",
-      "env": "SEND_ANONYMOUS_USAGE_STATS",
-      "kind": "options",
-      "value": "yes",
-      "label": "Send Anonymous Usage Stats",
-      "description": "Send Evidence anonymous usage stats.\n",
-      "options": [
-        {
-          "value": "yes"
-        },
-        {
-          "value": "no"
-        }
-      ]
+      "name": "settings.sqlite.filename",
+      "env": "SQLITE_FILENAME",
+      "kind": "string",
+      "label": "SQLite Database File Name",
+      "description": "Name of the SQLite database file stored in the same directory as your Evidence project.\n"
+    },
+    {
+      "name": "settings.sqlite.gitignore_sqlite",
+      "env": "MYSQL_GITIGNORESQLITE",
+      "kind": "boolean",
+      "label": "Gitignore SQLite Database Files",
+      "description": "Gitignore all SQLite files.\n"
     }
   ],
   "commands": {
