@@ -71,7 +71,7 @@
     },
     {
       "name": "faker_config.locale",
-      "kind": "string",
+      "kind": "array",
       "label": "Faker Config Locale",
       "description": "One or more LCID locale strings to produce localized output for: https://faker.readthedocs.io/en/master/#localization"
     },
