@@ -52,6 +52,7 @@ plugins:
       - singer-python
       - target-hotglue
       - pipelinewise-singer-python
+      - dlt
   loaders:
   - name: target-jsonl
     variant: andyh1203
