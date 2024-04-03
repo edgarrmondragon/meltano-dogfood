@@ -9,6 +9,10 @@ on:
       - plugins/**/*.lock
       - transform/models/**/*.sql
       - .github/workflows/melty.yaml
+      - evidence/sources/**/*.sql
+      - evidence/pages/**/*.md
+      - evidence/package.json
+      - evidence/package-lock.json
   push:
     branches: [main]
     paths:
@@ -17,6 +21,10 @@ on:
       - plugins/**/*.lock
       - transform/models/**/*.sql
       - .github/workflows/melty.yaml
+      - evidence/sources/**/*.sql
+      - evidence/pages/**/*.md
+      - evidence/package.json
+      - evidence/package-lock.json
   workflow_dispatch:
     inputs:
       environment:
