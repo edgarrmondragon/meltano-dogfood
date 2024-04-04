@@ -1,12 +1,12 @@
 version: 1
-default_environment: prod
+default_environment: dev
 project_id: b77cad0a-ffd8-494e-9e6b-18d6eacb71d4
 env:
   SINGER_SDK_LOG_CONFIG: logging/singer_logging.yaml
 ff:
   plugin_locks_required: true
 cli:
-  log_config: logging/${MELTANO_ENVIRONMENT}.yaml
+  log_config: logging/dev.yaml
 plugins:
   extractors:
   - name: tap-getpocket
