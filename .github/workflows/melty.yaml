@@ -198,8 +198,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '18'
-      - run: cd evidence
       - run: |
+          cd evidence
           npm install
           npm run sources
           npm run build:strict
@@ -208,7 +208,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: evidence-build
-          path: build
+          path: evidence/build
 
   deploy-evidence:
     name: Deploy Evidence site
