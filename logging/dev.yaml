@@ -32,3 +32,8 @@ loggers:
     level: DEBUG
     propagate: yes
     handlers: [http]
+  # Disable logging of tap and target stdout
+  meltano.core.block.extract_load:
+    handlers: [file]
+    level: INFO
+    propagate: no
