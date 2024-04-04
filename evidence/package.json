@@ -6,7 +6,8 @@
     "build:strict": "evidence build:strict",
     "dev": "evidence dev --open /",
     "test": "evidence build",
-    "sources": "evidence sources"
+    "sources": "evidence sources",
+    "preview": "evidence preview"
   },
   "engines": {
     "npm": ">=7.0.0",
@@ -14,9 +15,9 @@
   },
   "type": "module",
   "dependencies": {
-    "@evidence-dev/core-components": "^3.1.0",
-    "@evidence-dev/duckdb": "^1.0.3",
-    "@evidence-dev/evidence": "^25.0.0"
+    "@evidence-dev/core-components": "^3.7.1",
+    "@evidence-dev/duckdb": "^1.0.7",
+    "@evidence-dev/evidence": "^31.0.1"
   },
   "overrides": {
     "jsonwebtoken": "9.0.0",
