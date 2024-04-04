@@ -1,13 +1,15 @@
 ---
 title: StackOverflow Stats
 description: Some activity stats from StackOverflow of selected tags
-sources:
-  - question_stats: stackoverflow/question_stats.sql
 ---
+
+```sql question_stats
+select * from motherduck_personal.question_stats
+```
 
 <script>
 const colors = ['#5470C6', '#91CC75'];
-let options = {
+$: options = {
   title: {
     text: 'Question Stats',
     left: 'left'
@@ -38,7 +40,7 @@ let options = {
       axisTick: {
         alignWithLabel: true
       },
-      data: data.question_stats.map(row => row.status)
+      data: question_stats.map(row => row.status)
     }
   ],
   yAxis: [
@@ -78,13 +80,13 @@ let options = {
       name: 'Total Questions',
       type: 'bar',
       yAxisIndex: 0,
-      data: data.question_stats.map(row => row.total_questions)
+      data: question_stats.map(row => row.total_questions)
     },
     {
       name: 'Avg. Score',
       type: 'line',
       yAxisIndex: 1,
-      data: data.question_stats.map(row => row.avg_score)
+      data: question_stats.map(row => row.avg_score)
     }
   ]
 };

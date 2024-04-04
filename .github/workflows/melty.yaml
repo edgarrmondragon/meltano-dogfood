@@ -178,6 +178,7 @@ jobs:
 
       - name: Build
         run: |
+          meltano invoke evidence npm run sources
           meltano invoke evidence build --strict
 
       - name: Upload Evidence build

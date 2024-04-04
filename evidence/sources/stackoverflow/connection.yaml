@@ -1,4 +1,0 @@
-name: stackoverflow
-type: duckdb
-options:
-  # filename: md:personal

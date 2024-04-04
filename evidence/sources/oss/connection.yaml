@@ -1,4 +1,0 @@
-name: oss
-type: duckdb
-options:
-  # filename: md:personal

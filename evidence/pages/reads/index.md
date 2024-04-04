@@ -1,23 +1,26 @@
 ---
 title: Reads
 description: Pocket reads
-sources:
-  - total_pending_pocket_reads: reads/total_pending_pocket_reads.sql
-  - pending_pocket_reads: reads/pending_pocket_reads.sql
-  - recent_pocket_reads: reads/recent_pocket_reads.sql
-  - daily_reads: reads/daily_reads.sql
-  - tags_tally: reads/tags_tally.sql
-  - author_tally: reads/author_tally.sql
 ---
 
 ## Pending
 
-I have a total of <Value data={data.total_pending_pocket_reads} column=total/> pending reads in Pocket.
+```sql pending_pocket_reads
+select * from motherduck_personal.pending_pocket_reads
+order by added_at desc
+limit 5
+```
+
+```sql total_pending_pocket_reads
+select count(*) as total from motherduck_personal.pending_pocket_reads
+```
+
+I have a total of <Value data={total_pending_pocket_reads} column=total/> pending reads in Pocket.
 
 Recent additions:
 
 <ul>
-{#each data.pending_pocket_reads as read}
+{#each pending_pocket_reads as read}
   <li>
     <a href="https://getpocket.com/read/{read.item_id}" target="_blank" rel="noopener noreferrer">
       {read.resolved_title} ({read.time_to_read || "?"} min)
@@ -31,10 +34,14 @@ Recent additions:
 
 ## Recent
 
+```sql recent_pocket_reads
+select * from motherduck_personal.recent_pocket_reads
+```
+
 Recently read:
 
 <ul>
-{#each data.recent_pocket_reads as read}
+{#each recent_pocket_reads as read}
   <li>
     <a href="https://getpocket.com/read/{read.item_id}" target="_blank" rel="noopener noreferrer">
       {read.resolved_title} ({read.time_to_read || "?"} min)
@@ -48,10 +55,14 @@ Recently read:
 
 ### Daily reads
 
+```sql daily_reads
+select * from motherduck_personal.daily_reads
+```
+
 {#if daily_reads != null && daily_reads.length !== 0}
 
 <BarChart
-    data={data.daily_reads}
+    data={daily_reads}
     x=date
     y=total
 />
@@ -64,18 +75,26 @@ No reads in the last 7 days.
 
 ## Tags
 
+```sql tags_tally
+select * from motherduck_personal.tags_tally
+```
+
 Most used tags:
 
 <DataTable
-    data={data.tags_tally}
+    data={tags_tally}
     rows=10
 />
 
 ## Authors
 
+```sql author_tally
+select * from motherduck_personal.author_tally
+```
+
 Top authors:
 
 <DataTable
-    data={data.author_tally}
+    data={author_tally}
     rows=5
 />

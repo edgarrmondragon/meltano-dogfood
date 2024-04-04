@@ -1,9 +1,8 @@
 select
   item_id
+  , added_at
   , resolved_title
   , time_to_read
   , given_url
-from items
+from personal.items
 where read_at is null
-order by added_at desc
-limit 5

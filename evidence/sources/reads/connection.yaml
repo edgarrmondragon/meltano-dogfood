@@ -1,4 +1,0 @@
-name: reads
-type: duckdb
-options:
-  # filename: md:personal
