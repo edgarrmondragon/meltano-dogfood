@@ -156,29 +156,53 @@ jobs:
         run: |
           meltano run dbt-duckdb:build
 
+  # TODO: Uncomment this block to build the Evidence site with Meltano
+  # build-evidence:
+  #   name: Build Evidence site locally
+  #   needs: [transform]
+  #   runs-on: ubuntu-latest
+  #   container:
+  #     image: ghcr.io/meltano/meltano:latest-python3.11
+  #     credentials:
+  #       username: ${{ github.actor }}
+  #       password: ${{ secrets.GHCR_IO_TOKEN }}
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - name: Check Meltano
+  #       run: |
+  #         meltano --version
+
+  #     - name: Install evidence
+  #       run: |
+  #         meltano install transform dbt-duckdb
+  #         meltano install utility evidence
+
+  #     - name: Build
+  #       run: |
+  #         meltano invoke evidence npm install
+  #         meltano invoke evidence npm run sources
+  #         meltano invoke evidence build --strict
+
+  #     - name: Upload Evidence build
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: evidence-build
+  #         path: evidence/build
+
   build-evidence:
-    name: Build Evidence site locally
+    name: Build Evidence site locally using Node
     needs: [transform]
     runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/meltano/meltano:latest-python3.11
-      credentials:
-        username: ${{ github.actor }}
-        password: ${{ secrets.GHCR_IO_TOKEN }}
     steps:
       - uses: actions/checkout@v4
-      - name: Check Meltano
-        run: |
-          meltano --version
-
-      - name: Install evidence
-        run: |
-          meltano install transform dbt-duckdb
-          meltano install utility evidence
-
-      - name: Build
-        run: |
-          meltano invoke evidence build --strict
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - run: |
+          cd evidence
+          npm install
+          npm run sources
+          npm run build:strict
 
       - name: Upload Evidence build
         uses: actions/upload-artifact@v4
