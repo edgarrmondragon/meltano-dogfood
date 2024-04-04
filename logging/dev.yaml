@@ -1,13 +1,19 @@
 version: 1
-disable_existing_loggers: yes
+disable_existing_loggers: no
 
 formatters:
   structured_colored:
     (): meltano.core.logging.console_log_formatter
     colors: True
+    show_locals: True
   json:
     (): meltano.core.logging.json_formatter
 handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: structured_colored
+    stream: "ext://sys.stderr"
   file:
     class: logging.FileHandler
     level: DEBUG
@@ -20,7 +26,7 @@ handlers:
     formatter: json
 root:
   level: DEBUG
-  handlers: [file]
+  handlers: [console, file]
 loggers:
   urllib3:
     level: DEBUG

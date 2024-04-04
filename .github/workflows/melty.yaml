@@ -2,9 +2,29 @@ name: Meltano Pipeline
 
 on:
   pull_request:
-    types: [opened, reopened, labeled, synchronize]
+    branches: [main]
+    paths:
+      - meltano.yml
+      - pyproject.toml
+      - plugins/**/*.lock
+      - transform/models/**/*.sql
+      - .github/workflows/melty.yaml
+      - evidence/sources/**/*.sql
+      - evidence/pages/**/*.md
+      - evidence/package.json
+      - evidence/package-lock.json
   push:
     branches: [main]
+    paths:
+      - meltano.yml
+      - pyproject.toml
+      - plugins/**/*.lock
+      - transform/models/**/*.sql
+      - .github/workflows/melty.yaml
+      - evidence/sources/**/*.sql
+      - evidence/pages/**/*.md
+      - evidence/package.json
+      - evidence/package-lock.json
   workflow_dispatch:
     inputs:
       environment:
@@ -31,7 +51,6 @@ env:
 
 jobs:
   meltano-run:
-    if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'  || contains(github.event.pull_request.labels.*.name, 'Test/ELTP') }}
     name: "Meltano Job: ${{ matrix.job }}"
     runs-on: ubuntu-latest
     container:
@@ -57,6 +76,8 @@ jobs:
             schedule: "daily_readthedocs"
           - job: "gh-to-duckdb"
             schedule: "daily_github"
+          - job: "pypistats-to-duckdb"
+            schedule: "daily_pypistats"
       fail-fast: false
 
     steps:
@@ -66,6 +87,8 @@ jobs:
           meltano --version
 
       - name: Install Plugins
+        env:
+          PIP_PREFER_BINARY: "1"
         run: |
           meltano install --schedule ${{ matrix.schedule }}
 
@@ -75,15 +98,11 @@ jobs:
         run: |
           meltano run ${{ matrix.job }}
 
-      - name: Rename metrics log
-        run: |
-          mv logs/singer_metrics.log logs/singer_metrics_${{ matrix.job }}.log
-
       - name: Upload metrics log
         uses: actions/upload-artifact@v4
         with:
           name: singer-metrics-${{ matrix.job }}
-          path: logs/singer_metrics*.log
+          path: logs/singer_metrics.log
 
   lint:
     name: Lint models
@@ -137,29 +156,53 @@ jobs:
         run: |
           meltano run dbt-duckdb:build
 
+  # TODO: Uncomment this block to build the Evidence site with Meltano
+  # build-evidence:
+  #   name: Build Evidence site locally
+  #   needs: [transform]
+  #   runs-on: ubuntu-latest
+  #   container:
+  #     image: ghcr.io/meltano/meltano:latest-python3.12
+  #     credentials:
+  #       username: ${{ github.actor }}
+  #       password: ${{ secrets.GHCR_IO_TOKEN }}
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - name: Check Meltano
+  #       run: |
+  #         meltano --version
+
+  #     - name: Install evidence
+  #       run: |
+  #         meltano install transform dbt-duckdb
+  #         meltano install utility evidence
+
+  #     - name: Build
+  #       run: |
+  #         meltano invoke evidence npm install
+  #         meltano invoke evidence npm run sources
+  #         meltano invoke evidence build --strict
+
+  #     - name: Upload Evidence build
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: evidence-build
+  #         path: evidence/build
+
   build-evidence:
-    name: Build Evidence site locally
+    name: Build Evidence site locally using Node
     needs: [transform]
     runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/meltano/meltano:latest-python3.12
-      credentials:
-        username: ${{ github.actor }}
-        password: ${{ secrets.GHCR_IO_TOKEN }}
     steps:
       - uses: actions/checkout@v4
-      - name: Check Meltano
-        run: |
-          meltano --version
-
-      - name: Install evidence
-        run: |
-          meltano install transform dbt-duckdb
-          meltano install utility evidence
-
-      - name: Build
-        run: |
-          meltano invoke evidence build --strict
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - run: |
+          cd evidence
+          npm install
+          npm run sources
+          npm run build:strict
 
       - name: Upload Evidence build
         uses: actions/upload-artifact@v4
@@ -186,7 +229,7 @@ jobs:
           path: evidence/build
 
       - name: Deploy
-        uses: amondnet/vercel-action@v25.1.1
+        uses: amondnet/vercel-action@v25.2.0
         with:
           github-comment: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
           github-token: ${{ secrets.GITHUB_TOKEN }}

@@ -1,9 +1,11 @@
 ---
 title: Open Source
 description: Open source I maintain
-sources:
-  - rtd_projects: oss/rtd_projects.sql
 ---
+
+```sql rtd_projects
+select * from motherduck_personal.rtd_projects
+```
 
 {#each rtd_projects as project}
 

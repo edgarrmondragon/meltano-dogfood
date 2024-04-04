@@ -70,6 +70,18 @@
       "description": "Root path to use when writing batch files."
     },
     {
+      "name": "faker_config.locale",
+      "kind": "array",
+      "label": "Faker Config Locale",
+      "description": "One or more LCID locale strings to produce localized output for: https://faker.readthedocs.io/en/master/#localization"
+    },
+    {
+      "name": "faker_config.seed",
+      "kind": "string",
+      "label": "Faker Config Seed",
+      "description": "Value to seed the Faker generator for deterministic output: https://faker.readthedocs.io/en/master/#seeding-the-generator"
+    },
+    {
       "name": "filter",
       "kind": "string",
       "value": "!6VvPDzOeLJfUL",
@@ -127,9 +139,7 @@
     {
       "name": "tags",
       "kind": "array",
-      "value": [
-        "LimeSurvey"
-      ],
+      "value": [],
       "label": "Tags",
       "description": "Question tags"
     }
