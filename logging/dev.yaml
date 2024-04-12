@@ -11,7 +11,7 @@ formatters:
 handlers:
   console:
     class: logging.StreamHandler
-    level: DEBUG
+    level: WARNING
     formatter: structured_colored
     stream: "ext://sys.stderr"
   file:

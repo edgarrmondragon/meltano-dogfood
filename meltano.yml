@@ -7,6 +7,8 @@ ff:
   plugin_locks_required: true
 cli:
   log_config: logging/dev.yaml
+venv:
+  backend: uv
 plugins:
   extractors:
   - name: tap-getpocket
