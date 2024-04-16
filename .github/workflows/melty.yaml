@@ -34,10 +34,9 @@ on:
       logConfig:
         description: 'Logging configuration file'
         required: true
-        default: 'logging/ci.yaml'
+        default: 'logging/dev.yaml'
         type: choice
         options:
-          - logging/ci.yaml
           - logging/dev.yaml
   schedule:
     - cron: '0 12 * * *' # Once a day around 6am CST (12am UTC)
@@ -198,6 +197,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '18'
+          cache: npm
+          cache-dependency-path: evidence/package-lock.json
       - run: |
           cd evidence
           npm install

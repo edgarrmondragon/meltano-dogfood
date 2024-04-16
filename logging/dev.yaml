@@ -8,10 +8,11 @@ formatters:
     show_locals: True
   json:
     (): meltano.core.logging.json_formatter
+    # include_callsite_parameters: True
 handlers:
   console:
     class: logging.StreamHandler
-    level: WARNING
+    level: INFO
     formatter: structured_colored
     stream: "ext://sys.stderr"
   file:
