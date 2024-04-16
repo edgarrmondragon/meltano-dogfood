@@ -8,10 +8,11 @@ formatters:
     show_locals: True
   json:
     (): meltano.core.logging.json_formatter
+    # include_callsite_parameters: True
 handlers:
   console:
     class: logging.StreamHandler
-    level: DEBUG
+    level: INFO
     formatter: structured_colored
     stream: "ext://sys.stderr"
   file:
@@ -32,3 +33,8 @@ loggers:
     level: DEBUG
     propagate: yes
     handlers: [http]
+  # Disable logging of tap and target stdout
+  meltano.core.block.extract_load:
+    handlers: [file]
+    level: INFO
+    propagate: no
