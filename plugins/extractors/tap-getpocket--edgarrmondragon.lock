@@ -28,7 +28,7 @@
   "settings": [
     {
       "name": "access_token",
-      "kind": "password",
+      "kind": "string",
       "label": "Access Token",
       "documentation": "https://getpocket.com/developer/docs/authentication",
       "description": "Pocket user access token",
@@ -80,7 +80,7 @@
     },
     {
       "name": "consumer_key",
-      "kind": "password",
+      "kind": "string",
       "label": "Consumer Key",
       "documentation": "https://getpocket.com/developer/docs/authentication",
       "description": "Pocket application key",
