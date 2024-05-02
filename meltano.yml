@@ -42,7 +42,7 @@ plugins:
     variant: edgarrmondragon
     pip_url: tap-pypistats==0.0.1a3 python-json-logger
     settings_group_validation:
-    - [packages]
+    - - packages
     settings:
     - kind: array
       label: Packages
@@ -91,20 +91,8 @@ plugins:
           filename: $DUCKDB_PATH
 environments:
 - name: dev
-  config:
-    plugins:
-      loaders:
-      - name: target-bigquery
-        config:
-          batch_size_rows: 100
 - name: staging
 - name: prod
-  config:
-    plugins:
-      loaders:
-      - name: target-bigquery
-        config:
-          batch_size_rows: 10000
   env:
     MELTANO_FF_PLUGIN_LOCKS_REQUIRED: 'true'
     MELTANO_FF_STRICT_ENV_VAR_MODE: 'true'
