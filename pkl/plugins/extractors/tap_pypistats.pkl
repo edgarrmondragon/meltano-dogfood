@@ -1,0 +1,30 @@
+module tap_pypistats
+
+import "../../lib/meltano/plugin.pkl"
+
+tap_pypistats = new plugin.Extractor {
+  name = "tap-pypistats"
+  namespace = "tap_pypistats"
+  variant = "edgarrmondragon"
+  pip_url = "tap-pypistats==0.0.1a3 python-json-logger"
+  settings_group_validation = List(
+    List("packages")
+  )
+  settings = List(
+    new plugin.Setting {
+      kind = "array"
+      label = "Packages"
+      name = "packages"
+    }
+  )
+  config = new Mapping {
+    ["packages"] = List(
+      "meltano",
+      "singer-sdk",
+      "singer-python",
+      "target-hotglue",
+      "pipelinewise-singer-python",
+      "dlt"
+    )
+  }
+}
