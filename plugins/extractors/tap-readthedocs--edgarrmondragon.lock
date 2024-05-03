@@ -113,7 +113,7 @@
     },
     {
       "name": "token",
-      "kind": "password",
+      "kind": "string",
       "label": "Token",
       "description": "Personal Access Token that allows you to use the Read the Docs APIv3 being authenticated as yourself",
       "sensitive": true

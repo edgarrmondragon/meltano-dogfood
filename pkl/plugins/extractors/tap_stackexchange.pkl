@@ -1,0 +1,13 @@
+module tap_stackexchange
+
+import "../../lib/meltano/plugin.pkl"
+
+tap_stackexchange = new plugin.Extractor {
+  name = "tap-stackexchange"
+  variant = "meltanolabs"
+  pip_url = "git+https://github.com/MeltanoLabs/tap-stackexchange.git python-json-logger"
+  config = new Mapping {
+    ["tags"] = List("meltano")
+  }
+  select = List("questions.*")
+}

@@ -1,0 +1,28 @@
+module com.meltano.Plugin
+
+class Setting {
+  kind: "string" | "integer" | "boolean" | "array" | "object" | Null = null
+  label: String | Null = null
+  name: String
+  env: String | Null = null
+}
+
+abstract class Plugin {
+  name: String
+  namespace: String | Null = null
+  variant: String | Null = null
+  pip_url: String | Null = null
+  settings_group_validation: List<List<String>> | Null = null
+  settings: List<Setting> | Null = null
+  config: Mapping<String, Any> | Null = null
+}
+
+class Extractor extends Plugin {
+  select: List<String> | Null = null
+}
+
+class Loader extends Plugin {}
+
+class Utility extends Plugin {}
+
+class Transformer extends Plugin {}

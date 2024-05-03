@@ -44,7 +44,7 @@
     },
     {
       "name": "auth_token",
-      "kind": "password",
+      "kind": "string",
       "label": "Auth Token",
       "description": "GitHub token to authenticate with.",
       "sensitive": true

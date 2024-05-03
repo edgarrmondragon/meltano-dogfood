@@ -97,7 +97,7 @@
     {
       "name": "settings.bigquery.private_key",
       "env": "BIGQUERY_PRIVATE_KEY",
-      "kind": "password",
+      "kind": "string",
       "label": "BigQuery Private Key",
       "sensitive": true
     },
@@ -177,7 +177,7 @@
     {
       "name": "settings.mysql.password",
       "env": "MYSQL_PASSWORD",
-      "kind": "password",
+      "kind": "string",
       "label": "MySQL Password",
       "sensitive": true
     },
@@ -219,7 +219,7 @@
     {
       "name": "settings.postgres.connection_string",
       "env": "POSTGRES_CONNECTIONSTRING",
-      "kind": "password",
+      "kind": "string",
       "label": "Postgres Connection String",
       "description": "If your database host provides a connection string, you can use that in place of the fields above.\n",
       "sensitive": true
@@ -239,7 +239,7 @@
     {
       "name": "settings.postgres.password",
       "env": "POSTGRES_PASSWORD",
-      "kind": "password",
+      "kind": "string",
       "label": "Postgres Password",
       "sensitive": true
     },
@@ -287,7 +287,7 @@
     {
       "name": "settings.snowflake.password",
       "env": "SNOWFLAKE_PASSWORD",
-      "kind": "password",
+      "kind": "string",
       "label": "Snowflake Password",
       "sensitive": true
     },

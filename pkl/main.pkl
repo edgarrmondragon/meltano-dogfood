@@ -1,0 +1,154 @@
+import "lib/meltano/project.pkl"
+import "lib/meltano/plugin.pkl"
+
+import "plugins/extractors/tap_getpocket.pkl"
+import "plugins/extractors/tap_stackexchange.pkl"
+import "plugins/extractors/tap_readthedocs.pkl"
+import "plugins/extractors/tap_github.pkl"
+import "plugins/extractors/tap_pypistats.pkl"
+
+DAILY_INTERVAL = "0 12 * * *"
+
+output {
+  value = new project.MeltanoProject {
+    default_environment = "dev"
+    project_id = "b77cad0a-ffd8-494e-9e6b-18d6eacb71d4"
+    env = new Mapping {
+      ["SINGER_SDK_LOG_CONFIG"] = "logging/singer_logging.yaml"
+    }
+    ff = new project.FeatureFlags {
+      plugin_locks_required = true
+    }
+    cli = new project.CommandLine {
+      log_config = "logging/dev.yaml"
+    }
+    venv = new project.VirtualEnvironments {
+      backend = "uv"
+    }
+    plugins = new project.Plugins {
+      extractors = List(
+        tap_getpocket.tap_getpocket,
+        tap_stackexchange.tap_stackexchange,
+        tap_readthedocs.tap_readthedocs,
+        tap_github.tap_github,
+        tap_pypistats.tap_pypistats
+      )
+      loaders = List(
+        new plugin.Loader {
+          name = "target-jsonl"
+          variant = "andyh1203"
+          pip_url = "target-jsonl==0.1.4"
+        },
+        new plugin.Loader {
+          name = "target-duckdb"
+          variant = "jwills"
+          pip_url = "git+https://github.com/jwills/target-duckdb.git@main duckdb==0.9.2"
+          config = new Mapping {
+            ["path"] = "$DUCKDB_PATH"
+            ["default_target_schema"] = "$MELTANO_EXTRACT__LOAD_SCHEMA"
+          }
+        }
+      )
+      transformers = List(
+        new plugin.Transformer {
+          name = "dbt-duckdb"
+          variant = "jwills"
+          pip_url = "dbt-core~=1.7.0 dbt-duckdb~=1.7.0 duckdb==0.9.2"
+          config = new Mapping {
+            ["path"] = "$DUCKDB_PATH"
+          }
+        }
+      )
+      utilities = List(
+        new plugin.Utility {
+          name = "sqlfluff"
+          variant = "sqlfluff"
+          pip_url = "dbt-core~=1.7.0 dbt-duckdb~=1.7.0 sqlfluff>=3 sqlfluff-templater-dbt>=3 duckdb==0.9.2"
+          settings = List(
+            new plugin.Setting {
+              name = "path"
+              env = "DBT_DUCKDB_PATH"
+            }
+          )
+          config = new Mapping {
+            ["path"] = "$DUCKDB_PATH"
+          }
+        },
+        new plugin.Utility {
+          name = "evidence"
+          variant = "meltanolabs"
+          pip_url = "evidence-ext>=0.5"
+          config = new Mapping {
+            ["home_dir"] = "$MELTANO_PROJECT_ROOT/evidence"
+            ["settings"] = new Mapping {
+              ["database"] = "duckdb"
+              ["duckdb"] = new Mapping {
+                ["filename"] = "$DUCKDB_PATH"
+              }
+            }
+          }
+        }
+      )
+    }
+    environments = List(
+      new project.MeltanoEnvironment {name = "dev"},
+      new project.MeltanoEnvironment {name = "staging"},
+      new project.MeltanoEnvironment {
+        name = "prod"
+        env = new Mapping {
+          ["MELTANO_FF_PLUGIN_LOCKS_REQUIRED"] = "true"
+          ["MELTANO_FF_STRICT_ENV_VAR_MODE"] = "true"
+        }
+      }
+    )
+    jobs = List(
+      new project.Job {
+        name = "pocket-to-duckdb"
+        tasks = List("tap-getpocket target-duckdb")
+      },
+      new project.Job {
+        name = "stackoverflow-to-duckdb"
+        tasks = List("tap-stackexchange target-duckdb")
+      },
+      new project.Job {
+        name = "rtd-to-duckdb"
+        tasks = List("tap-readthedocs target-duckdb")
+      },
+      new project.Job {
+        name = "gh-to-duckdb"
+        tasks = List("tap-github target-duckdb")
+      },
+      new project.Job {
+        name = "pypistats-to-duckdb"
+        tasks = List("tap-pypistats target-duckdb")
+      }
+    )
+    schedules = List(
+      new project.Schedule {
+        name = "daily_pocket"
+        interval = DAILY_INTERVAL
+        job = "pocket-to-duckdb"
+      },
+      new project.Schedule {
+        name = "daily_stackoverflow"
+        interval = DAILY_INTERVAL
+        job = "stackoverflow-to-duckdb"
+      },
+      new project.Schedule {
+        name = "daily_readthedocs"
+        interval = DAILY_INTERVAL
+        job = "rtd-to-duckdb"
+      },
+      new project.Schedule {
+        name = "daily_github"
+        interval = DAILY_INTERVAL
+        job = "gh-to-duckdb"
+      },
+      new project.Schedule {
+        name = "daily_pypistats"
+        interval = DAILY_INTERVAL
+        job = "pypistats-to-duckdb"
+      }
+    )
+  }
+}
