@@ -120,7 +120,7 @@
     },
     {
       "name": "token",
-      "kind": "password",
+      "kind": "string",
       "label": "Token",
       "description": "For MotherDuck connections, the auth token to use.",
       "sensitive": true
