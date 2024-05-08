@@ -68,13 +68,13 @@ plugins:
   transformers:
   - name: dbt-duckdb
     variant: jwills
-    pip_url: dbt-core~=1.8.0rc1 dbt-duckdb~=1.7.0 duckdb==0.9.2
+    pip_url: dbt-core~=1.8.0rc2 dbt-duckdb~=1.7.0 duckdb==0.9.2
     config:
       path: $DUCKDB_PATH
   utilities:
   - name: sqlfluff
     variant: sqlfluff
-    pip_url: dbt-core~=1.8.0rc1 dbt-duckdb~=1.7.0 sqlfluff>=3 sqlfluff-templater-dbt>=3 duckdb==0.9.2
+    pip_url: dbt-core~=1.8.0rc2 dbt-duckdb~=1.7.0 sqlfluff>=3 sqlfluff-templater-dbt>=3 duckdb==0.9.2
     settings:
     - name: path
       env: DBT_DUCKDB_PATH
