@@ -1,19 +1,21 @@
 {
-  "plugin_type": "transformers",
+  "plugin_type": "utilities",
   "name": "dbt-duckdb",
   "namespace": "dbt_duckdb",
   "variant": "jwills",
   "label": "dbt DuckDB",
-  "docs": "https://hub.meltano.com/transformers/dbt-duckdb--jwills",
+  "docs": "https://hub.meltano.com/utilities/dbt-duckdb--jwills",
   "repo": "https://github.com/jwills/dbt-duckdb",
-  "pip_url": "dbt-core~=1.2.0 dbt-duckdb~=1.2.0",
-  "executable": "dbt",
-  "logo_url": "https://hub.meltano.com/assets/logos/transformers/dbt.png",
+  "pip_url": "dbt-core dbt-duckdb git+https://github.com/meltano/dbt-ext.git@main",
+  "executable": "dbt_invoker",
+  "logo_url": "https://hub.meltano.com/assets/logos/utilities/dbt.png",
   "settings": [
     {
-      "name": "project_dir",
-      "value": "$MELTANO_PROJECT_ROOT/transform",
-      "label": "Projects Directory"
+      "name": "path",
+      "kind": "string",
+      "value": "${MELTANO_PROJECT_ROOT}/output/warehouse.duckdb",
+      "label": "Path",
+      "description": "The path on your local filesystem where you would like the DuckDB database file and it's associated write-ahead log to be written."
     },
     {
       "name": "profiles_dir",
@@ -22,10 +24,10 @@
       "label": "Profiles Directory"
     },
     {
-      "name": "path",
-      "kind": "string",
-      "label": "Path",
-      "description": "The path on your local filesystem where you would like the DuckDB database file and it's associated write-ahead log to be written."
+      "name": "project_dir",
+      "env": "DBT_PROJECT_DIR",
+      "value": "$MELTANO_PROJECT_ROOT/transform",
+      "label": "Projects Directory"
     },
     {
       "name": "schema",
@@ -33,6 +35,27 @@
       "value": "main",
       "label": "Schema",
       "description": "Specify the schema to write into."
+    },
+    {
+      "name": "skip_pre_invoke",
+      "env": "DBT_EXT_SKIP_PRE_INVOKE",
+      "kind": "boolean",
+      "value": false,
+      "label": "Skip Pre-invoke",
+      "description": "Whether to skip pre-invoke hooks which automatically run dbt clean and deps"
+    },
+    {
+      "name": "target_path",
+      "env": "DBT_TARGET_PATH",
+      "kind": "string",
+      "value": "$MELTANO_PROJECT_ROOT/.meltano/transformers/dbt/target",
+      "label": "Target Path"
+    },
+    {
+      "name": "type",
+      "env": "DBT_EXT_TYPE",
+      "value": "duckdb",
+      "label": "dbt Profile type"
     }
   ],
   "commands": {
@@ -56,6 +79,11 @@
       "args": "deps",
       "description": "Pull the most recent version of the dependencies listed in packages.yml"
     },
+    "describe": {
+      "args": "describe",
+      "description": "Describe the",
+      "executable": "dbt_extension"
+    },
     "docs-generate": {
       "args": "docs generate",
       "description": "Generate documentation for your project."
@@ -67,6 +95,11 @@
     "freshness": {
       "args": "source freshness",
       "description": "Check the freshness of your source data."
+    },
+    "initialize": {
+      "args": "initialize",
+      "description": "Initialize a new dbt project. This will create a dbt_project.yml file, a profiles.yml file, and models directory.\n",
+      "executable": "dbt_extension"
     },
     "run": {
       "args": "run",
@@ -85,12 +118,5 @@
       "description": "Runs tests on data in deployed models."
     }
   },
-  "requires": {
-    "files": [
-      {
-        "name": "files-dbt-duckdb",
-        "variant": "meltano"
-      }
-    ]
-  }
+  "ext_repo": "https://github.com/meltano/dbt-ext"
 }

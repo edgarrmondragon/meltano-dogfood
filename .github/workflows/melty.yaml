@@ -149,7 +149,7 @@ jobs:
 
       - name: Install dbt-duckdb
         run: |
-          meltano install transformer dbt-duckdb
+          meltano install utility dbt-duckdb
 
       - name: Transform and Test
         run: |
@@ -199,7 +199,8 @@ jobs:
           node-version: '18'
           cache: npm
           cache-dependency-path: evidence/package-lock.json
-      - run: |
+      - name: Build Evidence site
+        run: |
           cd evidence
           npm install
           npm run sources
