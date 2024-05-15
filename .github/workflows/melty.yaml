@@ -199,7 +199,8 @@ jobs:
           node-version: '18'
           cache: npm
           cache-dependency-path: evidence/package-lock.json
-      - run: |
+      - name: Build Evidence site
+        run: |
           cd evidence
           npm install
           npm run sources
