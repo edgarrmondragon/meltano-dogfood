@@ -37,4 +37,3 @@ loggers:
   meltano.core.block.extract_load:
     handlers: [file]
     level: INFO
-    propagate: no
