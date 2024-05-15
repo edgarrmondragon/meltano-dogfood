@@ -15,8 +15,8 @@
   },
   "type": "module",
   "dependencies": {
-    "@evidence-dev/core-components": "^3.7.1",
-    "@evidence-dev/duckdb": "^1.0.7",
+    "@evidence-dev/core-components": "^4.1.1",
+    "@evidence-dev/duckdb": "^1.0.8",
     "@evidence-dev/evidence": "^34.0.1"
   },
   "overrides": {
