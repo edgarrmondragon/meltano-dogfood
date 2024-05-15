@@ -149,7 +149,7 @@ jobs:
 
       - name: Install dbt-duckdb
         run: |
-          meltano install transformer dbt-duckdb
+          meltano install utility dbt-duckdb
 
       - name: Transform and Test
         run: |
