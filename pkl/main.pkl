@@ -42,9 +42,7 @@ output {
         new plugin.Loader {
           name = "target-duckdb"
           variant = "jwills"
-          // Use a PyPI release when available
-          // https://github.com/jwills/target-duckdb/pull/43
-          pip_url = "git+https://github.com/jwills/target-duckdb.git@refs/pull/43/head duckdb==0.10.2"
+          pip_url = "target-duckdb==0.7.0 duckdb==0.10.2"
           config = new Mapping {
             ["path"] = "$DUCKDB_PATH"
             ["default_target_schema"] = "$MELTANO_EXTRACT__LOAD_SCHEMA"
