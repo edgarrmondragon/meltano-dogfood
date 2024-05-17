@@ -53,7 +53,7 @@ jobs:
     name: "Meltano Job: ${{ matrix.job }}"
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/meltano/meltano:latest-python3.12
+      image: ghcr.io/meltano/meltano:latest-python${{ matrix.python-version || '3.12' }}
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GHCR_IO_TOKEN }}
@@ -75,6 +75,7 @@ jobs:
             schedule: "daily_readthedocs"
           - job: "gh-to-duckdb"
             schedule: "daily_github"
+            python-version: "3.11"
           - job: "pypistats-to-duckdb"
             schedule: "daily_pypistats"
       fail-fast: false
