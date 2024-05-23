@@ -73,7 +73,7 @@ plugins:
       path: $DUCKDB_PATH
   - name: sqlfluff
     variant: sqlfluff
-    pip_url: dbt-core~=1.7.0 dbt-duckdb~=1.7.0 sqlfluff>=3.0.6 sqlfluff-templater-dbt>=3.0.6 duckdb==0.10.2
+    pip_url: dbt-core~=1.8.0 dbt-duckdb~=1.8.0 sqlfluff>=3.0.7 sqlfluff-templater-dbt>=3.0.7 duckdb==0.10.2
     settings:
     - name: path
       env: DBT_DUCKDB_PATH
