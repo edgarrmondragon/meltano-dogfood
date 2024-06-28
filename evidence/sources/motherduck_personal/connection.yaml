@@ -1,5 +1,5 @@
 # This file was automatically generated
 name: motherduck_personal
-type: duckdb
+type: motherduck
 options:
-  filename: "md:"
+  database: ''

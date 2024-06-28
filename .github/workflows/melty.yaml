@@ -42,11 +42,13 @@ on:
     - cron: '0 12 * * *' # Once a day around 6am CST (12am UTC)
 
 env:
-  MELTANO_DATABASE_URI: ${{ secrets.MELTANO_DATABASE_URI }}
   DUCKDB_PATH: ${{ secrets.DUCKDB_PATH }}
+  FORCE_COLOR: "1"
   MELTANO_CLI_LOG_CONFIG: ${{ github.event.inputs.environment || 'logging/ci.yaml' }}
+  MELTANO_DATABASE_URI: ${{ secrets.MELTANO_DATABASE_URI }}
   MELTANO_ENVIRONMENT: ${{ github.event.inputs.environment || 'prod' }}
   MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
+  EVIDENCE_SOURCE__motherduck_personal__token: ${{ secrets.MOTHERDUCK_TOKEN }}
 
 jobs:
   meltano-run:
