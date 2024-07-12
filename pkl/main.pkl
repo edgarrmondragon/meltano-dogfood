@@ -121,32 +121,5 @@ output {
         tasks = List("tap-pypistats target-duckdb")
       }
     )
-    schedules = List(
-      new project.Schedule {
-        name = "daily_pocket"
-        interval = DAILY_INTERVAL
-        job = "pocket-to-duckdb"
-      },
-      new project.Schedule {
-        name = "daily_stackoverflow"
-        interval = DAILY_INTERVAL
-        job = "stackoverflow-to-duckdb"
-      },
-      new project.Schedule {
-        name = "daily_readthedocs"
-        interval = DAILY_INTERVAL
-        job = "rtd-to-duckdb"
-      },
-      new project.Schedule {
-        name = "daily_github"
-        interval = DAILY_INTERVAL
-        job = "gh-to-duckdb"
-      },
-      new project.Schedule {
-        name = "daily_pypistats"
-        interval = DAILY_INTERVAL
-        job = "pypistats-to-duckdb"
-      }
-    )
   }
 }
