@@ -61,7 +61,7 @@ plugins:
     pip_url: target-jsonl==0.1.4
   - name: target-duckdb
     variant: jwills
-    pip_url: target-duckdb==0.7.0 duckdb==0.10.3
+    pip_url: target-duckdb==0.7.0 duckdb==0.10.2
     config:
       path: $DUCKDB_PATH
       default_target_schema: $MELTANO_EXTRACT__LOAD_SCHEMA
