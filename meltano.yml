@@ -61,19 +61,19 @@ plugins:
     pip_url: target-jsonl==0.1.4
   - name: target-duckdb
     variant: jwills
-    pip_url: target-duckdb==0.7.0 duckdb==0.10.2
+    pip_url: duckdb==0.10.3 'target-duckdb @ git+https://github.com/edgarrmondragon/target-duckdb.git@duckdb-0.10.3'
     config:
       path: $DUCKDB_PATH
       default_target_schema: $MELTANO_EXTRACT__LOAD_SCHEMA
   utilities:
   - name: dbt-duckdb
     variant: jwills
-    pip_url: dbt-core~=1.8.0 dbt-duckdb~=1.8.0 duckdb==0.10.2 'dbt-ext @ git+https://github.com/meltano/dbt-ext.git@v0.2.0'
+    pip_url: dbt-core~=1.8.0 dbt-duckdb~=1.8.0 duckdb==0.10.3 'dbt-ext @ git+https://github.com/meltano/dbt-ext.git@v0.2.0'
     config:
       path: $DUCKDB_PATH
   - name: sqlfluff
     variant: sqlfluff
-    pip_url: dbt-core~=1.8.0 dbt-duckdb~=1.8.0 sqlfluff>=3.0.7 sqlfluff-templater-dbt>=3.0.7 duckdb==0.10.2
+    pip_url: dbt-core~=1.8.0 dbt-duckdb~=1.8.0 sqlfluff>=3.0.7 sqlfluff-templater-dbt>=3.0.7 duckdb==0.10.3
     settings:
     - name: path
       env: DBT_DUCKDB_PATH
