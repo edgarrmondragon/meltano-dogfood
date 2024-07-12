@@ -69,17 +69,12 @@ jobs:
         TARGET_DUCKDB_PATH: ${{ secrets.TARGET_DUCKDB_PATH }}
     strategy:
       matrix:
-        include:
-          - job: "pocket-to-duckdb"
-            schedule: "daily_pocket"
-          - job: "stackoverflow-to-duckdb"
-            schedule: "daily_stackoverflow"
-          - job: "rtd-to-duckdb"
-            schedule: "daily_readthedocs"
-          - job: "gh-to-duckdb"
-            schedule: "daily_github"
-          - job: "pypistats-to-duckdb"
-            schedule: "daily_pypistats"
+        job:
+          - "pocket-to-duckdb"
+          - "stackoverflow-to-duckdb"
+          - "rtd-to-duckdb"
+          - "gh-to-duckdb"
+          - "pypistats-to-duckdb"
       fail-fast: false
 
     steps:
@@ -88,15 +83,7 @@ jobs:
         run: |
           meltano --version
 
-      - name: Install Plugins
-        env:
-          PIP_PREFER_BINARY: "1"
-        run: |
-          meltano install --schedule ${{ matrix.schedule }}
-
       - name: Run
-        env:
-          MELTANO_FF_STRICT_ENV_VAR_MODE: true
         run: |
           meltano run ${{ matrix.job }}
 
@@ -124,10 +111,6 @@ jobs:
         run: |
           meltano --version
 
-      - name: Install SQLFluff
-        run: |
-          meltano install utility sqlfluff
-
       - name: Lint
         env:
           MELTANO_CLI_LOG_LEVEL: info
@@ -149,10 +132,6 @@ jobs:
       - name: Check Meltano
         run: |
           meltano --version
-
-      - name: Install dbt-duckdb
-        run: |
-          meltano install utility dbt-duckdb
 
       - name: Transform and Test
         run: |

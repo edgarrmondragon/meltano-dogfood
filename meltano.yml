@@ -111,19 +111,3 @@ jobs:
 - name: pypistats-to-duckdb
   tasks:
   - tap-pypistats target-duckdb
-schedules:
-- name: daily_pocket
-  interval: 0 12 * * *
-  job: pocket-to-duckdb
-- name: daily_stackoverflow
-  interval: 0 12 * * *
-  job: stackoverflow-to-duckdb
-- name: daily_readthedocs
-  interval: 0 12 * * *
-  job: rtd-to-duckdb
-- name: daily_github
-  interval: 0 12 * * *
-  job: gh-to-duckdb
-- name: daily_pypistats
-  interval: 0 12 * * *
-  job: pypistats-to-duckdb
