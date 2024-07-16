@@ -116,9 +116,15 @@ jobs:
         run: |
           meltano --version
 
-      - name: Run
+      - name: Install plugins
         run: |
-          meltano run ${{ matrix.job }}
+          meltano run --only-install ${{ matrix.job }}
+
+      - name: Run
+        env:
+          MELTANO_FF_STRICT_ENV_VAR_MODE: true
+        run: |
+          meltano run --no-install ${{ matrix.job }}
 
       - name: Upload metrics log
         uses: actions/upload-artifact@v4
