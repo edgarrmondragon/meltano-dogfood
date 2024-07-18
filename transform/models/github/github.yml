@@ -31,7 +31,7 @@ sources:
           - name: homepage
           - name: html_url
           - name: id
-            tests: [not_null, unique]
+            data_tests: [not_null, unique]
           - name: language
           - name: license
           - name: master_branch
@@ -54,7 +54,7 @@ sources:
           - name: subscribers_count
           - name: topics
           - name: updated_at
-            tests: [not_null]
+            data_tests: [not_null]
           - name: visibility
           - name: watchers
           - name: watchers_count

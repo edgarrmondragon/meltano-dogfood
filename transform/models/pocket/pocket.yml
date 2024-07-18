@@ -13,12 +13,12 @@ sources:
         loaded_at_field: time_updated
         columns:
           - name: item_id
-            tests: [not_null, unique]
+            data_tests: [not_null, unique]
           - name: given_title
           - name: given_url
-            tests: [not_null]
+            data_tests: [not_null]
           - name: time_added
-            tests: [not_null]
+            data_tests: [not_null]
           - name: time_read
           - name: time_updated
           - name: tags
