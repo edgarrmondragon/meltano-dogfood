@@ -5,6 +5,10 @@ require-dbt-version: [">=1.0.0", "<2.0.0"]
 
 profile: "self"
 
+flags:
+  send_anonymous_usage_stats: false
+  use_colors: true
+
 model-paths: ["models"]
 analysis-paths: ["analysis"]
 test-paths: ["tests"]

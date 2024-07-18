@@ -13,7 +13,7 @@ sources:
         description: All Pocket list items
         columns:
           - name: id
-            tests: [not_null, unique]
+            data_tests: [not_null, unique]
           - name: name
           - name: slug
           - name: created

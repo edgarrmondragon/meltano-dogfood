@@ -8,6 +8,7 @@ on:
       - pyproject.toml
       - plugins/**/*.lock
       - transform/models/**/*.sql
+      - transform/models/**/*.yml
       - .github/workflows/melty.yaml
       - evidence/sources/**/*.sql
       - evidence/pages/**/*.md
@@ -20,6 +21,7 @@ on:
       - pyproject.toml
       - plugins/**/*.lock
       - transform/models/**/*.sql
+      - transform/models/**/*.yml
       - .github/workflows/melty.yaml
       - evidence/sources/**/*.sql
       - evidence/pages/**/*.md
