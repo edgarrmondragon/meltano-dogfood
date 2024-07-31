@@ -5,7 +5,7 @@ import "../../lib/meltano/plugin.pkl"
 tap_github = new plugin.Extractor {
   name = "tap-github"
   variant = "meltanolabs"
-  pip_url = "git+https://github.com/MeltanoLabs/tap-github.git@v1.4.4 python-json-logger"
+  pip_url = "git+https://github.com/MeltanoLabs/tap-github.git@v1.4.5 python-json-logger"
   config = new Mapping {
     ["repositories"] = List(
       "edgarrmondragon/citric",
