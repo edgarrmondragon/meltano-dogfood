@@ -22,6 +22,7 @@ output {
     cli = new project.CommandLine {
       log_config = "logging/dev.yaml"
     }
+    project_readonly = true
     venv = new project.VirtualEnvironments {
       backend = "uv"
     }

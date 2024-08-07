@@ -46,6 +46,7 @@ class MeltanoProject {
   version: Int = 1
   default_environment: String
   project_id: String
+  project_readonly: Boolean = false
   env: EnvVars|Null = null
   ff: FeatureFlags|Null = null
   cli: CommandLine|Null = null

@@ -1,6 +1,7 @@
 version: 1
 default_environment: dev
 project_id: b77cad0a-ffd8-494e-9e6b-18d6eacb71d4
+project_readonly: true
 env:
   SINGER_SDK_LOG_CONFIG: logging/singer_logging.yaml
 ff:
