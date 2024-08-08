@@ -6,7 +6,7 @@ tap_pypistats = new plugin.Extractor {
   name = "tap-pypistats"
   namespace = "tap_pypistats"
   variant = "edgarrmondragon"
-  pip_url = "tap-pypistats==0.0.2 python-json-logger"
+  pip_url = "tap-pypistats==0.0.3 python-json-logger"
   settings_group_validation = List(
     List("packages")
   )
