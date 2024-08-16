@@ -33,3 +33,7 @@ updates:
     labels:
       - "dependencies"
       - "Test/ELTP"
+    groups:
+      Evidence:
+        patterns:
+          - "@evidence/*"
