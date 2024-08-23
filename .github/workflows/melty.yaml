@@ -63,7 +63,7 @@ jobs:
       - name: Install pkl
         uses: pkl-community/setup-pkl@v0
         with:
-          pkl-version: 0.26.1
+          pkl-version: 0.26.3
 
       - name: Check stale pkl output
         run: pkl eval pkl/main.pkl --format=yaml > meltano.yml
