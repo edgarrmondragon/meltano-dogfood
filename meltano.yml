@@ -25,7 +25,7 @@ plugins:
     - questions.*
   - name: tap-readthedocs
     variant: edgarrmondragon
-    pip_url: tap-readthedocs==0.5.0 python-json-logger
+    pip_url: tap-readthedocs==0.5.1 python-json-logger
     select:
     - projects.*
   - name: tap-github
