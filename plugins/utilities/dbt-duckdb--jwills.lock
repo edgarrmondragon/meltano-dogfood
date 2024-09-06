@@ -6,7 +6,7 @@
   "label": "dbt DuckDB",
   "docs": "https://hub.meltano.com/utilities/dbt-duckdb--jwills",
   "repo": "https://github.com/jwills/dbt-duckdb",
-  "pip_url": "dbt-core dbt-duckdb git+https://github.com/meltano/dbt-ext.git@main",
+  "pip_url": "dbt-core dbt-duckdb meltano-dbt-ext~=0.3.0",
   "executable": "dbt_invoker",
   "logo_url": "https://hub.meltano.com/assets/logos/utilities/dbt.png",
   "settings": [
