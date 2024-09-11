@@ -53,6 +53,10 @@ env:
   EVIDENCE_SOURCE__motherduck_personal__token: ${{ secrets.MOTHERDUCK_TOKEN }}
   UV_EXCLUDE_NEWER: "2024-09-10"
 
+concurrency:
+  group: meltano
+  cancel-in-progress: true
+
 jobs:
   pkl:
     name: Check stale pkl output
