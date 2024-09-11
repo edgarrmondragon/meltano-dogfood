@@ -5,7 +5,7 @@ import "../../lib/meltano/plugin.pkl"
 tap_stackexchange = new plugin.Extractor {
   name = "tap-stackexchange"
   variant = "meltanolabs"
-  pip_url = "git+https://github.com/MeltanoLabs/tap-stackexchange.git python-json-logger"
+  pip_url = "tap-stackexchange==0.0.1a5 python-json-logger"
   config = new Mapping {
     ["tags"] = List("meltano")
   }
