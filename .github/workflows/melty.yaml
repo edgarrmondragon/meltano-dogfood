@@ -55,6 +55,7 @@ env:
 
 concurrency:
   group: meltano
+  cancel-in-progress: true
 
 jobs:
   pkl:
