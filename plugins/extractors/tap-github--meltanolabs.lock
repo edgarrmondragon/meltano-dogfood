@@ -43,6 +43,12 @@
       "description": "List of GitHub tokens to authenticate with. Streams will loop through them when hitting rate limits."
     },
     {
+      "name": "auth_app_keys",
+      "kind": "array",
+      "label": "Auth App Keys",
+      "description": "List of GitHub App credentials to authenticate with. Each credential can be constructed by combining an App ID and App private key into the format `:app_id:;;-----BEGIN RSA PRIVATE KEY----- _YOUR_P_KEY_ -----END RSA PRIVATE KEY-----`."
+    },
+    {
       "name": "auth_token",
       "kind": "string",
       "label": "Auth Token",
@@ -88,6 +94,11 @@
       "kind": "string",
       "label": "Batch Config Storage Root",
       "description": "Root path to use when writing batch files."
+    },
+    {
+      "name": "expiry_time_buffer",
+      "kind": "integer",
+      "label": "Expiry Time Buffer"
     },
     {
       "name": "flattening_enabled",
