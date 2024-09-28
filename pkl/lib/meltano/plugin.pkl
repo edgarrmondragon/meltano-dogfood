@@ -11,7 +11,7 @@ abstract class Plugin {
   name: String
   namespace: String | Null = null
   variant: String | Null = null
-  pip_url: String | Null = null
+  pip_url: String|Null?
   settings_group_validation: List<List<String>> | Null = null
   settings: List<Setting> | Null = null
   config: Mapping<String, Any> | Null = null

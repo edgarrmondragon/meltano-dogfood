@@ -59,12 +59,12 @@ concurrency:
 
 jobs:
   pkl:
-    name: Check stale pkl output
+    name: Check stale Pkl output
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install pkl
+      - name: Install Pkl
         uses: pkl-community/setup-pkl@v0
         with:
           pkl-version: 0.26.3
