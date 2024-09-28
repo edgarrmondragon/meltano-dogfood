@@ -5,14 +5,15 @@ import "plugin.pkl"
 typealias EnvVars = Mapping<String, String>
 
 class Plugins {
-  extractors: List<plugin.Plugin>|Null = null
-  loaders: List<plugin.Plugin>|Null = null
-  transformers: List<plugin.Plugin>|Null = null
-  utilities: List<plugin.Plugin>|Null = null
+  extractors: List<plugin.Plugin>?
+  loaders: List<plugin.Plugin>?
+  transformers: List<plugin.Plugin>?
+  utilities: List<plugin.Plugin>?
 }
 
 class FeatureFlags {
-  plugin_locks_required: Boolean|Null = null
+  strict_env_var_mode: Boolean?
+  plugin_locks_required: Boolean?
 }
 
 class VirtualEnvironments {
@@ -20,15 +21,15 @@ class VirtualEnvironments {
 }
 
 class CommandLine {
-  log_level: String|Null = null
-  log_config: String|Null = null
+  log_level: String?
+  log_config: String?
 }
 
 class MeltanoEnvironment {
   // TODO: Richer type for the config key
   name: String
-  config: Mapping<String, Any>|Null = null
-  env: EnvVars|Null = null
+  config: Mapping<String, Any>?
+  env: EnvVars?
 }
 
 class Job {
@@ -42,17 +43,58 @@ class Schedule {
   job: String
 }
 
+class AzureStateBackend {
+  connection_string: String
+  storage_account_url: String
+}
+
+class S3StateBackend {
+  aws_access_key_id: String
+  aws_secret_access_key: String
+  endpoint_url: String
+}
+
+class GCSStateBackend {
+  application_credentials: String
+}
+
+class StateBackendConfig {
+  uri: String?
+  lock_timeout_seconds: Int?
+  lock_retry_seconds: Int?
+  azure: AzureStateBackend?
+  s3: S3StateBackend?
+  gcs: GCSStateBackend?
+}
+
+class SnowplowConfig {
+  collector_endpoints: List<String>
+}
+
 class MeltanoProject {
   version: Int = 1
   default_environment: String
-  project_id: String
-  project_readonly: Boolean = false
-  env: EnvVars|Null = null
-  ff: FeatureFlags|Null = null
-  cli: CommandLine|Null = null
-  venv: VirtualEnvironments|Null = null
+  send_anonymous_usage_stats: Boolean?
+  disable_tracking: Boolean?
+  project_id: String?
+  database_max_retries: Int?
+  database_retry_timeout: Int?
+  project_readonly: Boolean?
+  hub_api_root: String?
+  hub_url: String?
+  hub_url_auth: String?
+  elt_buffer_size: Int?
+  python: String?
+  auto_install: Boolean?
+  state_backend: StateBackendConfig?
+  cli: CommandLine?
+  snowplow: SnowplowConfig?
+  venv: VirtualEnvironments?
+  experimental: Boolean?
+  ff: FeatureFlags?
+  env: EnvVars?
   plugins: Plugins
-  environments: List<MeltanoEnvironment>|Null = null
-  jobs: List<Job>|Null = null
-  schedules: List<Schedule>|Null = null
+  environments: List<MeltanoEnvironment>?
+  jobs: List<Job>?
+  schedules: List<Schedule>?
 }
