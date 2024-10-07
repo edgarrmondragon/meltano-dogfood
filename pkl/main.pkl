@@ -54,7 +54,7 @@ output {
         new plugin.Utility {
           name = "dbt-duckdb"
           variant = "jwills"
-          pip_url = "dbt-core~=1.8.0 dbt-duckdb~=1.8.0 duckdb==1.0.0 meltano-dbt-ext~=0.3.0"
+          pip_url = "dbt-core~=1.8.0 dbt-duckdb~=1.9.0 duckdb==1.0.0 meltano-dbt-ext~=0.3.0"
           config = new Mapping {
             ["path"] = "$DUCKDB_PATH"
           }
@@ -62,7 +62,7 @@ output {
         new plugin.Utility {
           name = "sqlfluff"
           variant = "sqlfluff"
-          pip_url = "dbt-core~=1.8.0 dbt-duckdb~=1.8.0 sqlfluff>=3.0.7 sqlfluff-templater-dbt>=3.0.7 duckdb==1.0.0"
+          pip_url = "dbt-core~=1.8.0 dbt-duckdb~=1.9.0 sqlfluff>=3.0.7 sqlfluff-templater-dbt>=3.0.7 duckdb==1.0.0"
           settings = List(
             new plugin.Setting {
               name = "path"
