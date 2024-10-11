@@ -1,5 +1,5 @@
 {
-  "name": "my-evidence-project",
+  "name": "meltano-dogfood",
   "version": "0.0.1",
   "scripts": {
     "build": "evidence build",
@@ -15,8 +15,8 @@
   },
   "type": "module",
   "dependencies": {
-    "@evidence-dev/core-components": "^4.8.6",
-    "@evidence-dev/evidence": "^39.1.10",
+    "@evidence-dev/core-components": "^4.8.7",
+    "@evidence-dev/evidence": "^39.1.11",
     "@evidence-dev/motherduck": "^1.0.2"
   },
   "overrides": {
