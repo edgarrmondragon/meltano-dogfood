@@ -8,7 +8,7 @@ formatters:
     show_locals: True
   json:
     (): meltano.core.logging.json_formatter
-    # include_callsite_parameters: True
+    callsite_parameters: true
 handlers:
   console:
     class: logging.StreamHandler
@@ -36,4 +36,7 @@ loggers:
   # Disable logging of tap and target stdout
   meltano.core.block.extract_load:
     handlers: [file]
+    level: INFO
+  # Disable catalog processing debug logs
+  meltano.core.plugin.singer.catalog:
     level: INFO

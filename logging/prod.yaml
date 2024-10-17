@@ -7,6 +7,7 @@ formatters:
     colors: false
   json:
     (): meltano.core.logging.json_formatter
+    callsite_parameters: true
 handlers:
   console:
     class: logging.StreamHandler
@@ -27,3 +28,6 @@ loggers:
     handlers: [file]
     level: INFO
     propagate: no
+  # Disable catalog processing debug logs
+  meltano.core.plugin.singer.catalog:
+    level: INFO
