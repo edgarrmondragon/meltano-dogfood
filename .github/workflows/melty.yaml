@@ -89,7 +89,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [ping-start]
     container:
-      image: ghcr.io/meltano/meltano:latest-python3.12
+      image: ghcr.io/meltano/meltano:latest-python3.13
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GHCR_IO_TOKEN }}
@@ -132,7 +132,7 @@ jobs:
     continue-on-error: true
     needs: [ping-start]
     container:
-      image: ghcr.io/meltano/meltano:latest-python3.12
+      image: ghcr.io/meltano/meltano:latest-python3.13
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GHCR_IO_TOKEN }}
@@ -156,7 +156,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [meltano-run, lint]
     container:
-      image: ghcr.io/meltano/meltano:latest-python3.12
+      image: ghcr.io/meltano/meltano:latest-python3.13
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GHCR_IO_TOKEN }}
@@ -177,7 +177,7 @@ jobs:
   #   needs: [transform]
   #   runs-on: ubuntu-latest
   #   container:
-  #     image: ghcr.io/meltano/meltano:latest-python3.12
+  #     image: ghcr.io/meltano/meltano:latest-python3.13
   #     credentials:
   #       username: ${{ github.actor }}
   #       password: ${{ secrets.GHCR_IO_TOKEN }}
