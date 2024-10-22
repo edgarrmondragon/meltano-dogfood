@@ -80,6 +80,10 @@
         {
           "label": "Jsonl",
           "value": "jsonl"
+        },
+        {
+          "label": "Parquet",
+          "value": "parquet"
         }
       ]
     },
@@ -162,6 +166,27 @@
       "name": "stream_maps",
       "kind": "object",
       "label": "Stream Maps"
+    },
+    {
+      "name": "stream_options.milestones.state",
+      "kind": "options",
+      "value": "open",
+      "label": "Stream Options Milestones State",
+      "description": "Configures which states are of interest. Must be one of [open, closed, all], defaults to open.",
+      "options": [
+        {
+          "label": "Open",
+          "value": "open"
+        },
+        {
+          "label": "Closed",
+          "value": "closed"
+        },
+        {
+          "label": "All",
+          "value": "all"
+        }
+      ]
     },
     {
       "name": "user_agent",
