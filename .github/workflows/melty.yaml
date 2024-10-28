@@ -42,6 +42,11 @@ on:
         type: choice
         options:
           - logging/dev.yaml
+      forceRun:
+        description: 'Force run the pipeline'
+        required: false
+        default: false
+        type: boolean
   schedule:
     - cron: '0 12 * * *' # Once a day around 6am CST (12am UTC)
 
@@ -120,7 +125,7 @@ jobs:
 
       - name: Run
         run: |
-          meltano run ${{ matrix.job }}
+          meltano run ${{ matrix.job }} ${{ github.event.inputs.forceRun && '--force' || '' }}
 
       - name: Upload metrics log
         uses: actions/upload-artifact@v4
