@@ -1,6 +1,6 @@
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
+    rev: v5.0.0
     hooks:
     -   id: check-added-large-files
     -   id: check-json
@@ -11,12 +11,12 @@ repos:
     -   id: trailing-whitespace
 
 -   repo: https://github.com/pre-commit/pre-commit
-    rev: v3.8.0
+    rev: v4.0.1
     hooks:
     -   id: validate_manifest
 
 -   repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.29.2
+    rev: 0.29.4
     hooks:
     -   id: check-dependabot
     -   id: check-github-workflows
