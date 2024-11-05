@@ -32,7 +32,7 @@
       "description": "Compression format to use for batch files.",
       "options": [
         {
-          "label": "Gzip",
+          "label": "GZIP",
           "value": "gzip"
         },
         {
@@ -48,7 +48,7 @@
       "description": "Format to use for batch files.",
       "options": [
         {
-          "label": "Jsonl",
+          "label": "JSONL",
           "value": "jsonl"
         },
         {
