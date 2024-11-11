@@ -36,4 +36,4 @@ updates:
     groups:
       Evidence:
         patterns:
-          - "@evidence/*"
+          - "@evidence-dev/*"
