@@ -17,7 +17,7 @@ plugins:
     pip_url: git+https://github.com/edgarrmondragon/tap-getpocket.git python-json-logger
   - name: tap-stackexchange
     variant: meltanolabs
-    pip_url: tap-stackexchange==0.0.1b1 python-json-logger
+    pip_url: tap-stackexchange==0.0.1 python-json-logger
     config:
       tags:
       - meltano
@@ -25,7 +25,7 @@ plugins:
     - questions.*
   - name: tap-readthedocs
     variant: edgarrmondragon
-    pip_url: tap-readthedocs==0.5.3 python-json-logger
+    pip_url: tap-readthedocs==0.5.4 python-json-logger
     select:
     - projects.*
   - name: tap-github
