@@ -15,9 +15,9 @@
   },
   "type": "module",
   "dependencies": {
-    "@evidence-dev/core-components": "^4.8.12",
-    "@evidence-dev/evidence": "^39.1.15",
-    "@evidence-dev/motherduck": "^1.0.2"
+    "@evidence-dev/core-components": "^4.8.13",
+    "@evidence-dev/evidence": "^39.1.17",
+    "@evidence-dev/motherduck": "^1.0.3"
   },
   "overrides": {
     "duckdb": "1.0.0",
