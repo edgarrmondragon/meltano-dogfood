@@ -15,8 +15,8 @@
   },
   "type": "module",
   "dependencies": {
-    "@evidence-dev/core-components": "^4.8.13",
-    "@evidence-dev/evidence": "^39.1.17",
+    "@evidence-dev/core-components": "^4.9.0",
+    "@evidence-dev/evidence": "^39.2.0",
     "@evidence-dev/motherduck": "^1.0.3"
   },
   "overrides": {
