@@ -41,7 +41,7 @@ plugins:
   - name: tap-pypistats
     namespace: tap_pypistats
     variant: edgarrmondragon
-    pip_url: tap-pypistats==0.0.4 python-json-logger
+    pip_url: tap-pypistats==0.0.6 python-json-logger
     settings_group_validation:
     - - packages
     settings:
