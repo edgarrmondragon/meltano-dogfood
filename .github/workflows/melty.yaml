@@ -67,14 +67,14 @@ concurrency:
 jobs:
   pkl:
     name: Check stale Pkl output
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
 
       - name: Install Pkl
         uses: pkl-community/setup-pkl@v0
         with:
-          pkl-version: 0.26.3
+          pkl-version: 0.27.0
 
       - name: Check stale pkl output
         run: pkl eval pkl/main.pkl --format=yaml > meltano.yml
