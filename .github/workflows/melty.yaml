@@ -88,9 +88,9 @@ jobs:
     needs: [pkl]
     steps:
       - name: Ping
-        # Only ping the start of the pipeline if the event is a scheduled run
+        # Only ping the start of the pipeline if the event is a scheduled run or a push to main
         run: |
-          if [ "${{ github.event_name }}" == "schedule" ]; then
+          if [ "${{ github.event_name }}" == "schedule" ] || [ "${{ github.event_name }}" == "push" ]; then
             curl https://hc-ping.com/${{ secrets.HEALTHCHECK_ID }}/start
           fi
 
@@ -111,14 +111,17 @@ jobs:
         TAP_STACKEXCHANGE_KEY: ${{ secrets.TAP_STACKEXCHANGE_KEY }}
         TARGET_DUCKDB_PATH: ${{ secrets.TARGET_DUCKDB_PATH }}
     strategy:
+      fail-fast: false
       matrix:
         job:
           - "pocket-to-duckdb"
           - "stackoverflow-to-duckdb"
           - "rtd-to-duckdb"
           - "gh-to-duckdb"
-          - "pypistats-to-duckdb"
-      fail-fast: false
+        ok_to_skip: [false]
+        include:
+          - job: "pypistats-to-duckdb"
+            ok_to_skip: true
 
     steps:
       - uses: actions/checkout@v4
@@ -127,6 +130,7 @@ jobs:
           meltano --version
 
       - name: Run
+        continue-on-error: ${{ matrix.ok_to_skip }}
         run: |
           meltano run ${{ matrix.job }} ${{ github.event.inputs.forceRun && '--force' || '' }}
 
@@ -270,7 +274,7 @@ jobs:
     name: Ping the end of the pipeline
     runs-on: ubuntu-latest
     needs: [deploy-evidence]
-    if: github.event_name == 'schedule'
+    if: github.event_name == 'schedule' || github.event_name == 'push'
     steps:
       - name: Ping
         run: |
