@@ -18,10 +18,18 @@ abstract class Plugin {
 }
 
 class Extractor extends Plugin {
+  catalog: String | Null = null
+  load_schema: String | Null = null
+  metadata: Mapping<String, Mapping<String, Any>> | Null = null
+  schema: Mapping<String, Mapping<String, Any>> | Null = null
   select: List<String> | Null = null
+  select_filter: List<String> | Null = null
+  use_cached_catalog: Boolean | Null = null
 }
 
-class Loader extends Plugin {}
+class Loader extends Plugin {
+  dialect: String | Null = null
+}
 
 class Utility extends Plugin {}
 
