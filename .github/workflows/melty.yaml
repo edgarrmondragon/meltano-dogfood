@@ -74,7 +74,7 @@ jobs:
       - name: Install Pkl
         uses: pkl-community/setup-pkl@v0
         with:
-          pkl-version: 0.27.0
+          pkl-version: 0.27.1
 
       - name: Check stale pkl output
         run: pkl eval pkl/main.pkl --format=yaml > meltano.yml
@@ -99,7 +99,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [ping-start]
     container:
-      image: ghcr.io/meltano/meltano:latest-python3.13
+      image: ghcr.io/meltano/meltano:latest-python${{ matrix.python-version || '3.13' }}
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GHCR_IO_TOKEN }}
@@ -117,11 +117,12 @@ jobs:
           - "pocket-to-duckdb"
           - "stackoverflow-to-duckdb"
           - "rtd-to-duckdb"
-          - "gh-to-duckdb"
         ok_to_skip: [false]
         include:
           - job: "pypistats-to-duckdb"
             ok_to_skip: true
+          - job: "gh-to-duckdb"
+            python-version: "3.12"
 
     steps:
       - uses: actions/checkout@v4
