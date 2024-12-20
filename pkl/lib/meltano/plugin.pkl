@@ -15,6 +15,7 @@ abstract class Plugin {
   settings_group_validation: List<List<String>> | Null = null
   settings: List<Setting> | Null = null
   config: Mapping<String, Any> | Null = null
+  python: String | Null = null
 }
 
 class Extractor extends Plugin {
