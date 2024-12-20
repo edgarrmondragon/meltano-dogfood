@@ -35,6 +35,7 @@ plugins:
       repositories:
       - edgarrmondragon/citric
       - edgarrmondragon/tap-readthedocs
+    python: python3.12
     select:
     - repositories.*
     - stargazers.*
