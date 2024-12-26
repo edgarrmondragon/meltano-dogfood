@@ -48,6 +48,14 @@ output {
             ["path"] = "$DUCKDB_PATH"
             ["default_target_schema"] = "$MELTANO_EXTRACT__LOAD_SCHEMA"
           }
+        },
+        new plugin.Loader {
+          name = "target-parquet"
+          variant = "automattic"
+          pip_url = "git+https://github.com/edgarrmondragon/target-parquet.git@update-dependencies python-json-logger"
+          config = new Mapping {
+            ["destination_path"] = "$MELTANO_PROJECT_ROOT/output"
+          }
         }
       )
       utilities = List(
