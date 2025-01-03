@@ -1,0 +1,26 @@
+source: items is duckdb.table('output/items/items-20241226_210215-0-0.gz.parquet') extend {
+    dimension:
+        is_favorite is favorite = '1'
+
+    measure:
+        total_count is count()
+        total_word_count is sum(word_count)
+        avg_word_count is avg(word_count)
+}
+
+query: tags is items -> {
+    select:
+        item_id
+        tag is json_extract_string!(unnest!(from_json!(tags, '["json"]')), 'tag')
+}
+
+query: stats is items -> {
+    group_by:
+        is_favorite
+        status
+
+    aggregate:
+        total_count
+        total_word_count
+        avg_word_count
+}
