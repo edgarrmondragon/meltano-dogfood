@@ -13,6 +13,7 @@ on:
       - .github/workflows/melty.yaml
       - evidence/sources/**/*.sql
       - evidence/pages/**/*.md
+      - evidence/evidence.config.yaml
       - evidence/package.json
       - evidence/package-lock.json
   push:
@@ -27,6 +28,7 @@ on:
       - .github/workflows/melty.yaml
       - evidence/sources/**/*.sql
       - evidence/pages/**/*.md
+      - evidence/evidence.config.yaml
       - evidence/package.json
       - evidence/package-lock.json
   workflow_dispatch:
