@@ -117,12 +117,11 @@ jobs:
           - "pocket-to-duckdb"
           - "stackoverflow-to-duckdb"
           - "rtd-to-duckdb"
+          - "gh-to-duckdb"
         ok_to_skip: [false]
         include:
           - job: "pypistats-to-duckdb"
             ok_to_skip: true
-          - job: "gh-to-duckdb"
-            python-version: "3.12"
 
     steps:
       - uses: actions/checkout@v4

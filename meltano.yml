@@ -2,6 +2,7 @@ version: 1
 default_environment: dev
 project_id: b77cad0a-ffd8-494e-9e6b-18d6eacb71d4
 project_readonly: true
+python: python3.13
 cli:
   log_config: logging/dev.yaml
 venv:
@@ -30,12 +31,11 @@ plugins:
     - projects.*
   - name: tap-github
     variant: meltanolabs
-    pip_url: git+https://github.com/MeltanoLabs/tap-github.git@v1.7.0 python-json-logger
+    pip_url: git+https://github.com/MeltanoLabs/tap-github.git@v1.9.0 python-json-logger
     config:
       repositories:
       - edgarrmondragon/citric
       - edgarrmondragon/tap-readthedocs
-    python: python3.12
     select:
     - repositories.*
     - stargazers.*
