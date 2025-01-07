@@ -31,11 +31,13 @@ plugins:
     - projects.*
   - name: tap-github
     variant: meltanolabs
-    pip_url: git+https://github.com/MeltanoLabs/tap-github.git@v1.9.0 python-json-logger
+    pip_url: meltanolabs-tap-github==1.10.0 python-json-logger
     config:
       repositories:
       - edgarrmondragon/citric
       - edgarrmondragon/tap-readthedocs
+      - edgarrmondragon/tap-clinicaltrials
+      - edgarrmondragon/pep610
     select:
     - repositories.*
     - stargazers.*

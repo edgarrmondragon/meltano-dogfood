@@ -60,7 +60,7 @@ env:
   MELTANO_ENVIRONMENT: ${{ github.event.inputs.environment || 'prod' }}
   MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
   EVIDENCE_SOURCE__motherduck_personal__token: ${{ secrets.MOTHERDUCK_TOKEN }}
-  UV_EXCLUDE_NEWER: "2024-12-16"
+  UV_EXCLUDE_NEWER: "2025-01-07"
 
 concurrency:
   group: meltano
