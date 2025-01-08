@@ -6,7 +6,7 @@
   "label": "GitHub",
   "docs": "https://hub.meltano.com/extractors/tap-github--meltanolabs",
   "repo": "https://github.com/MeltanoLabs/tap-github",
-  "pip_url": "git+https://github.com/MeltanoLabs/tap-github.git",
+  "pip_url": "meltanolabs-tap-github",
   "description": "Code hosting platform",
   "logo_url": "https://hub.meltano.com/assets/logos/extractors/github.png",
   "capabilities": [
