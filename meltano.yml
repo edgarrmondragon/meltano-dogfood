@@ -69,6 +69,11 @@ plugins:
     config:
       path: $DUCKDB_PATH
       default_target_schema: $MELTANO_EXTRACT__LOAD_SCHEMA
+  - name: target-parquet
+    variant: automattic
+    pip_url: git+https://github.com/edgarrmondragon/target-parquet.git@update-dependencies python-json-logger
+    config:
+      destination_path: $MELTANO_PROJECT_ROOT/output
   utilities:
   - name: dbt-duckdb
     variant: jwills
