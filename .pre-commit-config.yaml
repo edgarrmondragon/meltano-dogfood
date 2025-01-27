@@ -11,12 +11,12 @@ repos:
     -   id: trailing-whitespace
 
 -   repo: https://github.com/pre-commit/pre-commit
-    rev: v4.0.1
+    rev: v4.1.0
     hooks:
     -   id: validate_manifest
 
 -   repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.29.4
+    rev: 0.31.0
     hooks:
     -   id: check-dependabot
     -   id: check-github-workflows
