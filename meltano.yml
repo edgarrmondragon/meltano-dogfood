@@ -15,7 +15,7 @@ plugins:
   extractors:
   - name: tap-getpocket
     variant: edgarrmondragon
-    pip_url: git+https://github.com/edgarrmondragon/tap-getpocket.git python-json-logger
+    pip_url: git+https://github.com/edgarrmondragon/tap-getpocket.git@dfa5519a6fdf6dfc9dee4fcc604c796a85984072 python-json-logger
   - name: tap-stackexchange
     variant: meltanolabs
     pip_url: tap-stackexchange==0.0.3 python-json-logger
