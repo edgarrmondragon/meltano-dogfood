@@ -4,14 +4,19 @@ project_id: b77cad0a-ffd8-494e-9e6b-18d6eacb71d4
 project_readonly: true
 python: python3.13
 cli:
-  log_config: logging/dev.yaml
+  # log_config: logging/dev.yaml
+  # log_config: logging/file.yaml
+  log_level: debug
+# requires_meltano: ">=3.7.0dev0"
+# requires_meltano: ">=3,!=3.5.0,!=3.5.1,<4"
+# requires_meltano: ">=3.0.0dev0,!=3.5.0,!=3.5.1,<4"
 venv:
   backend: uv
 ff:
   plugin_locks_required: true
 env:
   SINGER_SDK_LOG_CONFIG: logging/singer_logging.yaml
-  UV_EXCLUDE_NEWER: 2025-03-13
+  UV_EXCLUDE_NEWER: "2025-03-13"
 plugins:
   extractors:
   - name: tap-getpocket
