@@ -340,5 +340,6 @@
       "executable": "evidence_extension"
     }
   },
-  "ext_repo": "https://github.com/MeltanoLabs/evidence-ext"
+  "ext_repo": "https://github.com/MeltanoLabs/evidence-ext",
+  "documentation": "https://docs.evidence.dev/"
 }

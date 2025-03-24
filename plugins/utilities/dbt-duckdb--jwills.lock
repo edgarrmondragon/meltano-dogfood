@@ -118,5 +118,6 @@
       "description": "Runs tests on data in deployed models."
     }
   },
-  "ext_repo": "https://github.com/meltano/dbt-ext"
+  "ext_repo": "https://github.com/meltano/dbt-ext",
+  "documentation": "https://docs.meltano.com/guide/transformation"
 }
