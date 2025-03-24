@@ -11,7 +11,7 @@ ff:
   plugin_locks_required: true
 env:
   SINGER_SDK_LOG_CONFIG: logging/singer_logging.yaml
-  UV_EXCLUDE_NEWER: "2025-03-13"
+  UV_EXCLUDE_NEWER: '2025-03-13'
 plugins:
   extractors:
   - name: tap-getpocket
