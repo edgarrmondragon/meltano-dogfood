@@ -11,7 +11,7 @@ ff:
   plugin_locks_required: true
 env:
   SINGER_SDK_LOG_CONFIG: logging/singer_logging.yaml
-  UV_EXCLUDE_NEWER: 2025-03-13
+  UV_EXCLUDE_NEWER: 2025-03-27
 plugins:
   extractors:
   - name: tap-getpocket
@@ -32,7 +32,7 @@ plugins:
     - projects.*
   - name: tap-github
     variant: meltanolabs
-    pip_url: meltanolabs-tap-github==1.16.0 python-json-logger
+    pip_url: meltanolabs-tap-github==1.16.1 python-json-logger
     config:
       repositories:
       - edgarrmondragon/citric
@@ -40,6 +40,7 @@ plugins:
       - edgarrmondragon/tap-clinicaltrials
       - edgarrmondragon/pep610
       start_date: 1 month ago
+      user_agent: $MELTANO_USER_AGENT
     select:
     - repositories.*
     - stargazers.*
