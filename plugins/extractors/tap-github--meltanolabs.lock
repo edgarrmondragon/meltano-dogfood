@@ -156,7 +156,7 @@
       "name": "searches",
       "kind": "array",
       "label": "Searches",
-      "description": "An array of search descriptor objects with the following properties. \"name\" - a human readable name for the search query. \"query\" -  a github search string (generally the same as would come after ?q= in the URL)"
+      "description": "List of searches to perform."
     },
     {
       "name": "skip_parent_streams",
@@ -167,7 +167,8 @@
     {
       "name": "start_date",
       "kind": "date_iso8601",
-      "label": "Start Date"
+      "label": "Start Date",
+      "description": "Start date for incremental sync."
     },
     {
       "name": "stream_map_config",
@@ -203,7 +204,8 @@
     {
       "name": "user_agent",
       "kind": "string",
-      "label": "User Agent"
+      "label": "User Agent",
+      "description": "User agent to use for API requests."
     },
     {
       "name": "user_ids",
