@@ -11,12 +11,12 @@ ff:
   plugin_locks_required: true
 env:
   SINGER_SDK_LOG_CONFIG: logging/singer_logging.yaml
-  UV_EXCLUDE_NEWER: 2025-03-31
+  UV_EXCLUDE_NEWER: 2025-04-16
 plugins:
   extractors:
   - name: tap-getpocket
     variant: edgarrmondragon
-    pip_url: git+https://github.com/edgarrmondragon/tap-getpocket.git@dfa5519a6fdf6dfc9dee4fcc604c796a85984072 python-json-logger
+    pip_url: git+https://github.com/edgarrmondragon/tap-getpocket.git@a73f78d15c042edc60183c40bdd05ebbcf9e362a python-json-logger
   - name: tap-stackexchange
     variant: meltanolabs
     pip_url: tap-stackexchange==0.0.4 python-json-logger
@@ -27,12 +27,12 @@ plugins:
     - questions.*
   - name: tap-readthedocs
     variant: edgarrmondragon
-    pip_url: tap-readthedocs==0.5.7 python-json-logger
+    pip_url: tap-readthedocs==0.5.8 python-json-logger
     select:
     - projects.*
   - name: tap-github
     variant: meltanolabs
-    pip_url: meltanolabs-tap-github==1.16.2 python-json-logger
+    pip_url: meltanolabs-tap-github==1.17.1 python-json-logger
     config:
       repositories:
       - edgarrmondragon/citric
