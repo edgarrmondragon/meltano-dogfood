@@ -5,6 +5,6 @@ import "../../lib/meltano/plugin.pkl"
 tap_readthedocs = new plugin.Extractor {
   name = "tap-readthedocs"
   variant = "edgarrmondragon"
-  pip_url = "tap-readthedocs==0.5.8 python-json-logger"
+  pip_url = "tap-readthedocs==0.5.9 python-json-logger"
   select = List("projects.*")
 }

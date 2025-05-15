@@ -5,5 +5,5 @@ import "../../lib/meltano/plugin.pkl"
 tap_getpocket = new plugin.Extractor {
   name = "tap-getpocket"
   variant = "edgarrmondragon"
-  pip_url = "git+https://github.com/edgarrmondragon/tap-getpocket.git@a73f78d15c042edc60183c40bdd05ebbcf9e362a python-json-logger"
+  pip_url = "git+https://github.com/edgarrmondragon/tap-getpocket.git@75dbfc0fac847cfc9ec6fb7fed2e0d192684a49b python-json-logger"
 }
