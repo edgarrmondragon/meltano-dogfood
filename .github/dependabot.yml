@@ -6,16 +6,12 @@ updates:
   #     interval: daily
   #     time: "11:35"
   #     timezone: "America/Mexico_City"
-  #   reviewers:
-  #     - "edgarrmondragon"
   #   labels:
   #     - "dependencies"
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
       interval: weekly
-    reviewers:
-      - "edgarrmondragon"
     labels:
       - "dependencies"
     groups:
@@ -28,8 +24,6 @@ updates:
       interval: daily
       time: "11:35"
       timezone: "America/Mexico_City"
-    reviewers:
-      - "edgarrmondragon"
     labels:
       - "dependencies"
       - "Test/ELTP"
