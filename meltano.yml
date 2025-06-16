@@ -11,7 +11,7 @@ ff:
   plugin_locks_required: true
 env:
   SINGER_SDK_LOG_CONFIG: logging/singer_logging.yaml
-  UV_EXCLUDE_NEWER: 2025-06-12
+  UV_EXCLUDE_NEWER: 2025-06-20
 plugins:
   extractors:
   - name: tap-getpocket
@@ -19,7 +19,7 @@ plugins:
     pip_url: git+https://github.com/edgarrmondragon/tap-getpocket.git@75dbfc0fac847cfc9ec6fb7fed2e0d192684a49b python-json-logger
   - name: tap-stackexchange
     variant: meltanolabs
-    pip_url: tap-stackexchange==0.0.5 python-json-logger
+    pip_url: tap-stackexchange==0.0.6 python-json-logger
     config:
       tags:
       - meltano
@@ -47,7 +47,7 @@ plugins:
   - name: tap-pypistats
     namespace: tap_pypistats
     variant: edgarrmondragon
-    pip_url: tap-pypistats[pinned]==0.0.9 python-json-logger
+    pip_url: tap-pypistats[pinned]==0.0.10 python-json-logger
     settings_group_validation:
     - - packages
     settings:
@@ -68,19 +68,19 @@ plugins:
     pip_url: target-jsonl==0.1.4
   - name: target-duckdb
     variant: jwills
-    pip_url: duckdb==1.3.0 target-duckdb==0.8.0
+    pip_url: duckdb==1.3.1 target-duckdb==0.8.0
     config:
       path: $DUCKDB_PATH
       default_target_schema: $MELTANO_EXTRACT__LOAD_SCHEMA
   utilities:
   - name: dbt-duckdb
     variant: jwills
-    pip_url: dbt-core~=1.10.0b1 dbt-duckdb~=1.9.1 duckdb==1.3.0 meltano-dbt-ext~=0.3.0
+    pip_url: dbt-core~=1.10.0b1 dbt-duckdb~=1.9.1 duckdb==1.3.1 meltano-dbt-ext~=0.3.0
     config:
       path: $DUCKDB_PATH
   - name: sqlfluff
     variant: sqlfluff
-    pip_url: dbt-core~=1.10.0b1 dbt-duckdb~=1.9.1 sqlfluff~=3.3 sqlfluff-templater-dbt~=3.3 duckdb==1.3.0
+    pip_url: dbt-core~=1.10.0b1 dbt-duckdb~=1.9.1 sqlfluff~=3.3 sqlfluff-templater-dbt~=3.3 duckdb==1.3.1
     settings:
     - name: path
       env: DBT_DUCKDB_PATH
