@@ -119,10 +119,7 @@ jobs:
           - "stackoverflow-to-duckdb"
           - "rtd-to-duckdb"
           - "gh-to-duckdb"
-        ok_to_skip: [false]
-        include:
-          - job: "pypistats-to-duckdb"
-            ok_to_skip: true
+          - "pypistats-to-duckdb"
 
     steps:
       - uses: actions/checkout@v4
@@ -135,7 +132,6 @@ jobs:
           meltano run --only-install ${{ matrix.job }}
 
       - name: Run
-        continue-on-error: ${{ matrix.ok_to_skip }}
         env:
           MELTANO_FF_STRICT_ENV_VAR_MODE: true
         run: |
@@ -175,6 +171,7 @@ jobs:
   transform:
     name: Data Transformation with dbt-duckdb
     runs-on: ubuntu-latest
+    if: always()
     needs: [meltano-run, lint]
     container:
       image: ghcr.io/meltano/meltano:latest-python3.13
