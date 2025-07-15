@@ -11,6 +11,7 @@
   "logo_url": "https://hub.meltano.com/assets/logos/extractors/github.png",
   "capabilities": [
     "about",
+    "activate-version",
     "batch",
     "catalog",
     "discover",
@@ -102,7 +103,8 @@
     {
       "name": "expiry_time_buffer",
       "kind": "integer",
-      "label": "Expiry Time Buffer"
+      "label": "Expiry Time Buffer",
+      "description": "When authenticating as a GitHub App, this buffer controls how many minutes before expiry the GitHub app tokens will be refreshed. Defaults to 10 minutes."
     },
     {
       "name": "faker_config.locale",
@@ -156,7 +158,7 @@
       "name": "searches",
       "kind": "array",
       "label": "Searches",
-      "description": "List of searches to perform."
+      "description": "An array of search descriptor objects with the following properties: \"name\" - a human readable name for the search query. \"query\" - a github search string (generally the same as would come after ?q= in the URL)\""
     },
     {
       "name": "skip_parent_streams",

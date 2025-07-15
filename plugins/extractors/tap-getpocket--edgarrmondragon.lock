@@ -11,6 +11,7 @@
   "logo_url": "https://hub.meltano.com/assets/logos/extractors/getpocket.svg",
   "capabilities": [
     "about",
+    "activate-version",
     "batch",
     "catalog",
     "discover",
