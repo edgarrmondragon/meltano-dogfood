@@ -4,7 +4,7 @@ formatters:
   default:
     format: "%(message)s"
   metrics:
-    (): pythonjsonlogger.jsonlogger.JsonFormatter
+    (): pythonjsonlogger.json.JsonFormatter
     format: "{asctime} {message}"
     style: "{"
 handlers:
