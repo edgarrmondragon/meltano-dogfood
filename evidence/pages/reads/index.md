@@ -53,26 +53,6 @@ Recently read:
 {/each}
 </ul>
 
-### Daily reads
-
-```sql daily_reads
-select * from motherduck_personal.daily_reads
-```
-
-{#if daily_reads != null && daily_reads.length !== 0}
-
-<BarChart
-    data={daily_reads}
-    x=date
-    y=total
-/>
-
-{:else }
-
-No reads in the last 7 days.
-
-{/if}
-
 ## Tags
 
 ```sql tags_tally
