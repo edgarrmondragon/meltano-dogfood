@@ -34,11 +34,11 @@ jobs:
       run: |
         meltano lock --update --all
 
-    - uses: tibdex/github-app-token@v2.1.0
+    - uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2.0.6
       id: generate-token
       with:
-        app_id: ${{ secrets.APP_ID }}
-        private_key: ${{ secrets.APP_PRIVATE_KEY }}
+        app-id: ${{ vars.APP_ID }}
+        private-key: ${{ secrets.APP_PRIVATE_KEY }}
 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v7.0.8
