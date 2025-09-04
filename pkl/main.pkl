@@ -16,7 +16,7 @@ output {
     python = "python3.13"
     env = new Mapping {
       ["SINGER_SDK_LOG_CONFIG"] = "logging/singer_logging.yaml"
-      ["UV_EXCLUDE_NEWER"] = "2025-08-03"
+      ["UV_EXCLUDE_NEWER"] = "2025-09-05"
     }
     ff = new project.FeatureFlags {
       plugin_locks_required = true
