@@ -101,7 +101,7 @@ jobs:
     needs: [ping-start]
     continue-on-error: true
     container:
-      image: ghcr.io/meltano/meltano:latest-python${{ matrix.python-version || '3.13' }}
+      image: ghcr.io/meltano/meltano:latest-python3.13-slim
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GHCR_IO_TOKEN }}
