@@ -55,9 +55,10 @@ on:
 env:
   DUCKDB_PATH: ${{ secrets.DUCKDB_PATH }}
   FORCE_COLOR: "1"
-  MELTANO_CLI_LOG_CONFIG: ${{ github.event.inputs.environment || 'logging/ci.yaml' }}
+  MELTANO_CLI_LOG_CONFIG: 'logging/prod.yaml'
   MELTANO_DATABASE_URI: ${{ secrets.MELTANO_DATABASE_URI }}
   MELTANO_ENVIRONMENT: ${{ github.event.inputs.environment || 'prod' }}
+  MELTANO_RUN_TIMEOUT: 600
   MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
   EVIDENCE_SOURCE__motherduck_personal__token: ${{ secrets.MOTHERDUCK_TOKEN }}
 
@@ -138,11 +139,11 @@ jobs:
         run: |
           meltano run --no-install ${{ matrix.job }} ${{ github.event.inputs.forceRun && '--force' || '' }}
 
-      - name: Upload metrics log
+      - name: Upload Meltano log
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: singer-metrics-${{ matrix.job }}
-          path: logs/singer_metrics.log
+          name: meltano-${{ matrix.job }}
+          path: logs/meltano.log
 
   lint:
     name: Lint models
