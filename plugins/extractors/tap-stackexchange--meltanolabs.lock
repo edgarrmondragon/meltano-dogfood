@@ -17,7 +17,8 @@
     "discover",
     "schema-flattening",
     "state",
-    "stream-maps"
+    "stream-maps",
+    "structured-logging"
   ],
   "settings_group_validation": [
     [

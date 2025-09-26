@@ -4,14 +4,14 @@ disable_existing_loggers: no
 formatters:
   structured:
     (): meltano.core.logging.console_log_formatter
-    colors: false
+    colors: true
   json:
     (): meltano.core.logging.json_formatter
-    callsite_parameters: true
+    callsite_parameters: false
 handlers:
   console:
     class: logging.StreamHandler
-    level: WARNING
+    level: INFO
     formatter: structured
     stream: "ext://sys.stderr"
   file:
@@ -20,14 +20,19 @@ handlers:
     filename: logs/meltano.log
     formatter: json
 root:
-  level: DEBUG
-  handlers: [file, console]
+  handlers: [console]
 loggers:
-  # Disable logging of tap and target stdout
-  meltano.core.block.extract_load:
-    handlers: [file]
+  meltano:
+    level: DEBUG
+  meltano.cli:
     level: INFO
+  meltano.core:
+    level: INFO
+  meltano.plugin.stderr:
+    level: DEBUG
+    handlers: [console, file]
     propagate: no
-  # Disable catalog processing debug logs
+  meltano.plugin.stdout:
+    level: WARNING
   meltano.core.plugin.singer.catalog:
     level: INFO
