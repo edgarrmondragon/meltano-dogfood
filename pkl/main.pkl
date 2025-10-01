@@ -15,14 +15,10 @@ output {
     project_id = "b77cad0a-ffd8-494e-9e6b-18d6eacb71d4"
     python = "python3.13"
     env = new Mapping {
-      ["SINGER_SDK_LOG_CONFIG"] = "logging/singer_logging.yaml"
-      ["UV_EXCLUDE_NEWER"] = "2025-09-20"
+      ["UV_EXCLUDE_NEWER"] = "2025-10-10"
     }
     ff = new project.FeatureFlags {
       plugin_locks_required = true
-    }
-    cli = new project.CommandLine {
-      log_config = "logging/dev.yaml"
     }
     project_readonly = true
     venv = new project.VirtualEnvironments {
