@@ -32,7 +32,7 @@ jobs:
 
     - name: Meltano Lock Update
       run: |
-        meltano lock --update --all
+        meltano lock --update
 
     - uses: actions/create-github-app-token@bf559f85448f9380bcfa2899dbdc01eb5b37be3a # v3.0.0-beta.2
       id: generate-token
