@@ -21,6 +21,7 @@ output {
       plugin_locks_required = true
     }
     project_readonly = true
+    requires_meltano = ">=4.0.0rc1"
     venv = new project.VirtualEnvironments {
       backend = "uv"
     }
