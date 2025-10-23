@@ -1,7 +1,7 @@
-version: 1
 default_environment: dev
 project_id: b77cad0a-ffd8-494e-9e6b-18d6eacb71d4
 project_readonly: true
+requires_meltano: '>=4.0.0rc1'
 python: python3.13
 venv:
   backend: uv

@@ -72,7 +72,7 @@ class SnowplowConfig {
 }
 
 class MeltanoProject {
-  version: Int = 1
+  version: Int?
   default_environment: String
   send_anonymous_usage_stats: Boolean?
   disable_tracking: Boolean?
@@ -80,6 +80,7 @@ class MeltanoProject {
   database_max_retries: Int?
   database_retry_timeout: Int?
   project_readonly: Boolean?
+  requires_meltano: String?
   hub_api_root: String?
   hub_url: String?
   hub_url_auth: String?

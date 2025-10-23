@@ -173,7 +173,6 @@ jobs:
   transform:
     name: Data Transformation with dbt-duckdb
     runs-on: ubuntu-latest
-    if: always()
     needs: [meltano-run, lint]
     container:
       image: ghcr.io/meltano/meltano:latest-python3.14-slim
