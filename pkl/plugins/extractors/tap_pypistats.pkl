@@ -6,7 +6,7 @@ tap_pypistats = new plugin.Extractor {
   name = "tap-pypistats"
   namespace = "tap_pypistats"
   variant = "edgarrmondragon"
-  pip_url = "tap-pypistats[pinned]==0.0.11"
+  pip_url = "-r $MELTANO_PROJECT_ROOT/plugins/extractors/pylock.tap-pypistats.toml"
   settings_group_validation = List(
     List("packages")
   )

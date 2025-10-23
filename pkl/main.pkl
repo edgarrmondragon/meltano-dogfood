@@ -15,7 +15,7 @@ output {
     project_id = "b77cad0a-ffd8-494e-9e6b-18d6eacb71d4"
     python = "python3.13"
     env = new Mapping {
-      ["UV_EXCLUDE_NEWER"] = "2025-10-22"
+      ["UV_PREVIEW_FEATURES"] = "pylock"
     }
     ff = new project.FeatureFlags {
       plugin_locks_required = true
@@ -37,12 +37,12 @@ output {
         new plugin.Loader {
           name = "target-jsonl"
           variant = "andyh1203"
-          pip_url = "target-jsonl==0.1.4"
+          pip_url = "-r $MELTANO_PROJECT_ROOT/plugins/loaders/pylock.target-jsonl.toml"
         },
         new plugin.Loader {
           name = "target-duckdb"
           variant = "jwills"
-          pip_url = "duckdb==1.4.1 target-duckdb==0.8.0"
+          pip_url = "-r $MELTANO_PROJECT_ROOT/plugins/loaders/pylock.target-duckdb.toml"
           config = new Mapping {
             ["path"] = "$DUCKDB_PATH"
             ["default_target_schema"] = "$MELTANO_EXTRACT__LOAD_SCHEMA"
@@ -53,7 +53,7 @@ output {
         new plugin.Utility {
           name = "dbt-duckdb"
           variant = "jwills"
-          pip_url = "dbt-core~=1.11.0b3 dbt-duckdb~=1.9.1 duckdb==1.4.1 meltano-dbt-ext~=0.3.0"
+          pip_url = "-r $MELTANO_PROJECT_ROOT/plugins/utilities/pylock.dbt-duckdb.toml"
           config = new Mapping {
             ["path"] = "$DUCKDB_PATH"
           }
@@ -61,7 +61,7 @@ output {
         new plugin.Utility {
           name = "sqlfluff"
           variant = "sqlfluff"
-          pip_url = "dbt-core~=1.11.0b3 dbt-duckdb~=1.9.1 sqlfluff~=3.3 sqlfluff-templater-dbt~=3.3 duckdb==1.4.1"
+          pip_url = "-r $MELTANO_PROJECT_ROOT/plugins/utilities/pylock.sqlfluff.toml"
           settings = List(
             new plugin.Setting {
               name = "path"
