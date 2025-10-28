@@ -9,7 +9,7 @@ on:
 
 jobs:
   pre-commit:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       FORCE_COLOR: "1"
     steps:

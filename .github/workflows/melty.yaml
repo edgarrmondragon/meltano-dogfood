@@ -38,24 +38,24 @@ on:
         required: true
         default: prod
       logConfig:
-        description: 'Logging configuration file'
+        description: "Logging configuration file"
         required: true
-        default: 'logging/dev.yaml'
+        default: "logging/dev.yaml"
         type: choice
         options:
           - logging/dev.yaml
       forceRun:
-        description: 'Force run the pipeline'
+        description: "Force run the pipeline"
         required: false
         default: false
         type: boolean
   schedule:
-    - cron: '0 12 * * *' # Once a day around 6am CST (12am UTC)
+    - cron: "0 12 * * *" # Once a day around 6am CST (12am UTC)
 
 env:
   DUCKDB_PATH: ${{ secrets.DUCKDB_PATH }}
   FORCE_COLOR: "1"
-  MELTANO_CLI_LOG_CONFIG: 'logging/prod.yaml'
+  MELTANO_CLI_LOG_CONFIG: "logging/prod.yaml"
   MELTANO_DATABASE_URI: ${{ secrets.MELTANO_DATABASE_URI }}
   MELTANO_ENVIRONMENT: ${{ github.event.inputs.environment || 'prod' }}
   MELTANO_RUN_TIMEOUT: 600
@@ -76,7 +76,7 @@ jobs:
       - name: Install Pkl
         uses: pkl-community/setup-pkl@a862c198115338598d769aaf03f5fa8c5123036e # v0.0.8
         with:
-          pkl-version: 0.27.1
+          pkl-version: 0.29.1
 
       - name: Check stale pkl output
         run: pkl eval pkl/main.pkl --format=yaml > meltano.yml
@@ -86,7 +86,7 @@ jobs:
 
   ping-start:
     name: Ping the start of the pipeline
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: [pkl]
     steps:
       - name: Ping
@@ -98,7 +98,7 @@ jobs:
 
   meltano-run:
     name: "Meltano Job: ${{ matrix.job }}"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: [ping-start]
     continue-on-error: true
     container:
@@ -147,7 +147,7 @@ jobs:
 
   lint:
     name: Lint models
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     continue-on-error: true
     needs: [ping-start]
     container:
@@ -172,7 +172,7 @@ jobs:
 
   transform:
     name: Data Transformation with dbt-duckdb
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: [meltano-run, lint]
     container:
       image: ghcr.io/meltano/meltano:latest-python3.14-slim
@@ -194,7 +194,7 @@ jobs:
   # build-evidence:
   #   name: Build Evidence site locally
   #   needs: [transform]
-  #   runs-on: ubuntu-latest
+  #   runs-on: ubuntu-24.04
   #   container:
   #     image: ghcr.io/meltano/meltano:latest-python3.14-slim
   #     credentials:
@@ -226,12 +226,12 @@ jobs:
   build-evidence:
     name: Build Evidence site locally using Node
     needs: [transform]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
       - uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6.0.0
         with:
-          node-version: '22'
+          node-version: "22"
           cache: npm
           cache-dependency-path: evidence/package-lock.json
       - name: Build Evidence site
@@ -250,7 +250,7 @@ jobs:
   deploy-evidence:
     name: Deploy Evidence site
     needs: [build-evidence]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       pull-requests: write
     steps:
@@ -278,7 +278,7 @@ jobs:
 
   ping-end:
     name: Ping the end of the pipeline
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: [deploy-evidence]
     if: github.event_name == 'schedule' || github.event_name == 'push'
     steps:

@@ -32,6 +32,7 @@ repos:
           - id: pip-compile
             args:
                 - plugins/extractors/requirements.tap-getpocket.in
+                - --universal
                 - --python=3.13
                 - --format=pylock.toml
                 - --prerelease=allow
@@ -39,6 +40,7 @@ repos:
           - id: pip-compile
             args:
                 - plugins/extractors/requirements.tap-stackexchange.in
+                - --universal
                 - --python=3.13
                 - --format=pylock.toml
                 - --prerelease=allow
@@ -46,6 +48,7 @@ repos:
           - id: pip-compile
             args:
                 - plugins/extractors/requirements.tap-readthedocs.in
+                - --universal
                 - --python=3.13
                 - --format=pylock.toml
                 - --prerelease=allow
@@ -53,6 +56,7 @@ repos:
           - id: pip-compile
             args:
                 - plugins/extractors/requirements.tap-github.in
+                - --universal
                 - --python=3.13
                 - --format=pylock.toml
                 - --prerelease=allow
@@ -60,6 +64,7 @@ repos:
           - id: pip-compile
             args:
                 - plugins/extractors/requirements.tap-pypistats.in
+                - --universal
                 - --python=3.13
                 - --format=pylock.toml
                 - --prerelease=allow
@@ -67,6 +72,7 @@ repos:
           - id: pip-compile
             args:
                 - plugins/loaders/requirements.target-jsonl.in
+                - --universal
                 - --python=3.13
                 - --format=pylock.toml
                 - --prerelease=allow
@@ -74,6 +80,7 @@ repos:
           - id: pip-compile
             args:
                 - plugins/loaders/requirements.target-duckdb.in
+                - --universal
                 - --python=3.13
                 - --format=pylock.toml
                 - --prerelease=if-necessary-or-explicit
@@ -81,6 +88,7 @@ repos:
           - id: pip-compile
             args:
                 - plugins/utilities/requirements.dbt-duckdb.in
+                - --universal
                 - --python=3.13
                 - --format=pylock.toml
                 - --prerelease=if-necessary-or-explicit
@@ -88,6 +96,7 @@ repos:
           - id: pip-compile
             args:
                 - plugins/utilities/requirements.sqlfluff.in
+                - --universal
                 - --python=3.13
                 - --format=pylock.toml
                 - --prerelease=if-necessary-or-explicit
