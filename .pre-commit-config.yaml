@@ -21,3 +21,7 @@ repos:
     -   id: check-dependabot
     -   id: check-github-workflows
     -   id: check-meltano
+    -   id: check-renovate
+        language: python
+        additional_dependencies:
+        -   pyjson5==2.0.0
