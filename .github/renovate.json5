@@ -2,7 +2,7 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     // https://github.com/edgarrmondragon/.github/blob/main/renovate/uv.json5
-    "edgarrmondragon/.github//renovate/uv.json5",
+    "edgarrmondragon/.github//renovate/base.json5",
   ],
 
   // https://docs.renovatebot.com/modules/manager/pip-compile/#non-configured-managerfilepatterns
