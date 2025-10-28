@@ -1,0 +1,4 @@
+dbt-core>=1.11.0b3
+dbt-duckdb
+duckdb>=1.4.1
+meltano-dbt-ext>=0.3.0
