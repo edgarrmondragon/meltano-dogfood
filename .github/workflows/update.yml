@@ -15,9 +15,9 @@ permissions:
 jobs:
   meltano-lock:
     name: Meltano Lock Update
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     container:
-      image: ghcr.io/meltano/meltano:latest-python3.11
+      image: ghcr.io/meltano/meltano:latest-python3.14-slim
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GHCR_IO_TOKEN }}
