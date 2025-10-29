@@ -8,7 +8,7 @@
   // https://docs.renovatebot.com/modules/manager/pip-compile/#non-configured-managerfilepatterns
   "pip-compile": {
     "managerFilePatterns": [
-      "(^|/)plugins/.+/requirements\\..+\\.in$",
+      "(^|/)plugins/.+/pylock\\..+\\.toml$",
     ],
     "lockFileMaintenance": {
       "enabled": true,
