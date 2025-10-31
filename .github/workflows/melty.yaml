@@ -7,7 +7,7 @@ on:
       - logging/**
       - meltano.yml
       - pyproject.toml
-      - plugins/**/*.lock
+      - plugins/**/*
       - transform/models/**/*.sql
       - transform/models/**/*.yml
       - .github/workflows/melty.yaml
@@ -22,7 +22,7 @@ on:
       - logging/**
       - meltano.yml
       - pyproject.toml
-      - plugins/**/*.lock
+      - plugins/**/*
       - transform/models/**/*.sql
       - transform/models/**/*.yml
       - .github/workflows/melty.yaml

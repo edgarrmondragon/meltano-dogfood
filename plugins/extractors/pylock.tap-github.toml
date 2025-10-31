@@ -314,9 +314,9 @@ wheels = [
 
 [[packages]]
 name = "fsspec"
-version = "2025.9.0"
-sdist = { url = "https://files.pythonhosted.org/packages/de/e0/bab50af11c2d75c9c4a2a26a5254573c0bd97cea152254401510950486fa/fsspec-2025.9.0.tar.gz", upload-time = 2025-09-02T19:10:49Z, size = 304847, hashes = { sha256 = "19fd429483d25d28b65ec68f9f4adc16c17ea2c7c7bf54ec61360d478fb19c19" } }
-wheels = [{ url = "https://files.pythonhosted.org/packages/47/71/70db47e4f6ce3e5c37a607355f80da8860a33226be640226ac52cb05ef2e/fsspec-2025.9.0-py3-none-any.whl", upload-time = 2025-09-02T19:10:47Z, size = 199289, hashes = { sha256 = "530dc2a2af60a414a832059574df4a6e10cce927f6f4a78209390fe38955cfb7" } }]
+version = "2025.10.0"
+sdist = { url = "https://files.pythonhosted.org/packages/24/7f/2747c0d332b9acfa75dc84447a066fdf812b5a6b8d30472b74d309bfe8cb/fsspec-2025.10.0.tar.gz", upload-time = 2025-10-30T14:58:44Z, size = 309285, hashes = { sha256 = "b6789427626f068f9a83ca4e8a3cc050850b6c0f71f99ddb4f542b8266a26a59" } }
+wheels = [{ url = "https://files.pythonhosted.org/packages/eb/02/a6b21098b1d5d6249b7c5ab69dde30108a71e4e819d4a9778f1de1d5b70d/fsspec-2025.10.0-py3-none-any.whl", upload-time = 2025-10-30T14:58:42Z, size = 200966, hashes = { sha256 = "7c7712353ae7d875407f97715f0e1ffcc21e33d5b24556cb1e090ae9409ec61d" } }]
 
 [[packages]]
 name = "greenlet"
@@ -808,9 +808,9 @@ wheels = [
 
 [[packages]]
 name = "singer-sdk"
-version = "0.52.3"
-sdist = { url = "https://files.pythonhosted.org/packages/a7/52/e3815554dd66a546707960079cc315416e80d72c07cacad30c06cf47d1dc/singer_sdk-0.52.3.tar.gz", upload-time = 2025-10-28T02:21:07Z, size = 1326304, hashes = { sha256 = "88c8355b37152a19ead3b1f4dca256e99e5a2b7f1bee433b2596e252b2489dc6" } }
-wheels = [{ url = "https://files.pythonhosted.org/packages/44/93/6d5666383c7991e28c9b85a756f7bb39ec53eb8dde4657bcb98d2e8fbd6d/singer_sdk-0.52.3-py3-none-any.whl", upload-time = 2025-10-28T02:21:05Z, size = 205057, hashes = { sha256 = "20f0a26efca5a4613326cd2cac0db31300672f1687e1166f8a32dea60ed6d968" } }]
+version = "0.52.5"
+sdist = { url = "https://files.pythonhosted.org/packages/04/47/7535a2422edca364119f5df4f60071ec970cc9b5de700433002987d0791b/singer_sdk-0.52.5.tar.gz", upload-time = 2025-10-30T01:50:18Z, size = 1327335, hashes = { sha256 = "76ee3027663fda37d4370bfdf11db0dd1e69ba9b9931cc3e6e1c0005ccd874e7" } }
+wheels = [{ url = "https://files.pythonhosted.org/packages/87/b7/e384faa53efb150fc6d937d4fb1a82a1e80bc6ad2708e4f228790f20516f/singer_sdk-0.52.5-py3-none-any.whl", upload-time = 2025-10-30T01:50:16Z, size = 205104, hashes = { sha256 = "1919bd509cec29a7a0442303b2cecd007913725ecd108f5b657de17fcb1be972" } }]
 
 [[packages]]
 name = "six"
