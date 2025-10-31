@@ -4,19 +4,8 @@ import "../../lib/meltano/plugin.pkl"
 
 tap_pypistats = new plugin.Extractor {
   name = "tap-pypistats"
-  namespace = "tap_pypistats"
   variant = "edgarrmondragon"
   pip_url = "-r $MELTANO_PROJECT_ROOT/plugins/extractors/pylock.tap-pypistats.toml"
-  settings_group_validation = List(
-    List("packages")
-  )
-  settings = List(
-    new plugin.Setting {
-      kind = "array"
-      label = "Packages"
-      name = "packages"
-    }
-  )
   config = new Mapping {
     ["packages"] = List(
       "meltano",

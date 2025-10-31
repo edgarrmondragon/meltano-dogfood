@@ -42,15 +42,8 @@ plugins:
     - repositories.*
     - stargazers.*
   - name: tap-pypistats
-    namespace: tap_pypistats
     variant: edgarrmondragon
     pip_url: -r $MELTANO_PROJECT_ROOT/plugins/extractors/pylock.tap-pypistats.toml
-    settings_group_validation:
-    - - packages
-    settings:
-    - kind: array
-      label: Packages
-      name: packages
     config:
       packages:
       - meltano

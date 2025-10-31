@@ -1,0 +1,32 @@
+{
+  "plugin_type": "extractors",
+  "name": "tap-pypistats",
+  "namespace": "tap_pypistats",
+  "variant": "edgarrmondragon",
+  "label": "PyPI Stats",
+  "docs": "https://hub.meltano.com/extractors/tap-pypistats--edgarrmondragon",
+  "repo": "https://github.com/edgarrmondragon/tap-pypistats",
+  "pip_url": "tap-pypistats",
+  "executable": "tap-pypistats",
+  "description": "Analytics for PyPI packages",
+  "logo_url": "https://hub.meltano.com/assets/logos/extractors/pypi.svg",
+  "settings_group_validation": [
+    [
+      "packages"
+    ]
+  ],
+  "settings": [
+    {
+      "name": "packages",
+      "kind": "array",
+      "label": "Packages",
+      "description": "Package names to fetch statistics for"
+    },
+    {
+      "name": "user_agent",
+      "kind": "string",
+      "label": "User-Agent",
+      "description": "User Agent to make requests with"
+    }
+  ]
+}
