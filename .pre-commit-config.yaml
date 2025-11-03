@@ -27,7 +27,7 @@ repos:
                 - pyjson5==2.0.0
 
     - repo: https://github.com/astral-sh/uv-pre-commit
-      rev: 0.9.5
+      rev: 0.9.7
       hooks:
           - id: pip-compile
             args:
