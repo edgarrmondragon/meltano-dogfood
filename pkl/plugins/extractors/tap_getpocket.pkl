@@ -5,5 +5,5 @@ import "../../lib/meltano/plugin.pkl"
 tap_getpocket = new plugin.Extractor {
   name = "tap-getpocket"
   variant = "edgarrmondragon"
-  pip_url = "-r $MELTANO_PROJECT_ROOT/plugins/extractors/pylock.tap-getpocket.toml"
+  pip_url = "-r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.tap-getpocket.txt"
 }
