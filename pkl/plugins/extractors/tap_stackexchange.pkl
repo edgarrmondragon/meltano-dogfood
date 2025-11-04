@@ -5,7 +5,7 @@ import "../../lib/meltano/plugin.pkl"
 tap_stackexchange = new plugin.Extractor {
   name = "tap-stackexchange"
   variant = "meltanolabs"
-  pip_url = "-r $MELTANO_PROJECT_ROOT/plugins/extractors/pylock.tap-stackexchange.toml"
+  pip_url = "-r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.tap-stackexchange.txt"
   config = new Mapping {
     ["tags"] = List("meltano")
   }
