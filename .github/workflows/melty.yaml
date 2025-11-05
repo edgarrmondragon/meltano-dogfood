@@ -61,6 +61,8 @@ env:
   MELTANO_RUN_TIMEOUT: 600
   MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
   EVIDENCE_SOURCE__motherduck_personal__token: ${{ secrets.MOTHERDUCK_TOKEN }}
+  # renovate: datasource=github-tags depName=apple/pkl
+  PKL_VERSION: 0.30.0
 
 concurrency:
   group: meltano
@@ -72,11 +74,13 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
 
       - name: Install Pkl
         uses: pkl-community/setup-pkl@a862c198115338598d769aaf03f5fa8c5123036e # v0.0.8
         with:
-          pkl-version: 0.29.1
+          pkl-version: ${{ env.PKL_VERSION }}
 
       - name: Check stale pkl output
         run: pkl eval pkl/main.pkl --format=yaml > meltano.yml
@@ -125,6 +129,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
       - name: Check Meltano
         run: |
           meltano --version
@@ -160,6 +166,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
       - name: Check Meltano
         run: |
           meltano --version
@@ -182,6 +190,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
       - name: Check Meltano
         run: |
           meltano --version
@@ -229,6 +239,8 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6.0.0
         with:
           node-version: "24"
@@ -255,6 +267,8 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
       - name: Set Git config
         run: |
           git config --global --add safe.directory /__w/meltano-dataops/meltano-dataops
