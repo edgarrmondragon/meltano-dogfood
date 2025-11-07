@@ -1,2 +1,2 @@
-duckdb>=1
+duckdb>=1.4.1
 target-duckdb
