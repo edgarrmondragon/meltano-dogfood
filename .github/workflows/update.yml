@@ -2,7 +2,7 @@ name: Meltano Lock Update
 
 on:
   schedule:
-  - cron: '37 */24 * * *'
+  - cron: '0 12 * * *'
   workflow_dispatch: {}
 
 env:
