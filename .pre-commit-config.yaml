@@ -32,7 +32,7 @@ repos:
             args:
                 - plugins/requirements/requirements.tap-getpocket.in
                 - --universal
-                - --python=3.13
+                - --python-version=3.13
                 - --format=requirements.txt
                 - --prerelease=allow
                 - --output-file=plugins/requirements/requirements.tap-getpocket.txt
@@ -40,7 +40,7 @@ repos:
             args:
                 - plugins/requirements/requirements.tap-stackexchange.in
                 - --universal
-                - --python=3.13
+                - --python-version=3.13
                 - --format=requirements.txt
                 - --prerelease=allow
                 - --output-file=plugins/requirements/requirements.tap-stackexchange.txt
@@ -48,7 +48,7 @@ repos:
             args:
                 - plugins/requirements/requirements.tap-readthedocs.in
                 - --universal
-                - --python=3.13
+                - --python-version=3.13
                 - --format=requirements.txt
                 - --prerelease=allow
                 - --output-file=plugins/requirements/requirements.tap-readthedocs.txt
@@ -56,7 +56,7 @@ repos:
             args:
                 - plugins/requirements/requirements.tap-github.in
                 - --universal
-                - --python=3.13
+                - --python-version=3.13
                 - --format=requirements.txt
                 - --prerelease=allow
                 - --output-file=plugins/requirements/requirements.tap-github.txt
@@ -64,7 +64,7 @@ repos:
             args:
                 - plugins/requirements/requirements.tap-pypistats.in
                 - --universal
-                - --python=3.13
+                - --python-version=3.13
                 - --format=requirements.txt
                 - --prerelease=allow
                 - --output-file=plugins/requirements/requirements.tap-pypistats.txt
@@ -72,7 +72,7 @@ repos:
             args:
                 - plugins/requirements/requirements.target-jsonl.in
                 - --universal
-                - --python=3.13
+                - --python-version=3.13
                 - --format=requirements.txt
                 - --prerelease=allow
                 - --output-file=plugins/requirements/requirements.target-jsonl.txt
@@ -80,7 +80,7 @@ repos:
             args:
                 - plugins/requirements/requirements.target-duckdb.in
                 - --universal
-                - --python=3.13
+                - --python-version=3.13
                 - --format=requirements.txt
                 - --prerelease=if-necessary-or-explicit
                 - --output-file=plugins/requirements/requirements.target-duckdb.txt
@@ -88,7 +88,7 @@ repos:
             args:
                 - plugins/requirements/requirements.dbt-duckdb.in
                 - --universal
-                - --python=3.13
+                - --python-version=3.13
                 - --format=requirements.txt
                 - --prerelease=if-necessary-or-explicit
                 - --output-file=plugins/requirements/requirements.dbt-duckdb.txt
@@ -96,7 +96,7 @@ repos:
             args:
                 - plugins/requirements/requirements.sqlfluff.in
                 - --universal
-                - --python=3.13
+                - --python-version=3.13
                 - --format=requirements.txt
                 - --prerelease=if-necessary-or-explicit
                 - --output-file=plugins/requirements/requirements.sqlfluff.txt
