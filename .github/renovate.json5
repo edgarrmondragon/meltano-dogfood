@@ -8,11 +8,13 @@
   "packageRules": [
     {
       "matchManagers": ["pip-compile"],
-      "groupName": "pip-compile",
+      "groupName": "Pinned Python plugin dependencies",
+      "groupSlug": "pip-compile",
     },
     {
       "matchManagers": ["pip_requirements"],
-      "groupName": "pip_requirements",
+      "groupName": "Python requirements",
+      "groupSlug": "pip_requirements",
     },
   ],
 
