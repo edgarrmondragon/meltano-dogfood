@@ -5,6 +5,17 @@
     "edgarrmondragon/.github//renovate/base.json5",
   ],
 
+  "packageRules": [
+    {
+      "matchManagers": ["pip-compile"],
+      "groupName": "pip-compile",
+    },
+    {
+      "matchManagers": ["pip_requirements"],
+      "groupName": "pip_requirements",
+    },
+  ],
+
   // https://docs.renovatebot.com/modules/manager/pip-compile/#non-configured-managerfilepatterns
   "pip-compile": {
     "managerFilePatterns": [
