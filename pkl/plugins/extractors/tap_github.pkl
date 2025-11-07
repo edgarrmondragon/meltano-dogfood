@@ -5,7 +5,7 @@ import "../../lib/meltano/plugin.pkl"
 tap_github = new plugin.Extractor {
   name = "tap-github"
   variant = "meltanolabs"
-  pip_url = "-r $MELTANO_PROJECT_ROOT/plugins/extractors/pylock.tap-github.toml"
+  pip_url = "-r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.tap-github.txt"
   config = new Mapping {
     ["repositories"] = List(
       "edgarrmondragon/citric",

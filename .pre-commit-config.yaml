@@ -7,7 +7,6 @@ repos:
           - id: check-toml
           - id: check-yaml
           - id: end-of-file-fixer
-            exclude: .lock
           - id: trailing-whitespace
 
     - repo: https://github.com/pre-commit/pre-commit
@@ -27,77 +26,77 @@ repos:
                 - pyjson5==2.0.0
 
     - repo: https://github.com/astral-sh/uv-pre-commit
-      rev: 0.9.5
+      rev: 0.9.7
       hooks:
           - id: pip-compile
             args:
-                - plugins/extractors/requirements.tap-getpocket.in
+                - plugins/requirements/requirements.tap-getpocket.in
                 - --universal
                 - --python=3.13
-                - --format=pylock.toml
+                - --format=requirements.txt
                 - --prerelease=allow
-                - --output-file=plugins/extractors/pylock.tap-getpocket.toml
+                - --output-file=plugins/requirements/requirements.tap-getpocket.txt
           - id: pip-compile
             args:
-                - plugins/extractors/requirements.tap-stackexchange.in
+                - plugins/requirements/requirements.tap-stackexchange.in
                 - --universal
                 - --python=3.13
-                - --format=pylock.toml
+                - --format=requirements.txt
                 - --prerelease=allow
-                - --output-file=plugins/extractors/pylock.tap-stackexchange.toml
+                - --output-file=plugins/requirements/requirements.tap-stackexchange.txt
           - id: pip-compile
             args:
-                - plugins/extractors/requirements.tap-readthedocs.in
+                - plugins/requirements/requirements.tap-readthedocs.in
                 - --universal
                 - --python=3.13
-                - --format=pylock.toml
+                - --format=requirements.txt
                 - --prerelease=allow
-                - --output-file=plugins/extractors/pylock.tap-readthedocs.toml
+                - --output-file=plugins/requirements/requirements.tap-readthedocs.txt
           - id: pip-compile
             args:
-                - plugins/extractors/requirements.tap-github.in
+                - plugins/requirements/requirements.tap-github.in
                 - --universal
                 - --python=3.13
-                - --format=pylock.toml
+                - --format=requirements.txt
                 - --prerelease=allow
-                - --output-file=plugins/extractors/pylock.tap-github.toml
+                - --output-file=plugins/requirements/requirements.tap-github.txt
           - id: pip-compile
             args:
-                - plugins/extractors/requirements.tap-pypistats.in
+                - plugins/requirements/requirements.tap-pypistats.in
                 - --universal
                 - --python=3.13
-                - --format=pylock.toml
+                - --format=requirements.txt
                 - --prerelease=allow
-                - --output-file=plugins/extractors/pylock.tap-pypistats.toml
+                - --output-file=plugins/requirements/requirements.tap-pypistats.txt
           - id: pip-compile
             args:
-                - plugins/loaders/requirements.target-jsonl.in
+                - plugins/requirements/requirements.target-jsonl.in
                 - --universal
                 - --python=3.13
-                - --format=pylock.toml
+                - --format=requirements.txt
                 - --prerelease=allow
-                - --output-file=plugins/loaders/pylock.target-jsonl.toml
+                - --output-file=plugins/requirements/requirements.target-jsonl.txt
           - id: pip-compile
             args:
-                - plugins/loaders/requirements.target-duckdb.in
+                - plugins/requirements/requirements.target-duckdb.in
                 - --universal
                 - --python=3.13
-                - --format=pylock.toml
+                - --format=requirements.txt
                 - --prerelease=if-necessary-or-explicit
-                - --output-file=plugins/loaders/pylock.target-duckdb.toml
+                - --output-file=plugins/requirements/requirements.target-duckdb.txt
           - id: pip-compile
             args:
-                - plugins/utilities/requirements.dbt-duckdb.in
+                - plugins/requirements/requirements.dbt-duckdb.in
                 - --universal
                 - --python=3.13
-                - --format=pylock.toml
+                - --format=requirements.txt
                 - --prerelease=if-necessary-or-explicit
-                - --output-file=plugins/utilities/pylock.dbt-duckdb.toml
+                - --output-file=plugins/requirements/requirements.dbt-duckdb.txt
           - id: pip-compile
             args:
-                - plugins/utilities/requirements.sqlfluff.in
+                - plugins/requirements/requirements.sqlfluff.in
                 - --universal
                 - --python=3.13
-                - --format=pylock.toml
+                - --format=requirements.txt
                 - --prerelease=if-necessary-or-explicit
-                - --output-file=plugins/utilities/pylock.sqlfluff.toml
+                - --output-file=plugins/requirements/requirements.sqlfluff.txt
