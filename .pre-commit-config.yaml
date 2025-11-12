@@ -29,65 +29,74 @@ repos:
       rev: 0.9.10
       hooks:
           - id: pip-compile
+            files: ^plugins/requirements/requirements.tap-getpocket\.(in|txt)$
             args:
                 - plugins/requirements/requirements.tap-getpocket.in
                 - --universal
-                - --python-version=3.13
+                - --python-version=3.14
                 - --prerelease=allow
                 - --output-file=plugins/requirements/requirements.tap-getpocket.txt
           - id: pip-compile
+            files: ^plugins/requirements/requirements.tap-stackexchange\.(in|txt)$
             args:
                 - plugins/requirements/requirements.tap-stackexchange.in
                 - --universal
-                - --python-version=3.13
+                - --python-version=3.14
                 - --prerelease=allow
                 - --output-file=plugins/requirements/requirements.tap-stackexchange.txt
           - id: pip-compile
+            files: ^plugins/requirements/requirements.tap-readthedocs\.(in|txt)$
             args:
                 - plugins/requirements/requirements.tap-readthedocs.in
                 - --universal
-                - --python-version=3.13
+                - --python-version=3.14
                 - --prerelease=allow
                 - --output-file=plugins/requirements/requirements.tap-readthedocs.txt
           - id: pip-compile
+            files: ^plugins/requirements/requirements.tap-github\.(in|txt)$
             args:
                 - plugins/requirements/requirements.tap-github.in
                 - --universal
-                - --python-version=3.13
+                - --python-version=3.14
                 - --prerelease=allow
                 - --output-file=plugins/requirements/requirements.tap-github.txt
           - id: pip-compile
+            files: ^plugins/requirements/requirements.tap-pypistats\.(in|txt)$
             args:
                 - plugins/requirements/requirements.tap-pypistats.in
                 - --universal
-                - --python-version=3.13
+                - --python-version=3.14
                 - --prerelease=allow
                 - --output-file=plugins/requirements/requirements.tap-pypistats.txt
           - id: pip-compile
+            files: ^plugins/requirements/requirements.target-jsonl\.(in|txt)$
             args:
                 - plugins/requirements/requirements.target-jsonl.in
                 - --universal
-                - --python-version=3.13
+                - --python-version=3.14
                 - --prerelease=allow
                 - --output-file=plugins/requirements/requirements.target-jsonl.txt
           - id: pip-compile
+            files: ^plugins/requirements/requirements.target-duckdb\.(in|txt)$
             args:
                 - plugins/requirements/requirements.target-duckdb.in
                 - --universal
-                - --python-version=3.13
+                - --python-version=3.14
                 - --prerelease=if-necessary-or-explicit
                 - --output-file=plugins/requirements/requirements.target-duckdb.txt
           - id: pip-compile
+            files: ^plugins/requirements/requirements.dbt-duckdb\.(in|txt)$
             args:
                 - plugins/requirements/requirements.dbt-duckdb.in
                 - --universal
-                - --python-version=3.13
+                - --python-version=3.14
                 - --prerelease=if-necessary-or-explicit
                 - --output-file=plugins/requirements/requirements.dbt-duckdb.txt
           - id: pip-compile
+            files: ^plugins/requirements/requirements.sqlfluff\.(in|txt)$
             args:
                 - plugins/requirements/requirements.sqlfluff.in
                 - --universal
-                - --python-version=3.13
+                - --python-version=3.14
                 - --prerelease=if-necessary-or-explicit
                 - --output-file=plugins/requirements/requirements.sqlfluff.txt
