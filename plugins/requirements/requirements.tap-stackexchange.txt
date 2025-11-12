@@ -10,7 +10,7 @@ backoff==2.2.1 ; python_full_version < '4'
     # via singer-sdk
 cattrs==25.3.0 ; python_full_version < '4'
     # via requests-cache
-certifi==2025.10.5
+certifi==2025.11.12
     # via requests
 charset-normalizer==3.4.4
     # via requests
@@ -81,7 +81,7 @@ typing-extensions==4.15.0
     # via
     #   cattrs
     #   sqlalchemy
-universal-pathlib==0.3.4
+universal-pathlib==0.3.5
     # via singer-sdk
 url-normalize==2.2.1 ; python_full_version < '4'
     # via requests-cache

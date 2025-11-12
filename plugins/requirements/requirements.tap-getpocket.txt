@@ -6,7 +6,7 @@ attrs==25.4.0
     #   referencing
 backoff==2.2.1
     # via singer-sdk
-certifi==2025.10.5
+certifi==2025.11.12
     # via requests
 charset-normalizer==3.4.4
     # via requests
@@ -67,7 +67,7 @@ tap-getpocket @ git+https://github.com/edgarrmondragon/tap-getpocket.git@0a10e36
     # via -r plugins/requirements/requirements.tap-getpocket.in
 typing-extensions==4.15.0
     # via sqlalchemy
-universal-pathlib==0.3.4
+universal-pathlib==0.3.5
     # via singer-sdk
 urllib3==2.5.0
     # via requests

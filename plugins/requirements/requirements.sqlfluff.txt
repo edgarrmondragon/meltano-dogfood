@@ -13,7 +13,7 @@ attrs==25.4.0
     #   referencing
 babel==2.17.0
     # via agate
-certifi==2025.10.5
+certifi==2025.11.12
     # via requests
 chardet==5.2.0
     # via
@@ -35,11 +35,11 @@ colorama==0.4.6
     #   tqdm
 daff==1.4.2
     # via dbt-core
-dbt-adapters==1.18.0
+dbt-adapters==1.19.0
     # via
     #   dbt-core
     #   dbt-duckdb
-dbt-common==1.35.0
+dbt-common==1.36.0
     # via
     #   dbt-adapters
     #   dbt-core
@@ -49,7 +49,7 @@ dbt-core==1.11.0b4
     #   -r plugins/requirements/requirements.sqlfluff.in
     #   dbt-duckdb
     #   sqlfluff-templater-dbt
-dbt-duckdb==1.9.6
+dbt-duckdb==1.10.0
     # via -r plugins/requirements/requirements.sqlfluff.in
 dbt-extractor==0.6.0
     # via dbt-core
@@ -62,7 +62,7 @@ dbt-semantic-interfaces==0.9.0
     # via dbt-core
 deepdiff==8.6.1
     # via dbt-common
-diff-cover==9.7.1
+diff-cover==9.7.2
     # via sqlfluff
 duckdb==1.4.1
     # via
@@ -135,17 +135,17 @@ protobuf==6.33.0
     #   dbt-common
     #   dbt-core
     #   dbt-protos
-pydantic==2.12.3
+pydantic==2.12.4
     # via
     #   dbt-core
     #   dbt-semantic-interfaces
-pydantic-core==2.41.4
+pydantic-core==2.41.5
     # via pydantic
 pygments==2.19.2
     # via
     #   diff-cover
     #   pytest
-pytest==8.4.2
+pytest==9.0.0
     # via sqlfluff
 python-dateutil==2.9.0.post0
     # via
@@ -185,13 +185,13 @@ six==1.17.0
     #   python-dateutil
 snowplow-tracker==1.1.0
     # via dbt-core
-sqlfluff==4.0.0a1
+sqlfluff==4.0.0a2
     # via
     #   -r plugins/requirements/requirements.sqlfluff.in
     #   sqlfluff-templater-dbt
-sqlfluff-templater-dbt==4.0.0a1
+sqlfluff-templater-dbt==4.0.0a2
     # via -r plugins/requirements/requirements.sqlfluff.in
-sqlfluffrs==4.0.0a1
+sqlfluffrs==4.0.0a2
     # via -r plugins/requirements/requirements.sqlfluff.in
 sqlparse==0.5.3
     # via dbt-core
