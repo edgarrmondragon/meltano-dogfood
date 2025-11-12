@@ -8,7 +8,7 @@ backoff==2.2.1 ; python_full_version < '4'
     # via singer-sdk
 beautifulsoup4==4.14.2
     # via meltanolabs-tap-github
-certifi==2025.10.5
+certifi==2025.11.12
     # via requests
 cffi==2.0.0 ; platform_python_implementation != 'PyPy'
     # via cryptography
@@ -89,7 +89,7 @@ typing-extensions==4.15.0
     # via
     #   beautifulsoup4
     #   sqlalchemy
-universal-pathlib==0.3.4
+universal-pathlib==0.3.5
     # via singer-sdk
 urllib3==2.5.0
     # via requests
