@@ -15,11 +15,7 @@
       "groupName": "Pinned Python plugin dependencies",
       "groupSlug": "pip-compile",
     },
-    {
-      "matchManagers": ["pip_requirements"],
-      "groupName": "Python requirements",
-      "groupSlug": "pip_requirements",
-    },
+
   ],
 
   // https://docs.renovatebot.com/modules/manager/pip-compile/#non-configured-managerfilepatterns
