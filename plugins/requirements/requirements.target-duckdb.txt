@@ -4,7 +4,7 @@ attrs==25.4.0
     # via
     #   jsonschema
     #   referencing
-duckdb==1.4.1
+duckdb==1.4.2
     # via
     #   -r plugins/requirements/requirements.target-duckdb.in
     #   target-duckdb
@@ -16,7 +16,7 @@ referencing==0.37.0
     # via
     #   jsonschema
     #   jsonschema-specifications
-rpds-py==0.28.0
+rpds-py==0.29.0
     # via
     #   jsonschema
     #   referencing
