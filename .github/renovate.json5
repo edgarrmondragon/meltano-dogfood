@@ -30,4 +30,8 @@
       "schedule": ["before 3am on Monday"],
     },
   },
+
+  "pip_requirements": {
+    "enabled": false
+  },
 }
