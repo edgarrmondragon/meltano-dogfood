@@ -64,11 +64,13 @@ plugins:
   - name: dbt-duckdb
     variant: jwills
     pip_url: -r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.dbt-duckdb.txt
+    python: '3.13'
     config:
       path: $DUCKDB_PATH
   - name: sqlfluff
     variant: sqlfluff
     pip_url: -r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.sqlfluff.txt
+    python: '3.13'
     settings:
     - name: path
       env: DBT_DUCKDB_PATH

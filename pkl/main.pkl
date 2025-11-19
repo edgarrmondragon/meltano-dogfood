@@ -51,6 +51,7 @@ output {
           name = "dbt-duckdb"
           variant = "jwills"
           pip_url = "-r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.dbt-duckdb.txt"
+          python = "3.13"
           config = new Mapping {
             ["path"] = "$DUCKDB_PATH"
           }
@@ -59,6 +60,7 @@ output {
           name = "sqlfluff"
           variant = "sqlfluff"
           pip_url = "-r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.sqlfluff.txt"
+          python = "3.13"
           settings = List(
             new plugin.Setting {
               name = "path"
