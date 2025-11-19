@@ -12,10 +12,10 @@ abstract class Plugin {
   namespace: String | Null = null
   variant: String | Null = null
   pip_url: String|Null?
+  python: String | Null = null
   settings_group_validation: List<List<String>> | Null = null
   settings: List<Setting> | Null = null
   config: Mapping<String, Any> | Null = null
-  python: String | Null = null
 }
 
 class Extractor extends Plugin {
