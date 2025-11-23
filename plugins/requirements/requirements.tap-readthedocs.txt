@@ -6,8 +6,6 @@ attrs==25.4.0
     #   jsonschema
     #   referencing
     #   requests-cache
-backoff==2.2.1 ; python_full_version < '4'
-    # via singer-sdk
 cattrs==25.3.0
     # via requests-cache
 certifi==2025.11.12
@@ -46,6 +44,8 @@ platformdirs==4.5.0
     # via requests-cache
 ply==3.11
     # via jsonpath-ng
+python-backoff==2.2.2
+    # via singer-sdk
 python-dotenv==1.2.1
     # via singer-sdk
 pyyaml==6.0.3
@@ -69,11 +69,11 @@ simpleeval==1.0.3
     # via singer-sdk
 simplejson==3.20.2
     # via singer-sdk
-singer-sdk==0.52.5
+singer-sdk==0.53.2
     # via tap-readthedocs
 sqlalchemy==2.0.44
     # via singer-sdk
-tap-readthedocs==0.5.16
+tap-readthedocs==0.5.17
     # via -r plugins/requirements/requirements.tap-readthedocs.in
 toolz==1.1.0
     # via tap-readthedocs

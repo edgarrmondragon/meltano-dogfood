@@ -6,8 +6,6 @@ attrs==25.4.0
     #   jsonschema
     #   referencing
     #   requests-cache
-backoff==2.2.1 ; python_full_version < '4'
-    # via singer-sdk
 cattrs==25.3.0 ; python_full_version < '4'
     # via requests-cache
 certifi==2025.11.12
@@ -48,6 +46,8 @@ ply==3.11
     # via jsonpath-ng
 pyrate-limiter==3.9.0 ; python_full_version < '4'
     # via tap-stackexchange
+python-backoff==2.2.2
+    # via singer-sdk
 python-dotenv==1.2.1
     # via singer-sdk
 pyyaml==6.0.3
@@ -71,11 +71,11 @@ simpleeval==1.0.3
     # via singer-sdk
 simplejson==3.20.2
     # via singer-sdk
-singer-sdk==0.52.5
+singer-sdk==0.53.2
     # via tap-stackexchange
 sqlalchemy==2.0.44
     # via singer-sdk
-tap-stackexchange==0.0.10
+tap-stackexchange==0.0.11
     # via -r plugins/requirements/requirements.tap-stackexchange.in
 typing-extensions==4.15.0
     # via
