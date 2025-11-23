@@ -61,7 +61,7 @@ env:
   MELTANO_RUN_TIMEOUT: 600
   MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
   EVIDENCE_SOURCE__motherduck_personal__token: ${{ secrets.MOTHERDUCK_TOKEN }}
-  PYTHONWARNINGS: error
+  PYTHONWARNINGS: "error,ignore:'_UnionGenericAlias' is deprecated and slated for removal in Python 3.17:DeprecationWarning"
   # renovate: datasource=github-tags depName=apple/pkl
   PKL_VERSION: 0.30.0
 
