@@ -31,7 +31,7 @@ colorama==0.4.6
     #   dbt-common
 daff==1.4.2
     # via dbt-core
-dbt-adapters==1.20.0
+dbt-adapters==1.20.1
     # via
     #   dbt-core
     #   dbt-duckdb
@@ -40,7 +40,7 @@ dbt-common==1.36.0
     #   dbt-adapters
     #   dbt-core
     #   dbt-duckdb
-dbt-core==1.11.0b4
+dbt-core==1.11.0rc1
     # via
     #   -r plugins/requirements/requirements.dbt-duckdb.in
     #   dbt-duckdb
@@ -48,7 +48,7 @@ dbt-duckdb==1.10.0
     # via -r plugins/requirements/requirements.dbt-duckdb.in
 dbt-extractor==0.6.0
     # via dbt-core
-dbt-protos==1.0.382
+dbt-protos==1.0.397
     # via
     #   dbt-adapters
     #   dbt-common
