@@ -132,6 +132,12 @@
       "description": "The max depth to flatten schemas."
     },
     {
+      "name": "flattening_max_key_length",
+      "kind": "integer",
+      "label": "Max Key Length",
+      "description": "The maximum length of a flattened key."
+    },
+    {
       "name": "metrics_log_level",
       "kind": "string",
       "label": "Metrics Log Level",
