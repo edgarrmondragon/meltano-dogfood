@@ -16,11 +16,11 @@ click==8.3.1
     # via singer-sdk
 colorama==0.4.6 ; sys_platform == 'win32'
     # via click
-fsspec==2025.10.0
+fsspec==2025.12.0
     # via
     #   singer-sdk
     #   universal-pathlib
-greenlet==3.2.4 ; platform_machine == 'AMD64' or platform_machine == 'WIN32' or platform_machine == 'aarch64' or platform_machine == 'amd64' or platform_machine == 'ppc64le' or platform_machine == 'win32' or platform_machine == 'x86_64'
+greenlet==3.3.0 ; platform_machine == 'AMD64' or platform_machine == 'WIN32' or platform_machine == 'aarch64' or platform_machine == 'amd64' or platform_machine == 'ppc64le' or platform_machine == 'win32' or platform_machine == 'x86_64'
     # via sqlalchemy
 idna==3.11
     # via
@@ -40,11 +40,11 @@ packaging==25.0
     # via singer-sdk
 pathlib-abc==0.5.2
     # via universal-pathlib
-platformdirs==4.5.0
+platformdirs==4.5.1
     # via requests-cache
 ply==3.11
     # via jsonpath-ng
-python-backoff==2.2.2
+python-backoff==2.3.0
     # via singer-sdk
 python-dotenv==1.2.1
     # via singer-sdk
@@ -61,7 +61,7 @@ requests==2.32.5
     #   singer-sdk
 requests-cache==1.3.0a1
     # via tap-readthedocs
-rpds-py==0.29.0
+rpds-py==0.30.0
     # via
     #   jsonschema
     #   referencing
@@ -69,7 +69,7 @@ simpleeval==1.0.3
     # via singer-sdk
 simplejson==3.20.2
     # via singer-sdk
-singer-sdk==0.53.2
+singer-sdk==0.53.4
     # via tap-readthedocs
 sqlalchemy==2.0.44
     # via singer-sdk
@@ -81,11 +81,11 @@ typing-extensions==4.15.0
     # via
     #   cattrs
     #   sqlalchemy
-universal-pathlib==0.3.6
+universal-pathlib==0.3.7
     # via singer-sdk
 url-normalize==2.2.1
     # via requests-cache
-urllib3==2.5.0
+urllib3==2.6.0
     # via
     #   requests
     #   requests-cache
