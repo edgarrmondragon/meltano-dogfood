@@ -44,7 +44,7 @@ dbt-common==1.36.0
     #   dbt-adapters
     #   dbt-core
     #   dbt-duckdb
-dbt-core==1.11.0rc1
+dbt-core==1.11.0rc2
     # via
     #   -r plugins/requirements/requirements.sqlfluff.in
     #   dbt-duckdb
@@ -53,7 +53,7 @@ dbt-duckdb==1.10.0
     # via -r plugins/requirements/requirements.sqlfluff.in
 dbt-extractor==0.6.0
     # via dbt-core
-dbt-protos==1.0.397
+dbt-protos==1.0.402
     # via
     #   dbt-adapters
     #   dbt-common
@@ -108,7 +108,7 @@ more-itertools==10.8.0
     # via dbt-semantic-interfaces
 msgpack==1.1.2
     # via mashumaro
-networkx==3.5
+networkx==3.6
     # via dbt-core
 orderly-set==5.5.0
     # via deepdiff
@@ -123,19 +123,19 @@ pathspec==0.12.1
     #   dbt-common
     #   dbt-core
     #   sqlfluff
-platformdirs==4.5.0
+platformdirs==4.5.1
     # via sqlfluff
 pluggy==1.6.0
     # via
     #   diff-cover
     #   pytest
-protobuf==6.33.1
+protobuf==6.33.2
     # via
     #   dbt-adapters
     #   dbt-common
     #   dbt-core
     #   dbt-protos
-pydantic==2.12.4
+pydantic==2.12.5
     # via
     #   dbt-core
     #   dbt-semantic-interfaces
@@ -175,7 +175,7 @@ requests==2.32.5
     #   dbt-common
     #   dbt-core
     #   snowplow-tracker
-rpds-py==0.29.0
+rpds-py==0.30.0
     # via
     #   jsonschema
     #   referencing
@@ -193,7 +193,7 @@ sqlfluff-templater-dbt==4.0.0a2
     # via -r plugins/requirements/requirements.sqlfluff.in
 sqlfluffrs==4.0.0a2
     # via -r plugins/requirements/requirements.sqlfluff.in
-sqlparse==0.5.3
+sqlparse==0.5.4
     # via dbt-core
 tblib==3.2.2
     # via sqlfluff
@@ -216,7 +216,7 @@ typing-inspection==0.4.2
     # via pydantic
 tzdata==2025.2 ; sys_platform == 'win32'
     # via agate
-urllib3==2.5.0
+urllib3==2.6.0
     # via requests
 zipp==3.23.0
     # via importlib-metadata
