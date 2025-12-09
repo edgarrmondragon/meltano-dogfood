@@ -91,5 +91,5 @@ typing-extensions==4.15.0
     #   sqlalchemy
 universal-pathlib==0.3.7
     # via singer-sdk
-urllib3==2.6.0
+urllib3==2.6.1
     # via requests
