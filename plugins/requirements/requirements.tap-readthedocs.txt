@@ -85,7 +85,7 @@ universal-pathlib==0.3.7
     # via singer-sdk
 url-normalize==2.2.1
     # via requests-cache
-urllib3==2.6.0
+urllib3==2.6.1
     # via
     #   requests
     #   requests-cache
