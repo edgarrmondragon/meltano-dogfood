@@ -35,16 +35,16 @@ colorama==0.4.6
     #   tqdm
 daff==1.4.2
     # via dbt-core
-dbt-adapters==1.21.0
+dbt-adapters==1.22.1
     # via
     #   dbt-core
     #   dbt-duckdb
-dbt-common==1.36.0
+dbt-common==1.37.2
     # via
     #   dbt-adapters
     #   dbt-core
     #   dbt-duckdb
-dbt-core==1.11.0rc3
+dbt-core==1.11.0rc4
     # via
     #   -r plugins/requirements/requirements.sqlfluff.in
     #   dbt-duckdb
@@ -53,7 +53,7 @@ dbt-duckdb==1.10.0
     # via -r plugins/requirements/requirements.sqlfluff.in
 dbt-extractor==0.6.0
     # via dbt-core
-dbt-protos==1.0.402
+dbt-protos==1.0.410
     # via
     #   dbt-adapters
     #   dbt-common
@@ -62,9 +62,9 @@ dbt-semantic-interfaces==0.9.0
     # via dbt-core
 deepdiff==8.6.1
     # via dbt-common
-diff-cover==9.7.2
+diff-cover==10.0.0
     # via sqlfluff
-duckdb==1.4.2
+duckdb==1.4.3
     # via
     #   -r plugins/requirements/requirements.sqlfluff.in
     #   dbt-duckdb
@@ -74,7 +74,7 @@ importlib-metadata==8.7.0
     # via dbt-semantic-interfaces
 iniconfig==2.3.0
     # via pytest
-isodate==0.6.1
+isodate==0.7.2
     # via
     #   agate
     #   dbt-common
@@ -95,7 +95,7 @@ jsonschema==4.25.1
     #   dbt-semantic-interfaces
 jsonschema-specifications==2025.9.1
     # via jsonschema
-leather==0.4.0
+leather==0.4.1
     # via agate
 markupsafe==3.0.3
     # via jinja2
@@ -180,9 +180,7 @@ rpds-py==0.30.0
     #   jsonschema
     #   referencing
 six==1.17.0
-    # via
-    #   isodate
-    #   python-dateutil
+    # via python-dateutil
 snowplow-tracker==1.1.0
     # via dbt-core
 sqlfluff==4.0.0a2
@@ -214,9 +212,9 @@ typing-extensions==4.15.0
     #   typing-inspection
 typing-inspection==0.4.2
     # via pydantic
-tzdata==2025.2 ; sys_platform == 'win32'
+tzdata==2025.3 ; sys_platform == 'win32'
     # via agate
-urllib3==2.6.1
+urllib3==2.6.2
     # via requests
 zipp==3.23.0
     # via importlib-metadata

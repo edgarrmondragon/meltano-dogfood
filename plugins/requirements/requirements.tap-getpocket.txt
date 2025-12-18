@@ -24,7 +24,7 @@ idna==3.11
     # via requests
 inflection==0.5.1
     # via singer-sdk
-joblib==1.5.2
+joblib==1.5.3
     # via singer-sdk
 jsonpath-ng==1.7.0
     # via singer-sdk
@@ -61,7 +61,7 @@ simplejson==3.20.2
     # via singer-sdk
 singer-sdk==0.48.1
     # via tap-getpocket
-sqlalchemy==2.0.44
+sqlalchemy==2.0.45
     # via singer-sdk
 tap-getpocket @ git+https://github.com/edgarrmondragon/tap-getpocket.git@0a10e36675fb13f772f613d9c0faad93c2fcf911
     # via -r plugins/requirements/requirements.tap-getpocket.in
@@ -69,5 +69,5 @@ typing-extensions==4.15.0
     # via sqlalchemy
 universal-pathlib==0.3.7
     # via singer-sdk
-urllib3==2.6.1
+urllib3==2.6.2
     # via requests
