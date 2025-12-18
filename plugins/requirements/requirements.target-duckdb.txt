@@ -4,7 +4,7 @@ attrs==25.4.0
     # via
     #   jsonschema
     #   referencing
-duckdb==1.4.2
+duckdb==1.4.3
     # via
     #   -r plugins/requirements/requirements.target-duckdb.in
     #   target-duckdb

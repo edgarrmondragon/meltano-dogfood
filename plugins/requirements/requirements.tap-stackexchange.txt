@@ -28,7 +28,7 @@ idna==3.11
     #   url-normalize
 inflection==0.5.1
     # via singer-sdk
-joblib==1.5.2
+joblib==1.5.3
     # via singer-sdk
 jsonpath-ng==1.7.0
     # via singer-sdk
@@ -73,7 +73,7 @@ simplejson==3.20.2
     # via singer-sdk
 singer-sdk==0.53.4
     # via tap-stackexchange
-sqlalchemy==2.0.44
+sqlalchemy==2.0.45
     # via singer-sdk
 tap-stackexchange==0.0.11
     # via -r plugins/requirements/requirements.tap-stackexchange.in
@@ -85,7 +85,7 @@ universal-pathlib==0.3.7
     # via singer-sdk
 url-normalize==2.2.1 ; python_full_version < '4'
     # via requests-cache
-urllib3==2.6.1
+urllib3==2.6.2
     # via
     #   requests
     #   requests-cache
