@@ -10,12 +10,12 @@ repos:
           - id: trailing-whitespace
 
     - repo: https://github.com/pre-commit/pre-commit
-      rev: v4.5.0
+      rev: v4.5.1
       hooks:
           - id: validate_manifest
 
     - repo: https://github.com/python-jsonschema/check-jsonschema
-      rev: 0.35.0
+      rev: 0.36.0
       hooks:
           - id: check-dependabot
           - id: check-github-workflows
@@ -26,7 +26,7 @@ repos:
                 - pyjson5==2.0.0
 
     - repo: https://github.com/astral-sh/uv-pre-commit
-      rev: 0.9.17
+      rev: 0.9.18
       hooks:
           - id: pip-compile
             files: ^plugins/requirements/requirements.tap-getpocket\.(in|txt)$
