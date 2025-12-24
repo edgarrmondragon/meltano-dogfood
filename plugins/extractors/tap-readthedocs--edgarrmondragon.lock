@@ -126,5 +126,12 @@
       "description": "Personal Access Token that allows you to use the Read the Docs APIv3 being authenticated as yourself",
       "sensitive": true
     }
+  ],
+  "supported_python_versions": [
+    "3.10",
+    "3.11",
+    "3.12",
+    "3.13",
+    "3.14"
   ]
 }

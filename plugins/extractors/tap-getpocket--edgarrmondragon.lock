@@ -182,5 +182,12 @@
       "label": "Tag",
       "description": "The tag to sync. By default, all tags are synced. Use `_untagged_` to sync untagged items."
     }
+  ],
+  "supported_python_versions": [
+    "3.9",
+    "3.10",
+    "3.11",
+    "3.12",
+    "3.13"
   ]
 }
