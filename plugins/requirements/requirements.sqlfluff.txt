@@ -35,7 +35,7 @@ colorama==0.4.6
     #   tqdm
 daff==1.4.2
     # via dbt-core
-dbt-adapters==1.22.1
+dbt-adapters==1.22.2
     # via
     #   dbt-core
     #   dbt-duckdb
@@ -70,7 +70,7 @@ duckdb==1.4.3
     #   dbt-duckdb
 idna==3.11
     # via requests
-importlib-metadata==8.7.0
+importlib-metadata==8.7.1
     # via dbt-semantic-interfaces
 iniconfig==2.3.0
     # via pytest
@@ -191,7 +191,7 @@ sqlfluff-templater-dbt==4.0.0a2
     # via -r plugins/requirements/requirements.sqlfluff.in
 sqlfluffrs==4.0.0a2
     # via -r plugins/requirements/requirements.sqlfluff.in
-sqlparse==0.5.4
+sqlparse==0.5.5
     # via dbt-core
 tblib==3.2.2
     # via sqlfluff
