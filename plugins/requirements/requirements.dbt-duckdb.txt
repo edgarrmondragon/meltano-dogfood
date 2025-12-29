@@ -31,7 +31,7 @@ colorama==0.4.6
     #   dbt-common
 daff==1.4.2
     # via dbt-core
-dbt-adapters==1.22.1
+dbt-adapters==1.22.2
     # via
     #   dbt-core
     #   dbt-duckdb
@@ -67,7 +67,7 @@ executing==2.2.1 ; python_full_version < '4'
     # via devtools
 idna==3.11
     # via requests
-importlib-metadata==8.7.0
+importlib-metadata==8.7.1
     # via dbt-semantic-interfaces
 isodate==0.7.2
     # via
@@ -176,7 +176,7 @@ six==1.17.0
     #   python-dateutil
 snowplow-tracker==1.1.0
     # via dbt-core
-sqlparse==0.5.4
+sqlparse==0.5.5
     # via dbt-core
 structlog==24.4.0 ; python_full_version < '4'
     # via meltano-edk

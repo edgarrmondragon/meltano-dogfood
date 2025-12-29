@@ -44,7 +44,7 @@ platformdirs==4.5.1
     # via requests-cache
 ply==3.11
     # via jsonpath-ng
-python-backoff==2.3.0
+python-backoff==2.3.1
     # via singer-sdk
 python-dotenv==1.2.1
     # via singer-sdk

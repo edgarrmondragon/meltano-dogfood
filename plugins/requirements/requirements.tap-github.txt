@@ -50,7 +50,7 @@ pycparser==2.23 ; implementation_name != 'PyPy' and platform_python_implementati
     # via cffi
 pyjwt==2.10.1
     # via meltanolabs-tap-github
-python-backoff==2.3.0
+python-backoff==2.3.1
     # via singer-sdk
 python-dateutil==2.9.0.post0
     # via meltanolabs-tap-github

@@ -46,7 +46,7 @@ ply==3.11
     # via jsonpath-ng
 pyrate-limiter==3.9.0 ; python_full_version < '4'
     # via tap-stackexchange
-python-backoff==2.3.0
+python-backoff==2.3.1
     # via singer-sdk
 python-dotenv==1.2.1
     # via singer-sdk
@@ -75,7 +75,7 @@ singer-sdk==0.53.4
     # via tap-stackexchange
 sqlalchemy==2.0.45
     # via singer-sdk
-tap-stackexchange==0.0.11
+tap-stackexchange==0.0.12
     # via -r plugins/requirements/requirements.tap-stackexchange.in
 typing-extensions==4.15.0
     # via
