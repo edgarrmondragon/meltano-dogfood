@@ -40,7 +40,7 @@ dbt-common==1.37.2
     #   dbt-adapters
     #   dbt-core
     #   dbt-duckdb
-dbt-core==1.11.0rc4
+dbt-core==1.11.2
     # via
     #   -r plugins/requirements/requirements.dbt-duckdb.in
     #   dbt-duckdb
@@ -176,7 +176,7 @@ six==1.17.0
     #   python-dateutil
 snowplow-tracker==1.1.0
     # via dbt-core
-sqlparse==0.5.5
+sqlparse==0.5.4
     # via dbt-core
 structlog==24.4.0 ; python_full_version < '4'
     # via meltano-edk
