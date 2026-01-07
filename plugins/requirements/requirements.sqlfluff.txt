@@ -62,7 +62,7 @@ dbt-semantic-interfaces==0.9.0
     # via dbt-core
 deepdiff==8.6.1
     # via dbt-common
-diff-cover==10.0.0
+diff-cover==10.1.0
     # via sqlfluff
 duckdb==1.4.3
     # via
