@@ -8,7 +8,7 @@ attrs==25.4.0
     #   requests-cache
 cattrs==25.3.0
     # via requests-cache
-certifi==2025.11.12
+certifi==2026.1.4
     # via requests
 charset-normalizer==3.4.4
     # via requests

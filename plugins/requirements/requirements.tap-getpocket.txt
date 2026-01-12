@@ -6,7 +6,7 @@ attrs==25.4.0
     #   referencing
 backoff==2.2.1
     # via singer-sdk
-certifi==2025.11.12
+certifi==2026.1.4
     # via requests
 charset-normalizer==3.4.4
     # via requests
