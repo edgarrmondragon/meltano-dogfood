@@ -6,7 +6,7 @@ attrs==25.4.0
     #   referencing
 beautifulsoup4==4.14.3
     # via meltanolabs-tap-github
-certifi==2025.11.12
+certifi==2026.1.4
     # via requests
 cffi==2.0.0 ; platform_python_implementation != 'PyPy'
     # via cryptography
