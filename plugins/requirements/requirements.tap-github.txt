@@ -18,7 +18,7 @@ colorama==0.4.6 ; sys_platform == 'win32'
     # via click
 cryptography==46.0.3
     # via meltanolabs-tap-github
-fsspec==2025.12.0
+fsspec==2026.1.0
     # via
     #   singer-sdk
     #   universal-pathlib
@@ -40,7 +40,7 @@ meltanolabs-tap-github==1.25.1
     # via -r plugins/requirements/requirements.tap-github.in
 nested-lookup==0.2.25
     # via meltanolabs-tap-github
-packaging==25.0
+packaging==26.0rc1
     # via singer-sdk
 pathlib-abc==0.5.2
     # via universal-pathlib
@@ -89,7 +89,7 @@ typing-extensions==4.15.0
     # via
     #   beautifulsoup4
     #   sqlalchemy
-universal-pathlib==0.3.7
+universal-pathlib==0.3.8
     # via singer-sdk
 urllib3==2.6.3
     # via requests
