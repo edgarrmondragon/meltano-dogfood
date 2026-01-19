@@ -62,7 +62,7 @@ dbt-semantic-interfaces==0.9.0
     # via dbt-core
 deepdiff==8.6.1
     # via dbt-common
-diff-cover==10.1.0
+diff-cover==10.2.0
     # via sqlfluff
 duckdb==1.4.3
     # via
@@ -129,7 +129,7 @@ pluggy==1.6.0
     # via
     #   diff-cover
     #   pytest
-protobuf==6.33.2
+protobuf==6.33.4
     # via
     #   dbt-adapters
     #   dbt-common
