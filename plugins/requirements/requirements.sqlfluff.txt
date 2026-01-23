@@ -21,7 +21,7 @@ chardet==5.2.0
     #   sqlfluff
 charset-normalizer==3.4.4
     # via requests
-click==8.3.0
+click==8.3.1
     # via
     #   dbt-core
     #   dbt-semantic-interfaces
@@ -35,7 +35,7 @@ colorama==0.4.6
     #   tqdm
 daff==1.4.2
     # via dbt-core
-dbt-adapters==1.22.4
+dbt-adapters==1.22.5
     # via
     #   dbt-core
     #   dbt-duckdb
@@ -53,7 +53,7 @@ dbt-duckdb==1.10.0
     # via -r plugins/requirements/requirements.sqlfluff.in
 dbt-extractor==0.6.0
     # via dbt-core
-dbt-protos==1.0.410
+dbt-protos==1.0.422
     # via
     #   dbt-adapters
     #   dbt-common
@@ -112,7 +112,7 @@ networkx==3.6.1
     # via dbt-core
 orderly-set==5.5.0
     # via deepdiff
-packaging==25.0
+packaging==26.0
     # via
     #   dbt-core
     #   pytest
@@ -168,7 +168,7 @@ referencing==0.37.0
     # via
     #   jsonschema
     #   jsonschema-specifications
-regex==2025.11.3
+regex==2026.1.15
     # via sqlfluff
 requests==2.32.5
     # via
@@ -183,14 +183,14 @@ six==1.17.0
     # via python-dateutil
 snowplow-tracker==1.1.0
     # via dbt-core
-sqlfluff==4.0.0a2
+sqlfluff==4.0.0
     # via
     #   -r plugins/requirements/requirements.sqlfluff.in
     #   sqlfluff-templater-dbt
-sqlfluff-templater-dbt==4.0.0a2
+sqlfluff-templater-dbt==4.0.0
     # via -r plugins/requirements/requirements.sqlfluff.in
-sqlfluffrs==4.0.0a2
-    # via -r plugins/requirements/requirements.sqlfluff.in
+sqlfluffrs==4.0.0
+    # via sqlfluff
 sqlparse==0.5.4
     # via dbt-core
 tblib==3.2.2

@@ -18,8 +18,6 @@ fsspec==2026.1.0
     # via
     #   singer-sdk
     #   universal-pathlib
-greenlet==3.3.0 ; platform_machine == 'AMD64' or platform_machine == 'WIN32' or platform_machine == 'aarch64' or platform_machine == 'amd64' or platform_machine == 'ppc64le' or platform_machine == 'win32' or platform_machine == 'x86_64'
-    # via sqlalchemy
 idna==3.11
     # via requests
 inflection==0.5.1
@@ -32,7 +30,7 @@ jsonschema==4.26.0
     # via singer-sdk
 jsonschema-specifications==2025.9.1
     # via jsonschema
-packaging==26.0rc1
+packaging==26.0
     # via singer-sdk
 pathlib-abc==0.5.2
     # via universal-pathlib
@@ -61,7 +59,7 @@ simplejson==3.20.2
     # via singer-sdk
 singer-sdk==0.48.1
     # via tap-getpocket
-sqlalchemy==2.0.45
+sqlalchemy==2.1.0b1
     # via singer-sdk
 tap-getpocket @ git+https://github.com/edgarrmondragon/tap-getpocket.git@0a10e36675fb13f772f613d9c0faad93c2fcf911
     # via -r plugins/requirements/requirements.tap-getpocket.in

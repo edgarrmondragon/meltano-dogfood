@@ -31,7 +31,7 @@ colorama==0.4.6
     #   dbt-common
 daff==1.4.2
     # via dbt-core
-dbt-adapters==1.22.4
+dbt-adapters==1.22.5
     # via
     #   dbt-core
     #   dbt-duckdb
@@ -48,7 +48,7 @@ dbt-duckdb==1.10.0
     # via -r plugins/requirements/requirements.dbt-duckdb.in
 dbt-extractor==0.6.0
     # via dbt-core
-dbt-protos==1.0.410
+dbt-protos==1.0.422
     # via
     #   dbt-adapters
     #   dbt-common
@@ -110,7 +110,7 @@ networkx==3.6.1
     # via dbt-core
 orderly-set==5.5.0
     # via deepdiff
-packaging==25.0
+packaging==26.0
     # via dbt-core
 parsedatetime==2.6
     # via agate
