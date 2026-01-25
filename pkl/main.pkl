@@ -18,7 +18,7 @@ output {
       plugin_locks_required = true
     }
     project_readonly = true
-    requires_meltano = ">=4.0.0rc1"
+    requires_meltano = ">=4"
     venv = new project.VirtualEnvironments {
       backend = "uv"
     }
@@ -35,6 +35,9 @@ output {
           name = "target-jsonl"
           variant = "andyh1203"
           pip_url = "-r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.target-jsonl.txt"
+          config = new Mapping {
+            ["destination_path"] = "output/$MELTANO_EXTRACTOR_NAMESPACE"
+          }
         },
         new plugin.Loader {
           name = "target-duckdb"

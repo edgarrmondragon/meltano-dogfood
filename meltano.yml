@@ -1,7 +1,7 @@
 default_environment: dev
 project_id: b77cad0a-ffd8-494e-9e6b-18d6eacb71d4
 project_readonly: true
-requires_meltano: '>=4.0.0rc1'
+requires_meltano: '>=4'
 python: python3.14
 venv:
   backend: uv
@@ -54,6 +54,8 @@ plugins:
   - name: target-jsonl
     variant: andyh1203
     pip_url: -r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.target-jsonl.txt
+    config:
+      destination_path: output/$MELTANO_EXTRACTOR_NAMESPACE
   - name: target-duckdb
     variant: jwills
     pip_url: -r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.target-duckdb.txt
