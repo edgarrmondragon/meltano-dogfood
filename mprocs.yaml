@@ -1,0 +1,13 @@
+# https://github.com/pvolok/mprocs
+procs:
+  yazi:
+    # https://yazi-rs.github.io/docs/quick-start/
+    cmd: ["yazi", "output"]
+  pypistats:
+    cmd: ["meltano", "run", "tap-pypistats", "target-jsonl"]
+  rtd:
+    cmd: ["meltano", "run", "tap-readthedocs", "target-jsonl"]
+  gh:
+    cmd: ["meltano", "run", "tap-github", "target-jsonl"]
+  stackoverflow:
+    cmd: ["meltano", "run", "tap-stackexchange", "target-jsonl"]
