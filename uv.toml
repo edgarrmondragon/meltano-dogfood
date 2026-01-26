@@ -1,3 +1,6 @@
-# exclude-newer = "7 days"
+exclude-newer = "P4D"
 preview = true
 required-version = ">=0.9.17"
+
+[exclude-newer-package]
+duckdb = "P14D"
