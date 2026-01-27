@@ -58,6 +58,13 @@
       "sensitive": true
     },
     {
+      "name": "backoff_max_tries",
+      "kind": "integer",
+      "value": 5,
+      "label": "Backoff Max Tries",
+      "description": "Maximum number of retry attempts for failed API requests that are retriable. Defaults to 5."
+    },
+    {
       "name": "batch_config.encoding.compression",
       "kind": "options",
       "label": "Batch Compression Format",
