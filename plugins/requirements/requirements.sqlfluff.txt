@@ -129,7 +129,7 @@ pluggy==1.6.0
     # via
     #   diff-cover
     #   pytest
-protobuf==6.33.4
+protobuf==6.33.5
     # via
     #   dbt-adapters
     #   dbt-common
