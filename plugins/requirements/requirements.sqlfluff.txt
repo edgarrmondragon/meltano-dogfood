@@ -53,7 +53,7 @@ dbt-duckdb==1.10.0
     # via -r plugins/requirements/requirements.sqlfluff.in
 dbt-extractor==0.6.0
     # via dbt-core
-dbt-protos==1.0.425
+dbt-protos==1.0.427
     # via
     #   dbt-adapters
     #   dbt-common
