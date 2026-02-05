@@ -28,11 +28,8 @@ click==8.3.1
     #   sqlfluff
 colorama==0.4.6
     # via
-    #   click
     #   dbt-common
-    #   pytest
     #   sqlfluff
-    #   tqdm
 daff==1.4.2
     # via dbt-core
 dbt-adapters==1.22.5
@@ -46,11 +43,11 @@ dbt-common==1.37.2
     #   dbt-duckdb
 dbt-core==1.11.2
     # via
-    #   -r plugins/requirements/requirements.sqlfluff.in
+    #   -r requirements.sqlfluff.in
     #   dbt-duckdb
     #   sqlfluff-templater-dbt
 dbt-duckdb==1.10.0
-    # via -r plugins/requirements/requirements.sqlfluff.in
+    # via -r requirements.sqlfluff.in
 dbt-extractor==0.6.0
     # via dbt-core
 dbt-protos==1.0.425
@@ -66,7 +63,7 @@ diff-cover==10.2.0
     # via sqlfluff
 duckdb==1.4.3
     # via
-    #   -r plugins/requirements/requirements.sqlfluff.in
+    #   -r requirements.sqlfluff.in
     #   dbt-duckdb
 idna==3.11
     # via requests
@@ -99,7 +96,7 @@ leather==0.4.1
     # via agate
 markupsafe==3.0.3
     # via jinja2
-mashumaro==3.14
+mashumaro[msgpack]==3.14
     # via
     #   dbt-adapters
     #   dbt-common
@@ -129,7 +126,7 @@ pluggy==1.6.0
     # via
     #   diff-cover
     #   pytest
-protobuf==6.33.4
+protobuf==6.33.5
     # via
     #   dbt-adapters
     #   dbt-common
@@ -183,12 +180,12 @@ six==1.17.0
     # via python-dateutil
 snowplow-tracker==1.1.0
     # via dbt-core
-sqlfluff==4.0.0
+sqlfluff[rs]==4.0.0
     # via
-    #   -r plugins/requirements/requirements.sqlfluff.in
+    #   -r requirements.sqlfluff.in
     #   sqlfluff-templater-dbt
 sqlfluff-templater-dbt==4.0.0
-    # via -r plugins/requirements/requirements.sqlfluff.in
+    # via -r requirements.sqlfluff.in
 sqlfluffrs==4.0.0
     # via sqlfluff
 sqlparse==0.5.4
@@ -212,8 +209,6 @@ typing-extensions==4.15.0
     #   typing-inspection
 typing-inspection==0.4.2
     # via pydantic
-tzdata==2025.3 ; sys_platform == 'win32'
-    # via agate
 urllib3==2.6.3
     # via requests
 zipp==3.23.0

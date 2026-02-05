@@ -7,7 +7,7 @@ agate==1.9.1
     #   dbt-core
 annotated-types==0.7.0
     # via pydantic
-asttokens==2.4.1 ; python_full_version < '4'
+asttokens==2.4.1
     # via devtools
 attrs==25.4.0
     # via
@@ -26,9 +26,7 @@ click==8.3.1
     #   meltano-dbt-ext
     #   typer
 colorama==0.4.6
-    # via
-    #   click
-    #   dbt-common
+    # via dbt-common
 daff==1.4.2
     # via dbt-core
 dbt-adapters==1.22.5
@@ -42,10 +40,10 @@ dbt-common==1.37.2
     #   dbt-duckdb
 dbt-core==1.11.2
     # via
-    #   -r plugins/requirements/requirements.dbt-duckdb.in
+    #   -r requirements.dbt-duckdb.in
     #   dbt-duckdb
 dbt-duckdb==1.10.0
-    # via -r plugins/requirements/requirements.dbt-duckdb.in
+    # via -r requirements.dbt-duckdb.in
 dbt-extractor==0.6.0
     # via dbt-core
 dbt-protos==1.0.425
@@ -57,13 +55,13 @@ dbt-semantic-interfaces==0.9.0
     # via dbt-core
 deepdiff==8.6.1
     # via dbt-common
-devtools==0.12.2 ; python_full_version < '4'
+devtools==0.12.2
     # via meltano-edk
 duckdb==1.4.3
     # via
-    #   -r plugins/requirements/requirements.dbt-duckdb.in
+    #   -r requirements.dbt-duckdb.in
     #   dbt-duckdb
-executing==2.2.1 ; python_full_version < '4'
+executing==2.2.1
     # via devtools
 idna==3.11
     # via requests
@@ -91,7 +89,7 @@ markdown-it-py==4.0.0
     # via rich
 markupsafe==3.0.3
     # via jinja2
-mashumaro==3.14
+mashumaro[msgpack]==3.14
     # via
     #   dbt-adapters
     #   dbt-common
@@ -99,8 +97,8 @@ mashumaro==3.14
 mdurl==0.1.2
     # via markdown-it-py
 meltano-dbt-ext==0.4.0
-    # via -r plugins/requirements/requirements.dbt-duckdb.in
-meltano-edk==0.5.0 ; python_full_version < '4'
+    # via -r requirements.dbt-duckdb.in
+meltano-edk==0.5.0
     # via meltano-dbt-ext
 more-itertools==10.8.0
     # via dbt-semantic-interfaces
@@ -118,7 +116,7 @@ pathspec==0.12.1
     # via
     #   dbt-common
     #   dbt-core
-protobuf==6.33.4
+protobuf==6.33.5
     # via
     #   dbt-adapters
     #   dbt-common
@@ -178,7 +176,7 @@ snowplow-tracker==1.1.0
     # via dbt-core
 sqlparse==0.5.4
     # via dbt-core
-structlog==24.4.0 ; python_full_version < '4'
+structlog==24.4.0
     # via meltano-edk
 text-unidecode==1.3
     # via python-slugify
@@ -198,8 +196,6 @@ typing-extensions==4.15.0
     #   typing-inspection
 typing-inspection==0.4.2
     # via pydantic
-tzdata==2025.3 ; sys_platform == 'win32'
-    # via agate
 urllib3==2.6.3
     # via requests
 zipp==3.23.0
