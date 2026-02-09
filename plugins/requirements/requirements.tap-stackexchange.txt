@@ -79,7 +79,7 @@ typing-extensions==4.15.0
     # via
     #   cattrs
     #   sqlalchemy
-universal-pathlib==0.3.8
+universal-pathlib==0.3.9
     # via singer-sdk
 url-normalize==2.2.1 ; python_full_version < '4'
     # via requests-cache

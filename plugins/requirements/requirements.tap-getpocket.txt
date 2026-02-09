@@ -65,7 +65,7 @@ tap-getpocket @ git+https://github.com/edgarrmondragon/tap-getpocket.git@0a10e36
     # via -r plugins/requirements/requirements.tap-getpocket.in
 typing-extensions==4.15.0
     # via sqlalchemy
-universal-pathlib==0.3.8
+universal-pathlib==0.3.9
     # via singer-sdk
 urllib3==2.6.3
     # via requests
