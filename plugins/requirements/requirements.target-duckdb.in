@@ -1,2 +1,2 @@
 duckdb>=1.4.1
-target-duckdb
+git+https://github.com/jwills/target-duckdb.git@main
