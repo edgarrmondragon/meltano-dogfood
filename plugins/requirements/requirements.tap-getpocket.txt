@@ -14,7 +14,7 @@ click==8.3.1
     # via singer-sdk
 colorama==0.4.6 ; sys_platform == 'win32'
     # via click
-fsspec==2026.1.0
+fsspec==2026.2.0
     # via
     #   singer-sdk
     #   universal-pathlib
