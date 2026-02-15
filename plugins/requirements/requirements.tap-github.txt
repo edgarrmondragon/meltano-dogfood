@@ -18,7 +18,7 @@ colorama==0.4.6 ; sys_platform == 'win32'
     # via click
 cryptography==46.0.4
     # via meltanolabs-tap-github
-fsspec==2026.1.0
+fsspec==2026.2.0
     # via
     #   singer-sdk
     #   universal-pathlib
