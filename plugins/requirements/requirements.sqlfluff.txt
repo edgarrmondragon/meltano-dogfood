@@ -44,7 +44,7 @@ dbt-common==1.37.2
     #   dbt-adapters
     #   dbt-core
     #   dbt-duckdb
-dbt-core==1.11.3
+dbt-core==1.11.4
     # via
     #   -r plugins/requirements/requirements.sqlfluff.in
     #   dbt-duckdb
@@ -183,13 +183,13 @@ six==1.17.0
     # via python-dateutil
 snowplow-tracker==1.1.0
     # via dbt-core
-sqlfluff==4.0.0
+sqlfluff==4.0.4
     # via
     #   -r plugins/requirements/requirements.sqlfluff.in
     #   sqlfluff-templater-dbt
-sqlfluff-templater-dbt==4.0.0
+sqlfluff-templater-dbt==4.0.4
     # via -r plugins/requirements/requirements.sqlfluff.in
-sqlfluffrs==4.0.0
+sqlfluffrs==4.0.4
     # via sqlfluff
 sqlparse==0.5.4
     # via dbt-core
