@@ -123,7 +123,7 @@ pathspec==0.12.1
     #   dbt-common
     #   dbt-core
     #   sqlfluff
-platformdirs==4.5.1
+platformdirs==4.7.0
     # via sqlfluff
 pluggy==1.6.0
     # via

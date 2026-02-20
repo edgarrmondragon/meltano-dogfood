@@ -16,7 +16,7 @@ click==8.3.1
     # via singer-sdk
 colorama==0.4.6 ; sys_platform == 'win32'
     # via click
-cryptography==46.0.4
+cryptography==46.0.5
     # via meltanolabs-tap-github
 fsspec==2026.2.0
     # via
