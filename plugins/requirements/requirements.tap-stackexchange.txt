@@ -38,7 +38,7 @@ packaging==26.0
     # via singer-sdk
 pathlib-abc==0.5.2
     # via universal-pathlib
-platformdirs==4.5.1 ; python_full_version < '4'
+platformdirs==4.7.0 ; python_full_version < '4'
     # via requests-cache
 ply==3.11
     # via jsonpath-ng

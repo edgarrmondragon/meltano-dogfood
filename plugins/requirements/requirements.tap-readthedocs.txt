@@ -38,7 +38,7 @@ packaging==26.0
     # via singer-sdk
 pathlib-abc==0.5.2
     # via universal-pathlib
-platformdirs==4.5.1
+platformdirs==4.7.0
     # via requests-cache
 ply==3.11
     # via jsonpath-ng
@@ -71,7 +71,7 @@ singer-sdk==0.53.5
     # via tap-readthedocs
 sqlalchemy==2.1.0b1
     # via singer-sdk
-tap-readthedocs==0.5.17
+tap-readthedocs==0.5.18
     # via -r plugins/requirements/requirements.tap-readthedocs.in
 toolz==1.1.0
     # via tap-readthedocs
