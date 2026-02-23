@@ -42,7 +42,7 @@ dbt-common==1.37.2
     #   dbt-adapters
     #   dbt-core
     #   dbt-duckdb
-dbt-core==1.11.4
+dbt-core==1.11.5
     # via
     #   -r plugins/requirements/requirements.dbt-duckdb.in
     #   dbt-duckdb

@@ -44,7 +44,7 @@ dbt-common==1.37.2
     #   dbt-adapters
     #   dbt-core
     #   dbt-duckdb
-dbt-core==1.11.4
+dbt-core==1.11.5
     # via
     #   -r plugins/requirements/requirements.sqlfluff.in
     #   dbt-duckdb
@@ -123,7 +123,7 @@ pathspec==0.12.1
     #   dbt-common
     #   dbt-core
     #   sqlfluff
-platformdirs==4.7.0
+platformdirs==4.9.2
     # via sqlfluff
 pluggy==1.6.0
     # via
