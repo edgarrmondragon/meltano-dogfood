@@ -13,9 +13,9 @@ attrs==25.4.0
     #   referencing
 babel==2.18.0
     # via agate
-certifi==2026.1.4
+certifi==2026.2.25
     # via requests
-chardet==5.2.0
+chardet==6.0.0.post1
     # via
     #   diff-cover
     #   sqlfluff
@@ -35,7 +35,7 @@ colorama==0.4.6
     #   tqdm
 daff==1.4.2
     # via dbt-core
-dbt-adapters==1.22.5
+dbt-adapters==1.22.6
     # via
     #   dbt-core
     #   dbt-duckdb
@@ -44,12 +44,12 @@ dbt-common==1.37.2
     #   dbt-adapters
     #   dbt-core
     #   dbt-duckdb
-dbt-core==1.11.5
+dbt-core==1.11.6
     # via
     #   -r plugins/requirements/requirements.sqlfluff.in
     #   dbt-duckdb
     #   sqlfluff-templater-dbt
-dbt-duckdb==1.10.0
+dbt-duckdb==1.10.1
     # via -r plugins/requirements/requirements.sqlfluff.in
 dbt-extractor==0.6.0
     # via dbt-core
@@ -168,7 +168,7 @@ referencing==0.37.0
     # via
     #   jsonschema
     #   jsonschema-specifications
-regex==2026.1.15
+regex==2026.2.19
     # via sqlfluff
 requests==2.32.5
     # via

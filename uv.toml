@@ -1,4 +1,3 @@
-exclude-newer = "P7D"
 preview = true
 required-version = ">=0.9.17"
 

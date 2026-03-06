@@ -6,7 +6,7 @@ attrs==25.4.0
     #   referencing
 backoff==2.2.1
     # via singer-sdk
-certifi==2026.1.4
+certifi==2026.2.25
     # via requests
 charset-normalizer==3.4.4
     # via requests
@@ -24,7 +24,7 @@ inflection==0.5.1
     # via singer-sdk
 joblib==1.5.3
     # via singer-sdk
-jsonpath-ng==1.7.0
+jsonpath-ng==1.8.0
     # via singer-sdk
 jsonschema==4.26.0
     # via singer-sdk
@@ -34,8 +34,6 @@ packaging==26.0
     # via singer-sdk
 pathlib-abc==0.5.2
     # via universal-pathlib
-ply==3.11
-    # via jsonpath-ng
 python-dotenv==1.2.1
     # via singer-sdk
 pyyaml==6.0.3
@@ -65,7 +63,7 @@ tap-getpocket @ git+https://github.com/edgarrmondragon/tap-getpocket.git@0a10e36
     # via -r plugins/requirements/requirements.tap-getpocket.in
 typing-extensions==4.15.0
     # via sqlalchemy
-universal-pathlib==0.3.9
+universal-pathlib==0.3.10
     # via singer-sdk
 urllib3==2.6.3
     # via requests

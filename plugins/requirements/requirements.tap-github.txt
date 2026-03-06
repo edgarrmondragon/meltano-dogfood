@@ -6,7 +6,7 @@ attrs==25.4.0
     #   referencing
 beautifulsoup4==4.14.3
     # via meltanolabs-tap-github
-certifi==2026.1.4
+certifi==2026.2.25
     # via requests
 cffi==2.0.0 ; platform_python_implementation != 'PyPy'
     # via cryptography
@@ -28,7 +28,7 @@ inflection==0.5.1
     # via singer-sdk
 joblib==1.5.3
     # via singer-sdk
-jsonpath-ng==1.7.0
+jsonpath-ng==1.8.0
     # via singer-sdk
 jsonschema==4.26.0
     # via singer-sdk
@@ -42,8 +42,6 @@ packaging==26.0
     # via singer-sdk
 pathlib-abc==0.5.2
     # via universal-pathlib
-ply==3.11
-    # via jsonpath-ng
 pycparser==3.0 ; implementation_name != 'PyPy' and platform_python_implementation != 'PyPy'
     # via cffi
 pyjwt==2.10.1
@@ -87,7 +85,7 @@ typing-extensions==4.15.0
     # via
     #   beautifulsoup4
     #   sqlalchemy
-universal-pathlib==0.3.9
+universal-pathlib==0.3.10
     # via singer-sdk
 urllib3==2.6.3
     # via requests
