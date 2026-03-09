@@ -15,8 +15,9 @@ babel==2.18.0
     # via agate
 certifi==2026.2.25
     # via requests
-chardet==6.0.0.post1
+chardet==5.2.0
     # via
+    #   -r plugins/requirements/requirements.sqlfluff.in
     #   diff-cover
     #   sqlfluff
 charset-normalizer==3.4.4
