@@ -19,7 +19,7 @@ babel==2.18.0
     # via agate
 certifi==2026.2.25
     # via requests
-charset-normalizer==3.4.4
+charset-normalizer==3.4.5
     # via requests
 click==8.3.1
     # via
@@ -33,16 +33,16 @@ colorama==0.4.6
     #   dbt-common
 daff==1.4.2
     # via dbt-core
-dbt-adapters==1.22.6
+dbt-adapters==1.22.8
     # via
     #   dbt-core
     #   dbt-duckdb
-dbt-common==1.37.2
+dbt-common==1.37.3
     # via
     #   dbt-adapters
     #   dbt-core
     #   dbt-duckdb
-dbt-core==1.11.6
+dbt-core==1.11.7
     # via
     #   -r plugins/requirements/requirements.dbt-duckdb.in
     #   dbt-duckdb
@@ -145,7 +145,7 @@ python-slugify==8.0.4
     # via agate
 pytimeparse==1.1.8
     # via agate
-pytz==2025.2
+pytz==2026.1.post1
     # via
     #   dbt-adapters
     #   dbt-core

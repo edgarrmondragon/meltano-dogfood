@@ -10,7 +10,7 @@ certifi==2026.2.25
     # via requests
 cffi==2.0.0 ; platform_python_implementation != 'PyPy'
     # via cryptography
-charset-normalizer==3.4.4
+charset-normalizer==3.4.5
     # via requests
 click==8.3.1
     # via singer-sdk
@@ -50,7 +50,7 @@ python-backoff==2.3.1
     # via singer-sdk
 python-dateutil==2.9.0.post0
     # via meltanolabs-tap-github
-python-dotenv==1.2.1
+python-dotenv==1.2.2
     # via singer-sdk
 pyyaml==6.0.3
     # via singer-sdk

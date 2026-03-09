@@ -8,7 +8,7 @@ backoff==2.2.1
     # via singer-sdk
 certifi==2026.2.25
     # via requests
-charset-normalizer==3.4.4
+charset-normalizer==3.4.5
     # via requests
 click==8.3.1
     # via singer-sdk
@@ -34,7 +34,7 @@ packaging==26.0
     # via singer-sdk
 pathlib-abc==0.5.2
     # via universal-pathlib
-python-dotenv==1.2.1
+python-dotenv==1.2.2
     # via singer-sdk
 pyyaml==6.0.3
     # via singer-sdk
