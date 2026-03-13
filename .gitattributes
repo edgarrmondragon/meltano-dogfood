@@ -1,0 +1,2 @@
+# GitHub syntax highlighting
+plugins/*/*.lock linguist-language=JSON
