@@ -14,8 +14,6 @@ charset-normalizer==3.4.5
     # via requests
 click==8.3.1
     # via singer-sdk
-colorama==0.4.6 ; sys_platform == 'win32'
-    # via click
 fsspec==2026.2.0
     # via
     #   singer-sdk
@@ -61,7 +59,7 @@ rpds-py==0.30.0
     # via
     #   jsonschema
     #   referencing
-simpleeval==1.0.3
+simpleeval==1.0.5
     # via singer-sdk
 simplejson==3.20.2
     # via singer-sdk
@@ -70,7 +68,7 @@ singer-sdk==0.53.5
 sqlalchemy==2.1.0b1
     # via singer-sdk
 tap-readthedocs==0.5.18
-    # via -r plugins/requirements/requirements.tap-readthedocs.in
+    # via -r requirements.tap-readthedocs.in
 toolz==1.1.0
     # via tap-readthedocs
 typing-extensions==4.15.0
