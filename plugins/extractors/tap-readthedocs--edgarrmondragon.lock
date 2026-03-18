@@ -101,6 +101,12 @@
       "description": "The maximum length of a flattened key."
     },
     {
+      "name": "flattening_separator",
+      "kind": "string",
+      "label": "Flattening Separator",
+      "description": "The separator to use when flattening keys."
+    },
+    {
       "name": "include_business_streams",
       "kind": "boolean",
       "value": false,
