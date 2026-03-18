@@ -3,4 +3,4 @@ dbt-duckdb
 sqlfluff[rs]>=4
 sqlfluff-templater-dbt>=4
 duckdb>=1.4.1
-chardet~=5.0 # https://github.com/psf/requests/issues/7219
+chardet~=7.1 # https://github.com/psf/requests/issues/7219
