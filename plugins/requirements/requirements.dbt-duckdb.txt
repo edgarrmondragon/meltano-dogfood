@@ -19,7 +19,7 @@ babel==2.18.0
     # via agate
 certifi==2026.2.25
     # via requests
-charset-normalizer==3.4.5
+charset-normalizer==3.4.6
     # via requests
 click==8.3.1
     # via
@@ -33,7 +33,7 @@ colorama==0.4.6
     #   dbt-common
 daff==1.4.2
     # via dbt-core
-dbt-adapters==1.22.8
+dbt-adapters==1.22.9
     # via
     #   dbt-core
     #   dbt-duckdb
@@ -50,14 +50,14 @@ dbt-duckdb==1.10.1
     # via -r plugins/requirements/requirements.dbt-duckdb.in
 dbt-extractor==0.6.0
     # via dbt-core
-dbt-protos==1.0.431
+dbt-protos==1.0.443
     # via
     #   dbt-adapters
     #   dbt-common
     #   dbt-core
 dbt-semantic-interfaces==0.9.0
     # via dbt-core
-deepdiff==8.6.1
+deepdiff==8.6.2
     # via dbt-common
 devtools==0.12.2
     # via meltano-edk
@@ -120,7 +120,7 @@ pathspec==0.12.1
     # via
     #   dbt-common
     #   dbt-core
-protobuf==6.33.5
+protobuf==6.33.6
     # via
     #   dbt-adapters
     #   dbt-common

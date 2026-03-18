@@ -10,7 +10,7 @@ certifi==2026.2.25
     # via requests
 cffi==2.0.0 ; platform_python_implementation != 'PyPy'
     # via cryptography
-charset-normalizer==3.4.5
+charset-normalizer==3.4.6
     # via requests
 click==8.3.1
     # via singer-sdk
@@ -34,7 +34,7 @@ jsonschema==4.26.0
     # via singer-sdk
 jsonschema-specifications==2025.9.1
     # via jsonschema
-meltanolabs-tap-github==1.26.0
+meltanolabs-tap-github==1.26.1
     # via -r plugins/requirements/requirements.tap-github.in
 nested-lookup==0.2.25
     # via meltanolabs-tap-github
@@ -44,7 +44,7 @@ pathlib-abc==0.5.2
     # via universal-pathlib
 pycparser==3.0 ; implementation_name != 'PyPy' and platform_python_implementation != 'PyPy'
     # via cffi
-pyjwt==2.10.1
+pyjwt==2.12.1
     # via meltanolabs-tap-github
 python-backoff==2.3.1
     # via singer-sdk
@@ -67,11 +67,11 @@ rpds-py==0.30.0
     # via
     #   jsonschema
     #   referencing
-simpleeval==1.0.3
+simpleeval==1.0.4
     # via singer-sdk
 simplejson==3.20.2
     # via singer-sdk
-singer-sdk==0.53.5
+singer-sdk==0.53.6
     # via meltanolabs-tap-github
 six==1.17.0
     # via

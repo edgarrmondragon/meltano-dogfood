@@ -10,7 +10,7 @@ cattrs==26.1.0 ; python_full_version < '4'
     # via requests-cache
 certifi==2026.2.25
     # via requests
-charset-normalizer==3.4.5
+charset-normalizer==3.4.6
     # via requests
 click==8.3.1
     # via singer-sdk
@@ -63,11 +63,11 @@ rpds-py==0.30.0
     # via
     #   jsonschema
     #   referencing
-simpleeval==1.0.3
+simpleeval==1.0.4
     # via singer-sdk
 simplejson==3.20.2
     # via singer-sdk
-singer-sdk==0.53.5
+singer-sdk==0.53.6
     # via tap-stackexchange
 sqlalchemy==2.1.0b1
     # via singer-sdk
