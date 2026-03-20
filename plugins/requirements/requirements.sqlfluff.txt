@@ -7,7 +7,7 @@ agate==1.9.1
     #   dbt-core
 annotated-types==0.7.0
     # via pydantic
-attrs==25.4.0
+attrs==26.1.0
     # via
     #   jsonschema
     #   referencing
@@ -15,9 +15,8 @@ babel==2.18.0
     # via agate
 certifi==2026.2.25
     # via requests
-chardet==5.2.0
+chardet==7.2.0
     # via
-    #   -r plugins/requirements/requirements.sqlfluff.in
     #   diff-cover
     #   sqlfluff
 charset-normalizer==3.4.6
@@ -71,7 +70,7 @@ duckdb==1.4.4
     #   dbt-duckdb
 idna==3.11
     # via requests
-importlib-metadata==8.7.1
+importlib-metadata==8.9.0
     # via dbt-semantic-interfaces
 iniconfig==2.3.0
     # via pytest
