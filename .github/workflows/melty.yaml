@@ -61,7 +61,9 @@ env:
   MELTANO_RUN_TIMEOUT: 600
   MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
   EVIDENCE_SOURCE__motherduck_personal__token: ${{ secrets.MOTHERDUCK_TOKEN }}
-  PYTHONWARNINGS: "once"
+  PYTHONWARNINGS: >
+    error,
+    once:No GlobalOverrides context is active:UserWarning
   # renovate: datasource=github-tags depName=apple/pkl
   PKL_VERSION: 0.31.0
 
