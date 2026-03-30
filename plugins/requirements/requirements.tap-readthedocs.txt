@@ -65,7 +65,7 @@ simpleeval==1.0.4
     # via singer-sdk
 simplejson==3.20.2
     # via singer-sdk
-singer-sdk==0.54.0a8
+singer-sdk==0.54.0a10
     # via tap-readthedocs
 sqlalchemy==2.1.0b1
     # via singer-sdk
