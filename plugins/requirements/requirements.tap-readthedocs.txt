@@ -16,7 +16,7 @@ click==8.3.1
     # via singer-sdk
 colorama==0.4.6 ; sys_platform == 'win32'
     # via click
-fsspec==2026.2.0
+fsspec==2026.3.0
     # via
     #   singer-sdk
     #   universal-pathlib
@@ -51,7 +51,7 @@ referencing==0.37.0
     #   jsonschema
     #   jsonschema-specifications
     #   singer-sdk
-requests==2.33.0
+requests==2.33.1
     # via
     #   requests-cache
     #   singer-sdk
@@ -65,11 +65,11 @@ simpleeval==1.0.4
     # via singer-sdk
 simplejson==3.20.2
     # via singer-sdk
-singer-sdk==0.53.6
+singer-sdk==0.54.0a8
     # via tap-readthedocs
 sqlalchemy==2.1.0b1
     # via singer-sdk
-tap-readthedocs==0.5.18
+tap-readthedocs==0.6.0
     # via -r plugins/requirements/requirements.tap-readthedocs.in
 toolz==1.1.0
     # via tap-readthedocs
@@ -85,3 +85,4 @@ urllib3==2.6.3
     # via
     #   requests
     #   requests-cache
+    #   singer-sdk
