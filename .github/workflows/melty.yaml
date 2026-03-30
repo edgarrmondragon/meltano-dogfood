@@ -65,7 +65,7 @@ env:
     error,
     once:No GlobalOverrides context is active:UserWarning
   # renovate: datasource=github-tags depName=apple/pkl
-  PKL_VERSION: 0.31.0
+  PKL_VERSION: 0.31.1
 
 concurrency:
   group: meltano
