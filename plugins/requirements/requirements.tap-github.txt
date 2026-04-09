@@ -10,13 +10,13 @@ certifi==2026.2.25
     # via requests
 cffi==2.0.0 ; platform_python_implementation != 'PyPy'
     # via cryptography
-charset-normalizer==3.4.6
+charset-normalizer==3.4.7
     # via requests
-click==8.3.1
+click==8.3.2
     # via singer-sdk
 colorama==0.4.6 ; sys_platform == 'win32'
     # via click
-cryptography==46.0.6
+cryptography==46.0.7
     # via meltanolabs-tap-github
 fsspec==2026.3.0
     # via
@@ -34,7 +34,7 @@ jsonschema==4.26.0
     # via singer-sdk
 jsonschema-specifications==2025.9.1
     # via jsonschema
-meltanolabs-tap-github==1.26.2
+meltanolabs-tap-github==1.27.0
     # via -r plugins/requirements/requirements.tap-github.in
 nested-lookup==0.2.25
     # via meltanolabs-tap-github

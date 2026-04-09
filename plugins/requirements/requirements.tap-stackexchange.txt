@@ -10,9 +10,9 @@ cattrs==26.1.0 ; python_full_version < '4'
     # via requests-cache
 certifi==2026.2.25
     # via requests
-charset-normalizer==3.4.6
+charset-normalizer==3.4.7
     # via requests
-click==8.3.1
+click==8.3.2
     # via singer-sdk
 colorama==0.4.6 ; sys_platform == 'win32'
     # via click
@@ -38,7 +38,7 @@ packaging==26.0
     # via singer-sdk
 pathlib-abc==0.5.2
     # via universal-pathlib
-platformdirs==4.9.4 ; python_full_version < '4'
+platformdirs==4.9.6 ; python_full_version < '4'
     # via requests-cache
 pyrate-limiter==3.9.0 ; python_full_version < '4'
     # via tap-stackexchange
