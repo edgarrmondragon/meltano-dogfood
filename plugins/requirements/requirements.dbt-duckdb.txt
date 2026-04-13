@@ -164,7 +164,7 @@ requests==2.33.1
     #   dbt-common
     #   dbt-core
     #   snowplow-tracker
-rich==14.3.3
+rich==15.0.0
     # via typer
 rpds-py==0.30.0
     # via
