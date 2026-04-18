@@ -38,7 +38,7 @@ meltanolabs-tap-github==1.27.0
     # via -r plugins/requirements/requirements.tap-github.in
 nested-lookup==0.2.25
     # via meltanolabs-tap-github
-packaging==26.0
+packaging==26.1
     # via singer-sdk
 pathlib-abc==0.5.2
     # via universal-pathlib
@@ -67,11 +67,11 @@ rpds-py==0.30.0
     # via
     #   jsonschema
     #   referencing
-simpleeval==1.0.4
+simpleeval==1.0.7
     # via singer-sdk
 simplejson==3.20.2
     # via singer-sdk
-singer-sdk==0.53.6
+singer-sdk==0.53.7
     # via meltanolabs-tap-github
 six==1.17.0
     # via
@@ -79,7 +79,7 @@ six==1.17.0
     #   python-dateutil
 soupsieve==2.8.3
     # via beautifulsoup4
-sqlalchemy==2.1.0b1
+sqlalchemy==2.1.0b2
     # via singer-sdk
 typing-extensions==4.15.0
     # via
