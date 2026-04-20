@@ -149,7 +149,7 @@ jobs:
           meltano run --no-install ${{ matrix.job }} ${{ github.event.inputs.forceRun && '--force' || '' }}
 
       - name: Upload Meltano log
-        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: meltano-${{ matrix.job }}
           path: logs/meltano.log
@@ -257,7 +257,7 @@ jobs:
           npm run build:strict
 
       - name: Upload Evidence build
-        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: evidence-build
           path: evidence/build
@@ -283,7 +283,7 @@ jobs:
           path: evidence/build
 
       - name: Deploy
-        uses: amondnet/vercel-action@c71810f8732de6b8656e41155e63b6303ca3e4bf # v42.1.0
+        uses: amondnet/vercel-action@4b810e26f7bb2a331c698af186f890cbf20d5f72 # v42.2.0
         with:
           github-comment: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
