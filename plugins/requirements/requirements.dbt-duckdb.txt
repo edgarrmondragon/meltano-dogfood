@@ -126,12 +126,12 @@ protobuf==6.33.6
     #   dbt-common
     #   dbt-core
     #   dbt-protos
-pydantic==2.13.2
+pydantic==2.13.3
     # via
     #   dbt-core
     #   dbt-semantic-interfaces
     #   meltano-edk
-pydantic-core==2.46.2
+pydantic-core==2.46.3
     # via pydantic
 pygments==2.20.0
     # via
