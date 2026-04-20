@@ -53,7 +53,7 @@ rpds-py==0.30.0
     #   referencing
 simpleeval==1.0.7
     # via singer-sdk
-simplejson==3.20.2
+simplejson==4.0.1
     # via singer-sdk
 singer-sdk==0.48.1
     # via tap-getpocket
