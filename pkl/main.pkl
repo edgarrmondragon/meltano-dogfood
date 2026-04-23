@@ -1,7 +1,6 @@
 import "lib/meltano/project.pkl"
 import "lib/meltano/plugin.pkl"
 
-import "plugins/extractors/tap_getpocket.pkl"
 import "plugins/extractors/tap_stackexchange.pkl"
 import "plugins/extractors/tap_readthedocs.pkl"
 import "plugins/extractors/tap_github.pkl"
@@ -24,7 +23,6 @@ output {
     }
     plugins = new project.Plugins {
       extractors = List(
-        tap_getpocket.tap_getpocket,
         tap_stackexchange.tap_stackexchange,
         tap_readthedocs.tap_readthedocs,
         tap_github.tap_github,
@@ -102,10 +100,6 @@ output {
       }
     )
     jobs = List(
-      new project.Job {
-        name = "pocket-to-duckdb"
-        tasks = List("tap-getpocket target-duckdb")
-      },
       new project.Job {
         name = "stackoverflow-to-duckdb"
         tasks = List("tap-stackexchange target-duckdb")
