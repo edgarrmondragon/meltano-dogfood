@@ -9,9 +9,6 @@ ff:
   plugin_locks_required: true
 plugins:
   extractors:
-  - name: tap-getpocket
-    variant: edgarrmondragon
-    pip_url: -r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.tap-getpocket.txt
   - name: tap-stackexchange
     variant: meltanolabs
     pip_url: -r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.tap-stackexchange.txt
@@ -95,9 +92,6 @@ environments:
     MELTANO_FF_PLUGIN_LOCKS_REQUIRED: 'true'
     MELTANO_FF_STRICT_ENV_VAR_MODE: 'true'
 jobs:
-- name: pocket-to-duckdb
-  tasks:
-  - tap-getpocket target-duckdb
 - name: stackoverflow-to-duckdb
   tasks:
   - tap-stackexchange target-duckdb

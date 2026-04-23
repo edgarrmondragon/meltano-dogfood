@@ -114,8 +114,6 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GHCR_IO_TOKEN }}
       env:
-        TAP_GETPOCKET_CONSUMER_KEY: ${{ secrets.TAP_GETPOCKET_CONSUMER_KEY }}
-        TAP_GETPOCKET_ACCESS_TOKEN: ${{ secrets.TAP_GETPOCKET_ACCESS_TOKEN }}
         TAP_GITHUB_AUTH_TOKEN: ${{ secrets.TAP_GITHUB_AUTH_TOKEN }}
         TAP_READTHEDOCS_TOKEN: ${{ secrets.TAP_READTHEDOCS_TOKEN }}
         TAP_STACKEXCHANGE_KEY: ${{ secrets.TAP_STACKEXCHANGE_KEY }}

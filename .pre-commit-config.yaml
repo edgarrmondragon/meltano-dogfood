@@ -29,14 +29,6 @@ repos:
       rev: 0.11.6
       hooks:
           - id: pip-compile
-            files: ^plugins/requirements/requirements.tap-getpocket\.(in|txt)$
-            args:
-                - plugins/requirements/requirements.tap-getpocket.in
-                - --universal
-                - --python-version=3.14
-                - --prerelease=allow
-                - --output-file=plugins/requirements/requirements.tap-getpocket.txt
-          - id: pip-compile
             files: ^plugins/requirements/requirements.tap-stackexchange\.(in|txt)$
             args:
                 - plugins/requirements/requirements.tap-stackexchange.in
