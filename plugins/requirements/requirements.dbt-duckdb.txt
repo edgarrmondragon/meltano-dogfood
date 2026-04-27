@@ -17,11 +17,11 @@ attrs==26.1.0
     #   referencing
 babel==2.18.0
     # via agate
-certifi==2026.2.25
+certifi==2026.4.22
     # via requests
 charset-normalizer==3.4.7
     # via requests
-click==8.3.2
+click==8.3.3
     # via
     #   dbt-core
     #   dbt-semantic-interfaces
@@ -37,7 +37,7 @@ dbt-adapters==1.22.10
     # via
     #   dbt-core
     #   dbt-duckdb
-dbt-common==1.37.3
+dbt-common==1.37.5
     # via
     #   dbt-adapters
     #   dbt-core
@@ -50,7 +50,7 @@ dbt-duckdb==1.10.1
     # via -r plugins/requirements/requirements.dbt-duckdb.in
 dbt-extractor==0.6.0
     # via dbt-core
-dbt-protos==1.0.443
+dbt-protos==1.0.474
     # via
     #   dbt-adapters
     #   dbt-common
@@ -67,7 +67,7 @@ duckdb==1.5.1
     #   dbt-duckdb
 executing==2.2.1
     # via devtools
-idna==3.11
+idna==3.13
     # via requests
 importlib-metadata==8.9.0
     # via dbt-semantic-interfaces
@@ -112,7 +112,7 @@ networkx==3.6.1
     # via dbt-core
 orderly-set==5.5.0
     # via deepdiff
-packaging==26.1
+packaging==26.2
     # via dbt-core
 parsedatetime==2.6
     # via agate
@@ -199,7 +199,7 @@ typing-extensions==4.15.0
     #   typing-inspection
 typing-inspection==0.4.2
     # via pydantic
-tzdata==2026.1 ; sys_platform == 'win32'
+tzdata==2026.2 ; sys_platform == 'win32'
     # via agate
 urllib3==2.6.3
     # via requests
