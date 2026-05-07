@@ -1,5 +1,3 @@
-dbt-core>=1.11
-dbt-duckdb
+-r requirements.dbt.in
 sqlfluff[rs]>=4
 sqlfluff-templater-dbt>=4
-duckdb>=1.4.1
