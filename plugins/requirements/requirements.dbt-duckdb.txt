@@ -33,16 +33,16 @@ colorama==0.4.6
     #   dbt-common
 daff==1.4.2
     # via dbt-core
-dbt-adapters==1.22.10
+dbt-adapters==1.23.0
     # via
     #   dbt-core
     #   dbt-duckdb
-dbt-common==1.37.5
+dbt-common==1.38.0
     # via
     #   dbt-adapters
     #   dbt-core
     #   dbt-duckdb
-dbt-core==1.11.8
+dbt-core==1.11.9
     # via
     #   -r plugins/requirements/requirements.dbt-duckdb.in
     #   dbt-duckdb
@@ -50,7 +50,7 @@ dbt-duckdb==1.10.1
     # via -r plugins/requirements/requirements.dbt-duckdb.in
 dbt-extractor==0.6.0
     # via dbt-core
-dbt-protos==1.0.474
+dbt-protos==1.0.491
     # via
     #   dbt-adapters
     #   dbt-common
@@ -61,13 +61,13 @@ deepdiff==8.6.2
     # via dbt-common
 devtools==0.12.2
     # via meltano-edk
-duckdb==1.5.1
+duckdb==1.5.2
     # via
     #   -r plugins/requirements/requirements.dbt-duckdb.in
     #   dbt-duckdb
 executing==2.2.1
     # via devtools
-idna==3.13
+idna==3.14
     # via requests
 importlib-metadata==8.9.0
     # via dbt-semantic-interfaces
@@ -89,7 +89,7 @@ jsonschema-specifications==2025.9.1
     # via jsonschema
 leather==0.4.1
     # via agate
-markdown-it-py==4.0.0
+markdown-it-py==4.2.0
     # via rich
 markupsafe==3.0.3
     # via jinja2
@@ -126,12 +126,12 @@ protobuf==6.33.6
     #   dbt-common
     #   dbt-core
     #   dbt-protos
-pydantic==2.13.3
+pydantic==2.13.4
     # via
     #   dbt-core
     #   dbt-semantic-interfaces
     #   meltano-edk
-pydantic-core==2.46.3
+pydantic-core==2.46.4
     # via pydantic
 pygments==2.20.0
     # via
@@ -145,7 +145,7 @@ python-slugify==8.0.4
     # via agate
 pytimeparse==1.1.8
     # via agate
-pytz==2026.1.post1
+pytz==2026.2
     # via
     #   dbt-adapters
     #   dbt-core
@@ -201,7 +201,7 @@ typing-inspection==0.4.2
     # via pydantic
 tzdata==2026.2 ; sys_platform == 'win32'
     # via agate
-urllib3==2.6.3
+urllib3==2.7.0
     # via requests
 zipp==3.23.1
     # via importlib-metadata
