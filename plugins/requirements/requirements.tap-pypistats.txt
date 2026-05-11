@@ -19,7 +19,7 @@ charset-normalizer==3.4.7
     #   tap-pypistats
 exceptiongroup==1.3.1
     # via tap-pypistats
-idna==3.13
+idna==3.14
     # via
     #   requests
     #   tap-pypistats
@@ -28,13 +28,13 @@ platformdirs==4.9.6
     # via
     #   requests-cache
     #   tap-pypistats
-requests==2.33.1
+requests==2.34.0.dev1
     # via
     #   requests-cache
     #   tap-pypistats
-requests-cache==1.3.1
+requests-cache==1.3.2
     # via tap-pypistats
-tap-pypistats==0.1.0
+tap-pypistats==0.1.1
     # via -r plugins/requirements/requirements.tap-pypistats.in
 typing-extensions==4.15.0
     # via
@@ -44,7 +44,7 @@ url-normalize==3.0.0
     # via
     #   requests-cache
     #   tap-pypistats
-urllib3==2.6.3
+urllib3==2.7.0
     # via
     #   requests
     #   requests-cache
