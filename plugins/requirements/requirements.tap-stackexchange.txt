@@ -53,7 +53,7 @@ referencing==0.37.0
     #   jsonschema
     #   jsonschema-specifications
     #   singer-sdk
-requests==2.34.0.dev1
+requests==2.34.0
     # via
     #   requests-cache
     #   singer-sdk
@@ -67,11 +67,11 @@ simpleeval==1.0.7
     # via singer-sdk
 simplejson==4.1.1
     # via singer-sdk
-singer-sdk==0.53.7
+singer-sdk==0.54.0
     # via tap-stackexchange
 sqlalchemy==2.1.0b2
     # via singer-sdk
-tap-stackexchange==0.1.0
+tap-stackexchange==0.1.1
     # via -r plugins/requirements/requirements.tap-stackexchange.in
 typing-extensions==4.15.0
     # via
@@ -85,3 +85,4 @@ urllib3==2.7.0
     # via
     #   requests
     #   requests-cache
+    #   singer-sdk

@@ -170,7 +170,7 @@ referencing==0.37.0
     #   jsonschema-specifications
 regex==2026.5.9
     # via sqlfluff
-requests==2.33.1
+requests==2.34.0
     # via
     #   dbt-common
     #   dbt-core
