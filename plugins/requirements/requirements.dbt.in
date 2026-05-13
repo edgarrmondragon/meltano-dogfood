@@ -1,0 +1,5 @@
+# dbt-core>=1.11
+dbt-core @ git+https://github.com/dbt-labs/dbt-core.git#subdirectory=core
+dbt-duckdb
+duckdb>=1.4.1
+mashumaro>=3.17.0

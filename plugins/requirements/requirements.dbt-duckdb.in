@@ -1,4 +1,2 @@
-dbt-core>=1.11
-dbt-duckdb
-duckdb>=1.4.1
+-r requirements.dbt.in
 meltano-dbt-ext>=0.3.0
