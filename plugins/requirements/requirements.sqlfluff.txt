@@ -43,7 +43,7 @@ dbt-common==1.38.0
     #   dbt-adapters
     #   dbt-core
     #   dbt-duckdb
-dbt-core @ git+https://github.com/dbt-labs/dbt-core.git@c2a472e86cff561869d5fb19fbf251224478e1db#subdirectory=core
+dbt-core==1.12.0b1
     # via
     #   -r plugins/requirements/requirements.dbt.in
     #   dbt-duckdb
