@@ -29,7 +29,6 @@ colorama==0.4.6
     # via
     #   click
     #   dbt-common
-    #   pytest
     #   sqlfluff
     #   tqdm
 daff==1.4.2
@@ -52,7 +51,7 @@ dbt-duckdb==1.10.1
     # via -r plugins/requirements/requirements.dbt.in
 dbt-extractor==0.6.0
     # via dbt-core
-dbt-protos==1.0.491
+dbt-protos==1.0.498
     # via
     #   dbt-adapters
     #   dbt-common
@@ -65,12 +64,10 @@ duckdb==1.5.2
     # via
     #   -r plugins/requirements/requirements.dbt.in
     #   dbt-duckdb
-idna==3.14
+idna==3.15
     # via requests
-importlib-metadata==8.9.0
+importlib-metadata==9.0.0
     # via metricflow
-iniconfig==2.3.0
-    # via pytest
 isodate==0.7.2
     # via
     #   agate
@@ -113,12 +110,10 @@ networkx==3.6.1
 orderly-set==5.5.0
     # via deepdiff
 packaging==26.2
-    # via
-    #   dbt-core
-    #   pytest
+    # via dbt-core
 parsedatetime==2.6
     # via agate
-pathspec==0.12.1
+pathspec==1.0.4
     # via
     #   dbt-common
     #   dbt-core
@@ -126,9 +121,7 @@ pathspec==0.12.1
 platformdirs==4.9.6
     # via sqlfluff
 pluggy==1.6.0
-    # via
-    #   diff-cover
-    #   pytest
+    # via diff-cover
 protobuf==6.33.6
     # via
     #   dbt-adapters
@@ -142,11 +135,7 @@ pydantic==2.13.4
 pydantic-core==2.46.4
     # via pydantic
 pygments==2.20.0
-    # via
-    #   diff-cover
-    #   pytest
-pytest==9.0.3
-    # via sqlfluff
+    # via diff-cover
 python-dateutil==2.9.0.post0
     # via
     #   dbt-common
@@ -175,7 +164,7 @@ referencing==0.37.0
     #   metricflow
 regex==2026.5.9
     # via sqlfluff
-requests==2.34.0
+requests==2.34.2
     # via
     #   dbt-common
     #   dbt-core
@@ -188,13 +177,13 @@ six==1.17.0
     # via python-dateutil
 snowplow-tracker==1.1.0
     # via dbt-core
-sqlfluff==4.1.0
+sqlfluff==4.2.1
     # via
     #   -r plugins/requirements/requirements.sqlfluff.in
     #   sqlfluff-templater-dbt
-sqlfluff-templater-dbt==4.1.0
+sqlfluff-templater-dbt==4.2.1
     # via -r plugins/requirements/requirements.sqlfluff.in
-sqlfluffrs==4.1.0
+sqlfluffrs==4.2.1
     # via sqlfluff
 sqlglot==30.8.0
     # via metricflow
