@@ -1,5 +1,5 @@
 # keep in sync with requirements.dbt-duckdb.in
-dbt-core>=1.12.0b1
+dbt-core>=1.12.0b1,<2
 dbt-duckdb
 duckdb>=1.4.1
 mashumaro>=3.17.0
