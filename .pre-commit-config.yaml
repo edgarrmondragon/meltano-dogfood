@@ -23,10 +23,10 @@ repos:
           - id: check-renovate
             language: python
             additional_dependencies:
-                - pyjson5==2.0.0
+                - pyjson5==2.0.1
 
     - repo: https://github.com/astral-sh/uv-pre-commit
-      rev: 0.11.8
+      rev: 0.11.16
       hooks:
           - id: pip-compile
             files: ^plugins/requirements/requirements.tap-stackexchange\.(in|txt)$
