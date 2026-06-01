@@ -43,10 +43,10 @@ dbt-common==1.38.0
     #   dbt-duckdb
 dbt-core==1.12.0b1
     # via
-    #   -r plugins/requirements/requirements.dbt.in
+    #   -r plugins/requirements/requirements.dbt-duckdb.in
     #   dbt-duckdb
 dbt-duckdb==1.10.1
-    # via -r plugins/requirements/requirements.dbt.in
+    # via -r plugins/requirements/requirements.dbt-duckdb.in
 dbt-extractor==0.6.0
     # via dbt-core
 dbt-protos==1.0.498
@@ -60,7 +60,7 @@ devtools==0.12.2
     # via meltano-edk
 duckdb==1.5.2
     # via
-    #   -r plugins/requirements/requirements.dbt.in
+    #   -r plugins/requirements/requirements.dbt-duckdb.in
     #   dbt-duckdb
 executing==2.2.1
     # via devtools
@@ -92,7 +92,7 @@ markupsafe==3.0.3
     # via jinja2
 mashumaro==3.17
     # via
-    #   -r plugins/requirements/requirements.dbt.in
+    #   -r plugins/requirements/requirements.dbt-duckdb.in
     #   dbt-adapters
     #   dbt-common
     #   dbt-core

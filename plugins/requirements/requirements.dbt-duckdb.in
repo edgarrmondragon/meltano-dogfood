@@ -1,2 +1,7 @@
--r requirements.dbt.in
+# keep in sync with requirements.sqlfluff.in
+dbt-core>=1.12.0b1
+dbt-duckdb
+duckdb>=1.4.1
+mashumaro>=3.17.0
+
 meltano-dbt-ext>=0.3.0
