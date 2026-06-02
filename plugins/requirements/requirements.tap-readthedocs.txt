@@ -11,7 +11,7 @@ cattrs==26.1.0
     # via
     #   requests-cache
     #   tap-readthedocs
-certifi==2026.4.22
+certifi==2026.5.20
     # via
     #   requests
     #   tap-readthedocs
@@ -19,7 +19,7 @@ charset-normalizer==3.4.7
     # via
     #   requests
     #   tap-readthedocs
-click==8.3.3
+click==8.4.1
     # via
     #   singer-sdk
     #   tap-readthedocs
@@ -32,7 +32,7 @@ fsspec==2026.4.0
     #   singer-sdk
     #   tap-readthedocs
     #   universal-pathlib
-idna==3.14
+idna==3.17
     # via
     #   requests
     #   tap-readthedocs
@@ -65,7 +65,7 @@ pathlib-abc==0.5.2
     # via
     #   tap-readthedocs
     #   universal-pathlib
-platformdirs==4.9.6
+platformdirs==4.10.0
     # via
     #   requests-cache
     #   tap-readthedocs
@@ -87,14 +87,14 @@ referencing==0.37.0
     #   jsonschema-specifications
     #   singer-sdk
     #   tap-readthedocs
-requests==2.34.0.dev1
+requests==2.34.2
     # via
     #   requests-cache
     #   singer-sdk
     #   tap-readthedocs
 requests-cache==1.3.2
     # via tap-readthedocs
-rpds-py==0.30.0
+rpds-py==2026.5.1
     # via
     #   jsonschema
     #   referencing
@@ -107,13 +107,13 @@ simplejson==4.1.1
     # via
     #   singer-sdk
     #   tap-readthedocs
-singer-sdk==0.54.0a13
+singer-sdk==0.54.4
     # via tap-readthedocs
 sqlalchemy==2.1.0b2
     # via
     #   singer-sdk
     #   tap-readthedocs
-tap-readthedocs==0.6.3
+tap-readthedocs==0.6.4
     # via -r plugins/requirements/requirements.tap-readthedocs.in
 toolz==1.1.0
     # via tap-readthedocs

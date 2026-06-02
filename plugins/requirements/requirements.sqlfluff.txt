@@ -78,7 +78,7 @@ dbt-protos==1.0.514
     #   dbt-adapters
     #   dbt-common
     #   dbt-core
-dbt-state==2.22.7
+dbt-state==2.22.8
     # via dbt-core
 deepdiff==8.6.2
     # via dbt-common
@@ -106,7 +106,7 @@ humanize==4.15.0
     # via
     #   dbt-state
     #   query-cache-common
-idna==3.17
+idna==3.18
     # via
     #   anyio
     #   httpx
@@ -127,7 +127,7 @@ jinja2==3.1.6
     #   sqlfluff
 jinja2-simple-tags==0.6.1
     # via sqlfluff-templater-dbt
-joserfc==1.6.8
+joserfc==1.7.0
     # via authlib
 jsonschema==4.26.0
     # via
