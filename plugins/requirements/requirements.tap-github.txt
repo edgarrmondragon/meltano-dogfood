@@ -22,7 +22,7 @@ fsspec==2026.4.0
     # via
     #   singer-sdk
     #   universal-pathlib
-idna==3.17
+idna==3.18
     # via requests
 inflection==0.5.1
     # via singer-sdk
