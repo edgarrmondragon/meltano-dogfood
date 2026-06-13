@@ -11,8 +11,6 @@ annotated-doc==0.0.4
     # via typer
 annotated-types==0.7.0
     # via pydantic
-anyio==4.13.0
-    # via httpx
 asttokens==2.4.1
     # via devtools
 attrs==26.1.0
@@ -24,10 +22,7 @@ authlib==1.7.2
 babel==2.18.0
     # via agate
 certifi==2026.5.20
-    # via
-    #   httpcore
-    #   httpx
-    #   requests
+    # via requests
 cffi==2.0.0 ; platform_python_implementation != 'PyPy'
     # via cryptography
 charset-normalizer==3.4.7
@@ -41,10 +36,9 @@ colorama==0.4.6
     #   click
     #   dbt-common
     #   typer
-cryptography==48.0.0
+cryptography==49.0.0
     # via
     #   authlib
-    #   google-auth
     #   joserfc
 dacite==1.9.2
     # via dbt-state
@@ -75,41 +69,26 @@ dbt-protos==1.0.514
     #   dbt-adapters
     #   dbt-common
     #   dbt-core
-dbt-state==2.22.8
+dbt-state==2.23.0
     # via dbt-core
 deepdiff==8.6.2
     # via dbt-common
 devtools==0.12.2
     # via meltano-edk
-duckdb==1.5.2
+duckdb==1.5.3
     # via
     #   -r plugins/requirements/requirements.dbt-duckdb.in
     #   dbt-duckdb
 executing==2.2.1
     # via devtools
-google-auth==2.53.0
-    # via
-    #   dbt-state
-    #   google-auth-oauthlib
-google-auth-oauthlib==1.4.0
-    # via dbt-state
-grpcio==1.81.0
-    # via dbt-state
-h11==0.16.0
-    # via httpcore
-httpcore==1.0.9
-    # via httpx
-httpx==0.28.1
+grpcio==1.81.1
     # via dbt-state
 humanize==4.15.0
     # via
     #   dbt-state
     #   query-cache-common
 idna==3.18
-    # via
-    #   anyio
-    #   httpx
-    #   requests
+    # via requests
 importlib-metadata==9.0.0
     # via metricflow
 isodate==0.7.2
@@ -121,7 +100,7 @@ jinja2==3.1.6
     #   dbt-common
     #   dbt-core
     #   metricflow
-joserfc==1.7.0
+joserfc==1.7.1
     # via authlib
 jsonschema==4.26.0
     # via
@@ -152,12 +131,10 @@ metricflow==0.211.0
     # via dbt-core
 more-itertools==10.8.0
     # via metricflow
-msgpack==1.1.2
+msgpack==1.2.0
     # via mashumaro
 networkx==3.6.1
     # via dbt-core
-oauthlib==3.3.1
-    # via requests-oauthlib
 orderly-set==5.5.0
     # via deepdiff
 packaging==26.2
@@ -178,10 +155,6 @@ protobuf==6.33.6
     #   dbt-protos
     #   dbt-state
     #   query-cache-protobuf
-pyasn1==0.6.3
-    # via pyasn1-modules
-pyasn1-modules==0.4.2
-    # via google-auth
 pycparser==3.0 ; implementation_name != 'PyPy' and platform_python_implementation != 'PyPy'
     # via cffi
 pydantic==2.13.4
@@ -195,8 +168,6 @@ pygments==2.20.0
     # via
     #   devtools
     #   rich
-pyperclip==1.11.0
-    # via dbt-state
 python-dateutil==2.9.0.post0
     # via
     #   dbt-common
@@ -216,6 +187,7 @@ pytz==2026.2
 pyyaml==6.0.3
     # via
     #   dbt-core
+    #   dbt-state
     #   meltano-dbt-ext
     #   meltano-edk
     #   metricflow
@@ -236,10 +208,8 @@ requests==2.34.2
     # via
     #   dbt-common
     #   dbt-core
-    #   requests-oauthlib
+    #   dbt-state
     #   snowplow-tracker
-requests-oauthlib==2.0.0
-    # via google-auth-oauthlib
 rich==15.0.0
     # via
     #   dbt-state
@@ -248,8 +218,6 @@ rpds-py==2026.5.1
     # via
     #   jsonschema
     #   referencing
-ruamel-yaml==0.19.1
-    # via dbt-state
 shellingham==1.5.4
     # via typer
 six==1.17.0
@@ -258,7 +226,7 @@ six==1.17.0
     #   python-dateutil
 snowplow-tracker==1.1.0
     # via dbt-core
-sqlglot==30.8.0
+sqlglot==30.11.0
     # via
     #   dbt-state
     #   metricflow
@@ -270,7 +238,7 @@ tabulate==0.10.0
     # via metricflow
 text-unidecode==1.3
     # via python-slugify
-typer==0.26.6
+typer==0.26.7
     # via meltano-dbt-ext
 typing-extensions==4.15.0
     # via
