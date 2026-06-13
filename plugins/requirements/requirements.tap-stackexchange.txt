@@ -40,7 +40,7 @@ pathlib-abc==0.5.2
     # via universal-pathlib
 platformdirs==4.10.0
     # via requests-cache
-pyrate-limiter==4.2.0
+pyrate-limiter==4.3.0
     # via tap-stackexchange
 python-backoff==2.3.1
     # via singer-sdk
