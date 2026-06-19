@@ -8,6 +8,7 @@ profile: "self"
 flags:
   send_anonymous_usage_stats: true
   use_colors: true
+  require_generic_test_arguments_property: true
 
 model-paths: ["models"]
 analysis-paths: ["analysis"]
@@ -16,11 +17,9 @@ seed-paths: ["data"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 docs-paths: ["docs"]
-
-target-path: "target"
 clean-targets:
-    - "target"
-    - "dbt_packages"
+  - "target"
+  - "dbt_packages"
 
 models:
   personal_data:

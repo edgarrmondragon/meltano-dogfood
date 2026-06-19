@@ -5,12 +5,9 @@ sources:
     schema: tap_github
     loader: tap-github
     description: Collaborative Coding
-    tags:
-      - Meltano SDK
     tables:
       - name: repositories
         description: Git repositories
-        loaded_at_field: _sdc_batched_at
         columns:
           - name: allow_auto_merge
           - name: allow_merge_commit
@@ -58,3 +55,8 @@ sources:
           - name: visibility
           - name: watchers
           - name: watchers_count
+        config:
+          loaded_at_field: _sdc_batched_at
+    config:
+      tags:
+        - Meltano SDK
