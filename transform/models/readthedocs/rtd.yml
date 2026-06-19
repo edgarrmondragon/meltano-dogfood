@@ -5,9 +5,6 @@ sources:
     schema: tap_readthedocs
     loader: tap-readthedocs
     description: Read the Docs simplifies software documentation by automating building, versioning, and hosting of your docs for you.
-    tags:
-      - Meltano SDK
-      - ReadTheDocs
     tables:
       - name: projects
         description: All Pocket list items
@@ -30,3 +27,7 @@ sources:
           - name: users
           - name: active_versions
           - name: homepage
+    config:
+      tags:
+        - Meltano SDK
+        - ReadTheDocs
