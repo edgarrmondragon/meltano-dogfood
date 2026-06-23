@@ -23,7 +23,7 @@ babel==2.18.0
     # via agate
 certifi==2026.5.20
     # via requests
-cffi==2.0.0 ; platform_python_implementation != 'PyPy'
+cffi==2.0.0
     # via cryptography
 charset-normalizer==3.4.7
     # via requests
@@ -32,10 +32,7 @@ click==8.4.1
     #   dbt-core
     #   dbt-state
 colorama==0.4.6
-    # via
-    #   click
-    #   dbt-common
-    #   typer
+    # via dbt-common
 cryptography==49.0.0
     # via
     #   authlib
@@ -55,13 +52,13 @@ dbt-common==1.38.0
     #   dbt-duckdb
 dbt-core==1.12.0b3
     # via
-    #   -r plugins/requirements/requirements.dbt-duckdb.in
+    #   -r requirements.dbt-duckdb.in
     #   dbt-duckdb
     #   dbt-state
 dbt-core-experimental-parser==2.0.0a1
     # via dbt-core
 dbt-duckdb==1.10.1
-    # via -r plugins/requirements/requirements.dbt-duckdb.in
+    # via -r requirements.dbt-duckdb.in
 dbt-extractor==0.6.0
     # via dbt-core
 dbt-protos==1.0.514
@@ -77,7 +74,7 @@ devtools==0.12.2
     # via meltano-edk
 duckdb==1.5.3
     # via
-    #   -r plugins/requirements/requirements.dbt-duckdb.in
+    #   -r requirements.dbt-duckdb.in
     #   dbt-duckdb
 executing==2.2.1
     # via devtools
@@ -115,23 +112,23 @@ markdown-it-py==4.2.0
     # via rich
 markupsafe==3.0.3
     # via jinja2
-mashumaro==3.17
+mashumaro[msgpack]==3.17
     # via
-    #   -r plugins/requirements/requirements.dbt-duckdb.in
+    #   -r requirements.dbt-duckdb.in
     #   dbt-adapters
     #   dbt-common
     #   dbt-core
 mdurl==0.1.2
     # via markdown-it-py
 meltano-dbt-ext==0.5.0
-    # via -r plugins/requirements/requirements.dbt-duckdb.in
+    # via -r requirements.dbt-duckdb.in
 meltano-edk==0.6.0
     # via meltano-dbt-ext
 metricflow==0.211.0
     # via dbt-core
 more-itertools==10.8.0
     # via metricflow
-msgpack==1.2.0
+msgpack==1.2.1
     # via mashumaro
 networkx==3.6.1
     # via dbt-core
@@ -155,7 +152,7 @@ protobuf==6.33.6
     #   dbt-protos
     #   dbt-state
     #   query-cache-protobuf
-pycparser==3.0 ; implementation_name != 'PyPy' and platform_python_implementation != 'PyPy'
+pycparser==3.0
     # via cffi
 pydantic==2.13.4
     # via
@@ -256,8 +253,6 @@ typing-extensions==4.15.0
     #   typing-inspection
 typing-inspection==0.4.2
     # via pydantic
-tzdata==2026.2 ; sys_platform == 'win32'
-    # via agate
 urllib3==2.7.0
     # via requests
 zipp==4.1.0

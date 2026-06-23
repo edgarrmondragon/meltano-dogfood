@@ -19,7 +19,7 @@ babel==2.18.0
     # via agate
 certifi==2026.5.20
     # via requests
-cffi==2.0.0 ; platform_python_implementation != 'PyPy'
+cffi==2.0.0
     # via cryptography
 chardet==7.4.3
     # via
@@ -34,10 +34,8 @@ click==8.3.3
     #   sqlfluff
 colorama==0.4.6
     # via
-    #   click
     #   dbt-common
     #   sqlfluff
-    #   tqdm
 cryptography==49.0.0
     # via
     #   authlib
@@ -57,14 +55,14 @@ dbt-common==1.38.0
     #   dbt-duckdb
 dbt-core==1.12.0b3
     # via
-    #   -r plugins/requirements/requirements.sqlfluff.in
+    #   -r requirements.sqlfluff.in
     #   dbt-duckdb
     #   dbt-state
     #   sqlfluff-templater-dbt
 dbt-core-experimental-parser==2.0.0a1
     # via dbt-core
 dbt-duckdb==1.10.1
-    # via -r plugins/requirements/requirements.sqlfluff.in
+    # via -r requirements.sqlfluff.in
 dbt-extractor==0.6.0
     # via dbt-core
 dbt-protos==1.0.514
@@ -80,7 +78,7 @@ diff-cover==10.3.0
     # via sqlfluff
 duckdb==1.5.3
     # via
-    #   -r plugins/requirements/requirements.sqlfluff.in
+    #   -r requirements.sqlfluff.in
     #   dbt-duckdb
 grpcio==1.81.1
     # via dbt-state
@@ -121,9 +119,9 @@ markdown-it-py==4.2.0
     # via rich
 markupsafe==3.0.3
     # via jinja2
-mashumaro==3.17
+mashumaro[msgpack]==3.17
     # via
-    #   -r plugins/requirements/requirements.sqlfluff.in
+    #   -r requirements.sqlfluff.in
     #   dbt-adapters
     #   dbt-common
     #   dbt-core
@@ -133,7 +131,7 @@ metricflow==0.211.0
     # via dbt-core
 more-itertools==10.8.0
     # via metricflow
-msgpack==1.2.0
+msgpack==1.2.1
     # via mashumaro
 networkx==3.6.1
     # via dbt-core
@@ -162,7 +160,7 @@ protobuf==6.33.6
     #   dbt-protos
     #   dbt-state
     #   query-cache-protobuf
-pycparser==3.0 ; implementation_name != 'PyPy' and platform_python_implementation != 'PyPy'
+pycparser==3.0
     # via cffi
 pydantic==2.13.4
     # via
@@ -227,12 +225,12 @@ six==1.17.0
     # via python-dateutil
 snowplow-tracker==1.1.0
     # via dbt-core
-sqlfluff==4.2.2
+sqlfluff[rs]==4.2.2
     # via
-    #   -r plugins/requirements/requirements.sqlfluff.in
+    #   -r requirements.sqlfluff.in
     #   sqlfluff-templater-dbt
 sqlfluff-templater-dbt==4.2.2
-    # via -r plugins/requirements/requirements.sqlfluff.in
+    # via -r requirements.sqlfluff.in
 sqlfluffrs==4.2.2
     # via sqlfluff
 sqlglot==30.11.0
@@ -265,8 +263,6 @@ typing-extensions==4.15.0
     #   typing-inspection
 typing-inspection==0.4.2
     # via pydantic
-tzdata==2026.2 ; sys_platform == 'win32'
-    # via agate
 urllib3==2.7.0
     # via requests
 zipp==4.1.0
