@@ -8,7 +8,7 @@ attrs==26.1.0
     #   requests-cache
 cattrs==26.1.0
     # via requests-cache
-certifi==2026.5.20
+certifi==2026.6.17
     # via requests
 charset-normalizer==3.4.7
     # via requests
@@ -16,7 +16,7 @@ click==8.4.1
     # via singer-sdk
 colorama==0.4.6 ; sys_platform == 'win32'
     # via click
-fsspec==2026.4.0
+fsspec==2026.6.0
     # via
     #   singer-sdk
     #   universal-pathlib
@@ -67,7 +67,7 @@ simpleeval==1.0.7
     # via singer-sdk
 simplejson==4.1.1
     # via singer-sdk
-singer-sdk==0.54.4
+singer-sdk==0.54.5
     # via tap-stackexchange
 sqlalchemy==2.1.0b2
     # via singer-sdk
