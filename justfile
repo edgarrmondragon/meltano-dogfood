@@ -1,7 +1,13 @@
 # Update all plugin lockfiles in plugins/requirements/.
-# The cooldown prevents picking up packages published less than N days ago.
-# Usage: just update-lockfiles        (defaults to 7 days)
-#        just update-lockfiles P14D   (14-day cooldown)
-update-lockfiles cooldown="P7D":
+update-lockfiles:
     rm -f plugins/requirements/requirements.*.txt
-    UV_EXCLUDE_NEWER={{cooldown}} prek run pip-compile -a
+    prek run pip-compile -a
+
+# Install/refresh the Quarto dashboard's Python dependencies into quarto/.venv.
+quarto-install:
+    uv venv quarto/.venv --allow-existing
+    uv pip install --python quarto/.venv/bin/python -r quarto/requirements.txt
+
+# Preview the Quarto dashboard locally. Requires MOTHERDUCK_TOKEN in the environment.
+quarto-preview: quarto-install
+    QUARTO_PYTHON={{justfile_directory()}}/quarto/.venv/bin/python quarto preview quarto

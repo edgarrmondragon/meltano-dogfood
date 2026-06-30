@@ -16,6 +16,9 @@ on:
       - evidence/evidence.config.yaml
       - evidence/package.json
       - evidence/package-lock.json
+      - quarto/**/*.qmd
+      - quarto/_quarto.yml
+      - quarto/requirements.txt
   push:
     branches: [main]
     paths:
@@ -31,6 +34,9 @@ on:
       - evidence/evidence.config.yaml
       - evidence/package.json
       - evidence/package-lock.json
+      - quarto/**/*.qmd
+      - quarto/_quarto.yml
+      - quarto/requirements.txt
   workflow_dispatch:
     inputs:
       environment:
@@ -60,7 +66,6 @@ env:
   MELTANO_ENVIRONMENT: ${{ github.event.inputs.environment || 'prod' }}
   MELTANO_RUN_TIMEOUT: 600
   MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
-  EVIDENCE_SOURCE__motherduck_personal__token: ${{ secrets.MOTHERDUCK_TOKEN }}
   PYTHONWARNINGS: >
     error,
     once:No GlobalOverrides context is active:UserWarning,
@@ -202,68 +207,41 @@ jobs:
         run: |
           meltano run dbt-duckdb:build
 
-  # TODO: Uncomment this block to build the Evidence site with Meltano
-  # build-evidence:
-  #   name: Build Evidence site locally
-  #   needs: [transform]
-  #   runs-on: ubuntu-24.04
-  #   container:
-  #     image: ghcr.io/meltano/meltano:latest-python3.14-slim
-  #     credentials:
-  #       username: ${{ github.actor }}
-  #       password: ${{ secrets.GHCR_IO_TOKEN }}
-  #   steps:
-  #     - uses: actions/checkout@v5
-  #     - name: Check Meltano
-  #       run: |
-  #         meltano --version
-
-  #     - name: Install evidence
-  #       run: |
-  #         meltano install transform dbt-duckdb
-  #         meltano install utility evidence
-
-  #     - name: Build
-  #       run: |
-  #         meltano invoke evidence npm install
-  #         meltano invoke evidence npm run sources
-  #         meltano invoke evidence build --strict
-
-  #     - name: Upload Evidence build
-  #       uses: actions/upload-artifact@v4
-  #       with:
-  #         name: evidence-build
-  #         path: evidence/build
-
-  build-evidence:
-    name: Build Evidence site locally using Node
+  build-quarto:
+    name: Build Quarto site
     needs: [transform]
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           persist-credentials: false
-      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+      - uses: astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39 # v8.2.0
         with:
-          node-version: "24"
-          cache: npm
-          cache-dependency-path: evidence/package-lock.json
-      - name: Build Evidence site
-        run: |
-          cd evidence
-          npm install
-          npm run sources
-          npm run build:strict
+          enable-cache: true
+          cache-dependency-glob: quarto/requirements.txt
 
-      - name: Upload Evidence build
+      - name: Install Python dependencies
+        run: |
+          uv venv quarto/.venv
+          uv pip install --python quarto/.venv/bin/python -r quarto/requirements.txt
+
+      - uses: quarto-dev/quarto-actions/setup@8a96df13519ee81fd526f2dfca5962811136661b # v2.2.0
+
+      - name: Render Quarto site
+        env:
+          QUARTO_PYTHON: ${{ github.workspace }}/quarto/.venv/bin/python
+        run: |
+          quarto render quarto
+
+      - name: Upload Quarto build
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: evidence-build
-          path: evidence/build
+          name: quarto-build
+          path: quarto/_site
 
-  deploy-evidence:
-    name: Deploy Evidence site
-    needs: [build-evidence]
+  deploy-quarto:
+    name: Deploy Quarto site
+    needs: [build-quarto]
     runs-on: ubuntu-24.04
     permissions:
       pull-requests: write
@@ -275,11 +253,11 @@ jobs:
         run: |
           git config --global --add safe.directory /__w/meltano-dataops/meltano-dataops
 
-      - name: Download Evidence build
+      - name: Download Quarto build
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
-          name: evidence-build
-          path: evidence/build
+          name: quarto-build
+          path: quarto/_site
 
       - name: Deploy
         uses: amondnet/vercel-action@de09aeac2ace6599ec9b11ef87558759a496bac4 # v42.3.0
@@ -295,7 +273,7 @@ jobs:
   ping-end:
     name: Ping the end of the pipeline
     runs-on: ubuntu-24.04
-    needs: [deploy-evidence]
+    needs: [deploy-quarto]
     if: github.event_name == 'schedule' || github.event_name == 'push'
     steps:
       - name: Ping

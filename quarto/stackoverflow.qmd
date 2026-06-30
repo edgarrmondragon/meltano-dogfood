@@ -1,0 +1,49 @@
+---
+title: "StackOverflow Stats"
+subtitle: "Some activity stats from StackOverflow of selected tags"
+---
+
+```{python}
+#| echo: false
+import plotly.graph_objects as go
+
+from _motherduck import connect
+
+con = connect()
+
+question_stats = con.sql("""
+    select
+        status
+        , total_questions
+        , round(avg_score, 3) as avg_score
+    from personal.question_stats
+""").df()
+```
+
+```{python}
+#| echo: false
+colors = ["#5470C6", "#91CC75"]
+
+fig = go.Figure()
+fig.add_bar(
+    x=question_stats["status"],
+    y=question_stats["total_questions"],
+    name="Total Questions",
+    marker_color=colors[0],
+    yaxis="y1",
+)
+fig.add_scatter(
+    x=question_stats["status"],
+    y=question_stats["avg_score"],
+    name="Avg. Score",
+    marker_color=colors[1],
+    yaxis="y2",
+)
+fig.update_layout(
+    title="Question Stats",
+    yaxis=dict(title="Total Questions", ticksuffix=" questions"),
+    yaxis2=dict(title="Avg. Score", ticksuffix=" points", overlaying="y", side="right"),
+    legend=dict(orientation="h"),
+)
+fig.show()
+```
