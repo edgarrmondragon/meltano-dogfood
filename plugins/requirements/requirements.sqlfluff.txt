@@ -72,7 +72,7 @@ dbt-protos==1.0.514
     #   dbt-adapters
     #   dbt-common
     #   dbt-core
-dbt-state==2.25.0
+dbt-state==2.26.0
     # via dbt-core
 deepdiff==8.6.2
     # via dbt-common
