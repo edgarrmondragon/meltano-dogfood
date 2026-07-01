@@ -189,7 +189,7 @@ jobs:
           meltano invoke dbt:lint --profiles-dir transform/profiles/duckdb/ --project-dir transform
 
   transform:
-    name: Data Transformation with dbt-duckdb
+    name: Data Transformation with dbt (DuckDB)
     runs-on: ubuntu-26.04
     needs: [meltano-run, lint]
     container:
@@ -208,7 +208,7 @@ jobs:
 
       - name: Transform and Test
         run: |
-          meltano run dbt-duckdb:build
+          meltano invoke dbt:build --profiles-dir transform/profiles/duckdb/ --project-dir transform
 
   build-quarto:
     name: Build Quarto site
