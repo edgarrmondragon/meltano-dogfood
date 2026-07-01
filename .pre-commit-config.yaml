@@ -100,14 +100,6 @@ repos:
                 - --prerelease=if-necessary-or-explicit
                 - --output-file=plugins/requirements/requirements.dbt.txt
           - id: pip-compile
-            files: ^plugins/requirements/requirements.sqlfluff\.(in|txt)$
-            args:
-                - plugins/requirements/requirements.sqlfluff.in
-                - --universal
-                - --python-version=3.14
-                - --prerelease=if-necessary-or-explicit
-                - --output-file=plugins/requirements/requirements.sqlfluff.txt
-          - id: pip-compile
             files: ^quarto/requirements\.(in|txt)$
             args:
                 - quarto/requirements.in

@@ -76,20 +76,6 @@ output {
               description = "Lint SQL files"
             }
           }
-        },
-        new plugin.Utility {
-          name = "sqlfluff"
-          variant = "sqlfluff"
-          pip_url = "-r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.sqlfluff.txt"
-          settings = List(
-            new plugin.Setting {
-              name = "path"
-              env = "DBT_DUCKDB_PATH"
-            }
-          )
-          config = new Mapping {
-            ["path"] = "$DUCKDB_PATH"
-          }
         }
       )
     }
