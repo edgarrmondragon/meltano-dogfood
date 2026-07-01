@@ -25,6 +25,13 @@ repos:
             additional_dependencies:
                 - pyjson5==2.0.1
 
+    - repo: https://github.com/astral-sh/ruff-pre-commit
+      rev: v0.15.10
+      hooks:
+          - id: ruff-format
+            types_or: [python, pyi, jupyter, markdown, text]
+            files: \.(py|pyi|ipynb|qmd)$
+
     - repo: https://github.com/astral-sh/uv-pre-commit
       rev: 0.11.19
       hooks:

@@ -4,7 +4,7 @@ subtitle: "Pocket reads"
 ---
 
 ```{python}
-#| echo: false
+# | echo: false
 from _motherduck import connect
 
 con = connect()
@@ -17,7 +17,7 @@ def query(sql: str):
 ## Pending
 
 ```{python}
-#| echo: false
+# | echo: false
 from IPython.display import Markdown
 
 pending = query("""
@@ -54,7 +54,7 @@ Recent additions:
 ## Recent
 
 ```{python}
-#| echo: false
+# | echo: false
 recent = query("""
     select item_id, resolved_title, time_to_read, given_url
     from personal.items
@@ -77,7 +77,7 @@ Markdown(f"Recently read:\n\n{links}")
 Most used tags:
 
 ```{python}
-#| echo: false
+# | echo: false
 query("""
     select tag, count(*) as total
     from personal.tags
@@ -92,7 +92,7 @@ query("""
 Top authors:
 
 ```{python}
-#| echo: false
+# | echo: false
 query("""
     select author_name, count(*) as total
     from personal.authors

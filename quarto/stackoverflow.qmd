@@ -4,7 +4,7 @@ subtitle: "Some activity stats from StackOverflow of selected tags"
 ---
 
 ```{python}
-#| echo: false
+# | echo: false
 import plotly.graph_objects as go
 
 from _motherduck import connect
@@ -21,7 +21,7 @@ question_stats = con.sql("""
 ```
 
 ```{python}
-#| echo: false
+# | echo: false
 colors = ["#5470C6", "#91CC75"]
 
 fig = go.Figure()

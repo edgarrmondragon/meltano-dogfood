@@ -4,7 +4,7 @@ subtitle: "Open source I maintain"
 ---
 
 ```{python}
-#| echo: false
+# | echo: false
 from IPython.display import Markdown
 
 from _motherduck import connect
