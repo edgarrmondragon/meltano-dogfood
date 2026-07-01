@@ -27,7 +27,7 @@ cffi==2.0.0 ; platform_python_implementation != 'PyPy'
     # via cryptography
 charset-normalizer==3.4.7
     # via requests
-click==8.4.1
+click==8.4.2
     # via
     #   dbt-core
     #   dbt-state
@@ -58,7 +58,7 @@ dbt-core==1.12.0b3
     #   -r plugins/requirements/requirements.dbt-duckdb.in
     #   dbt-duckdb
     #   dbt-state
-dbt-core-experimental-parser==2.0.0a2
+dbt-core-experimental-parser==2.0.0a3
     # via dbt-core
 dbt-duckdb==1.10.1
     # via -r plugins/requirements/requirements.dbt-duckdb.in
@@ -69,7 +69,7 @@ dbt-protos==1.0.514
     #   dbt-adapters
     #   dbt-common
     #   dbt-core
-dbt-state==2.23.3
+dbt-state==2.25.0
     # via dbt-core
 deepdiff==8.6.2
     # via dbt-common
@@ -83,7 +83,7 @@ executing==2.2.1
     # via devtools
 grpcio==1.81.1
     # via dbt-state
-humanize==4.15.0
+humanize==4.16.0
     # via
     #   dbt-state
     #   query-cache-common
@@ -100,7 +100,7 @@ jinja2==3.1.6
     #   dbt-common
     #   dbt-core
     #   metricflow
-joserfc==1.7.1
+joserfc==1.7.2
     # via authlib
 jsonschema==4.26.0
     # via
@@ -191,7 +191,7 @@ pyyaml==6.0.3
     #   meltano-dbt-ext
     #   meltano-edk
     #   metricflow
-query-cache-common==1.9.0
+query-cache-common==1.9.2
     # via dbt-state
 query-cache-protobuf==1.6.0
     # via
@@ -214,7 +214,7 @@ rich==15.0.0
     # via
     #   dbt-state
     #   typer
-rpds-py==2026.5.1
+rpds-py==2026.6.3
     # via
     #   jsonschema
     #   referencing
@@ -226,7 +226,7 @@ six==1.17.0
     #   python-dateutil
 snowplow-tracker==1.1.0
     # via dbt-core
-sqlglot==30.11.0
+sqlglot==30.12.0
     # via
     #   dbt-state
     #   metricflow
@@ -238,7 +238,7 @@ tabulate==0.10.0
     # via metricflow
 text-unidecode==1.3
     # via python-slugify
-typer==0.26.7
+typer==0.26.8
     # via meltano-dbt-ext
 typing-extensions==4.15.0
     # via
