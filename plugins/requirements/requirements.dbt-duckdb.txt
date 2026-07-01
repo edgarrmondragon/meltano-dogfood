@@ -75,7 +75,7 @@ deepdiff==8.6.2
     # via dbt-common
 devtools==0.12.2
     # via meltano-edk
-duckdb==1.5.3
+duckdb==1.5.4
     # via
     #   -r plugins/requirements/requirements.dbt-duckdb.in
     #   dbt-duckdb
