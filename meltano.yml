@@ -78,14 +78,6 @@ plugins:
       lint:
         args: lint
         description: Lint SQL files
-  - name: sqlfluff
-    variant: sqlfluff
-    pip_url: -r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.sqlfluff.txt
-    settings:
-    - name: path
-      env: DBT_DUCKDB_PATH
-    config:
-      path: $DUCKDB_PATH
 environments:
 - name: dev
 - name: staging
