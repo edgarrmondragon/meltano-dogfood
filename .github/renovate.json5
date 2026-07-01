@@ -7,10 +7,6 @@
 
   "packageRules": [
     {
-      "matchPackagePatterns": ["^@evidence-dev/"],
-      "groupName": "Evidence dependencies",
-    },
-    {
       "matchManagers": ["pip-compile"],
       "groupName": "Pinned Python plugin dependencies",
       "groupSlug": "pip-compile",

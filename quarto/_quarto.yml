@@ -4,6 +4,7 @@ project:
 
 website:
   title: "Meltano Dogfood"
+  favicon: favicon.ico
   navbar:
     left:
       - href: index.qmd

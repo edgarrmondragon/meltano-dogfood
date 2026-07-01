@@ -11,11 +11,6 @@ on:
       - transform/models/**/*.sql
       - transform/models/**/*.yml
       - .github/workflows/melty.yaml
-      - evidence/sources/**/*.sql
-      - evidence/pages/**/*.md
-      - evidence/evidence.config.yaml
-      - evidence/package.json
-      - evidence/package-lock.json
       - quarto/**/*.qmd
       - quarto/_quarto.yml
       - quarto/requirements.txt
@@ -29,11 +24,6 @@ on:
       - transform/models/**/*.sql
       - transform/models/**/*.yml
       - .github/workflows/melty.yaml
-      - evidence/sources/**/*.sql
-      - evidence/pages/**/*.md
-      - evidence/evidence.config.yaml
-      - evidence/package.json
-      - evidence/package-lock.json
       - quarto/**/*.qmd
       - quarto/_quarto.yml
       - quarto/requirements.txt
@@ -183,7 +173,7 @@ jobs:
         env:
           MELTANO_CLI_LOG_LEVEL: info
         run: |
-          meltano invoke sqlfluff:lint --format github-annotation-native -v transform/models evidence/sources
+          meltano invoke sqlfluff:lint --format github-annotation-native -v transform/models
 
   transform:
     name: Data Transformation with dbt-duckdb

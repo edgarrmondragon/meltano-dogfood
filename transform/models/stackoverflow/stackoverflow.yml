@@ -51,7 +51,7 @@ models:
     description: Question statistics, grouped by answered status
 
 exposures:
-  - name: evidence_stackoverflow
+  - name: stackoverflow_stats
     type: dashboard
     owner:
       name: me
