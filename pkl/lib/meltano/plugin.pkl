@@ -7,6 +7,12 @@ class Setting {
   env: String | Null = null
 }
 
+class Command {
+  args: String
+  description: String | Null = null
+  executable: String | Null = null
+}
+
 abstract class Plugin {
   name: String
   namespace: String | Null = null
@@ -16,6 +22,7 @@ abstract class Plugin {
   settings_group_validation: List<List<String>> | Null = null
   settings: List<Setting> | Null = null
   config: Mapping<String, Any> | Null = null
+  commands: Mapping<String, Command> | Null = null
 }
 
 class Extractor extends Plugin {
