@@ -1,0 +1,10 @@
+[sqlfluff]
+dialect = duckdb
+max_line_length = 100
+templater = dbt
+
+[sqlfluff:indentation]
+tab_space_size = 2
+
+[sqlfluff:layout:type:comma]
+line_position = leading
