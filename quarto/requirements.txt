@@ -18,7 +18,7 @@ debugpy==1.8.21
     # via ipykernel
 decorator==5.3.1
     # via ipython
-duckdb==1.5.3
+duckdb==1.5.4
     # via -r quarto/requirements.in
 executing==2.2.1
     # via stack-data
@@ -50,7 +50,7 @@ matplotlib-inline==0.2.2
     # via
     #   ipykernel
     #   ipython
-narwhals==2.22.1
+narwhals==2.23.0
     # via plotly
 nbclient==0.11.0
     # via -r quarto/requirements.in
