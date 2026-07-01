@@ -1,0 +1,5 @@
+line-length = 88
+preview = true
+
+[extension]
+qmd = "markdown"

@@ -1,0 +1,103 @@
+---
+title: "Reads"
+subtitle: "Pocket reads"
+---
+
+```{python}
+# | echo: false
+from _motherduck import connect
+
+con = connect()
+
+
+def query(sql: str):
+    return con.sql(sql).df()
+```
+
+## Pending
+
+```{python}
+# | echo: false
+from IPython.display import Markdown
+
+pending = query("""
+    select item_id, added_at, resolved_title, time_to_read, given_url
+    from personal.items
+    where read_at is null
+    order by added_at desc
+    limit 5
+""")
+total_pending = query(
+    """\
+    select count(*) as total from personal.items
+    where read_at is null
+    """
+)["total"][0]
+
+links = "\n".join(
+    f"- [{row.resolved_title} ({row.time_to_read or '?'} min)]"
+    f"(https://getpocket.com/read/{row.item_id}) "
+    f"([source]({row.given_url}))"
+    for row in pending.itertuples()
+)
+Markdown(
+    f"""\
+I have a total of **{total_pending}** pending reads in Pocket.
+
+Recent additions:
+
+{links}
+"""
+)
+```
+
+## Recent
+
+```{python}
+# | echo: false
+recent = query("""
+    select item_id, resolved_title, time_to_read, given_url
+    from personal.items
+    where read_at is not null
+    order by read_at desc
+    limit 5
+""")
+
+links = "\n".join(
+    f"- [{row.resolved_title} ({row.time_to_read or '?'} min)]"
+    f"(https://getpocket.com/read/{row.item_id}) "
+    f"([source]({row.given_url}))"
+    for row in recent.itertuples()
+)
+Markdown(f"Recently read:\n\n{links}")
+```
+
+## Tags
+
+Most used tags:
+
+```{python}
+# | echo: false
+query("""
+    select tag, count(*) as total
+    from personal.tags
+    group by tag
+    order by total desc
+    limit 10
+""")
+```
+
+## Authors
+
+Top authors:
+
+```{python}
+# | echo: false
+query("""
+    select author_name, count(*) as total
+    from personal.authors
+    group by author_name
+    order by total desc
+    limit 5
+""")
+```

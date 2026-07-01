@@ -73,15 +73,6 @@ plugins:
       env: DBT_DUCKDB_PATH
     config:
       path: $DUCKDB_PATH
-  - name: evidence
-    variant: meltanolabs
-    pip_url: evidence-ext>=0.5
-    config:
-      home_dir: $MELTANO_PROJECT_ROOT/evidence
-      settings:
-        database: duckdb
-        duckdb:
-          filename: $DUCKDB_PATH
 environments:
 - name: dev
 - name: staging

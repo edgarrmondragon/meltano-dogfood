@@ -69,20 +69,6 @@ output {
           config = new Mapping {
             ["path"] = "$DUCKDB_PATH"
           }
-        },
-        new plugin.Utility {
-          name = "evidence"
-          variant = "meltanolabs"
-          pip_url = "evidence-ext>=0.5"
-          config = new Mapping {
-            ["home_dir"] = "$MELTANO_PROJECT_ROOT/evidence"
-            ["settings"] = new Mapping {
-              ["database"] = "duckdb"
-              ["duckdb"] = new Mapping {
-                ["filename"] = "$DUCKDB_PATH"
-              }
-            }
-          }
         }
       )
     }

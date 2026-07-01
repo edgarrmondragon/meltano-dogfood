@@ -25,6 +25,13 @@ repos:
             additional_dependencies:
                 - pyjson5==2.0.1
 
+    - repo: https://github.com/astral-sh/ruff-pre-commit
+      rev: v0.15.10
+      hooks:
+          - id: ruff-format
+            types_or: [python, pyi, jupyter, markdown, text]
+            files: \.(py|pyi|ipynb|qmd)$
+
     - repo: https://github.com/astral-sh/uv-pre-commit
       rev: 0.11.19
       hooks:
@@ -92,3 +99,11 @@ repos:
                 - --python-version=3.14
                 - --prerelease=if-necessary-or-explicit
                 - --output-file=plugins/requirements/requirements.sqlfluff.txt
+          - id: pip-compile
+            files: ^quarto/requirements\.(in|txt)$
+            args:
+                - quarto/requirements.in
+                - --universal
+                - --python-version=3.14
+                - --prerelease=if-necessary-or-explicit
+                - --output-file=quarto/requirements.txt

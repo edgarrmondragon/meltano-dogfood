@@ -1,0 +1,22 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Meltano Dogfood"
+  favicon: favicon.ico
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: reads.qmd
+        text: Reads
+      - href: stackoverflow.qmd
+        text: StackOverflow
+      - href: open-source.qmd
+        text: Open Source
+
+format:
+  html:
+    theme: cosmo
+    toc: false

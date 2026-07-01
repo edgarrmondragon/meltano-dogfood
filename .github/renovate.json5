@@ -7,10 +7,6 @@
 
   "packageRules": [
     {
-      "matchPackagePatterns": ["^@evidence-dev/"],
-      "groupName": "Evidence dependencies",
-    },
-    {
       "matchManagers": ["pip-compile"],
       "groupName": "Pinned Python plugin dependencies",
       "groupSlug": "pip-compile",
@@ -22,6 +18,7 @@
   "pip-compile": {
     "managerFilePatterns": [
       "/(^|\/)plugins\/requirements\/requirements\\.[a-z0-9-]+\\.txt$/",
+      "/(^|\/)quarto\/requirements\\.txt$/",
     ],
     "lockFileMaintenance": {
       "enabled": true,

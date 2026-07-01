@@ -1,0 +1,46 @@
+---
+title: "Open Source"
+subtitle: "Open source I maintain"
+---
+
+```{python}
+# | echo: false
+from IPython.display import Markdown
+
+from _motherduck import connect
+
+con = connect()
+
+rtd_projects = con.sql("""
+    select
+        gh.name
+        , date_trunc('day', gh.created_at)::varchar as created
+        , date_trunc('day', gh.updated_at)::varchar as updated
+        , gh.description
+        , gh.html_url as repository
+        , gh.stargazers_count
+        , rtd.homepage
+    from personal.tap_github.repositories as gh
+    left join personal.tap_readthedocs.projects as rtd
+        on rtd.name = gh.name
+    where gh.html_url like '%github.com/edgarrmondragon%'
+""").df()
+
+
+def render_project(project) -> str:
+    lines = [
+        f"## {project.name}",
+        "",
+        f"- Created: {project.created}",
+        f"- Last updated: {project.updated}",
+        f"- Description: {project.description}",
+        f"- Repository: [{project.repository}]({project.repository})",
+        f"- Stars: {project.stargazers_count}",
+    ]
+    if project.homepage:
+        lines.append(f"- Homepage: [{project.homepage}]({project.homepage})")
+    return "\n".join(lines)
+
+
+Markdown("\n\n".join(render_project(p) for p in rtd_projects.itertuples()))
+```
