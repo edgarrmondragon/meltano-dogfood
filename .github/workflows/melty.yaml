@@ -1,5 +1,8 @@
 name: Meltano Pipeline
 
+permissions:
+  contents: read
+
 on:
   pull_request:
     branches: [main]
@@ -40,17 +43,13 @@ on:
         type: choice
         options:
           - logging/dev.yaml
-      forceRun:
-        description: "Force run the pipeline"
-        required: false
-        default: false
-        type: boolean
   schedule:
     - cron: "0 12 * * *" # Once a day around 6am CST (12am UTC)
 
 env:
   DUCKDB_PATH: ${{ secrets.DUCKDB_PATH }}
   FORCE_COLOR: "1"
+  HEALTHCHECK_ID: ${{ secrets.HEALTHCHECK_ID }}
   MELTANO_CLI_LOG_CONFIG: "logging/prod.yaml"
   MELTANO_DATABASE_URI: ${{ secrets.MELTANO_DATABASE_URI }}
   MELTANO_ENVIRONMENT: ${{ github.event.inputs.environment || 'prod' }}
@@ -93,10 +92,12 @@ jobs:
     needs: [pkl]
     steps:
       - name: Ping
+        env:
+          EVENT_NAME: ${{ github.event_name }}
         # Only ping the start of the pipeline if the event is a scheduled run or a push to main
         run: |
-          if [ "${{ github.event_name }}" == "schedule" ] || [ "${{ github.event_name }}" == "push" ]; then
-            curl https://hc-ping.com/${{ secrets.HEALTHCHECK_ID }}/start
+          if [ "$EVENT_NAME" == "schedule" ] || [ "$EVENT_NAME" == "push" ]; then
+            curl "https://hc-ping.com/$HEALTHCHECK_ID/start"
           fi
 
   meltano-run:
@@ -105,7 +106,7 @@ jobs:
     needs: [ping-start]
     continue-on-error: true
     container:
-      image: ghcr.io/meltano/meltano:latest-python3.14-slim
+      image: ghcr.io/meltano/meltano:latest-python3.14-slim # zizmor: ignore[unpinned-images]
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GHCR_IO_TOKEN }}
@@ -133,14 +134,17 @@ jobs:
           meltano --version
 
       - name: Install plugins
+        env:
+          MELTANO_JOB_NAME: ${{ matrix.job }}
         run: |
-          meltano run --only-install ${{ matrix.job }}
+          meltano run --only-install "$MELTANO_JOB_NAME"
 
       - name: Run
         env:
           MELTANO_FF_STRICT_ENV_VAR_MODE: true
+          MELTANO_JOB_NAME: ${{ matrix.job }}
         run: |
-          meltano run --no-install ${{ matrix.job }} ${{ github.event.inputs.forceRun && '--force' || '' }}
+          meltano run --no-install "$MELTANO_JOB_NAME"
 
       - name: Upload Meltano log
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
@@ -154,7 +158,7 @@ jobs:
     continue-on-error: true
     needs: [ping-start]
     container:
-      image: ghcr.io/meltano/meltano:latest-python3.14-slim
+      image: ghcr.io/meltano/meltano:latest-python3.14-slim # zizmor: ignore[unpinned-images]
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GHCR_IO_TOKEN }}
@@ -180,7 +184,7 @@ jobs:
     runs-on: ubuntu-24.04
     needs: [meltano-run, lint]
     container:
-      image: ghcr.io/meltano/meltano:latest-python3.14-slim
+      image: ghcr.io/meltano/meltano:latest-python3.14-slim # zizmor: ignore[unpinned-images]
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GHCR_IO_TOKEN }}
@@ -234,7 +238,7 @@ jobs:
     needs: [build-quarto]
     runs-on: ubuntu-24.04
     permissions:
-      pull-requests: write
+      pull-requests: write # Update the PR with the Vercel preview URL if this is a PR run
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
@@ -258,7 +262,7 @@ jobs:
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           vercel-project-name: Meltano Dogfood Project
-          vercel-args: ${{ github.event_name == 'pull_request' && '' || '--prod' }}
+          vercel-args: ${{ case(github.event_name == 'pull_request', '', '--prod') }}
 
   ping-end:
     name: Ping the end of the pipeline
@@ -268,4 +272,4 @@ jobs:
     steps:
       - name: Ping
         run: |
-          curl https://hc-ping.com/${{ secrets.HEALTHCHECK_ID }}
+          curl "https://hc-ping.com/$HEALTHCHECK_ID"

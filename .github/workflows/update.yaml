@@ -5,22 +5,25 @@ on:
   - cron: '0 12 * * *'
   workflow_dispatch: {}
 
-env:
-  MELTANO_CLI_LOG_LEVEL: ${{ github.event.inputs.logLevel || 'warning' }}
-
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
+
+concurrency:
+  group: meltano-update
+  cancel-in-progress: true
 
 jobs:
   meltano-lock:
     name: Meltano Lock Update
     runs-on: ubuntu-24.04
     container:
-      image: ghcr.io/meltano/meltano:latest-python3.14-slim
+      image: ghcr.io/meltano/meltano:latest-python3.14-slim # zizmor: ignore[unpinned-images]
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GHCR_IO_TOKEN }}
+    permissions:
+      contents: write # Update lock files
+      pull-requests: write # Create Pull Requests
 
     steps:
     - name: Checkout Code
@@ -39,11 +42,13 @@ jobs:
     - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
       id: generate-token
       with:
-        app-id: ${{ vars.APP_ID }}
+        permission-contents: write
+        client-id: ${{ vars.APP_ID }}
         private-key: ${{ secrets.APP_PRIVATE_KEY }}
 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+      # zizmor: ignore[superfluous-actions]
       with:
         token: ${{ steps.generate-token.outputs.token }}
         title: 'chore: Update Meltano Plugins'
