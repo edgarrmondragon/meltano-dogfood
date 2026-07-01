@@ -65,6 +65,19 @@ plugins:
     pip_url: -r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.dbt-duckdb.txt
     config:
       path: $DUCKDB_PATH
+  - name: dbt
+    namespace: dbt
+    variant: dbt-labs
+    pip_url: -r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.dbt.txt
+    settings:
+    - name: path
+      env: DBT_DUCKDB_PATH
+    config:
+      path: $DUCKDB_PATH
+    commands:
+      lint:
+        args: lint
+        description: Lint SQL files
   - name: sqlfluff
     variant: sqlfluff
     pip_url: -r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.sqlfluff.txt

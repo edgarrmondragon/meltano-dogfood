@@ -59,7 +59,6 @@ env:
     error,
     once:No GlobalOverrides context is active:UserWarning,
     once:codecs.open() is deprecated. Use open() instead.:DeprecationWarning
-    once:unclosed file:ResourceWarning
   # renovate: datasource=github-tags depName=apple/pkl
   PKL_VERSION: 0.32.0
 
@@ -178,7 +177,7 @@ jobs:
         env:
           MELTANO_CLI_LOG_LEVEL: info
         run: |
-          meltano invoke sqlfluff:lint --format github-annotation-native -v transform/models
+          meltano invoke dbt:lint --profiles-dir transform/profiles/duckdb/ --project-dir transform
 
   transform:
     name: Data Transformation with dbt-duckdb

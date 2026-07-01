@@ -57,6 +57,27 @@ output {
           }
         },
         new plugin.Utility {
+          name = "dbt"
+          variant = "dbt-labs"
+          namespace = "dbt"
+          pip_url = "-r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.dbt.txt"
+          settings = List(
+            new plugin.Setting {
+              name = "path"
+              env = "DBT_DUCKDB_PATH"
+            }
+          )
+          config = new Mapping {
+            ["path"] = "$DUCKDB_PATH"
+          }
+          commands = new Mapping {
+            ["lint"] = new plugin.Command {
+              args = "lint"
+              description = "Lint SQL files"
+            }
+          }
+        },
+        new plugin.Utility {
           name = "sqlfluff"
           variant = "sqlfluff"
           pip_url = "-r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.sqlfluff.txt"
