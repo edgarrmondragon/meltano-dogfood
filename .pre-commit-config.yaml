@@ -84,14 +84,6 @@ repos:
                 - --prerelease=if-necessary-or-explicit
                 - --output-file=plugins/requirements/requirements.target-duckdb.txt
           - id: pip-compile
-            files: ^plugins/requirements/requirements.dbt-duckdb\.(in|txt)$
-            args:
-                - plugins/requirements/requirements.dbt-duckdb.in
-                - --universal
-                - --python-version=3.14
-                - --prerelease=if-necessary-or-explicit
-                - --output-file=plugins/requirements/requirements.dbt-duckdb.txt
-          - id: pip-compile
             files: ^plugins/requirements/requirements.dbt\.(in|txt)$
             args:
                 - plugins/requirements/requirements.dbt.in
