@@ -12,7 +12,7 @@ certifi==2026.6.17
     # via requests
 charset-normalizer==3.4.7
     # via requests
-click==8.4.1
+click==8.4.2
     # via singer-sdk
 colorama==0.4.6 ; sys_platform == 'win32'
     # via click
@@ -59,7 +59,7 @@ requests==2.34.2
     #   singer-sdk
 requests-cache==1.3.2
     # via tap-stackexchange
-rpds-py==2026.5.1
+rpds-py==2026.6.3
     # via
     #   jsonschema
     #   referencing
@@ -69,11 +69,11 @@ simplejson==4.1.1
     # via singer-sdk
 singer-sdk==0.54.5
     # via tap-stackexchange
-sqlalchemy==2.1.0b2
+sqlalchemy==2.1.0b3
     # via singer-sdk
 tap-stackexchange==0.1.2
     # via -r plugins/requirements/requirements.tap-stackexchange.in
-typing-extensions==4.15.0
+typing-extensions==4.16.0rc2
     # via
     #   cattrs
     #   sqlalchemy
