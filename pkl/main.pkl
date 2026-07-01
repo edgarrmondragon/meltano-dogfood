@@ -75,6 +75,10 @@ output {
               args = "lint"
               description = "Lint SQL files"
             }
+            ["build"] = new plugin.Command {
+              args = "build"
+              description = "Will run your models, tests, snapshots and seeds in DAG order"
+            }
           }
         }
       )

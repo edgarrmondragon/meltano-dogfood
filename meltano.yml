@@ -78,6 +78,9 @@ plugins:
       lint:
         args: lint
         description: Lint SQL files
+      build:
+        args: build
+        description: Will run your models, tests, snapshots and seeds in DAG order
 environments:
 - name: dev
 - name: staging
