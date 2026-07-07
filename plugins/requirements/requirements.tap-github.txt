@@ -8,7 +8,7 @@ beautifulsoup4==4.15.0
     # via meltanolabs-tap-github
 certifi==2026.6.17
     # via requests
-cffi==2.0.0 ; platform_python_implementation != 'PyPy'
+cffi==2.1.0 ; platform_python_implementation != 'PyPy'
     # via cryptography
 charset-normalizer==3.4.7
     # via requests
@@ -81,7 +81,7 @@ soupsieve==2.8.4
     # via beautifulsoup4
 sqlalchemy==2.1.0b3
     # via singer-sdk
-typing-extensions==4.16.0rc2
+typing-extensions==4.16.0
     # via
     #   beautifulsoup4
     #   sqlalchemy

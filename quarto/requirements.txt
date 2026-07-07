@@ -8,7 +8,7 @@ attrs==26.1.0
     # via
     #   jsonschema
     #   referencing
-cffi==2.0.0 ; implementation_name == 'pypy'
+cffi==2.1.0 ; implementation_name == 'pypy'
     # via pyzmq
 colorama==0.4.6 ; sys_platform == 'win32'
     # via ipython
@@ -60,7 +60,7 @@ nbformat==5.10.4
     #   nbclient
 nest-asyncio2==1.7.2
     # via ipykernel
-numpy==2.5.0
+numpy==2.5.1
     # via pandas
 packaging==26.2
     # via
@@ -129,7 +129,7 @@ traitlets==5.15.1
     #   matplotlib-inline
     #   nbclient
     #   nbformat
-typing-extensions==4.15.0
+typing-extensions==4.16.0
     # via jupyter-client
 tzdata==2026.2 ; sys_platform == 'emscripten' or sys_platform == 'win32'
     # via pandas
