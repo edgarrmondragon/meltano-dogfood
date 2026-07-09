@@ -19,7 +19,7 @@ chardet==7.4.3
     # via
     #   diff-cover
     #   sqlfluff
-charset-normalizer==3.4.7
+charset-normalizer==3.4.9
     # via requests
 click==8.3.3
     # via
@@ -33,7 +33,7 @@ colorama==0.4.6
     #   tqdm
 daff==1.4.2
     # via dbt-core
-dbt-adapters==1.24.2
+dbt-adapters==1.24.4
     # via
     #   dbt-core
     #   dbt-duckdb
@@ -42,7 +42,7 @@ dbt-common==1.38.0
     #   dbt-adapters
     #   dbt-core
     #   dbt-duckdb
-dbt-core==1.12.0rc1
+dbt-core==1.12.0rc2
     # via
     #   -r plugins/requirements/requirements.sqlfluff.in
     #   dbt-duckdb

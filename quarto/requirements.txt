@@ -74,7 +74,7 @@ pexpect==4.9.0 ; sys_platform != 'emscripten' and sys_platform != 'win32'
     # via ipython
 platformdirs==4.10.0
     # via jupyter-core
-plotly==6.8.0
+plotly==6.9.0
     # via -r quarto/requirements.in
 prompt-toolkit==3.0.52
     # via ipython
