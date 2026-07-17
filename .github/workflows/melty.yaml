@@ -60,7 +60,7 @@ env:
     once:No GlobalOverrides context is active:UserWarning,
     once:codecs.open() is deprecated. Use open() instead.:DeprecationWarning
   # renovate: datasource=github-tags depName=apple/pkl
-  PKL_VERSION: 0.31.1
+  PKL_VERSION: 0.32.0
 
 concurrency:
   group: meltano
