@@ -43,6 +43,7 @@ jobs:
       id: generate-token
       with:
         permission-contents: write
+        permission-pull-requests: write
         client-id: ${{ vars.APP_ID }}
         private-key: ${{ secrets.APP_PRIVATE_KEY }}
 
