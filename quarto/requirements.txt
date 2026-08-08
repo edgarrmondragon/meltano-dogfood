@@ -2,13 +2,13 @@
 #    uv pip compile quarto/requirements.in --universal --python-version=3.14 --prerelease=if-necessary-or-explicit --output-file=quarto/requirements.txt
 appnope==0.1.4 ; sys_platform == 'darwin'
     # via ipykernel
-asttokens==3.0.1
+asttokens==3.0.2
     # via stack-data
 attrs==26.1.0
     # via
     #   jsonschema
     #   referencing
-cffi==2.1.0 ; implementation_name == 'pypy'
+cffi==2.1.1 ; implementation_name == 'pypy'
     # via pyzmq
 colorama==0.4.6 ; sys_platform == 'win32'
     # via ipython
@@ -16,17 +16,15 @@ comm==0.2.3
     # via ipykernel
 debugpy==1.8.21
     # via ipykernel
-decorator==5.3.1
-    # via ipython
-duckdb==1.5.4
+duckdb==1.5.5
     # via -r quarto/requirements.in
 executing==2.2.1
     # via stack-data
-fastjsonschema==2.21.2
+fastjsonschema==2.22.1
     # via nbformat
 ipykernel==7.3.0
     # via -r quarto/requirements.in
-ipython==9.15.0
+ipython==9.16.1
     # via ipykernel
 ipython-pygments-lexers==1.1.1
     # via ipython
@@ -50,11 +48,11 @@ matplotlib-inline==0.2.2
     # via
     #   ipykernel
     #   ipython
-narwhals==2.23.0
+narwhals==2.24.0
     # via plotly
 nbclient==0.11.0
     # via -r quarto/requirements.in
-nbformat==5.10.4
+nbformat==5.11.0
     # via
     #   -r quarto/requirements.in
     #   nbclient
@@ -62,21 +60,21 @@ nest-asyncio2==1.7.2
     # via ipykernel
 numpy==2.5.1
     # via pandas
-packaging==26.2
+packaging==26.3
     # via
     #   ipykernel
     #   plotly
-pandas==3.0.3
+pandas==3.0.5
     # via -r quarto/requirements.in
 parso==0.8.7
     # via jedi
 pexpect==4.9.0 ; sys_platform != 'emscripten' and sys_platform != 'win32'
     # via ipython
-platformdirs==4.10.0
+platformdirs==4.11.1
     # via jupyter-core
 plotly==6.9.0
     # via -r quarto/requirements.in
-prompt-toolkit==3.0.52
+prompt-toolkit==3.0.53
     # via ipython
 psutil==7.2.2
     # via
@@ -116,11 +114,11 @@ six==1.17.0
     # via python-dateutil
 stack-data==0.6.3
     # via ipython
-tornado==6.5.7
+tornado==6.5.8
     # via
     #   ipykernel
     #   jupyter-client
-traitlets==5.15.1
+traitlets==5.16.1
     # via
     #   ipykernel
     #   ipython
@@ -131,7 +129,7 @@ traitlets==5.15.1
     #   nbformat
 typing-extensions==4.16.0
     # via jupyter-client
-tzdata==2026.2 ; sys_platform == 'emscripten' or sys_platform == 'win32'
+tzdata==2026.3 ; sys_platform == 'emscripten' or sys_platform == 'win32'
     # via pandas
 wcwidth==0.8.2
     # via prompt-toolkit

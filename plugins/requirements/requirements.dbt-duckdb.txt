@@ -5,9 +5,9 @@ agate==1.9.1
     #   dbt-adapters
     #   dbt-common
     #   dbt-core
-annotated-doc==0.0.4
+annotated-doc==0.0.5
     # via typer
-annotated-types==0.7.0
+annotated-types==0.8.0
     # via pydantic
 asttokens==2.4.1
     # via devtools
@@ -17,7 +17,7 @@ attrs==26.1.0
     #   referencing
 babel==2.18.0
     # via agate
-certifi==2026.6.17
+certifi==2026.7.22
     # via requests
 charset-normalizer==3.4.9
     # via requests
@@ -30,7 +30,7 @@ colorama==0.4.6
     #   typer
 daff==1.4.2
     # via dbt-core
-dbt-adapters==1.24.4
+dbt-adapters==1.24.5
     # via
     #   dbt-core
     #   dbt-duckdb
@@ -39,13 +39,13 @@ dbt-common==1.38.0
     #   dbt-adapters
     #   dbt-core
     #   dbt-duckdb
-dbt-core==1.12.0rc2
+dbt-core==1.12.0
     # via
     #   -r plugins/requirements/requirements.dbt-duckdb.in
     #   dbt-duckdb
-dbt-core-experimental-parser==2.0.0a4
+dbt-core-experimental-parser==2.0.0a5
     # via dbt-core
-dbt-duckdb==1.10.1
+dbt-duckdb==1.11.0
     # via -r plugins/requirements/requirements.dbt-duckdb.in
 dbt-extractor==0.6.0
     # via dbt-core
@@ -58,7 +58,7 @@ deepdiff==8.6.2
     # via dbt-common
 devtools==0.12.2
     # via meltano-edk
-duckdb==1.5.4
+duckdb==1.5.5
     # via
     #   -r plugins/requirements/requirements.dbt-duckdb.in
     #   dbt-duckdb
@@ -100,7 +100,7 @@ mdurl==0.1.2
     # via markdown-it-py
 meltano-dbt-ext==0.5.0
     # via -r plugins/requirements/requirements.dbt-duckdb.in
-meltano-edk==0.6.0
+meltano-edk==0.6.1
     # via meltano-dbt-ext
 metricflow==0.211.0
     # via dbt-core
@@ -112,7 +112,7 @@ networkx==3.6.1
     # via dbt-core
 orderly-set==5.5.0
     # via deepdiff
-packaging==26.2
+packaging==26.3
     # via dbt-core
 parsedatetime==2.6
     # via agate
@@ -129,7 +129,6 @@ protobuf==6.33.6
 pydantic==2.13.4
     # via
     #   dbt-core
-    #   meltano-edk
     #   metricflow
 pydantic-core==2.46.4
     # via pydantic
@@ -147,7 +146,7 @@ python-slugify==8.0.4
     # via agate
 pytimeparse==1.1.8
     # via agate
-pytz==2026.2
+pytz==2026.3.post1
     # via
     #   dbt-adapters
     #   dbt-core
@@ -183,11 +182,11 @@ six==1.17.0
     #   python-dateutil
 snowplow-tracker==1.1.0
     # via dbt-core
-sqlglot==30.12.0
+sqlglot==30.15.0
     # via metricflow
 sqlparse==0.5.5
     # via dbt-core
-structlog==25.5.0
+structlog==26.1.0
     # via meltano-edk
 tabulate==0.10.0
     # via metricflow
@@ -208,7 +207,7 @@ typing-extensions==4.16.0
     #   typing-inspection
 typing-inspection==0.4.2
     # via pydantic
-tzdata==2026.2 ; sys_platform == 'win32'
+tzdata==2026.3 ; sys_platform == 'win32'
     # via agate
 urllib3==2.7.0
     # via requests
