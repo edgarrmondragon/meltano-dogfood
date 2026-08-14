@@ -58,7 +58,7 @@ nbformat==5.11.0
     #   nbclient
 nest-asyncio2==1.7.2
     # via ipykernel
-numpy==2.5.1
+numpy==2.5.2
     # via pandas
 packaging==26.3
     # via
@@ -70,7 +70,7 @@ parso==0.8.7
     # via jedi
 pexpect==4.9.0 ; sys_platform != 'emscripten' and sys_platform != 'win32'
     # via ipython
-platformdirs==4.11.1
+platformdirs==4.11.3
     # via jupyter-core
 plotly==6.9.0
     # via -r quarto/requirements.in
