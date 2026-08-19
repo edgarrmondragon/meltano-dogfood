@@ -177,10 +177,10 @@ jobs:
         env:
           MELTANO_CLI_LOG_LEVEL: info
         run: |
-          meltano invoke sqlfluff:lint --format github-annotation-native -v transform/models
+          meltano invoke dbt:lint --profiles-dir transform/profiles/duckdb/ --project-dir transform
 
   transform:
-    name: Data Transformation with dbt-duckdb
+    name: Data Transformation with dbt (DuckDB)
     runs-on: ubuntu-24.04
     needs: [meltano-run, lint]
     container:
@@ -199,7 +199,7 @@ jobs:
 
       - name: Transform and Test
         run: |
-          meltano run dbt-duckdb:build
+          meltano invoke dbt:build --profiles-dir transform/profiles/duckdb/ --project-dir transform
 
   build-quarto:
     name: Build Quarto site

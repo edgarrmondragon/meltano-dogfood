@@ -49,17 +49,10 @@ output {
       )
       utilities = List(
         new plugin.Utility {
-          name = "dbt-duckdb"
-          variant = "jwills"
-          pip_url = "-r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.dbt-duckdb.txt"
-          config = new Mapping {
-            ["path"] = "$DUCKDB_PATH"
-          }
-        },
-        new plugin.Utility {
-          name = "sqlfluff"
-          variant = "sqlfluff"
-          pip_url = "-r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.sqlfluff.txt"
+          name = "dbt"
+          variant = "dbt-labs"
+          namespace = "dbt"
+          pip_url = "-r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.dbt.txt"
           settings = List(
             new plugin.Setting {
               name = "path"
@@ -68,6 +61,16 @@ output {
           )
           config = new Mapping {
             ["path"] = "$DUCKDB_PATH"
+          }
+          commands = new Mapping {
+            ["lint"] = new plugin.Command {
+              args = "lint"
+              description = "Lint SQL files"
+            }
+            ["build"] = new plugin.Command {
+              args = "build"
+              description = "Will run your models, tests, snapshots and seeds in DAG order"
+            }
           }
         }
       )
