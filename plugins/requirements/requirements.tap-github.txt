@@ -12,19 +12,19 @@ certifi==2026.7.22
     # via requests
 cffi==2.1.1 ; platform_python_implementation != 'PyPy'
     # via cryptography
-charset-normalizer==3.5.0
+charset-normalizer==3.5.1
     # via requests
 click==8.4.2
     # via singer-sdk
 colorama==0.4.6 ; sys_platform == 'win32'
     # via click
-cryptography==50.0.0
+cryptography==50.0.1
     # via meltanolabs-tap-github
 fsspec==2026.7.0
     # via
     #   singer-sdk
     #   universal-pathlib
-idna==3.18
+idna==3.19
     # via requests
 inflection==0.5.1
     # via singer-sdk
@@ -52,7 +52,7 @@ python-backoff==2.4.0
     # via singer-sdk
 python-dateutil==2.9.0.post0
     # via meltanolabs-tap-github
-python-dotenv==1.2.2
+python-dotenv==1.2.3
     # via singer-sdk
 pyyaml==6.0.3
     # via singer-sdk
