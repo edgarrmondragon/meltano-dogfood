@@ -111,7 +111,6 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GHCR_IO_TOKEN }}
       env:
-        TAP_GITHUB_AUTH_TOKEN: ${{ secrets.TAP_GITHUB_AUTH_TOKEN }}
         TAP_READTHEDOCS_TOKEN: ${{ secrets.TAP_READTHEDOCS_TOKEN }}
         TAP_STACKEXCHANGE_KEY: ${{ secrets.TAP_STACKEXCHANGE_KEY }}
         TARGET_DUCKDB_PATH: ${{ secrets.TARGET_DUCKDB_PATH }}
@@ -139,10 +138,20 @@ jobs:
         run: |
           meltano run --only-install "$MELTANO_JOB_NAME"
 
+      - name: Generate MeltyBot token
+        if: ${{ matrix.job == 'gh-to-duckdb' }}
+        id: app-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          client-id: ${{ secrets.PERSONAL_GITHUB_APP_CLIENT_ID }}
+          private-key: ${{ secrets.PERSONAL_GITHUB_APP_PRIVATE_KEY }}
+          permission-contents: read
+
       - name: Run
         env:
           MELTANO_FF_STRICT_ENV_VAR_MODE: true
           MELTANO_JOB_NAME: ${{ matrix.job }}
+          TAP_GITHUB_AUTH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
           meltano run --no-install "$MELTANO_JOB_NAME"
 
