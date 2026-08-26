@@ -10,7 +10,7 @@ cattrs==26.1.0
     # via requests-cache
 certifi==2026.7.22
     # via requests
-charset-normalizer==3.5.0
+charset-normalizer==3.5.1
     # via requests
 click==8.4.2
     # via singer-sdk
@@ -20,7 +20,7 @@ fsspec==2026.7.0
     # via
     #   singer-sdk
     #   universal-pathlib
-idna==3.18
+idna==3.19
     # via
     #   requests
     #   url-normalize
@@ -38,13 +38,13 @@ packaging==26.3
     # via singer-sdk
 pathlib-abc==0.5.2
     # via universal-pathlib
-platformdirs==4.11.3
+platformdirs==4.11.4
     # via requests-cache
 pyrate-limiter==4.4.0
     # via tap-stackexchange
 python-backoff==2.4.0
     # via singer-sdk
-python-dotenv==1.2.2
+python-dotenv==1.2.3
     # via singer-sdk
 pyyaml==6.0.3
     # via singer-sdk

@@ -19,7 +19,7 @@ babel==2.18.0
     # via agate
 certifi==2026.7.22
     # via requests
-charset-normalizer==3.5.0
+charset-normalizer==3.5.1
     # via requests
 click==8.4.2
     # via dbt-core
@@ -39,17 +39,17 @@ dbt-common==1.39.0
     #   dbt-adapters
     #   dbt-core
     #   dbt-duckdb
-dbt-core==1.12.2
+dbt-core==1.12.3
     # via
     #   -r plugins/requirements/requirements.dbt-duckdb.in
     #   dbt-duckdb
-dbt-core-experimental-parser==2.0.0b1
+dbt-core-experimental-parser==2.0.0b2
     # via dbt-core
 dbt-duckdb==1.11.0
     # via -r plugins/requirements/requirements.dbt-duckdb.in
 dbt-extractor==0.6.0
     # via dbt-core
-dbt-protos==1.0.541
+dbt-protos==1.0.565
     # via
     #   dbt-adapters
     #   dbt-common
@@ -64,7 +64,7 @@ duckdb==1.5.5
     #   dbt-duckdb
 executing==2.2.1
     # via devtools
-idna==3.18
+idna==3.19
     # via requests
 importlib-metadata==9.0.0
     # via metricflow
@@ -136,7 +136,7 @@ pydantic==2.13.4
     #   metricflow
 pydantic-core==2.46.4
     # via pydantic
-pygments==2.20.0
+pygments==2.21.0
     # via
     #   devtools
     #   rich
@@ -144,7 +144,7 @@ python-dateutil==2.9.0.post0
     # via
     #   dbt-common
     #   metricflow
-python-dotenv==1.2.2
+python-dotenv==1.2.3
     # via dbt-core
 python-slugify==8.0.4
     # via agate
@@ -188,7 +188,7 @@ snowplow-tracker==1.1.0
     # via dbt-core
 sqlglot==30.17.0
     # via metricflow
-sqlparse==0.5.5
+sqlparse==0.6.0
     # via dbt-core
 structlog==26.1.0
     # via meltano-edk
