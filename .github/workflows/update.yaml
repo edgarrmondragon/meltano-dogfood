@@ -15,7 +15,7 @@ concurrency:
 jobs:
   meltano-lock:
     name: Meltano Lock Update
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     container:
       image: ghcr.io/meltano/meltano:latest-python3.14-slim # zizmor: ignore[unpinned-images]
       credentials:
