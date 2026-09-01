@@ -69,7 +69,7 @@ concurrency:
 jobs:
   pkl:
     name: Check stale Pkl output
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -88,7 +88,7 @@ jobs:
 
   ping-start:
     name: Ping the start of the pipeline
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     needs: [pkl]
     steps:
       - name: Ping
@@ -102,7 +102,7 @@ jobs:
 
   meltano-run:
     name: "Meltano Job: ${{ matrix.job }}"
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     needs: [ping-start]
     continue-on-error: true
     container:
@@ -163,7 +163,7 @@ jobs:
 
   lint:
     name: Lint models
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     continue-on-error: true
     needs: [ping-start]
     container:
@@ -190,7 +190,7 @@ jobs:
 
   transform:
     name: Data Transformation with dbt-duckdb
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     needs: [meltano-run, lint]
     container:
       image: ghcr.io/meltano/meltano:latest-python3.14-slim # zizmor: ignore[unpinned-images]
@@ -213,7 +213,7 @@ jobs:
   build-quarto:
     name: Build Quarto site
     needs: [transform]
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -245,7 +245,7 @@ jobs:
   deploy-quarto:
     name: Deploy Quarto site
     needs: [build-quarto]
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     permissions:
       pull-requests: write # Update the PR with the Vercel preview URL if this is a PR run
     steps:
@@ -275,7 +275,7 @@ jobs:
 
   ping-end:
     name: Ping the end of the pipeline
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     needs: [deploy-quarto]
     if: github.event_name == 'schedule' || github.event_name == 'push'
     steps:
