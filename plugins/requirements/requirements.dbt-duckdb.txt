@@ -21,11 +21,10 @@ certifi==2026.7.22
     # via requests
 charset-normalizer==3.5.1
     # via requests
-click==8.4.2
+click==8.5.0
     # via dbt-core
 colorama==0.4.6
     # via
-    #   click
     #   dbt-common
     #   typer
 daff==1.4.2
@@ -39,11 +38,11 @@ dbt-common==1.39.0
     #   dbt-adapters
     #   dbt-core
     #   dbt-duckdb
-dbt-core==1.12.3
+dbt-core==1.12.4
     # via
     #   -r plugins/requirements/requirements.dbt-duckdb.in
     #   dbt-duckdb
-dbt-core-experimental-parser==2.0.0b2
+dbt-core-experimental-parser==2.0.0rc2
     # via dbt-core
 dbt-duckdb==1.11.0
     # via -r plugins/requirements/requirements.dbt-duckdb.in
@@ -66,7 +65,7 @@ executing==2.2.1
     # via devtools
 idna==3.19
     # via requests
-importlib-metadata==9.0.0
+importlib-metadata==9.0.1
     # via metricflow
 isodate==0.7.2
     # via
@@ -106,7 +105,7 @@ metricflow==0.212.0
     # via dbt-core
 more-itertools==10.8.0
     # via metricflow
-msgpack==1.2.1
+msgpack==1.2.2
     # via mashumaro
 networkx==3.6.1
     # via dbt-core
@@ -130,11 +129,11 @@ protobuf==6.33.6
     #   dbt-common
     #   dbt-core
     #   dbt-protos
-pydantic==2.13.4
+pydantic==2.13.5
     # via
     #   dbt-core
     #   metricflow
-pydantic-core==2.46.4
+pydantic-core==2.46.5
     # via pydantic
 pygments==2.21.0
     # via
@@ -160,7 +159,7 @@ pyyaml==6.0.3
     #   meltano-dbt-ext
     #   meltano-edk
     #   metricflow
-rapidfuzz==3.14.5
+rapidfuzz==3.14.6
     # via metricflow
 referencing==0.37.0
     # via
@@ -186,7 +185,7 @@ six==1.17.0
     #   python-dateutil
 snowplow-tracker==1.1.0
     # via dbt-core
-sqlglot==30.17.0
+sqlglot==30.18.0
     # via metricflow
 sqlparse==0.6.0
     # via dbt-core

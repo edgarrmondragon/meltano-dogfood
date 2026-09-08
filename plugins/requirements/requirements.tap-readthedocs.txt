@@ -11,28 +11,24 @@ cattrs==26.1.0
     # via
     #   requests-cache
     #   tap-readthedocs
-certifi==2026.5.20
+certifi==2026.7.22
     # via
     #   requests
     #   tap-readthedocs
-charset-normalizer==3.4.7
+charset-normalizer==3.5.1
     # via
     #   requests
     #   tap-readthedocs
-click==8.4.1
+click==8.5.0
     # via
     #   singer-sdk
     #   tap-readthedocs
-colorama==0.4.6 ; sys_platform == 'win32'
-    # via
-    #   click
-    #   tap-readthedocs
-fsspec==2026.4.0
+fsspec==2026.7.0
     # via
     #   singer-sdk
     #   tap-readthedocs
     #   universal-pathlib
-idna==3.17
+idna==3.19
     # via
     #   requests
     #   tap-readthedocs
@@ -57,7 +53,7 @@ jsonschema-specifications==2025.9.1
     # via
     #   jsonschema
     #   tap-readthedocs
-packaging==26.2
+packaging==26.3
     # via
     #   singer-sdk
     #   tap-readthedocs
@@ -65,15 +61,15 @@ pathlib-abc==0.5.2
     # via
     #   tap-readthedocs
     #   universal-pathlib
-platformdirs==4.10.0
+platformdirs==4.11.5
     # via
     #   requests-cache
     #   tap-readthedocs
-python-backoff==2.3.1
+python-backoff==2.4.0
     # via
     #   singer-sdk
     #   tap-readthedocs
-python-dotenv==1.2.2
+python-dotenv==1.2.3
     # via
     #   singer-sdk
     #   tap-readthedocs
@@ -92,9 +88,9 @@ requests==2.34.2
     #   requests-cache
     #   singer-sdk
     #   tap-readthedocs
-requests-cache==1.3.2
+requests-cache==1.3.3
     # via tap-readthedocs
-rpds-py==2026.5.1
+rpds-py==2026.6.3
     # via
     #   jsonschema
     #   referencing
@@ -103,21 +99,21 @@ simpleeval==1.0.7
     # via
     #   singer-sdk
     #   tap-readthedocs
-simplejson==4.1.1
+simplejson==4.1.2
     # via
     #   singer-sdk
     #   tap-readthedocs
-singer-sdk==0.54.4
+singer-sdk==0.55.0a6
     # via tap-readthedocs
-sqlalchemy==2.1.0b2
+sqlalchemy==2.1.0b3
     # via
     #   singer-sdk
     #   tap-readthedocs
-tap-readthedocs==0.6.4
+tap-readthedocs==0.7.0
     # via -r plugins/requirements/requirements.tap-readthedocs.in
 toolz==1.1.0
     # via tap-readthedocs
-typing-extensions==4.15.0
+typing-extensions==4.16.0
     # via
     #   cattrs
     #   sqlalchemy
