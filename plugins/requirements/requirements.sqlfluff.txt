@@ -42,12 +42,12 @@ dbt-common==1.39.0
     #   dbt-adapters
     #   dbt-core
     #   dbt-duckdb
-dbt-core==1.12.3
+dbt-core==1.12.4
     # via
     #   -r plugins/requirements/requirements.sqlfluff.in
     #   dbt-duckdb
     #   sqlfluff-templater-dbt
-dbt-core-experimental-parser==2.0.0b2
+dbt-core-experimental-parser==2.0.0rc2
     # via dbt-core
 dbt-duckdb==1.11.0
     # via -r plugins/requirements/requirements.sqlfluff.in
@@ -68,7 +68,7 @@ duckdb==1.5.5
     #   dbt-duckdb
 idna==3.19
     # via requests
-importlib-metadata==9.0.0
+importlib-metadata==9.0.1
     # via metricflow
 isodate==0.7.2
     # via
@@ -105,7 +105,7 @@ metricflow==0.212.0
     # via dbt-core
 more-itertools==10.8.0
     # via metricflow
-msgpack==1.2.1
+msgpack==1.2.2
     # via mashumaro
 networkx==3.6.1
     # via dbt-core
@@ -124,7 +124,7 @@ pathspec==1.0.4
     #   dbt-common
     #   dbt-core
     #   sqlfluff
-platformdirs==4.11.4
+platformdirs==4.11.7
     # via sqlfluff
 pluggy==1.6.0
     # via diff-cover
@@ -134,11 +134,11 @@ protobuf==6.33.6
     #   dbt-common
     #   dbt-core
     #   dbt-protos
-pydantic==2.13.4
+pydantic==2.13.5
     # via
     #   dbt-core
     #   metricflow
-pydantic-core==2.46.4
+pydantic-core==2.46.5
     # via pydantic
 pygments==2.21.0
     # via diff-cover
@@ -161,14 +161,14 @@ pyyaml==6.0.3
     #   dbt-core
     #   metricflow
     #   sqlfluff
-rapidfuzz==3.14.5
+rapidfuzz==3.14.6
     # via metricflow
 referencing==0.37.0
     # via
     #   jsonschema
     #   jsonschema-specifications
     #   metricflow
-regex==2026.7.19
+regex==2026.9.3
     # via sqlfluff
 requests==2.34.2
     # via
@@ -191,7 +191,7 @@ sqlfluff-templater-dbt==4.3.0
     # via -r plugins/requirements/requirements.sqlfluff.in
 sqlfluffrs==4.3.0
     # via sqlfluff
-sqlglot==30.17.0
+sqlglot==30.18.0
     # via metricflow
 sqlparse==0.6.0
     # via dbt-core
