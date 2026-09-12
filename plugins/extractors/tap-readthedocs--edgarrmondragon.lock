@@ -44,19 +44,9 @@
     },
     {
       "name": "batch_config.encoding.format",
-      "kind": "options",
+      "kind": "string",
       "label": "Batch Encoding Format",
-      "description": "Format to use for batch files.",
-      "options": [
-        {
-          "label": "JSONL",
-          "value": "jsonl"
-        },
-        {
-          "label": "Parquet",
-          "value": "parquet"
-        }
-      ]
+      "description": "Format to use for batch files."
     },
     {
       "name": "batch_config.storage.prefix",
@@ -67,8 +57,16 @@
     {
       "name": "batch_config.storage.root",
       "kind": "string",
+      "value": "file://",
       "label": "Batch Storage Root",
       "description": "Root path to use when writing batch files."
+    },
+    {
+      "name": "emit_activate_version_messages",
+      "kind": "boolean",
+      "value": false,
+      "label": "Emit `ACTIVATE_VERSION` messages",
+      "description": "Whether to emit `ACTIVATE_VERSION` messages. If set to `True`, the tap will emit `ACTIVATE_VERSION` messages for each stream."
     },
     {
       "name": "faker_config.locale",
@@ -136,6 +134,7 @@
   "supported_python_versions": [
     "3.12",
     "3.13",
-    "3.14"
+    "3.14",
+    "3.15"
   ]
 }
