@@ -145,6 +145,12 @@
       "description": "The maximum length of a flattened key."
     },
     {
+      "name": "flattening_separator",
+      "kind": "string",
+      "label": "Flattening Separator",
+      "description": "The separator to use when flattening keys."
+    },
+    {
       "name": "metrics_log_level",
       "kind": "string",
       "label": "Metrics Log Level",
@@ -222,6 +228,13 @@
           "value": "all"
         }
       ]
+    },
+    {
+      "name": "stream_options.project_items.page_size",
+      "kind": "integer",
+      "value": 100,
+      "label": "Stream Options Project Items Page Size",
+      "description": "Number of ProjectV2 items to request per GraphQL page. Defaults to 100, GitHub's maximum. Lower values can reduce GraphQL query complexity for projects with many custom fields."
     },
     {
       "name": "user_agent",
