@@ -81,7 +81,7 @@ repos:
                 - plugins/requirements/requirements.target-duckdb.in
                 - --universal
                 - --python-version=3.14
-                - --prerelease=if-necessary-or-explicit
+                - --prerelease=if-necessary
                 - --output-file=plugins/requirements/requirements.target-duckdb.txt
           - id: pip-compile
             files: ^plugins/requirements/requirements.dbt-duckdb\.(in|txt)$
@@ -89,7 +89,7 @@ repos:
                 - plugins/requirements/requirements.dbt-duckdb.in
                 - --universal
                 - --python-version=3.14
-                - --prerelease=if-necessary-or-explicit
+                - --prerelease=if-necessary
                 - --output-file=plugins/requirements/requirements.dbt-duckdb.txt
           - id: pip-compile
             files: ^plugins/requirements/requirements.sqlfluff\.(in|txt)$
@@ -97,7 +97,7 @@ repos:
                 - plugins/requirements/requirements.sqlfluff.in
                 - --universal
                 - --python-version=3.14
-                - --prerelease=if-necessary-or-explicit
+                - --prerelease=if-necessary
                 - --output-file=plugins/requirements/requirements.sqlfluff.txt
           - id: pip-compile
             files: ^quarto/requirements\.(in|txt)$
@@ -105,5 +105,5 @@ repos:
                 - quarto/requirements.in
                 - --universal
                 - --python-version=3.14
-                - --prerelease=if-necessary-or-explicit
+                - --prerelease=if-necessary
                 - --output-file=quarto/requirements.txt

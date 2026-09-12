@@ -1,5 +1,5 @@
 preview = true
-required-version = ">=0.9.17"
+required-version = ">=0.12"
 
 [exclude-newer-package]
 duckdb = "P14D"
