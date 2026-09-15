@@ -57,8 +57,7 @@ env:
   MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
   PYTHONWARNINGS: >
     error,
-    once:No GlobalOverrides context is active:UserWarning,
-    once:codecs.open() is deprecated. Use open() instead.:DeprecationWarning
+    once:No GlobalOverrides context is active:UserWarning
   # renovate: datasource=github-tags depName=apple/pkl
   PKL_VERSION: 0.32.1
 
