@@ -246,6 +246,7 @@ jobs:
     needs: [build-quarto]
     runs-on: ubuntu-26.04
     permissions:
+      contents: read
       pull-requests: write # Update the PR with the Vercel preview URL if this is a PR run
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -253,7 +254,7 @@ jobs:
           persist-credentials: false
       - name: Set Git config
         run: |
-          git config --global --add safe.directory /__w/meltano-dataops/meltano-dataops
+          git config --global --add safe.directory /__w/meltano-dogfood/meltano-dogfood
 
       - name: Download Quarto build
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
