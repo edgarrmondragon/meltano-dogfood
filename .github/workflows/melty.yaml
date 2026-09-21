@@ -44,7 +44,8 @@ on:
         options:
           - logging/dev.yaml
   schedule:
-    - cron: "0 12 * * *" # Once a day around 6am CST (12am UTC)
+    - cron: "0 8 * * *"
+      timezone: America/Mexico_City
 
 env:
   DUCKDB_PATH: ${{ secrets.DUCKDB_PATH }}
