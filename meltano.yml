@@ -66,8 +66,6 @@ plugins:
     settings:
     - name: path
       env: DBT_DUCKDB_PATH
-    config:
-      path: $DUCKDB_PATH
     commands:
       lint:
         args: lint
@@ -75,6 +73,8 @@ plugins:
       build:
         args: build
         description: Will run your models, tests, snapshots and seeds in DAG order
+    config:
+      path: $DUCKDB_PATH
 environments:
 - name: dev
 - name: staging

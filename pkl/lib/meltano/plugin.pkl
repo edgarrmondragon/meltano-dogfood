@@ -21,8 +21,8 @@ abstract class Plugin {
   python: String | Null = null
   settings_group_validation: List<List<String>> | Null = null
   settings: List<Setting> | Null = null
-  config: Mapping<String, Any> | Null = null
   commands: Mapping<String, Command> | Null = null
+  config: Mapping<String, Any> | Null = null
 }
 
 class Extractor extends Plugin {
