@@ -14,7 +14,7 @@ colorama==0.4.6 ; sys_platform == 'win32'
     # via ipython
 comm==0.2.3
     # via ipykernel
-debugpy==1.8.21
+debugpy==1.8.22
     # via ipykernel
 duckdb==1.5.5
     # via -r quarto/requirements.in
@@ -56,7 +56,7 @@ nbformat==5.11.1
     # via
     #   -r quarto/requirements.in
     #   nbclient
-nest-asyncio2==1.7.2
+nest-asyncio2==1.7.3
     # via ipykernel
 numpy==2.5.3
     # via pandas
@@ -64,15 +64,15 @@ packaging==26.3
     # via
     #   ipykernel
     #   plotly
-pandas==3.0.5
+pandas==3.0.6
     # via -r quarto/requirements.in
 parso==0.8.7
     # via jedi
 pexpect==4.9.0 ; sys_platform != 'emscripten' and sys_platform != 'win32'
     # via ipython
-platformdirs==4.11.7
+platformdirs==4.11.13
     # via jupyter-core
-plotly==7.0.0
+plotly==7.1.0
     # via -r quarto/requirements.in
 prompt-toolkit==3.0.53
     # via ipython
@@ -82,7 +82,7 @@ psutil==7.2.2
     #   ipython
 ptyprocess==0.7.0 ; sys_platform != 'emscripten' and sys_platform != 'win32'
     # via pexpect
-pure-eval==0.2.3
+pure-eval==0.2.4
     # via stack-data
 pycparser==3.0 ; implementation_name == 'pypy'
     # via cffi
@@ -114,7 +114,7 @@ six==1.17.0
     # via python-dateutil
 stack-data==0.6.3
     # via ipython
-tornado==6.5.8
+tornado==6.5.10
     # via
     #   ipykernel
     #   jupyter-client
@@ -129,7 +129,7 @@ traitlets==5.16.1
     #   nbformat
 typing-extensions==4.16.0
     # via jupyter-client
-tzdata==2026.3 ; sys_platform == 'emscripten' or sys_platform == 'win32'
+tzdata==2026.4 ; sys_platform == 'emscripten' or sys_platform == 'win32'
     # via pandas
-wcwidth==0.8.3
+wcwidth==0.9.1
     # via prompt-toolkit

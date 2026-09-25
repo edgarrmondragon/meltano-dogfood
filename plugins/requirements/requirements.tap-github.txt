@@ -20,11 +20,11 @@ cloudpickle==3.1.2
     # via joblib
 cryptography==50.0.1
     # via meltanolabs-tap-github
-fsspec==2026.7.0
+fsspec==2026.9.0
     # via
     #   singer-sdk
     #   universal-pathlib
-idna==3.19
+idna==3.20
     # via requests
 inflection==0.5.1
     # via singer-sdk
@@ -69,19 +69,19 @@ rpds-py==2026.6.3
     # via
     #   jsonschema
     #   referencing
-simpleeval==1.0.7
+simpleeval==1.0.8
     # via singer-sdk
 simplejson==4.1.2
     # via singer-sdk
-singer-sdk==0.54.5
+singer-sdk==0.54.6
     # via meltanolabs-tap-github
 six==1.17.0
     # via
     #   nested-lookup
     #   python-dateutil
-soupsieve==2.9.2
+soupsieve==2.10
     # via beautifulsoup4
-sqlalchemy==2.1.0rc1
+sqlalchemy==2.1.0
     # via singer-sdk
 typing-extensions==4.16.0
     # via
@@ -89,7 +89,7 @@ typing-extensions==4.16.0
     #   sqlalchemy
 universal-pathlib==0.3.10
     # via singer-sdk
-urllib3==2.7.0
+urllib3==2.8.0
     # via
     #   requests
     #   singer-sdk
