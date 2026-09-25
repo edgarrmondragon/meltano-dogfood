@@ -16,11 +16,11 @@ click==8.5.0
     # via singer-sdk
 cloudpickle==3.1.2
     # via joblib
-fsspec==2026.7.0
+fsspec==2026.9.0
     # via
     #   singer-sdk
     #   universal-pathlib
-idna==3.19
+idna==3.20
     # via
     #   requests
     #   url-normalize
@@ -38,7 +38,7 @@ packaging==26.3
     # via singer-sdk
 pathlib-abc==0.5.2
     # via universal-pathlib
-platformdirs==4.11.7
+platformdirs==4.11.13
     # via requests-cache
 pyrate-limiter==4.5.0
     # via tap-stackexchange
@@ -63,13 +63,13 @@ rpds-py==2026.6.3
     # via
     #   jsonschema
     #   referencing
-simpleeval==1.0.7
+simpleeval==1.0.8
     # via singer-sdk
 simplejson==4.1.2
     # via singer-sdk
-singer-sdk==0.54.5
+singer-sdk==0.54.6
     # via tap-stackexchange
-sqlalchemy==2.1.0rc1
+sqlalchemy==2.1.0
     # via singer-sdk
 tap-stackexchange==0.1.2
     # via -r plugins/requirements/requirements.tap-stackexchange.in
@@ -79,9 +79,9 @@ typing-extensions==4.16.0
     #   sqlalchemy
 universal-pathlib==0.3.10
     # via singer-sdk
-url-normalize==3.0.0
+url-normalize==3.0.1
     # via requests-cache
-urllib3==2.7.0
+urllib3==2.8.0
     # via
     #   requests
     #   requests-cache
