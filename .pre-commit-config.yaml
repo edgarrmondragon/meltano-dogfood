@@ -15,7 +15,7 @@ repos:
           - id: validate_manifest
 
     - repo: https://github.com/python-jsonschema/check-jsonschema
-      rev: 0.38.0
+      rev: 0.38.2
       hooks:
           - id: check-dependabot
           - id: check-github-workflows
@@ -26,13 +26,13 @@ repos:
                 - pyjson5==2.0.1
 
     - repo: https://github.com/astral-sh/ruff-pre-commit
-      rev: v0.16.3
+      rev: v0.16.9
       hooks:
           - id: ruff-format
             types_or: [python, pyi, jupyter, markdown, quarto]
 
     - repo: https://github.com/astral-sh/uv-pre-commit
-      rev: 0.12.5
+      rev: 0.12.20
       hooks:
           - id: pip-compile
             files: ^plugins/requirements/requirements.tap-stackexchange\.(in|txt)$
