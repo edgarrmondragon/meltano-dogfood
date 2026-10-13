@@ -66,7 +66,7 @@ env:
   # renovate: datasource=github-tags depName=apple/pkl
   PKL_VERSION: 0.32.1
   # renovate: datasource=npm depName=vercel
-  VERCEL_VERSION: 50.0.0
+  VERCEL_VERSION: 62.0.0
 
 concurrency:
   group: meltano
