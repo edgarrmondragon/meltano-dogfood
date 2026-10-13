@@ -26,13 +26,13 @@ repos:
                 - pyjson5==2.0.1
 
     - repo: https://github.com/astral-sh/ruff-pre-commit
-      rev: v0.16.9
+      rev: v0.16.10
       hooks:
           - id: ruff-format
             types_or: [python, pyi, jupyter, markdown, quarto]
 
     - repo: https://github.com/astral-sh/uv-pre-commit
-      rev: 0.12.20
+      rev: 0.12.23
       hooks:
           - id: pip-compile
             files: ^plugins/requirements/requirements.tap-stackexchange\.(in|txt)$
