@@ -11,6 +11,7 @@ on:
       - logging/**
       - meltano.yml
       - pyproject.toml
+      - pkl/**
       - plugins/**/*
       - transform/models/**/*.sql
       - transform/models/**/*.yml
@@ -25,6 +26,7 @@ on:
       - logging/**
       - meltano.yml
       - pyproject.toml
+      - pkl/**
       - plugins/**/*
       - transform/models/**/*.sql
       - transform/models/**/*.yml
