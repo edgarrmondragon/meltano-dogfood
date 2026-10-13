@@ -12,13 +12,13 @@ certifi==2026.7.22
     # via requests
 cffi==2.1.1 ; platform_python_implementation != 'PyPy'
     # via cryptography
-charset-normalizer==3.5.1
+charset-normalizer==3.5.2
     # via requests
 click==8.5.0
     # via singer-sdk
 cloudpickle==3.1.2
     # via joblib
-cryptography==50.0.1
+cryptography==50.0.2
     # via meltanolabs-tap-github
 fsspec==2026.9.0
     # via
@@ -30,7 +30,7 @@ inflection==0.5.1
     # via singer-sdk
 joblib==1.6.0
     # via singer-sdk
-jsonpath-ng==1.8.0
+jsonpath-ng==1.10.1
     # via singer-sdk
 jsonschema==4.26.0
     # via singer-sdk
@@ -44,7 +44,7 @@ packaging==26.3
     # via singer-sdk
 pathlib-abc==0.5.2
     # via universal-pathlib
-pycparser==3.0 ; implementation_name != 'PyPy' and platform_python_implementation != 'PyPy'
+pycparser==3.11 ; implementation_name != 'PyPy' and platform_python_implementation != 'PyPy'
     # via cffi
 pyjwt==2.13.0
     # via meltanolabs-tap-github
@@ -52,7 +52,7 @@ python-backoff==3.0.0
     # via singer-sdk
 python-dateutil==2.9.0.post0
     # via meltanolabs-tap-github
-python-dotenv==1.2.3
+python-dotenv==1.2.4
     # via singer-sdk
 pyyaml==6.0.3
     # via singer-sdk
@@ -65,23 +65,23 @@ requests==2.34.2
     # via
     #   meltanolabs-tap-github
     #   singer-sdk
-rpds-py==2026.6.3
+rpds-py==2026.9.1
     # via
     #   jsonschema
     #   referencing
 simpleeval==1.0.8
     # via singer-sdk
-simplejson==4.1.2
+simplejson==4.2.0
     # via singer-sdk
-singer-sdk==0.54.6
+singer-sdk==0.54.8
     # via meltanolabs-tap-github
 six==1.17.0
     # via
     #   nested-lookup
     #   python-dateutil
-soupsieve==2.10
+soupsieve==3.0.3
     # via beautifulsoup4
-sqlalchemy==2.1.1
+sqlalchemy==2.1.4
     # via singer-sdk
 typing-extensions==4.16.0
     # via
