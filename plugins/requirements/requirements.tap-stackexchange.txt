@@ -8,7 +8,7 @@ attrs==26.1.0
     #   requests-cache
 cattrs==26.2.1
     # via requests-cache
-certifi==2026.7.22
+certifi==2026.10.19
     # via requests
 charset-normalizer==3.5.2
     # via requests
@@ -28,7 +28,7 @@ inflection==0.5.1
     # via singer-sdk
 joblib==1.6.0
     # via singer-sdk
-jsonpath-ng==1.10.1
+jsonpath-ng==1.12.0
     # via singer-sdk
 jsonschema==4.26.0
     # via singer-sdk
@@ -38,9 +38,9 @@ packaging==26.3
     # via singer-sdk
 pathlib-abc==0.5.2
     # via universal-pathlib
-platformdirs==4.13.0
+platformdirs==4.13.5
     # via requests-cache
-pyrate-limiter==4.5.0
+pyrate-limiter==4.5.1
     # via tap-stackexchange
 python-backoff==3.0.0
     # via singer-sdk
@@ -67,9 +67,9 @@ simpleeval==1.0.8
     # via singer-sdk
 simplejson==4.2.0
     # via singer-sdk
-singer-sdk==0.54.8
+singer-sdk==0.54.9
     # via tap-stackexchange
-sqlalchemy==2.1.4
+sqlalchemy==2.1.5
     # via singer-sdk
 tap-stackexchange==0.1.2
     # via -r plugins/requirements/requirements.tap-stackexchange.in
