@@ -11,7 +11,21 @@
       "groupName": "Pinned Python plugin dependencies",
       "groupSlug": "pip-compile",
     },
+  ],
 
+  "customManagers": [
+    {
+      // pip_url: tap-foo[pinned]==1.2.3 in meltano.yml and pkl/**/*.pkl
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/(^|\/)meltano\\.yml$/",
+        "/(^|\/)pkl\/.+\\.pkl$/",
+      ],
+      "matchStrings": [
+        "pip_url(?:: | = )\"?(?<depName>[a-zA-Z0-9._-]+)\\[pinned\\]==(?<currentValue>[^\\s\"]+)\"?",
+      ],
+      "datasourceTemplate": "pypi",
+    },
   ],
 
   // https://docs.renovatebot.com/configuration-options/#prconcurrentlimit
