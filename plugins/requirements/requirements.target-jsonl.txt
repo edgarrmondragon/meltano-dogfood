@@ -11,7 +11,7 @@ jsonschema==2.6.0
     #   adjust-precision-for-schema
     #   singer-python
     #   target-jsonl
-python-dateutil==2.9.0.post0
+python-dateutil==3.0.0
     # via singer-python
 pytz==2018.4
     # via singer-python
@@ -23,3 +23,5 @@ six==1.17.0
     # via python-dateutil
 target-jsonl==0.1.4
     # via -r plugins/requirements/requirements.target-jsonl.in
+tzdata==2026.5
+    # via python-dateutil
