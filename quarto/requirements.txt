@@ -64,7 +64,7 @@ packaging==26.3
     # via
     #   ipykernel
     #   plotly
-pandas==3.0.6
+pandas==3.1.0
     # via -r quarto/requirements.in
 parso==0.8.7
     # via jedi
@@ -82,13 +82,13 @@ ptyprocess==0.7.0 ; sys_platform != 'emscripten' and sys_platform != 'win32'
     # via pexpect
 pure-eval==0.2.4
     # via stack-data
-pycparser==3.11 ; implementation_name == 'pypy'
+pycparser==3.12 ; implementation_name == 'pypy'
     # via cffi
 pygments==2.21.0
     # via
     #   ipython
     #   ipython-pygments-lexers
-python-dateutil==2.9.0.post0
+python-dateutil==3.0.0
     # via
     #   jupyter-client
     #   pandas
@@ -112,7 +112,7 @@ six==1.17.0
     # via python-dateutil
 stack-data==0.6.3
     # via ipython
-tornado==6.5.10
+tornado==6.6
     # via
     #   ipykernel
     #   jupyter-client
@@ -127,7 +127,9 @@ traitlets==5.16.1
     #   nbformat
 typing-extensions==4.16.0
     # via jupyter-client
-tzdata==2026.5 ; sys_platform == 'emscripten' or sys_platform == 'win32'
-    # via pandas
+tzdata==2026.5
+    # via
+    #   pandas
+    #   python-dateutil
 wcwidth==0.9.3
     # via prompt-toolkit

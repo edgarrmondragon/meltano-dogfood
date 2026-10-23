@@ -62,6 +62,7 @@ env:
   MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
   PYTHONWARNINGS: >
     error,
+    once:The inplace keyword in DataFrame.drop is deprecated and will be removed in a future version (PDEP-8):DeprecationWarning,
     once:No GlobalOverrides context is active:UserWarning
   # renovate: datasource=github-tags depName=apple/pkl
   PKL_VERSION: 0.32.1
