@@ -67,6 +67,8 @@ env:
   PKL_VERSION: 0.32.1
   # renovate: datasource=npm depName=vercel
   VERCEL_VERSION: 63.1.2
+  # renovate: datasource=pypi depName=pip-audit
+  PIP_AUDIT_VERSION: 2.10.0
 
 concurrency:
   group: meltano
@@ -92,10 +94,28 @@ jobs:
       - name: Check if meltano.yml is different
         run: git diff --exit-code meltano.yml
 
+  audit:
+    name: Audit plugin lockfiles
+    runs-on: ubuntu-26.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+
+      - name: Audit lockfiles for known vulnerabilities
+        run: |
+          for f in plugins/requirements/requirements.*.txt; do
+            echo "::group::$f"
+            uvx "pip-audit==$PIP_AUDIT_VERSION" --no-deps --disable-pip --requirement "$f"
+            echo "::endgroup::"
+          done
+
   ping-start:
     name: Ping the start of the pipeline
     runs-on: ubuntu-26.04
-    needs: [pkl]
+    needs: [pkl, audit]
     steps:
       - name: Ping
         env:
