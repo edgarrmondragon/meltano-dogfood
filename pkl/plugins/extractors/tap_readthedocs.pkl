@@ -4,7 +4,7 @@ import "../../lib/meltano/plugin.pkl"
 
 tap_readthedocs = new plugin.Extractor {
   name = "tap-readthedocs"
-  variant = "edgarrmondragon"
+  variant = "reservoir-data"
   pip_url = "-r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.tap-readthedocs.txt"
   select = List("projects.*")
 }

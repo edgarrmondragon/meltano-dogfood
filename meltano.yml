@@ -17,7 +17,7 @@ plugins:
     select:
     - questions.*
   - name: tap-readthedocs
-    variant: edgarrmondragon
+    variant: reservoir-data
     pip_url: -r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.tap-readthedocs.txt
     select:
     - projects.*
@@ -36,7 +36,7 @@ plugins:
     - repositories.*
     - stargazers.*
   - name: tap-pypistats
-    variant: edgarrmondragon
+    variant: reservoir-data
     pip_url: -r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.tap-pypistats.txt
     config:
       packages:

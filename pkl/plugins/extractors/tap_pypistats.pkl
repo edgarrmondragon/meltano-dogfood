@@ -4,7 +4,7 @@ import "../../lib/meltano/plugin.pkl"
 
 tap_pypistats = new plugin.Extractor {
   name = "tap-pypistats"
-  variant = "edgarrmondragon"
+  variant = "reservoir-data"
   pip_url = "-r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.tap-pypistats.txt"
   config = new Mapping {
     ["packages"] = List(
