@@ -69,7 +69,7 @@ env:
   # renovate: datasource=npm depName=vercel
   VERCEL_VERSION: 63.1.2
   # renovate: datasource=pypi depName=pip-audit
-  PIP_AUDIT_VERSION: 2.10.0
+  PIP_AUDIT_VERSION: 2.10.1
 
 concurrency:
   group: meltano
