@@ -20,5 +20,5 @@ rpds-py==2026.9.1
     # via
     #   jsonschema
     #   referencing
-target-duckdb @ git+https://github.com/MeltanoLabs/target-duckdb.git@0f8eab1fa6e0c57af42d3f4b71ab82699a2e4247
+target-duckdb @ git+https://github.com/MeltanoLabs/target-duckdb.git@dc0a10a150f59b903a7d8942d48fe35769cb40cf
     # via -r plugins/requirements/requirements.target-duckdb.in
