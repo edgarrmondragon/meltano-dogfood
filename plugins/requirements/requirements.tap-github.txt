@@ -8,7 +8,7 @@ backports-httpmethod==0.2.2
     # via meltanolabs-tap-github
 beautifulsoup4==4.15.0
     # via meltanolabs-tap-github
-certifi==2026.10.19
+certifi==2026.10.23
     # via requests
 cffi==2.1.1 ; platform_python_implementation != 'PyPy'
     # via cryptography
@@ -30,7 +30,7 @@ inflection==0.5.1
     # via singer-sdk
 joblib==1.6.0
     # via singer-sdk
-jsonpath-ng==1.12.0
+jsonpath-ng==1.13.0
     # via singer-sdk
 jsonschema==4.26.0
     # via singer-sdk
@@ -46,7 +46,7 @@ pathlib-abc==0.5.2
     # via universal-pathlib
 pycparser==3.12 ; implementation_name != 'PyPy' and platform_python_implementation != 'PyPy'
     # via cffi
-pyjwt==2.15.0
+pyjwt==2.15.1
     # via meltanolabs-tap-github
 python-backoff==3.0.0
     # via singer-sdk
