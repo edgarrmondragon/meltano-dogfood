@@ -38,7 +38,7 @@ output {
         },
         new plugin.Loader {
           name = "target-duckdb"
-          variant = "jwills"
+          variant = "meltanolabs"
           pip_url = "-r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.target-duckdb.txt"
           config = new Mapping {
             ["path"] = "$DUCKDB_PATH"

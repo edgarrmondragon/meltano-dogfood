@@ -53,7 +53,7 @@ plugins:
     config:
       destination_path: output/$MELTANO_EXTRACTOR_NAMESPACE
   - name: target-duckdb
-    variant: jwills
+    variant: meltanolabs
     pip_url: -r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.target-duckdb.txt
     config:
       path: $DUCKDB_PATH
