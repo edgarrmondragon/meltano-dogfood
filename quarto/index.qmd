@@ -2,6 +2,5 @@
 title: "Welcome to my Quarto project"
 ---
 
-- [Reads](reads.qmd)
 - [StackOverflow](stackoverflow.qmd)
 - [Open Source Work](open-source.qmd)

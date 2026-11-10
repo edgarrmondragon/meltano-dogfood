@@ -7,7 +7,7 @@ subtitle: "Some activity stats from StackOverflow of selected tags"
 # | echo: false
 import plotly.graph_objects as go
 
-from _motherduck import connect
+from _warehouse import connect
 
 con = connect()
 

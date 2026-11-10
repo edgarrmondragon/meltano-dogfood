@@ -3,7 +3,21 @@ self:
   outputs:
     duckdb:
       type: duckdb
-      path: "{{ env_var('DBT_DUCKDB_PATH') }}"
+      # dbt derives the catalog name from `path`, so attach the DuckLake under
+      # an alias and point models and sources at it with `+database`.
+      database: memory
+      path: ":memory:"
+      attach:
+        - path: "ducklake:postgres:{{ env_var('NEON_DATABASE_URL') }}"
+          alias: personal
+      secrets:
+        - type: s3
+          endpoint: "{{ env_var('AWS_ENDPOINT_URL_S3') | replace('https://', '') }}"
+          region: "{{ env_var('AWS_REGION') }}"
+          url_style: path
+          key_id: "{{ env_var('AWS_ACCESS_KEY_ID') }}"
+          secret: "{{ env_var('AWS_SECRET_ACCESS_KEY') }}"
       extensions:
       - httpfs
-      - parquet
+      - postgres
+      - ducklake

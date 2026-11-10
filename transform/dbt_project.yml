@@ -23,10 +23,8 @@ clean-targets:
 
 models:
   personal_data:
+    +database: personal
     +materialized: table
-    pocket:
-      +enabled: true
-      +tags: [pocket, reading]
     stackoverflow:
       +enabled: true
       +tags: [stackoverflow, forum]

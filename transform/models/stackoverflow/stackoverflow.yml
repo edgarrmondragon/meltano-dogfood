@@ -2,6 +2,7 @@ version: 2
 
 sources:
   - name: stackoverflow
+    database: personal
     schema: tap_stackexchange
     loader: tap-stackexchange
     description: The world's largest programming community

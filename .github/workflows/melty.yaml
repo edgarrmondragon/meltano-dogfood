@@ -52,14 +52,17 @@ on:
       timezone: America/Mexico_City
 
 env:
-  DUCKDB_PATH: ${{ secrets.DUCKDB_PATH }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_ENDPOINT_URL_S3: ${{ secrets.AWS_ENDPOINT_URL_S3 }}
+  AWS_REGION: ${{ secrets.AWS_REGION }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   FORCE_COLOR: "1"
   HEALTHCHECK_ID: ${{ secrets.HEALTHCHECK_ID }}
   MELTANO_CLI_LOG_CONFIG: "logging/prod.yaml"
   MELTANO_DATABASE_URI: ${{ secrets.MELTANO_DATABASE_URI }}
   MELTANO_ENVIRONMENT: ${{ github.event.inputs.environment || 'prod' }}
   MELTANO_RUN_TIMEOUT: 600
-  MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
+  NEON_DATABASE_URL: ${{ secrets.NEON_DATABASE_URL }}
   PYTHONWARNINGS: >
     error,
     once:The inplace keyword in DataFrame.drop is deprecated and will be removed in a future version (PDEP-8):DeprecationWarning,
@@ -140,7 +143,6 @@ jobs:
       env:
         TAP_READTHEDOCS_TOKEN: ${{ secrets.TAP_READTHEDOCS_TOKEN }}
         TAP_STACKEXCHANGE_KEY: ${{ secrets.TAP_STACKEXCHANGE_KEY }}
-        TARGET_DUCKDB_PATH: ${{ secrets.TARGET_DUCKDB_PATH }}
     strategy:
       fail-fast: false
       matrix:
@@ -198,8 +200,6 @@ jobs:
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GHCR_IO_TOKEN }}
-      env:
-        DUCKDB_PATH: ${{ secrets.DUCKDB_PATH }}
 
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -259,6 +259,11 @@ jobs:
 
       - name: Render Quarto site
         env:
+          # Quarto only reads, so it gets read-only credentials instead of the
+          # workflow-level ones.
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_READONLY_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_READONLY_SECRET_ACCESS_KEY }}
+          NEON_DATABASE_URL: ${{ secrets.NEON_READONLY_DATABASE_URL }}
           QUARTO_PYTHON: ${{ github.workspace }}/quarto/.venv/bin/python
         run: |
           quarto render quarto

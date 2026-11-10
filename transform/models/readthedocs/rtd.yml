@@ -2,6 +2,7 @@ version: 2
 
 sources:
   - name: readthedocs
+    database: personal
     schema: tap_readthedocs
     loader: tap-readthedocs
     description: Read the Docs simplifies software documentation by automating building, versioning, and hosting of your docs for you.
