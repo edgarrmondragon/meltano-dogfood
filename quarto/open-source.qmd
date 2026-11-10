@@ -7,7 +7,7 @@ subtitle: "Open source I maintain"
 # | echo: false
 from IPython.display import Markdown
 
-from _motherduck import connect
+from _warehouse import connect
 
 con = connect()
 

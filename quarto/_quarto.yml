@@ -9,8 +9,6 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: reads.qmd
-        text: Reads
       - href: stackoverflow.qmd
         text: StackOverflow
       - href: open-source.qmd

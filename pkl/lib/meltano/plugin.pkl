@@ -5,6 +5,7 @@ class Setting {
   label: String | Null = null
   name: String
   env: String | Null = null
+  sensitive: Boolean | Null = null
 }
 
 class Command {
@@ -17,6 +18,8 @@ abstract class Plugin {
   name: String
   namespace: String | Null = null
   variant: String | Null = null
+  executable: String | Null = null
+  capabilities: List<String> | Null = null
   pip_url: String|Null?
   python: String | Null = null
   settings_group_validation: List<List<String>> | Null = null

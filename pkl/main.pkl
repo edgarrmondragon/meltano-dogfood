@@ -37,12 +37,31 @@ output {
           }
         },
         new plugin.Loader {
-          name = "target-duckdb"
-          variant = "meltanolabs"
-          pip_url = "-r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.target-duckdb.txt"
+          name = "target-ducklake"
+          namespace = "target_ducklake"
+          executable = "target-ducklake"
+          pip_url = "-r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.target-ducklake.txt"
+          capabilities = List("about")
+          settings = List(
+            new plugin.Setting { name = "catalog"; kind = "string"; sensitive = true },
+            new plugin.Setting { name = "data_path"; kind = "string" },
+            new plugin.Setting { name = "default_target_schema"; kind = "string" },
+            new plugin.Setting { name = "run_maintenance"; kind = "boolean" },
+            new plugin.Setting { name = "s3_endpoint"; kind = "string" },
+            new plugin.Setting { name = "s3_region"; kind = "string" },
+            new plugin.Setting { name = "s3_url_style"; kind = "string" },
+            new plugin.Setting { name = "s3_access_key_id"; kind = "string"; sensitive = true },
+            new plugin.Setting { name = "s3_secret_access_key"; kind = "string"; sensitive = true }
+          )
           config = new Mapping {
-            ["path"] = "$DUCKDB_PATH"
+            ["catalog"] = "postgres:$NEON_DATABASE_URL"
+            ["data_path"] = "s3://ducklake/warehouse/"
             ["default_target_schema"] = "$MELTANO_EXTRACT__LOAD_SCHEMA"
+            ["s3_endpoint"] = "$AWS_ENDPOINT_URL_S3"
+            ["s3_region"] = "$AWS_REGION"
+            ["s3_url_style"] = "path"
+            ["s3_access_key_id"] = "$AWS_ACCESS_KEY_ID"
+            ["s3_secret_access_key"] = "$AWS_SECRET_ACCESS_KEY"
           }
         }
       )
@@ -52,15 +71,6 @@ output {
           variant = "dbt-labs"
           namespace = "dbt"
           pip_url = "-r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.dbt.txt"
-          settings = List(
-            new plugin.Setting {
-              name = "path"
-              env = "DBT_DUCKDB_PATH"
-            }
-          )
-          config = new Mapping {
-            ["path"] = "$DUCKDB_PATH"
-          }
           commands = new Mapping {
             ["lint"] = new plugin.Command {
               args = "lint"
@@ -88,19 +98,19 @@ output {
     jobs = List(
       new project.Job {
         name = "stackoverflow-to-duckdb"
-        tasks = List("tap-stackexchange target-duckdb")
+        tasks = List("tap-stackexchange target-ducklake")
       },
       new project.Job {
         name = "rtd-to-duckdb"
-        tasks = List("tap-readthedocs target-duckdb")
+        tasks = List("tap-readthedocs target-ducklake")
       },
       new project.Job {
         name = "gh-to-duckdb"
-        tasks = List("tap-github target-duckdb")
+        tasks = List("tap-github target-ducklake")
       },
       new project.Job {
         name = "pypistats-to-duckdb"
-        tasks = List("tap-pypistats target-duckdb")
+        tasks = List("tap-pypistats target-ducklake")
       }
     )
   }

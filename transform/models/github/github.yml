@@ -2,6 +2,7 @@ version: 2
 
 sources:
   - name: github
+    database: personal
     schema: tap_github
     loader: tap-github
     description: Collaborative Coding

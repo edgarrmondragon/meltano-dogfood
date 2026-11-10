@@ -8,6 +8,6 @@ quarto-install:
     uv venv quarto/.venv --allow-existing
     uv pip install --python quarto/.venv/bin/python -r quarto/requirements.txt
 
-# Preview the Quarto dashboard locally. Requires MOTHERDUCK_TOKEN in the environment.
+# Preview the Quarto dashboard locally. Requires NEON_DATABASE_URL and the AWS_* storage credentials in the environment.
 quarto-preview: quarto-install
     QUARTO_PYTHON={{justfile_directory()}}/quarto/.venv/bin/python quarto preview quarto

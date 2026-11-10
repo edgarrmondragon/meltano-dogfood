@@ -52,20 +52,48 @@ plugins:
     pip_url: -r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.target-jsonl.txt
     config:
       destination_path: output/$MELTANO_EXTRACTOR_NAMESPACE
-  - name: target-duckdb
-    variant: meltanolabs
-    pip_url: -r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.target-duckdb.txt
+  - name: target-ducklake
+    namespace: target_ducklake
+    executable: target-ducklake
+    capabilities:
+    - about
+    pip_url: -r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.target-ducklake.txt
+    settings:
+    - kind: string
+      name: catalog
+      sensitive: true
+    - kind: string
+      name: data_path
+    - kind: string
+      name: default_target_schema
+    - kind: boolean
+      name: run_maintenance
+    - kind: string
+      name: s3_endpoint
+    - kind: string
+      name: s3_region
+    - kind: string
+      name: s3_url_style
+    - kind: string
+      name: s3_access_key_id
+      sensitive: true
+    - kind: string
+      name: s3_secret_access_key
+      sensitive: true
     config:
-      path: $DUCKDB_PATH
+      catalog: postgres:$NEON_DATABASE_URL
+      data_path: s3://ducklake/warehouse/
       default_target_schema: $MELTANO_EXTRACT__LOAD_SCHEMA
+      s3_endpoint: $AWS_ENDPOINT_URL_S3
+      s3_region: $AWS_REGION
+      s3_url_style: path
+      s3_access_key_id: $AWS_ACCESS_KEY_ID
+      s3_secret_access_key: $AWS_SECRET_ACCESS_KEY
   utilities:
   - name: dbt
     namespace: dbt
     variant: dbt-labs
     pip_url: -r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.dbt.txt
-    settings:
-    - name: path
-      env: DBT_DUCKDB_PATH
     commands:
       lint:
         args: lint
@@ -73,8 +101,6 @@ plugins:
       build:
         args: build
         description: Will run your models, tests, snapshots and seeds in DAG order
-    config:
-      path: $DUCKDB_PATH
 environments:
 - name: dev
 - name: staging
@@ -85,13 +111,13 @@ environments:
 jobs:
 - name: stackoverflow-to-duckdb
   tasks:
-  - tap-stackexchange target-duckdb
+  - tap-stackexchange target-ducklake
 - name: rtd-to-duckdb
   tasks:
-  - tap-readthedocs target-duckdb
+  - tap-readthedocs target-ducklake
 - name: gh-to-duckdb
   tasks:
-  - tap-github target-duckdb
+  - tap-github target-ducklake
 - name: pypistats-to-duckdb
   tasks:
-  - tap-pypistats target-duckdb
+  - tap-pypistats target-ducklake
