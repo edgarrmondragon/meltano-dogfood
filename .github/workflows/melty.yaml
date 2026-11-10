@@ -65,6 +65,7 @@ env:
   NEON_DATABASE_URL: ${{ secrets.NEON_DATABASE_URL }}
   PYTHONWARNINGS: >
     error,
+    once: The 'wheel' package is no longer the canonical location of the 'bdist_wheel' command:FutureWarning,
     once:The inplace keyword in DataFrame.drop is deprecated and will be removed in a future version (PDEP-8):DeprecationWarning,
     once:No GlobalOverrides context is active:UserWarning
   # renovate: datasource=github-tags depName=apple/pkl
