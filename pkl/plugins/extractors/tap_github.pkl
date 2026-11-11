@@ -7,17 +7,13 @@ tap_github = new plugin.Extractor {
   variant = "meltanolabs"
   pip_url = "-r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.tap-github.txt"
   config = new Mapping {
-    ["repositories"] = List(
-      "edgarrmondragon/citric",
-      "edgarrmondragon/tap-readthedocs",
-      "edgarrmondragon/tap-clinicaltrials",
-      "edgarrmondragon/pep610"
+    ["organizations"] = List(
+      "reservoir-data"
     )
     ["start_date"] = "1 month ago"
     ["user_agent"] = "$MELTANO_USER_AGENT"
   }
   select = List(
-    "repositories.*",
-    "stargazers.*"
+    "repositories.*"
   )
 }

@@ -150,7 +150,6 @@ jobs:
       fail-fast: false
       matrix:
         job:
-          # - "pocket-to-duckdb" # Pocket has been phased out :(
           - "stackoverflow-to-duckdb"
           - "rtd-to-duckdb"
           - "gh-to-duckdb"

@@ -16,11 +16,12 @@ class Command {
 
 abstract class Plugin {
   name: String
+  inherit_from: String | Null = null
   namespace: String | Null = null
   variant: String | Null = null
   executable: String | Null = null
   capabilities: List<String> | Null = null
-  pip_url: String|Null?
+  pip_url: String|Null = null
   python: String | Null = null
   settings_group_validation: List<List<String>> | Null = null
   settings: List<Setting> | Null = null
