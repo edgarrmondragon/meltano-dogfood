@@ -25,16 +25,12 @@ plugins:
     variant: meltanolabs
     pip_url: -r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.tap-github.txt
     config:
-      repositories:
-      - edgarrmondragon/citric
-      - edgarrmondragon/tap-readthedocs
-      - edgarrmondragon/tap-clinicaltrials
-      - edgarrmondragon/pep610
+      organizations:
+      - reservoir-data
       start_date: 1 month ago
       user_agent: $MELTANO_USER_AGENT
     select:
     - repositories.*
-    - stargazers.*
   - name: tap-pypistats
     variant: reservoir-data
     pip_url: -r $MELTANO_PROJECT_ROOT/plugins/requirements/requirements.tap-pypistats.txt
