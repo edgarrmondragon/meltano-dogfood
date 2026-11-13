@@ -79,7 +79,7 @@ six==1.17.0
     # via
     #   nested-lookup
     #   python-dateutil
-soupsieve==3.0.4
+soupsieve==4.0
     # via beautifulsoup4
 sqlalchemy==2.1.6
     # via singer-sdk
