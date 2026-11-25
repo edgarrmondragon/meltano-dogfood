@@ -11,7 +11,7 @@ cattrs==26.2.1
     # via
     #   requests-cache
     #   tap-readthedocs
-certifi==2026.10.19
+certifi==2026.10.23
     # via
     #   requests
     #   tap-readthedocs
@@ -19,7 +19,7 @@ charset-normalizer==3.5.2
     # via
     #   requests
     #   tap-readthedocs
-click==8.5.0
+click==8.5.1
     # via
     #   singer-sdk
     #   tap-readthedocs
@@ -45,7 +45,7 @@ joblib==1.6.0
     # via
     #   singer-sdk
     #   tap-readthedocs
-jsonpath-ng==1.12.0
+jsonpath-ng==1.16.0
     # via
     #   singer-sdk
     #   tap-readthedocs
@@ -65,7 +65,7 @@ pathlib-abc==0.5.2
     # via
     #   tap-readthedocs
     #   universal-pathlib
-platformdirs==4.13.5
+platformdirs==4.14.5
     # via
     #   requests-cache
     #   tap-readthedocs
@@ -107,13 +107,13 @@ simplejson==4.2.0
     # via
     #   singer-sdk
     #   tap-readthedocs
-singer-sdk==0.55.0b4
+singer-sdk==0.55.0b7
     # via tap-readthedocs
-sqlalchemy==2.1.5
+sqlalchemy==2.1.8
     # via
     #   singer-sdk
     #   tap-readthedocs
-tap-readthedocs==0.7.3
+tap-readthedocs==0.8.0
     # via -r plugins/requirements/requirements.tap-readthedocs.in
 toolz==1.2.0
     # via tap-readthedocs
@@ -126,7 +126,7 @@ universal-pathlib==0.3.10
     # via
     #   singer-sdk
     #   tap-readthedocs
-url-normalize==3.0.1
+url-normalize==3.1.0
     # via
     #   requests-cache
     #   tap-readthedocs
