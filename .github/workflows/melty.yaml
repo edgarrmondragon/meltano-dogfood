@@ -66,7 +66,6 @@ env:
   PYTHONWARNINGS: >
     error,
     once: The 'wheel' package is no longer the canonical location of the 'bdist_wheel' command:FutureWarning,
-    once:The inplace keyword in DataFrame.drop is deprecated and will be removed in a future version (PDEP-8):DeprecationWarning,
     once:License classifiers are deprecated:UserWarning,
     once:dep_util is Deprecated. Use functions from setuptools instead.:DeprecationWarning,
     once:No GlobalOverrides context is active:UserWarning
