@@ -4,14 +4,14 @@ adjust-precision-for-schema==0.3.3
     # via target-jsonl
 backoff==1.8.0
     # via singer-python
-ciso8601==2.3.3
+ciso8601==2.4.1
     # via singer-python
 jsonschema==2.6.0
     # via
     #   adjust-precision-for-schema
     #   singer-python
     #   target-jsonl
-python-dateutil==3.0.0
+python-dateutil==4.0.0
     # via singer-python
 pytz==2018.4
     # via singer-python
@@ -19,9 +19,7 @@ simplejson==3.11.1
     # via singer-python
 singer-python==5.8.0
     # via target-jsonl
-six==1.17.0
-    # via python-dateutil
 target-jsonl==0.1.4
     # via -r plugins/requirements/requirements.target-jsonl.in
-tzdata==2026.5
+tzdata==2026.6
     # via python-dateutil
