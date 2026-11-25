@@ -72,7 +72,7 @@ env:
   # renovate: datasource=github-tags depName=apple/pkl
   PKL_VERSION: 0.32.1
   # renovate: datasource=npm depName=vercel
-  VERCEL_VERSION: 63.1.2
+  VERCEL_VERSION: 66.2.0
   # renovate: datasource=pypi depName=pip-audit
   PIP_AUDIT_VERSION: 2.10.1
 
